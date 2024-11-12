@@ -1,4 +1,5 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction, LinksFunction } from "@remix-run/node";
+import mainStyle from "~/styles/main.css"
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,10 +8,15 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: mainStyle }];
+};
+
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
+    <div className="welcome__container--wip">
       <h1>Welcome to TrashQuest !</h1>
+      <p className="welcome__description">🏗️ TrashQuest connects communities to clean up public spaces and protect nature.<br/> It is a work in progress, please find the project description <a href="https://github.com/heleneruelle/trashquest/blob/main/README.md">in our github repository</a> <br/>and contact <strong>heleneruelle@hotmail.com</strong> if you want to join !</p>
     </div>
   );
 }
