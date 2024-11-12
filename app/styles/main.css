@@ -1,0 +1,24 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: system-ui, sans-serif;
+}
+
+.welcome__container--wip {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px;
+  background: url('app/assets/trashquest_bg.png') center/cover no-repeat;;
+}
+
+.welcome__description {
+  text-align: center;
+}
