@@ -16,6 +16,8 @@ TrashQuest is an open-source project built on the following technologies:
 - Netlify
 You can contact me for questions or if you’d like to join me in this adventure at: heleneruelle@hotmail.com.
 
+You'll find all UIB specs in [Figma](https://www.figma.com/design/93vR4JInUUmtSvRG6wKKDP/Trashquest-2024?node-id=2002-2&t=VYhrI3aQq1FO5CEf-1) (email for edit access).
+
 And of course, start using TrashQuest here: https://trashquest.netlify.app/
 
 ## Scope of V1
