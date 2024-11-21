@@ -16,6 +16,8 @@
     "@remix-run/node": "^2.13.1",
     "@remix-run/react": "^2.13.1",
     "@remix-run/serve": "^2.13.1",
+    "dotenv": "^16.4.5",
+    "firebase": "^11.0.2",
     "isbot": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
