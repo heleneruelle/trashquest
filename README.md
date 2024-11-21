@@ -1,4 +1,4 @@
-# TrashQuest 
+# TrashQuest
 
 TrashQuest is an app designed to empower anyone who wants to take action and protect the environment at a local level by cleaning up public spaces. Inspired by community efforts like beach cleanups and cigarette butt collections, TrashQuest allows users to organize and join cleanup events — or "quests" — in their neighborhoods, parks, rivers, and other public spaces.
 
@@ -9,12 +9,13 @@ The app merges the worlds of environmental action and adventure, incorporating a
 The app’s user interface (UI) will reflect this blend, incorporating a slightly gamified aspect. However, the focus remains on promoting popular ecology and raising awareness about the growing problem of waste production and disposal in both local communities and globally.
 
 TrashQuest is an open-source project built on the following technologies:
+
 - Remix and React (open-source)
 - Jest (open-source)
 - Firebase
 - Mapbox
 - Netlify
-You can contact me for questions or if you’d like to join me in this adventure at: heleneruelle@hotmail.com.
+  You can contact me for questions or if you’d like to join me in this adventure at: heleneruelle@hotmail.com.
 
 You'll find all UIB specs in [Figma](https://www.figma.com/design/93vR4JInUUmtSvRG6wKKDP/Trashquest-2024?node-id=2002-2&t=VYhrI3aQq1FO5CEf-1) (email for edit access).
 
@@ -31,16 +32,20 @@ And of course, start using TrashQuest here: https://trashquest.netlify.app/
 ### Available Views
 
 1. **Authentication**
+
    - Email and password-based authentication (via Firebase).
 
 2. **Onboarding**
+
    - Profile creation and onboarding process.
 
 3. **Home (Main Screen)**
+
    - Displays a list of available quests.
    - Includes a map showing the location of quests.
 
 4. **Quest Creation**
+
    - Form to create a new quest (environmental cleanup event).
 
 5. **Profile**
@@ -129,7 +134,7 @@ A **Quest** object in TrashQuest is structured as follows:
   "id": "quest_id",
   "name": "Clean Up of Chaussée de Waterloo",
   "location": "Chaussée de Waterloo 60, 1060 Brussels, Belgium",
-  "lon": "4.344737097493441", 
+  "lon": "4.344737097493441",
   "lat": "50.83095205360295",
   "date": "2023-11-12T14:00:00Z",
   "endTime": "2023-11-12T16:00:00Z",
@@ -139,10 +144,10 @@ A **Quest** object in TrashQuest is structured as follows:
   "materialsNeeded": ["gloves", "bags", "masks"],
   "difficultyLevel": ["kid-friendly", "accessible"],
   "participants": [
-    {"user_id": "user1", "name": "Alice"},
-    {"user_id": "user2", "name": "Bob"}
+    { "user_id": "user1", "name": "Alice" },
+    { "user_id": "user2", "name": "Bob" }
   ],
-  "desiredParticipants": 20,
+  "desiredParticipants": 20
 }
 ```
 
