@@ -1,8 +1,9 @@
 import type { ActionFunctionArgs } from '@remix-run/node';
+import { redirect } from '@remix-run/node';
 import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig';
-import { redirect } from '@remix-run/node';
+import { getSession, commitSession } from '~/utils/auth/session.server';
 
 export async function signupAction({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -29,8 +30,13 @@ export async function signupAction({ request }: ActionFunctionArgs) {
         location: location,
         createdAt: serverTimestamp(),
       });
-      console.log('User registered and added to Firestore:', user.uid);
-      return redirect('/login');
+      const session = await getSession();
+      session.set('userId', user.uid);
+      return redirect('/', {
+        headers: {
+          'Set-Cookie': await commitSession(session),
+        },
+      });
     } catch (firestoreError) {
       // If Firestore document creation fails, delete the authenticated user
       console.error('Error adding user to Firestore:', firestoreError);
