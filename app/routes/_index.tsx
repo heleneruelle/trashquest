@@ -3,8 +3,10 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from '@remix-run/node';
+import { Form } from '@remix-run/react';
 import { getSession } from '../utils/auth/session.server';
 import { redirect } from '@remix-run/node';
+import { logoutAction } from '~/loaders/logout';
 
 export const meta: MetaFunction = () => {
   return [
@@ -32,6 +34,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   return { isAuthenticated: true, userId };
 };
 
+export { logoutAction as action };
+
 export default function Index() {
   return (
     <div className="welcome__container--wip">
@@ -47,6 +51,9 @@ export default function Index() {
         and contact <strong>heleneruelle@hotmail.com</strong> if you want to
         join !
       </p>
+      <Form method="post">
+        <button type="submit">Logout</button>
+      </Form>
     </div>
   );
 }
