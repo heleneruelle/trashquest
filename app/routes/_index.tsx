@@ -1,4 +1,10 @@
-import type { MetaFunction, LinksFunction } from '@remix-run/node';
+import type {
+  MetaFunction,
+  LinksFunction,
+  LoaderFunction,
+} from '@remix-run/node';
+import { getSession } from '../utils/auth/session.server';
+import { redirect } from '@remix-run/node';
 
 export const meta: MetaFunction = () => {
   return [
@@ -13,6 +19,17 @@ export const meta: MetaFunction = () => {
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: '/styles/main.css' }];
+};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const session = await getSession(request.headers.get('Cookie'));
+  const userId = session.get('userId');
+
+  if (!userId) {
+    throw redirect('/login');
+  }
+
+  return { isAuthenticated: true, userId };
 };
 
 export default function Index() {
