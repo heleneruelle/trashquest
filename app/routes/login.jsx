@@ -2,6 +2,10 @@ import { useUser } from '../utils/auth/user';
 import LoginForm from '../components/auth/LoginForm';
 import { getAuth, signOut } from 'firebase/auth';
 
+import { loginAction } from '../loaders/login';
+
+export { loginAction as action };
+
 const LoginPage = () => {
   const user = useUser();
   const auth = getAuth();
@@ -24,7 +28,7 @@ const LoginPage = () => {
           <button onClick={asyncSignOut}>Log Out</button>
         </div>
       ) : (
-        <LoginForm setUser={(user) => setUser(user)} />
+        <LoginForm />
       )}
     </div>
   );
