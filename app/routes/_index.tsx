@@ -1,4 +1,12 @@
-import type { MetaFunction, LinksFunction } from '@remix-run/node';
+import type {
+  MetaFunction,
+  LinksFunction,
+  LoaderFunction,
+} from '@remix-run/node';
+import { Form } from '@remix-run/react';
+import { getSession } from '../utils/auth/session.server';
+import { redirect } from '@remix-run/node';
+import { logoutAction } from '~/loaders/logout';
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,6 +23,19 @@ export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: '/styles/main.css' }];
 };
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const session = await getSession(request.headers.get('Cookie'));
+  const userId = session.get('userId');
+
+  if (!userId) {
+    throw redirect('/login');
+  }
+
+  return { isAuthenticated: true, userId };
+};
+
+export { logoutAction as action };
+
 export default function Index() {
   return (
     <div className="welcome__container--wip">
@@ -30,6 +51,9 @@ export default function Index() {
         and contact <strong>heleneruelle@hotmail.com</strong> if you want to
         join !
       </p>
+      <Form method="post">
+        <button type="submit">Logout</button>
+      </Form>
     </div>
   );
 }
