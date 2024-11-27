@@ -1,14 +1,12 @@
-import {
-  Form,
-  //useActionData,
-  useNavigation,
-} from '@remix-run/react';
+import { Form, useActionData, useNavigation } from '@remix-run/react';
 
 const LoginForm = () => {
   const navigation = useNavigation();
+  const actionData = useActionData();
 
   return (
     <div>
+      {actionData?.error && <p style={{ color: 'red' }}>{actionData.error}</p>}
       <Form method="post">
         <label>
           Email:

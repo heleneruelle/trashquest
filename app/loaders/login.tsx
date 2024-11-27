@@ -11,9 +11,10 @@ export async function loginAction({ request }: ActionFunctionArgs) {
   try {
     const user = await authenticate({ email, password });
     if (!user) {
-      throw new Error('Failed to authenticate');
+      throw new Error('Authentication failed');
     }
     const session = await getSession();
+    session.set('userId', user.uid);
     return redirect('/', {
       headers: {
         'Set-Cookie': await commitSession(session),
@@ -21,6 +22,10 @@ export async function loginAction({ request }: ActionFunctionArgs) {
     });
   } catch (error) {
     console.error('Login action', error);
-    throw error;
+    if (error instanceof Error) {
+      return Response.json({ error: error.message });
+    } else {
+      return Response.json({ error: 'Authentication failed' });
+    }
   }
 }
