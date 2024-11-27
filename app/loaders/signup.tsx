@@ -43,7 +43,6 @@ export async function signupAction({ request }: ActionFunctionArgs) {
 
       try {
         await deleteUser(user);
-        console.log('Rolled back user from Firebase Authentication.');
       } catch (rollbackError) {
         console.error(
           'Failed to rollback user from Firebase Authentication:',
@@ -58,7 +57,12 @@ export async function signupAction({ request }: ActionFunctionArgs) {
   } catch (authError) {
     console.error('Error during user registration:', authError);
     return Response.json(
-      { error: 'User registration failed. Please try again.' },
+      {
+        error:
+          authError instanceof Error
+            ? authError.message
+            : 'User registration failed. Please try again.',
+      },
       { status: 500 }
     );
   }
