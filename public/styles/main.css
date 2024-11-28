@@ -17,7 +17,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   padding: 16px; /*  TODO remove */
-  background: url('/assets/trashquest_bg.png') center/cover no-repeat;
+  background: url('/assets/trashquest_bg.webp') center/cover no-repeat;
 }
 
 .welcome__description {
