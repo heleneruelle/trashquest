@@ -5,7 +5,7 @@ import {
   useNavigation,
 } from '@remix-run/react';
 
-const LoginForm = ({ setUser }) => {
+const LoginForm = () => {
   const navigation = useNavigation();
   const actionData = useActionData();
 
