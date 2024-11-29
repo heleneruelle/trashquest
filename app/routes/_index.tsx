@@ -1,12 +1,9 @@
-import type {
-  MetaFunction,
-  LinksFunction,
-  LoaderFunction,
-} from '@remix-run/node';
+import type { MetaFunction, LoaderFunction } from '@remix-run/node';
 import { Form } from '@remix-run/react';
 import { getSession } from '../utils/auth/session.server';
 import { redirect } from '@remix-run/node';
 import { logoutAction } from '~/loaders/logout';
+import ImageLayout from '~/components/templates/ImageLayout';
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,10 +14,6 @@ export const meta: MetaFunction = () => {
         'TrashQuest connects communities to clean up public spaces and protect nature!',
     },
   ];
-};
-
-export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: '/styles/main.css' }];
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -38,7 +31,7 @@ export { logoutAction as action };
 
 export default function Index() {
   return (
-    <div className="welcome__container--wip">
+    <ImageLayout>
       <h1>Welcome to TrashQuest !</h1>
       <p className="welcome__description">
         🏗️ TrashQuest connects communities to clean up public spaces and protect
@@ -54,6 +47,6 @@ export default function Index() {
       <Form method="post">
         <button type="submit">Logout</button>
       </Form>
-    </div>
+    </ImageLayout>
   );
 }
