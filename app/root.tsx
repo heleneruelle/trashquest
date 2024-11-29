@@ -5,6 +5,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import { LinksFunction } from '@remix-run/node';
+
+export const links: LinksFunction = () => {
+  return [{ rel: 'stylesheet', href: '/styles/main.css' }];
+};
 
 export default function App() {
   return (
