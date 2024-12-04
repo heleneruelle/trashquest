@@ -10,6 +10,7 @@ import { LoaderFunctionArgs } from '@remix-run/node';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n';
 import { useLoaderData } from '@remix-run/react';
+import { DEFAULT_LANGUAGE } from './config';
 
 type LoaderData = {
   lang: string;
@@ -19,7 +20,7 @@ export let loader = async ({
   request,
 }: LoaderFunctionArgs): Promise<LoaderData> => {
   const url = new URL(request.url);
-  const lang = url.pathname.split('/')[1] || 'en';
+  const lang = url.pathname.split('/')[1] || DEFAULT_LANGUAGE;
   i18nServer.changeLanguage(lang);
   return { lang };
 };
