@@ -8,6 +8,10 @@
   "location": "Location",
   "en": "English",
   "fr": "French",
+  "country": {
+    "fr": "France",
+    "be": "Belgium"
+  },
   "logout": {
     "cta": "Logout"
   },

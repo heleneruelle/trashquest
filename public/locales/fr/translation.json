@@ -8,6 +8,10 @@
   "location": "Localisation",
   "en": "Anglais",
   "fr": "Français",
+  "country": {
+    "fr": "France",
+    "be": "Belgique"
+  },
   "logout": {
     "cta": "Déconnexion"
   },
