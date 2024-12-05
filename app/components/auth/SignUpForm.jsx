@@ -116,7 +116,11 @@ const SignUpForm = () => {
           value={selectedLocation?.properties?.coordinates?.longitude}
         />
         <button type="submit" disabled={navigation.state === 'submitting'}>
-          {navigation.state === 'submitting' ? 'Registering...' : 'Register'}
+          {t(
+            navigation.state === 'submitting'
+              ? 'create-new.cta.submitting'
+              : 'create-new.cta.idle'
+          )}
         </button>
       </Form>
     </div>

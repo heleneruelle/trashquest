@@ -30,7 +30,7 @@ const LoginForm = () => {
         </button>
       </Form>
       <Link to={createCompositeUrl(i18n, '/sign-up')}>
-        {t('create-new.cta')}
+        {t('create-new.cta.create')}
       </Link>
     </div>
   );

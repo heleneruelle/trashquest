@@ -24,6 +24,10 @@
   },
   "create-new": {
     "description": "Your mission to clean up the world starts here!",
-    "cta": "Create new account"
+    "cta": {
+      "submitting": "Enregistrement...",
+      "idle": "Inscription",
+      "create": "Create new account"
+    }
   }
 }
