@@ -8,6 +8,10 @@
   "location": "Localisation",
   "en": "Anglais",
   "fr": "Français",
+  "country": {
+    "fr": "France",
+    "be": "Belgique"
+  },
   "logout": {
     "cta": "Déconnexion"
   },
@@ -20,6 +24,10 @@
   },
   "create-new": {
     "description": "Votre mission de nettoyage de la planète commence ici !",
-    "cta": "Créer un nouveau compte"
+    "cta": {
+      "submitting": "Enregistrement...",
+      "idle": "Inscription",
+      "create": "Créer un nouveau compte"
+    }
   }
 }

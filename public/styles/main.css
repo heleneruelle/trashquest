@@ -45,3 +45,10 @@ body {
   align-items: center;
   gap: 10px;
 }
+
+.autocomplete-item {
+  border-bottom: 1px solid;
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+}

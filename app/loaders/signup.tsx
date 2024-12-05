@@ -12,7 +12,11 @@ export async function signupAction({ request }: ActionFunctionArgs) {
   const email = String(formData.get('email'));
   const password = String(formData.get('password'));
   const username = String(formData.get('username'));
-  const location = String(formData.get('location'));
+  const locationName = String(formData.get('locationName'));
+  const locationId = String(formData.get('locationId'));
+  const locationLatitude = Number(formData.get('locationLatitude'));
+  const locationLongitude = Number(formData.get('locationLongitude'));
+  const country = String(formData.get('country'));
 
   try {
     // Create user in Firebase Authentication
@@ -28,8 +32,14 @@ export async function signupAction({ request }: ActionFunctionArgs) {
       await setDoc(userDocRef, {
         uid: user.uid,
         email: user.email,
-        username: username,
-        location: location,
+        username,
+        country,
+        location: {
+          name: locationName,
+          id: locationId,
+          latitude: locationLatitude,
+          longitude: locationLongitude,
+        },
         createdAt: serverTimestamp(),
       });
       const session = await getSession();
