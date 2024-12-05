@@ -1,4 +1,6 @@
-import { Form, useActionData, useNavigation } from '@remix-run/react';
+import { Form, useActionData, useNavigation, Link } from '@remix-run/react';
+import createCompositeUrl from '../../utils/url/createCompositeUrl';
+import i18n from '../../i18n';
 
 const LoginForm = () => {
   const navigation = useNavigation();
@@ -20,7 +22,7 @@ const LoginForm = () => {
           {navigation.state === 'submitting' ? 'Authentication...' : 'Login'}
         </button>
       </Form>
-      <a href="/sign-up">Create new account</a>
+      <a href={createCompositeUrl(i18n, '/sign-up')}>Create new account</a>
     </div>
   );
 };

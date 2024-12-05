@@ -2,6 +2,8 @@ import type { ActionFunctionArgs } from '@remix-run/node';
 import authenticate from '../utils/auth/authenticate';
 import { getSession, commitSession } from '~/utils/auth/session.server';
 import { redirect } from '@remix-run/node';
+import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import i18nServer from '~/i18n.server';
 
 export async function loginAction({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -15,7 +17,7 @@ export async function loginAction({ request }: ActionFunctionArgs) {
     }
     const session = await getSession();
     session.set('userId', user.uid);
-    return redirect('/', {
+    return redirect(createCompositeUrl(i18nServer, '/'), {
       headers: {
         'Set-Cookie': await commitSession(session),
       },

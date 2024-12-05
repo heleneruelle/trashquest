@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig';
 import { getSession, commitSession } from '~/utils/auth/session.server';
+import i18nServer from '~/i18n.server';
+import createCompositeUrl from '~/utils/url/createCompositeUrl';
 
 export async function signupAction({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -32,7 +34,7 @@ export async function signupAction({ request }: ActionFunctionArgs) {
       });
       const session = await getSession();
       session.set('userId', user.uid);
-      return redirect('/', {
+      return redirect(createCompositeUrl(i18nServer, '/'), {
         headers: {
           'Set-Cookie': await commitSession(session),
         },
