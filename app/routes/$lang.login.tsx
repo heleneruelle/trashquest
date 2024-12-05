@@ -7,7 +7,7 @@ export { loginAction as action };
 const LoginPage = () => {
   return (
     <div>
-      <h1>Please login to access TrashQuest !</h1>
+      <h1>Please login</h1>
       <LoginForm />
     </div>
   );
