@@ -1,4 +1,25 @@
 {
   "welcome": "Bienvenue dans TrashQuest !",
-  "greeting": "Bonjour, {{name}}!"
+  "greeting": "Bonjour, {{name}}!",
+  "description": "🏗️ TrashQuest relie les communautés pour nettoyer les espaces publics et protéger la nature. Il s'agit d'un travail en cours, veuillez trouver la description du projet dans notre repository github et contacter heleneruelle@hotmail.com si vous souhaitez nous rejoindre !",
+  "email": "Email",
+  "password": "Mot de passe",
+  "username": "Nom d'utilisateur",
+  "location": "Localisation",
+  "en": "Anglais",
+  "fr": "Français",
+  "logout": {
+    "cta": "Déconnexion"
+  },
+  "login": {
+    "title": "Veuillez vous connecter à votre compte",
+    "cta": {
+      "submitting": "Authentification...",
+      "idle": "Login"
+    }
+  },
+  "create-new": {
+    "description": "Votre mission de nettoyage de la planète commence ici !",
+    "cta": "Créer un nouveau compte"
+  }
 }
