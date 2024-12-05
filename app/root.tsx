@@ -20,10 +20,14 @@ export default function App() {
       </head>
       <body>
         <I18nextProvider i18n={i18n} defaultNS={'translation'}>
-          <div>
-            <LanguageSwitcher />
+          <div style={{ height: '100%' }}>
+            <div className="top-bar">
+              <LanguageSwitcher />
+            </div>
+            <div className="content">
+              <Outlet />
+            </div>
           </div>
-          <Outlet />
         </I18nextProvider>
         <ScrollRestoration />
         <Scripts />
