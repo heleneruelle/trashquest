@@ -43,19 +43,9 @@ export default function Index() {
   return (
     <div className="welcome__container--wip">
       <h1>{t('welcome')}</h1>
-      <p className="welcome__description">
-        🏗️ TrashQuest connects communities to clean up public spaces and protect
-        nature.
-        <br /> It is a work in progress, please find the project description{' '}
-        <a href="https://github.com/heleneruelle/trashquest/blob/main/README.md">
-          in our github repository
-        </a>{' '}
-        <br />
-        and contact <strong>heleneruelle@hotmail.com</strong> if you want to
-        join !
-      </p>
+      <p className="welcome__description">{t('description')}</p>
       <Form method="post">
-        <button type="submit">Logout</button>
+        <button type="submit">{t('logout.cta')}</button>
       </Form>
     </div>
   );

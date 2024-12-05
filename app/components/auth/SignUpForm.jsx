@@ -4,29 +4,32 @@ import {
   //useActionData,
   useNavigation,
 } from '@remix-run/react';
+import { useTranslation } from 'react-i18next';
 
-const LoginForm = ({ setUser }) => {
+const SignUpForm = () => {
   const navigation = useNavigation();
   const actionData = useActionData();
+
+  const { t } = useTranslation();
 
   return (
     <div>
       {actionData?.error && <p style={{ color: 'red' }}>{actionData.error}</p>}
-      <Form method="post">
+      <Form method="post" className="form">
         <label>
-          Email:
+          {t('email')}
           <input type="email" name="email" required />
         </label>
         <label>
-          Password:
+          {t('password')}
           <input type="password" name="password" required />
         </label>
         <label>
-          Username:
+          {t('username')}
           <input type="text" name="username" required />
         </label>
         <label>
-          Location:
+          {t('location')}
           <input type="text" name="location" required />
         </label>
         <button type="submit" disabled={navigation.state === 'submitting'}>
@@ -37,4 +40,4 @@ const LoginForm = ({ setUser }) => {
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
