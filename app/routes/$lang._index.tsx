@@ -31,7 +31,6 @@ export let loader = async ({
   const pathname = url.pathname;
 
   if (!userId) {
-    console.log('HELLO');
     throw redirect(createCompositeUrl(i18nServer, '/login'));
   }
   return { isAuthenticated: true, userId };

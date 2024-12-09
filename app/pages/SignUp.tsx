@@ -1,15 +1,16 @@
-import SignUpForm from '~/components/auth/SignUpForm';
 import { useTranslation } from 'react-i18next';
+import SignUpForm from '~/components/auth/SignUpForm';
+import ImageLayout from '~/components/templates/ImageLayout';
 
 const SignUpPage = () => {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <ImageLayout>
       <h1>{t('welcome')}</h1>
       <h3>{t('create-new.description')}</h3>
       <SignUpForm />
-    </div>
+    </ImageLayout>
   );
 };
 
