@@ -4,13 +4,19 @@ import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig';
 import { getSession, commitSession } from '~/utils/auth/session.server';
+import i18nServer from '~/i18n.server';
+import createCompositeUrl from '~/utils/url/createCompositeUrl';
 
 export async function signupAction({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const email = String(formData.get('email'));
   const password = String(formData.get('password'));
   const username = String(formData.get('username'));
-  const location = String(formData.get('location'));
+  const locationName = String(formData.get('locationName'));
+  const locationId = String(formData.get('locationId'));
+  const locationLatitude = Number(formData.get('locationLatitude'));
+  const locationLongitude = Number(formData.get('locationLongitude'));
+  const country = String(formData.get('country'));
 
   try {
     // Create user in Firebase Authentication
@@ -26,13 +32,19 @@ export async function signupAction({ request }: ActionFunctionArgs) {
       await setDoc(userDocRef, {
         uid: user.uid,
         email: user.email,
-        username: username,
-        location: location,
+        username,
+        country,
+        location: {
+          name: locationName,
+          id: locationId,
+          latitude: locationLatitude,
+          longitude: locationLongitude,
+        },
         createdAt: serverTimestamp(),
       });
       const session = await getSession();
       session.set('userId', user.uid);
-      return redirect('/', {
+      return redirect(createCompositeUrl(i18nServer, '/'), {
         headers: {
           'Set-Cookie': await commitSession(session),
         },

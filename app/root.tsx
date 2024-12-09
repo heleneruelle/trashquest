@@ -5,11 +5,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
-import { LinksFunction } from '@remix-run/node';
-
-export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: '/styles/main.css' }];
-};
+import { I18nextProvider } from 'react-i18next';
+import i18n from '~/i18n';
+import LanguageSwitcher from '~/components/LanguageSwitch';
 
 export default function App() {
   return (
@@ -21,7 +19,16 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <I18nextProvider i18n={i18n} defaultNS={'translation'}>
+          <div style={{ height: '100%' }}>
+            <div className="top-bar">
+              <LanguageSwitcher />
+            </div>
+            <div className="content">
+              <Outlet />
+            </div>
+          </div>
+        </I18nextProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
