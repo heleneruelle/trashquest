@@ -10,3 +10,9 @@ export const COUNTRY_BELGIUM = 'be';
 export const DEFAULT_COUNTRY = COUNTRY_BELGIUM;
 
 export const AVAILABLE_COUNTRIES = [COUNTRY_FRANCE, COUNTRY_BELGIUM];
+
+export const firebaseErrorCodes = {
+  password: 'password',
+  email: 'Firebase: Error (auth/invalid-email).',
+  location: 'location',
+};
