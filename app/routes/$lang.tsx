@@ -19,7 +19,10 @@ export const meta: MetaFunction = () => {
 };
 
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: '/styles/main.css' }];
+  return [
+    { rel: 'stylesheet', href: '/styles/main.css' },
+    { rel: 'stylesheet', href: '/styles/error.css' },
+  ];
 };
 
 type LoaderData = {
