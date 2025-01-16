@@ -1,0 +1,31 @@
+.toast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 3px;
+  max-width: 25%;
+  position: absolute;
+  left: 20px;
+  top: 70px;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+
+.toast.error {
+  background-color: var(--c-red);
+  color: white;
+}
+
+.toast button {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  padding: 0;
+}
