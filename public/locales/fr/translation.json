@@ -6,9 +6,10 @@
   "password": "Mot de passe",
   "username": "Nom d'utilisateur",
   "location": "Localisation",
+  "country": "Pays",
   "en": "Anglais",
   "fr": "Français",
-  "country": {
+  "countries": {
     "fr": "France",
     "be": "Belgique"
   },
@@ -19,15 +20,44 @@
     "title": "Veuillez vous connecter à votre compte",
     "cta": {
       "submitting": "Authentification...",
-      "idle": "Login"
-    }
+      "idle": "Login",
+      "test": "Essayer sans compte"
+    },
+    "placeholder": {
+      "email": "Entrez votre email",
+      "password": "Entrez votre mot de passe"
+    },
+    "error": "Oups ! Il semble y avoir un problème avec vos informations d'identification. Nous sommes en train de le résoudre. Veuillez réessayer bientôt."
   },
-  "create-new": {
+  "create-new-account": {
     "description": "Votre mission de nettoyage de la planète commence ici !",
     "cta": {
       "submitting": "Enregistrement...",
-      "idle": "Inscription",
-      "create": "Créer un nouveau compte"
+      "idle": "Commencez vos quêtes !",
+      "create": "Pas encore enregistré.e ? Créez un compte"
+    },
+    "input": {
+      "password-confirm": "Confirmez votre mot de passe",
+      "hint": {
+        "username": "Votre nom d'utilisateur sera votre nom de profil et sera visible dans les événements et les quêtes.",
+        "location": "Votre position nous permet de vous recommander des quêtes à proximité.",
+        "password-error": "Vos mots de passe sont différents.",
+        "location-error": "Veuillez renseigner votre position.",
+        "email-error": "Email invalide."
+      },
+      "placeholder": {
+        "username": "Louise Michel",
+        "location": "Où habitez-vous ?",
+        "email": "Saisissez votre adresse e-mail",
+        "password": "Saisissez votre mot de passe",
+        "password-confirm": "Confirmez votre mot de passe"
+      }
+    }
+  },
+  "create-new-quest": {
+    "title": "Créer une nouvelle quête",
+    "input": {
+      "quest-name": "Nom de la quête"
     }
   }
 }

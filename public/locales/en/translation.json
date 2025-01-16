@@ -6,9 +6,10 @@
   "password": "Password",
   "username": "Username",
   "location": "Location",
+  "country": "Country",
   "en": "English",
   "fr": "French",
-  "country": {
+  "countries": {
     "fr": "France",
     "be": "Belgium"
   },
@@ -19,15 +20,44 @@
     "title": "Please login to your account",
     "cta": {
       "submitting": "Authentication...",
-      "idle": "Login"
-    }
+      "idle": "Login",
+      "test": "Try without an account"
+    },
+    "placeholder": {
+      "email": "Enter your email",
+      "password": "Enter your password"
+    },
+    "error": "Oops! There seems to be a problem with your credentials. We're working on resolving it. Please try again soon."
   },
-  "create-new": {
+  "create-new-account": {
     "description": "Your mission to clean up the world starts here!",
     "cta": {
       "submitting": "Enregistrement...",
-      "idle": "Inscription",
-      "create": "Create new account"
+      "idle": "Begin Your Quests!",
+      "create": "Not registered ? Create an account"
+    },
+    "input": {
+      "password-confirm": "Confirm your password",
+      "hint": {
+        "username": "Your username will be your profile name and visible in events and quests.",
+        "location": "Your location helps us recommend quests nearby.",
+        "password-error": "Your passwords are different.",
+        "location-error": "Please fill in your position.",
+        "email-error": "Email invalid."
+      },
+      "placeholder": {
+        "username": "Louise Michel",
+        "location": "Where do you live ?",
+        "email": "Enter your email address",
+        "password": "Enter your password",
+        "password-confirm": "Confirm your password"
+      }
+    }
+  },
+  "create-new-quest": {
+    "title": "Create a new quest",
+    "input": {
+      "quest-name": "Quest name"
     }
   }
 }
