@@ -1,0 +1,129 @@
+.text-input {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  gap: 6px;
+}
+
+.text-input input {
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  border: 1px solid var(--c-green-300);
+  border-radius: 4px;
+}
+
+.text-input_error input {
+  border-color: var(--c-red-opacity-50);
+  color: var(--c-red-opacity-50);
+}
+
+.text-input_error input::placeholder {
+  color: var(--c-red-opacity-50);
+}
+
+.input-hint {
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 9px;
+  color: var(--c-green-300);
+}
+
+.text-input_error .input-hint {
+  color: var(--c-red-opacity-50);
+}
+
+.input-hint__error {
+  color: var(--c-red-opacity-50);
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.button-primary {
+  background-color: black;
+}
+
+.button-secondary {
+  background-color: var(--c-green-200);
+}
+
+.button-tertiary {
+  background-color: var(--c-green-300);
+}
+
+.select-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-weight: bold;
+  gap: 6px;
+}
+
+.select-container select {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  border: 1px solid var(--c-green-300);
+  border-radius: 4px;
+}
+
+.location-autocomplete {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+}
+
+.autocomplete {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-weight: bold;
+  gap: 6px;
+}
+
+.autocomplete input {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  border: 1px solid var(--c-green-300);
+  border-radius: 4px;
+}
+
+.autocomplete-list {
+  padding: 0px;
+  list-style: none;
+  font-weight: normal;
+  margin: 0px;
+}
+
+.autocomplete-list li {
+  border-color: var(--c-green-300);
+  color: var(--c-green-300);
+}
