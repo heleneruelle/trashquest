@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PlusIcon from '../icons/PlusIcon';
-import MinusIcon from '../icons/PlusIcon copy';
+import MinusIcon from '../icons/MinusIcon';
 
 interface CounterProps {
   id: string;
