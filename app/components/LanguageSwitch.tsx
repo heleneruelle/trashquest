@@ -4,7 +4,7 @@ import i18n from '~/i18n';
 import { SUPPORTED_LANGUAGES } from '~/config';
 import { useTranslation } from 'react-i18next';
 
-//comment1
+//comment
 function LanguageSwitcher() {
   const { t } = useTranslation();
   return (
