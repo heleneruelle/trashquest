@@ -1,6 +1,6 @@
 /* import { ActionFunctionArgs } from '@remix-run/node';
-import { getSession, destroySession } from '~/utils/auth/session.server';
-import signOut from '../utils/auth/signout'; */
+import { getSession, destroySession } from '~/utils/auth/session.server'; */
+import signOut from '../utils/auth/signout';
 import { redirect } from '@remix-run/node';
 /* import i18nServer from '~/i18n.server';
 import createCompositeUrl from '~/utils/url/createCompositeUrl'; */
@@ -16,6 +16,7 @@ import createCompositeUrl from '~/utils/url/createCompositeUrl'; */
 }
  */
 export async function logoutAction() {
+  await signOut();
   console.log('logout action triggered');
   return redirect('/');
 }
