@@ -1,4 +1,4 @@
-import type { ActionFunctionArgs } from '@remix-run/node';
+import { redirect, type ActionFunctionArgs } from '@remix-run/node';
 import dateTimeStartEndValidation from '~/utils/datetime/dateTimeStartEndValidation';
 import {
   doc,
@@ -11,6 +11,8 @@ import { getSession } from '~/utils/auth/session.server';
 import { auth, db } from '../firebaseConfig';
 import { getApp } from 'firebase/app';
 import generateRandomId from '~/utils/generateRandomId';
+import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import i18nServer from '~/i18n.server';
 
 export async function createQuestAction({ request }: ActionFunctionArgs) {
   if (!auth.currentUser?.uid) {
@@ -51,7 +53,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
 
   const questsCollection = collection(db, 'quests');
 
-  await addDoc(questsCollection, {
+  const docRef = await addDoc(questsCollection, {
     location: {
       country,
       name: locationName,
@@ -72,7 +74,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
     createdAt: serverTimestamp(),
   });
 
-  return 'Quest created successfully';
+  return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
 }
 
 export default createQuestAction;
