@@ -127,3 +127,67 @@
   border-color: var(--c-green-300);
   color: var(--c-green-300);
 }
+
+fieldset {
+  border: none;
+  padding: 0;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+
+fieldset legend {
+  padding: 6px 0;
+}
+
+.select-tags {
+  list-style: none;
+  padding: 0px;
+  display: flex;
+  gap: 6px;
+}
+
+.tag {
+  padding: 6px;
+  font-weight: 700;
+  line-height: 9px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 3px;
+}
+
+.tag__selected {
+  background-color: var(--c-green-200);
+  color: white;
+}
+
+.date-time-picker-container {
+  display: flex;
+  gap: 6px;
+}
+
+.date-time-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 6px;
+}
+
+.date-time-picker--input {
+  border: 1px solid #7c847c;
+  border-radius: 4px;
+  padding: 6px;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.select-with-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

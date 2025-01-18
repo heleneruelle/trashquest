@@ -11,12 +11,22 @@ export async function signupAction({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const email = String(formData.get('email'));
   const password = String(formData.get('password'));
+  const passwordConfirm = String(formData.get('password-confirm'));
+
+  if (password !== passwordConfirm) {
+    return Response.json({ error: 'password' }, { status: 400 });
+  }
+
   const username = String(formData.get('username'));
   const locationName = String(formData.get('locationName'));
   const locationId = String(formData.get('locationId'));
   const locationLatitude = Number(formData.get('locationLatitude'));
   const locationLongitude = Number(formData.get('locationLongitude'));
   const country = String(formData.get('country'));
+
+  if (!locationId) {
+    return Response.json({ error: 'location' }, { status: 400 });
+  }
 
   try {
     // Create user in Firebase Authentication

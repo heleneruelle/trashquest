@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function TwoColumnsLayout({
   children,
@@ -7,7 +7,6 @@ function TwoColumnsLayout({
   children: React.ReactNode;
   leftColumnWidth?: string;
 }) {
-
   const [leftChild, rightChild] = React.Children.map(
     children,
     (child) => child
