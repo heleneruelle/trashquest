@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 interface DatePickerProps {
   id: string;
   name: string;
@@ -15,9 +17,11 @@ function DatePicker({
   max,
   required = true,
 }: DatePickerProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="date-time-picker">
-      <label htmlFor={id}>{name}</label>
+      <label htmlFor={id}>{t('date')}</label>
       <input
         type="date"
         className="date-time-picker--input"
