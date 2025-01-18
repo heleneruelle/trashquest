@@ -3,6 +3,7 @@ import SignUpForm from '~/components/forms/SignUpForm';
 import ImageLayout from '~/components/templates/ImageLayout';
 import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 
+//c
 const SignUpPage = () => {
   const { t } = useTranslation();
 
