@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import SignUpForm from '~/components/auth/SignUpForm';
+import SignUpForm from '~/components/forms/SignUpForm';
 import ImageLayout from '~/components/templates/ImageLayout';
 
 const SignUpPage = () => {
