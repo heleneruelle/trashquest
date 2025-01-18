@@ -16,3 +16,15 @@ export const firebaseErrorCodes = {
   email: 'Firebase: Error (auth/invalid-email).',
   location: 'location',
 };
+
+export const questEnvironment = ['city', 'sea', 'river', 'hike'];
+
+export const questEquipment = ['boot', 'gloves', 'mask', 'bag'];
+
+export const questAccessibility = [
+  'wheelchair',
+  'kids',
+  'stairs',
+  'slope',
+  'road',
+];
