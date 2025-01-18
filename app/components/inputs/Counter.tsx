@@ -1,28 +1,36 @@
 import { useState } from 'react';
+import PlusIcon from '../icons/PlusIcon';
+import MinusIcon from '../icons/PlusIcon copy';
 
 interface CounterProps {
   id: string;
   name: string;
+  label: string;
 }
 
-function Counter({ id, name }: CounterProps) {
+function Counter({ id, name, label }: CounterProps) {
   const [count, setCount] = useState(1);
   return (
-    <div>
-      <button
-        type="button"
-        onClick={() => setCount((prevCount) => prevCount - 1)}
-        disabled={count === 1}
-      >
-        -1
-      </button>
-      <input type="number" id={id} name={name} value={count} readOnly />
-      <button
-        type="button"
-        onClick={() => setCount((prevCount) => prevCount + 1)}
-      >
-        +1
-      </button>
+    <div className="counter-container">
+      <label htmlFor={id}>{label}</label>
+      <div className="counter">
+        <button
+          type="button"
+          className="counter-button"
+          onClick={() => setCount((prevCount) => prevCount - 1)}
+          disabled={count === 1}
+        >
+          <MinusIcon />
+        </button>
+        <input type="number" id={id} name={name} value={count} readOnly />
+        <button
+          type="button"
+          className="counter-button"
+          onClick={() => setCount((prevCount) => prevCount + 1)}
+        >
+          <PlusIcon />
+        </button>
+      </div>
     </div>
   );
 }
