@@ -20,11 +20,13 @@ function QuestForm() {
       <TextField
         type="text"
         name="name"
-        label={t('create-new-quest.input.quest-name')}
+        label={t('create-new-quest.input.name')}
       />
       <LocationAutoComplete />
       <fieldset>
-        <legend className="date-time">Choose quest start date and time</legend>
+        <legend className="date-time">
+          {t('create-new-quest.input.start')}
+        </legend>
         <div className="date-time-picker-container">
           <DatePicker
             id="startDate"
@@ -40,7 +42,7 @@ function QuestForm() {
         </div>
       </fieldset>
       <fieldset>
-        <legend className="date-time">Choose quest end date and time</legend>
+        <legend className="date-time">{t('create-new-quest.input.end')}</legend>
         <div className="date-time-picker-container">
           <DatePicker
             id="endDate"
@@ -58,27 +60,31 @@ function QuestForm() {
       <TextArea
         id="description"
         name="description"
-        label="description"
-        hint="Provide a short description to give more context on your quest. max 3000 char."
+        label={t('create-new-quest.input.description')}
+        hint={t('create-new-quest.hint.description')}
       />
-      <Counter id="expectedParticipants" name="expectedParticipants" />
+      <Counter
+        id="expectedParticipants"
+        name="expectedParticipants"
+        label={t('create-new-quest.input.expected-participants')}
+      />
       <SelectWithTags
         options={questEnvironment}
         fieldset="environment"
-        label="Extra equipment needed"
-        hint="Choose as many options as necessary. This will indicate to your guests if they should bring equipment of their own. Otherwise they will assume you will provide everything for the quest."
+        label={t('create-new-quest.input.environment')}
+        hint={t('create-new-quest.hint.environment')}
       />
       <SelectWithTags
         options={questEquipment}
         fieldset="equipment"
-        label="Type of environment"
-        hint="Choose as many options as necessary. This will indicate to your guests if they should bring equipment of their own. Otherwise they will assume you will provide everything for the quest."
+        label={t('create-new-quest.input.equipment')}
+        hint={t('create-new-quest.hint.equipment')}
       />
       <SelectWithTags
         options={questAccessibility}
         fieldset="accessibility"
-        label="Accessibility level"
-        hint="Choose as many options as necessary. This will indicate to your guests if they should bring equipment of their own. Otherwise they will assume you will provide everything for the quest."
+        label={t('create-new-quest.input.accessibility')}
+        hint={t('create-new-quest.hint.accessibility')}
       />
       <Button type="submit" label="Begin the Quest !" />
     </Form>

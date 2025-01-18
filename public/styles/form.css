@@ -190,4 +190,36 @@ fieldset legend {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  font-weight: bold;
+}
+
+.select-with-tags ul {
+  margin: 0;
+}
+
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: bold;
+}
+
+.counter {
+  display: flex;
+}
+
+.counter input {
+  border: none;
+  padding: 0px;
+  width: fit-content;
+  text-align: center;
+}
+
+.counter-button {
+  display: flex;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  background-color: inherit;
+  border-radius: 50%;
 }

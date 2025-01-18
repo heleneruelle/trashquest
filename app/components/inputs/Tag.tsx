@@ -1,5 +1,4 @@
 import { ChangeEventHandler, MouseEventHandler } from 'react';
-import CrossIcon from '~/components/icons/CrossIcon';
 
 interface TagProps {
   id: string;
