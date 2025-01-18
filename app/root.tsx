@@ -4,7 +4,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  //useLoaderData,
+  useLoaderData,
 } from '@remix-run/react';
 import { I18nextProvider } from 'react-i18next';
 //import { Form } from '@remix-run/react';
@@ -12,16 +12,16 @@ import { useTranslation } from 'react-i18next';
 //import { logoutAction } from '~/loaders/logout';
 import i18n from '~/i18n';
 import LanguageSwitcher from '~/components/LanguageSwitch';
-/* import { LoaderFunctionArgs } from '@remix-run/node';
-import { getSession } from '~/utils/auth/session.server'; */
+import { LoaderFunctionArgs } from '@remix-run/node';
+import { getSession } from '~/utils/auth/session.server';
 
 //export { logoutAction as action };
 
-/* type LoaderData = {
+type LoaderData = {
   isAuthenticated: boolean;
 };
- */
-/* export let loader = async ({
+
+export let loader = async ({
   request,
 }: LoaderFunctionArgs): Promise<LoaderData> => {
   // Session handle
@@ -29,11 +29,11 @@ import { getSession } from '~/utils/auth/session.server'; */
   const userId = session.get('userId');
 
   return { isAuthenticated: userId ? true : false };
-}; */
+};
 
 export default function App() {
   const { t } = useTranslation();
-  //const { isAuthenticated } = useLoaderData();
+  const { isAuthenticated } = useLoaderData();
 
   return (
     <html lang="en">
@@ -53,6 +53,7 @@ export default function App() {
                   <button type="submit">{t('logout.cta')}</button>
                 </Form>
               )} */}
+              {isAuthenticated && <div>I am an authenticated user</div>}
             </div>
             <div className="content">
               <Outlet />
