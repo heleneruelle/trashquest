@@ -1,6 +1,11 @@
 [build]
 command = "npm run build"
 publish = "build/client"
+functions = "netlify/functions"
+
+[functions]
+memory = 1024   # Augmente la mémoire allouée à chaque fonction à 1 Go
+timeout = 60 
 
 [dev]
 command = "npm run dev"
