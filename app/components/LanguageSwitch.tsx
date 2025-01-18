@@ -3,7 +3,7 @@ import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
 import { SUPPORTED_LANGUAGES } from '~/config';
 import { useTranslation } from 'react-i18next';
-
+//a
 function LanguageSwitcher() {
   const { t } = useTranslation();
   return (
