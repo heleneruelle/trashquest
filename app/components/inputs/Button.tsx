@@ -1,8 +1,8 @@
 interface ButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;
-  disabled: boolean;
+  disabled?: boolean;
   label: string;
-  style: 'primary' | 'secondary' | 'tertiary';
+  style?: 'primary' | 'secondary' | 'tertiary';
 }
 
 function Button({
