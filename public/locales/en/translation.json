@@ -13,6 +13,8 @@
     "fr": "France",
     "be": "Belgium"
   },
+  "date": "Date",
+  "time": "Time",
   "logout": {
     "cta": "Logout"
   },
@@ -57,7 +59,21 @@
   "create-new-quest": {
     "title": "Create a new quest",
     "input": {
-      "quest-name": "Quest name"
+      "name": "Quest name",
+      "start": "Choose quest start date and time",
+      "end": "Choose quest end date and time",
+      "description": "Description",
+      "expected-participants": "Expected number of guests",
+      "equipment": "Extra equipment needed",
+      "environment": "Type of environment",
+      "accessibility": "Accessibility level"
+    },
+    "hint": {
+      "name": "Try to provide a short but very descriptive title to help other users undertsand your quest.",
+      "description": "Provide a short description to give more context on your quest. max 3000 char.",
+      "equipment": "Choose as many options as necessary. This will indicate to your guests if they should bring equipment of their own. Otherwise they will assume you will provide everything for the quest.",
+      "environment": "Choose as many options as necessary. This will indicate to your guests what kind of place they should expect to find themselves in.",
+      "accessibility": "Choose as many options as necessary. This will indicate to your guests if the quest location is accessible for them."
     }
   }
 }
