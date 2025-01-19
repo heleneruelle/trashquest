@@ -10,7 +10,7 @@ interface SelectProps {
   options: Option[];
   name: string;
   id: string;
-  hint: string;
+  hint: string | null;
   changeCallback?: ChangeEventHandler<HTMLSelectElement> | undefined;
 }
 
