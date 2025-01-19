@@ -22,7 +22,10 @@ function QuestForm() {
         name="name"
         label={t('create-new-quest.input.name')}
       />
-      <LocationAutoComplete />
+      <LocationAutoComplete
+        hint={t('create-new-quest.hint.location')}
+        types={['address']}
+      />
       <fieldset>
         <legend className="date-time">
           {t('create-new-quest.input.start')}

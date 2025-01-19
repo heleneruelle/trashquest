@@ -1,16 +1,7 @@
 import { redirect, type ActionFunctionArgs } from '@remix-run/node';
 import dateTimeStartEndValidation from '~/utils/datetime/dateTimeStartEndValidation';
-import {
-  doc,
-  setDoc,
-  serverTimestamp,
-  collection,
-  addDoc,
-} from 'firebase/firestore';
-import { getSession } from '~/utils/auth/session.server';
+import { serverTimestamp, collection, addDoc } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig';
-import { getApp } from 'firebase/app';
-import generateRandomId from '~/utils/generateRandomId';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18nServer from '~/i18n.server';
 

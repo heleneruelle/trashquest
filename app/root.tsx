@@ -12,16 +12,16 @@ import { useTranslation } from 'react-i18next';
 //import { logoutAction } from '~/loaders/logout';
 import i18n from '~/i18n';
 import LanguageSwitcher from '~/components/LanguageSwitch';
-/* import { LoaderFunctionArgs } from '@remix-run/node';
-import { getSession } from '~/utils/auth/session.server'; */
+import { LoaderFunctionArgs } from '@remix-run/node';
+import { getSession } from '~/utils/auth/session.server';
 
 //export { logoutAction as action };
 
-/* type LoaderData = {
+type LoaderData = {
   isAuthenticated: boolean;
 };
- */
-/* export let loader = async ({
+
+export let loader = async ({
   request,
 }: LoaderFunctionArgs): Promise<LoaderData> => {
   // Session handle
@@ -29,7 +29,7 @@ import { getSession } from '~/utils/auth/session.server'; */
   const userId = session.get('userId');
 
   return { isAuthenticated: userId ? true : false };
-}; */
+};
 
 export default function App() {
   const { t } = useTranslation();

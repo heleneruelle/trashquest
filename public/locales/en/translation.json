@@ -70,6 +70,7 @@
     },
     "hint": {
       "name": "Try to provide a short but very descriptive title to help other users undertsand your quest.",
+      "location": "Be as specific as possible about the location. This will make it easier for your guests to find you.",
       "description": "Provide a short description to give more context on your quest. max 3000 char.",
       "equipment": "Choose as many options as necessary. This will indicate to your guests if they should bring equipment of their own. Otherwise they will assume you will provide everything for the quest.",
       "environment": "Choose as many options as necessary. This will indicate to your guests what kind of place they should expect to find themselves in.",
