@@ -56,7 +56,10 @@ const SignUpForm = () => {
         placeholder={t('create-new-account.input.placeholder.username')}
         hint={t('create-new-account.input.hint.username')}
       />
-      <LocationAutoComplete />
+      <LocationAutoComplete
+        hint={t('create-new-account.input.hint.location-error')}
+        countryHint={t('create-new-account.input.hint.location')}
+      />
       <Button
         type="submit"
         disabled={navigation.state === 'submitting'}
