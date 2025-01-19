@@ -5,6 +5,12 @@ import Select from '../inputs/Select';
 import countriesToVm from '../../utils/tovm/countriesToVm';
 import { AVAILABLE_COUNTRIES, firebaseErrorCodes } from '../../config';
 
+interface LocationAutoCompleteProps {
+  hint: string | null;
+  types: Array<string>;
+  countryHint: string | null;
+}
+
 const defaultLocationState = {
   id: undefined,
   properties: {
@@ -17,7 +23,11 @@ const defaultLocationState = {
   },
 };
 
-function LocationAutoComplete() {
+function LocationAutoComplete({
+  hint = null,
+  types = ['place'],
+  countryHint = null,
+}) {
   const { t } = useTranslation();
   const fetcher = useFetcher();
   const selectRef = useRef();
@@ -41,9 +51,11 @@ function LocationAutoComplete() {
       properties: { ...defaultLocationState.properties, name: value },
     });
 
-    if (value.trim() !== '') {
+    if (value.trim() !== '' && selectRef?.current?.value) {
       fetcher.load(
-        `/api/search?query=${value}&language=${lang}&country=${selectRef.current.value}&types=place`
+        `/api/search?query=${value}&language=${lang}&country=${
+          selectRef.current.value
+        }&types=${types.join()}`
       );
     }
   };
@@ -65,7 +77,7 @@ function LocationAutoComplete() {
         name={t('country')}
         ref={selectRef}
         options={countriesToVm(AVAILABLE_COUNTRIES)}
-        hint={t('create-new-account.input.hint.location')}
+        hint={countryHint}
         changeCallback={handleCountrySelectChange}
       />
       <label className="autocomplete">
@@ -78,6 +90,7 @@ function LocationAutoComplete() {
           autoComplete="off"
           required
         />
+        <small className="input-hint">{hint}</small>
         {fetcher.data?.features && query && (
           <ul className="autocomplete-list">
             {fetcher.data.features.map((location: any) => (
