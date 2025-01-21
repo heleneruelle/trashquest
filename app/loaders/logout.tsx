@@ -3,7 +3,7 @@ import { getSession, destroySession } from '~/utils/auth/session.server';
 import i18nServer from '~/i18n.server';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 
-let action = async ({ request }: { request: Request }) => {
+let logoutAction = async ({ request }: { request: Request }) => {
   const session = await getSession(request.headers.get('Cookie'));
 
   return redirect(createCompositeUrl(i18nServer, '/login'), {
@@ -13,4 +13,4 @@ let action = async ({ request }: { request: Request }) => {
   });
 };
 
-export default action;
+export default logoutAction;
