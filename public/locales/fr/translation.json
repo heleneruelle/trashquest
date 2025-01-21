@@ -70,7 +70,7 @@
     },
     "hint": {
       "name": "Essayez de fournir un titre court mais très descriptif pour aider les autres utilisateurs à comprendre votre quête.",
-      "location": "Soyez aussi précis que possible en ce qui concerne le lieu. Vos invités vous trouveront ainsi plus facilement.",
+      "location": "Ajouter un lieu ou une adresse. Soyez aussi précis que possible, vos invités vous trouveront ainsi plus facilement.",
       "description": "Fournissez une courte description pour donner plus de contexte à votre quête. 3000 caractères maximum.",
       "equipment": "Choisissez autant d'options que nécessaire. Cela indiquera à vos invités s'ils doivent apporter leur propre équipement. Autrement, ils considéreront que vous leur fournirez tout ce dont ils ont besoin pour la quête.",
       "environment": "Choisissez autant d'options que nécessaire. Cela indiquera à vos invités le type d'endroit dans lequel ils doivent s'attendre à se trouver.",
