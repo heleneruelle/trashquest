@@ -1,6 +1,5 @@
 import type { MetaFunction, LinksFunction } from '@remix-run/node';
 import { Outlet } from '@remix-run/react';
-import { logoutAction } from '~/loaders/logout';
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '~/config';
 import i18nServer from '~/i18n.server';
@@ -43,8 +42,6 @@ export let loader = async ({
 
   return { lang: lngWithDefault };
 };
-
-export { logoutAction as action };
 
 export default function Index() {
   const { lang } = useLoaderData<LoaderData>();
