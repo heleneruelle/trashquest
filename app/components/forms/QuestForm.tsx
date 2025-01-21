@@ -24,7 +24,8 @@ function QuestForm() {
       />
       <LocationAutoComplete
         hint={t('create-new-quest.hint.location')}
-        types={['address']}
+        types={['address', 'place']}
+        poi={true}
       />
       <fieldset>
         <legend className="date-time">
