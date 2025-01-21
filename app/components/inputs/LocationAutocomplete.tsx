@@ -1,5 +1,5 @@
 import { useFetcher, useParams, useActionData } from '@remix-run/react';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import Select from '../inputs/Select';
 import countriesToVm from '../../utils/tovm/countriesToVm';
@@ -9,6 +9,7 @@ interface LocationAutoCompleteProps {
   hint: string | null;
   types: Array<string>;
   countryHint: string | null;
+  poi: boolean;
 }
 
 const defaultLocationState = {
@@ -27,7 +28,8 @@ function LocationAutoComplete({
   hint = null,
   types = ['place'],
   countryHint = null,
-}) {
+  poi = false,
+}: LocationAutoCompleteProps) {
   const { t } = useTranslation();
   const fetcher = useFetcher();
   const selectRef = useRef();
@@ -55,7 +57,7 @@ function LocationAutoComplete({
       fetcher.load(
         `/api/search?query=${value}&language=${lang}&country=${
           selectRef.current.value
-        }&types=${types.join()}`
+        }&types=${types.join()}&poi=${poi}`
       );
     }
   };
@@ -69,6 +71,14 @@ function LocationAutoComplete({
     setQuery('');
     setSelectedLocation(defaultLocationState);
   };
+
+  const searchResponse = useMemo(() => {
+    const { searchData, poiData } = fetcher?.data || {};
+    if (searchData?.features || poiData?.features) {
+      return [...(searchData.features || []), ...(poiData.features || [])];
+    }
+    return null;
+  }, [fetcher?.data]);
 
   return (
     <div className="location-autocomplete">
@@ -91,15 +101,15 @@ function LocationAutoComplete({
           required
         />
         <small className="input-hint">{hint}</small>
-        {fetcher.data?.features && query && (
+        {searchResponse && query && (
           <ul className="autocomplete-list">
-            {fetcher.data.features.map((location: any) => (
+            {searchResponse.map((location: any) => (
               <li
                 key={location.id}
                 onClick={() => handleSuggestionClick(location)}
                 className="autocomplete-item"
               >
-                {location.properties.full_address}
+                {`${location.properties.name} - ${location.properties.full_address}`}
               </li>
             ))}
           </ul>
