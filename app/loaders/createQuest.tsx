@@ -1,12 +1,14 @@
 import { redirect, type ActionFunctionArgs } from '@remix-run/node';
 import dateTimeStartEndValidation from '~/utils/datetime/dateTimeStartEndValidation';
 import { serverTimestamp, collection, addDoc } from 'firebase/firestore';
-import { auth, db } from '../firebaseConfig';
+import { db } from '../firebaseConfig';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18nServer from '~/i18n.server';
+import { getUser } from '~/utils/auth/session.server';
 
 export async function createQuestAction({ request }: ActionFunctionArgs) {
-  if (!auth.currentUser?.uid) {
+  const user = await getUser(request);
+  if (!user) {
     return Response.json({ error: 'user' }, { status: 400 });
   }
 
@@ -60,7 +62,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
       accessibility,
       name,
       participants: 1,
-      creatorId: auth.currentUser.uid,
+      creatorId: user.userId,
     },
     createdAt: serverTimestamp(),
   });
