@@ -18,4 +18,16 @@ const { getSession, commitSession, destroySession } =
     },
   });
 
+export async function getUser(request) {
+  const session = await getSession(request.headers.get('Cookie'));
+
+  const userId = session.get('userId');
+  if (!userId) {
+    return null; // No user in session
+  }
+
+  // Optionally, fetch more user info from Firebase or database if needed
+  return { userId }; // You can return the user object with more data if necessary
+}
+
 export { getSession, commitSession, destroySession };
