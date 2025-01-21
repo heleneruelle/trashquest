@@ -8,7 +8,7 @@ import { AVAILABLE_COUNTRIES, firebaseErrorCodes } from '../../config';
 interface LocationAutoCompleteProps {
   hint: string | null;
   types: Array<string>;
-  countryHint: string | null;
+  countryHint?: string | null;
   poi: boolean;
 }
 
@@ -105,7 +105,7 @@ function LocationAutoComplete({
           <ul className="autocomplete-list">
             {searchResponse.map((location: any) => (
               <li
-                key={location.id}
+                key={location.id || location?.properties?.mapbox_id}
                 onClick={() => handleSuggestionClick(location)}
                 className="autocomplete-item"
               >
@@ -120,7 +120,11 @@ function LocationAutoComplete({
           </small>
         )}
       </label>
-      <input type="hidden" name="locationId" value={selectedLocation.id} />
+      <input
+        type="hidden"
+        name="locationId"
+        value={selectedLocation.id || selectedLocation?.properties?.mapbox_id}
+      />
       <input
         type="hidden"
         name="locationLatitude"
