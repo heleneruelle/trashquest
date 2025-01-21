@@ -1,3 +1,3 @@
-import searchLoader from '~/loaders/search';
+import searchLoader from '~/loaders/searchWithPoi';
 
 export const loader = searchLoader;
