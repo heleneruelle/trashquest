@@ -11,7 +11,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
   const user = await getUser(request);
   const authUser = getAuth().currentUser;
   if (!user || !authUser) {
-    return Response.json({ error: 'user' }, { status: 400 });
+    return Response.json({ error: `${authUser} user` }, { status: 400 });
   }
 
   const formData = await request.formData();
@@ -46,11 +46,10 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
   const name = String(formObj.name);
   const country = String(formObj.country);
 
-  const questsCollection = collection(db, 'quests');
-
   console.log('QUEST COLLECTION');
 
   try {
+    const questsCollection = collection(db, 'quests');
     const docRef = await addDoc(questsCollection, {
       location: {
         country,
