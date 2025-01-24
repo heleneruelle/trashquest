@@ -48,7 +48,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
 
   console.log('QUEST COLLECTION');
 
-  const docRef = await addDoc(questsCollection, {
+  /* const docRef = await addDoc(questsCollection, {
     location: {
       country,
       name: locationName,
@@ -67,7 +67,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
       creatorId: user.userId,
     },
     createdAt: serverTimestamp(),
-  });
+  }); */
 
   console.log('QUEST COLLECTION AFTER');
 
