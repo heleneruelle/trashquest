@@ -5,10 +5,12 @@ import { db } from '../firebaseConfig';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18nServer from '~/i18n.server';
 import { getUser } from '~/utils/auth/session.server';
+import { getAuth } from 'firebase/auth';
 
 export async function createQuestAction({ request }: ActionFunctionArgs) {
   const user = await getUser(request);
-  if (!user) {
+  const authUser = getAuth().currentUser;
+  if (!user || !authUser) {
     return Response.json({ error: 'user' }, { status: 400 });
   }
 
