@@ -69,9 +69,16 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
       },
       createdAt: serverTimestamp(),
     });
-    return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
+    try {
+      return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
+    } catch (error1) {
+      return Response.json(
+        { error: `${error1} redirection error` },
+        { status: 400 }
+      );
+    }
   } catch (error) {
-    return Response.json({ error: 'server error' }, { status: 400 });
+    return Response.json({ error: `${error} server error` }, { status: 400 });
   }
 }
 
