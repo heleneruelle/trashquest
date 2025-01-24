@@ -49,7 +49,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
   console.log('QUEST COLLECTION');
 
   try {
-    await addDoc(questsCollection, {
+    const docRef = await addDoc(questsCollection, {
       location: {
         country,
         name: encodeURIComponent(locationName),
@@ -69,12 +69,10 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
       },
       createdAt: serverTimestamp(),
     });
+    return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
   } catch (error) {
     return Response.json({ error: 'server error' }, { status: 400 });
   }
-
-  //return redirect('/en/login');
-  return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
 }
 
 export default createQuestAction;
