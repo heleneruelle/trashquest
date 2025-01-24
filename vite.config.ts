@@ -10,10 +10,8 @@ export default defineConfig({
       '/locales': '/public/locales',
     },
   },
-  esbuild: {
-    target: 'esnext', // Ensure ESNext to support Top-level await
-  },
   build: {
-    target: 'esnext', // Same for the build step
+    ssr: true, // Active SSR
+    target: 'node16', // Cible Node.js pour le SSR
   },
 });
