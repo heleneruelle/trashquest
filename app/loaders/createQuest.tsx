@@ -52,7 +52,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
     await addDoc(questsCollection, {
       location: {
         country,
-        name: locationName,
+        name: encodeURIComponent(locationName),
         id: locationId,
         latitude: locationLatitude,
         longitude: locationLongitude,
@@ -70,13 +70,11 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
       createdAt: serverTimestamp(),
     });
   } catch (error) {
-    return redirect('/fr/login');
+    return Response.json({ error: 'server error' }, { status: 400 });
   }
 
-//Ò  console.log('QUEST COLLECTION AFTER');
-
-  return redirect('/en/login');
-  //return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
+  //return redirect('/en/login');
+  return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
 }
 
 export default createQuestAction;
