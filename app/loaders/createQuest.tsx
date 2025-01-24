@@ -73,7 +73,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
     return redirect('/fr/login');
   }
 
-  console.log('QUEST COLLECTION AFTER');
+//Ò  console.log('QUEST COLLECTION AFTER');
 
   return redirect('/en/login');
   //return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
