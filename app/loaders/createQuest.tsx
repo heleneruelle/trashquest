@@ -46,6 +46,8 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
 
   const questsCollection = collection(db, 'quests');
 
+  console.log('QUEST COLLECTION');
+
   const docRef = await addDoc(questsCollection, {
     location: {
       country,
@@ -67,7 +69,10 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
     createdAt: serverTimestamp(),
   });
 
-  return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
+  console.log('QUEST COLLECTION AFTER');
+
+  return redirect('/en/login');
+  //return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
 }
 
 export default createQuestAction;
