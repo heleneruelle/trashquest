@@ -48,26 +48,30 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
 
   console.log('QUEST COLLECTION');
 
-  /* const docRef = await addDoc(questsCollection, {
-    location: {
-      country,
-      name: locationName,
-      id: locationId,
-      latitude: locationLatitude,
-      longitude: locationLongitude,
-    },
-    properties: {
-      description,
-      expectedParticipants,
-      environment,
-      equipment,
-      accessibility,
-      name,
-      participants: 1,
-      creatorId: user.userId,
-    },
-    createdAt: serverTimestamp(),
-  }); */
+  try {
+    await addDoc(questsCollection, {
+      location: {
+        country,
+        name: locationName,
+        id: locationId,
+        latitude: locationLatitude,
+        longitude: locationLongitude,
+      },
+      properties: {
+        description,
+        expectedParticipants,
+        environment,
+        equipment,
+        accessibility,
+        name,
+        participants: 1,
+        creatorId: user.userId,
+      },
+      createdAt: serverTimestamp(),
+    });
+  } catch (error) {
+    return redirect('/fr/login');
+  }
 
   console.log('QUEST COLLECTION AFTER');
 
