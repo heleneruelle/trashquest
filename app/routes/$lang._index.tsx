@@ -16,14 +16,14 @@ export const links: LinksFunction = () => {
 };
 
 export default function Index() {
-  const user = useAuth();
+  const { user, loading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!user && !loading) {
       navigate(createCompositeUrl(i18n, '/login'));
     }
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <TwoColumnsLayout>

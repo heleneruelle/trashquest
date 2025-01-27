@@ -12,7 +12,7 @@ import LogoutButton from '~/components/LogoutButton';
 import useAuth from './hooks/useAuth';
 
 export default function App() {
-  const user = useAuth();
+  const { user } = useAuth();
 
   return (
     <html lang="en">
