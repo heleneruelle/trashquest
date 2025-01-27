@@ -7,7 +7,6 @@ import i18nServer from '../i18n.server';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
-import Map from '~/components/map/Map';
 import Main from '~/pages/Main';
 
 export const links: LinksFunction = () => {
@@ -19,20 +18,21 @@ export const links: LinksFunction = () => {
 
 type LoaderData = {
   isAuthenticated: boolean;
-  userId: string;
+  //userId: string;
 };
 
 export let loader = async ({
   request,
 }: LoaderFunctionArgs): Promise<LoaderData> => {
   // Session handle
-  const session = await getSession(request.headers.get('Cookie'));
+  /* const session = await getSession(request.headers.get('Cookie'));
   const userId = session.get('userId');
 
   if (!userId) {
     throw redirect(createCompositeUrl(i18nServer, '/login'));
-  }
-  return { isAuthenticated: true, userId };
+  } */
+  console.log('HELLO FROM LOADER');
+  return { isAuthenticated: true };
 };
 
 export default function Index() {
