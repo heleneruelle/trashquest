@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import Button from '~/components/inputs/Button';
 import ButtonLink from '~/components/inputs/ButtonLink';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
