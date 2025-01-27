@@ -1,10 +1,10 @@
 import type { LinksFunction } from '@remix-run/node';
 import { useTranslation } from 'react-i18next';
 import { LoaderFunctionArgs } from '@remix-run/node';
-import { getSession } from '~/utils/auth/session.server';
+/* import { getSession } from '~/utils/auth/session.server';
 import { redirect } from '@remix-run/node';
 import i18nServer from '../i18n.server';
-import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import createCompositeUrl from '~/utils/url/createCompositeUrl'; */
 import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
 import Main from '~/pages/Main';
@@ -31,7 +31,6 @@ export let loader = async ({
   if (!userId) {
     throw redirect(createCompositeUrl(i18nServer, '/login'));
   } */
-  console.log('HELLO FROM LOADER');
   return { isAuthenticated: true };
 };
 
