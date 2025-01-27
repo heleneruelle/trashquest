@@ -1,61 +1,56 @@
-import { Form, useActionData, useNavigation } from '@remix-run/react';
-import { useState, useEffect, useRef } from 'react';
+import { Form, useNavigation, useNavigate } from '@remix-run/react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import TextField from '../inputs/TextField';
 import Button from '../inputs/Button';
 import Toast from '../notifications/Toast';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
+import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import i18n from '~/i18n';
 
 const LoginForm = () => {
   const navigation = useNavigation();
-  const actionData = useActionData();
+  const navigate = useNavigate();
   const formRef = useRef(null);
 
   const { t } = useTranslation();
 
-  const [showError, setShowError] = useState(false);
-
-  useEffect(() => {
-    if (actionData?.error && !showError) {
-      setShowError(true);
-    }
-  }, [actionData]);
+  const [error, setError] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!formRef.current) return;
 
-    const formData = new FormData(formRef.current); // Utilisation de FormData pour récupérer les valeurs des champs
+    const formData = new FormData(formRef.current);
 
-    // Récupérer les valeurs des inputs à partir de formData
-    const email = formData.get('email');
-    const password = formData.get('password');
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
     if (!email || !password) {
-      setError('Veuillez remplir tous les champs');
+      //setError('Veuillez remplir tous les champs');
+      setError(true);
       return;
     }
 
     try {
-      // Appel à Firebase pour se connecter
       await signInWithEmailAndPassword(auth, email, password);
-      console.log('Utilisateur connecté');
-      // Rediriger ou effectuer d'autres actions après la connexion
+      return navigate(createCompositeUrl(i18n, '/'));
     } catch (err) {
-      setError('Erreur de connexion : ' + err.message);
-      console.error('Erreur de connexion:', err.message);
+      //setError('Erreur de connexion : ' + err.message);
+      setError(true);
+      return;
     }
   };
 
   return (
     <Form ref={formRef} className="form" onSubmit={handleLogin}>
-      {showError && (
+      {error && (
         <Toast
           type="error"
           message={t('login.error')}
-          callback={() => setShowError(false)}
+          callback={() => setError(false)}
         />
       )}
       <TextField
@@ -63,14 +58,14 @@ const LoginForm = () => {
         type="email"
         name="email"
         placeholder={t('login.placeholder.email')}
-        error={showError}
+        error={error}
       />
       <TextField
         label={t('password')}
         type="password"
         name="password"
         placeholder={t('login.placeholder.password')}
-        error={showError}
+        error={error}
       />
       <Button
         type="submit"
