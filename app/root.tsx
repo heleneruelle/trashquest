@@ -4,33 +4,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  Form,
-  useLoaderData,
 } from '@remix-run/react';
 import { I18nextProvider } from 'react-i18next';
-import { useTranslation } from 'react-i18next';
 import i18n from '~/i18n';
 import LanguageSwitcher from '~/components/LanguageSwitch';
-import { LoaderFunctionArgs } from '@remix-run/node';
-import { getSession } from '~/utils/auth/session.server';
-
-type LoaderData = {
-  isAuthenticated: boolean;
-};
-
-export let loader = async ({
-  request,
-}: LoaderFunctionArgs): Promise<LoaderData> => {
-  // Session handle
-  const session = await getSession(request.headers.get('Cookie'));
-  const userId = session.get('userId');
-
-  return { isAuthenticated: userId ? true : false };
-};
+import LogoutButton from '~/components/LogoutButton';
+import useAuth from './hooks/useAuth';
 
 export default function App() {
-  const { t } = useTranslation();
-  const { isAuthenticated } = useLoaderData();
+  const { user } = useAuth();
 
   return (
     <html lang="en">
@@ -45,11 +27,7 @@ export default function App() {
           <div style={{ height: '100%' }}>
             <div className="top-bar">
               <LanguageSwitcher />
-              {isAuthenticated && (
-                <Form method="post" action="/logout">
-                  <button type="submit">{t('logout.cta')}</button>
-                </Form>
-              )}
+              {user && <LogoutButton />}
             </div>
             <div className="content">
               <Outlet />

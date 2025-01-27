@@ -7,9 +7,9 @@ import { AVAILABLE_COUNTRIES, firebaseErrorCodes } from '../../config';
 
 interface LocationAutoCompleteProps {
   hint: string | null;
-  types: Array<string>;
+  types?: Array<string>;
   countryHint: string | null;
-  poi: boolean;
+  poi?: boolean;
 }
 
 const defaultLocationState = {
