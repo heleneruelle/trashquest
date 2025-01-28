@@ -3,7 +3,6 @@ import { LinksFunction } from '@remix-run/node';
 import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
 import QuestForm from '~/components/forms/QuestForm';
-import createQuestAction from '~/loaders/createQuest';
 
 export const links: LinksFunction = () => {
   return [
@@ -11,8 +10,6 @@ export const links: LinksFunction = () => {
     { rel: 'stylesheet', href: '/styles/createNew.css' },
   ];
 };
-
-export { createQuestAction as action };
 
 export default function Index() {
   const { t } = useTranslation();

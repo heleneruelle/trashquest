@@ -1,16 +1,11 @@
-import { redirect, type ActionFunctionArgs } from '@remix-run/node';
-import dateTimeStartEndValidation from '~/utils/datetime/dateTimeStartEndValidation';
 import { serverTimestamp, collection, addDoc } from 'firebase/firestore';
-import { auth, db } from '../firebaseConfig';
-import createCompositeUrl from '~/utils/url/createCompositeUrl';
-import i18nServer from '~/i18n.server';
+import dateTimeStartEndValidation from '../datetime/dateTimeStartEndValidation';
+import { auth, db } from '~/firebaseConfig';
 
-export async function createQuestAction({ request }: ActionFunctionArgs) {
+const createQuest = async (formData) => {
   if (!auth.currentUser?.uid) {
-    return Response.json({ error: 'user' }, { status: 400 });
+    return { error: 'user' };
   }
-
-  const formData = await request.formData();
 
   const formObj: { [key: string]: any } = {};
   formData.forEach((value, key) => {
@@ -24,11 +19,10 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
   const locationId = String(formObj.locationId);
 
   if (!locationId) {
-    return Response.json({ error: 'location' }, { status: 400 });
+    return { error: 'location' };
   }
-
   if (!dateTimeStartEndValidation(startDate, endDate, startTime, endTime)) {
-    return Response.json({ error: 'datetime' }, { status: 400 });
+    return { error: 'datetime' };
   }
 
   const locationName = String(formObj.locationName);
@@ -65,7 +59,7 @@ export async function createQuestAction({ request }: ActionFunctionArgs) {
     createdAt: serverTimestamp(),
   });
 
-  return redirect(createCompositeUrl(i18nServer, `/quest/${docRef.id}`));
-}
+  return { quest: docRef };
+};
 
-export default createQuestAction;
+export default createQuest;

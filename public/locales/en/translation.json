@@ -75,6 +75,7 @@
       "equipment": "Choose as many options as necessary. This will indicate to your guests if they should bring equipment of their own. Otherwise they will assume you will provide everything for the quest.",
       "environment": "Choose as many options as necessary. This will indicate to your guests what kind of place they should expect to find themselves in.",
       "accessibility": "Choose as many options as necessary. This will indicate to your guests if the quest location is accessible for them."
-    }
+    },
+    "error": "Oops! There seems to be a problem with the creation of a new quest. We're in the process of resolving it. Please try again soon."
   }
 }
