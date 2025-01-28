@@ -23,7 +23,7 @@ export default function Index() {
     if (!user && !loading) {
       navigate(createCompositeUrl(i18n, '/login'));
     }
-  }, [user, navigate]);
+  }, [user, loading, navigate]);
 
   return (
     <TwoColumnsLayout>
