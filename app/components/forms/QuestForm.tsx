@@ -1,8 +1,7 @@
 import { Form } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from '@remix-run/react';
-import { useRef } from 'react';
-import i18n from '~/i18n';
+import { useRef, useState } from 'react';
 import TextField from '../inputs/TextField';
 import LocationAutoComplete from '../inputs/LocationAutocomplete';
 import DatePicker from '../inputs/DatePicker';
@@ -11,16 +10,19 @@ import Button from '../inputs/Button';
 import Counter from '../inputs/Counter';
 import SelectWithTags from '../inputs/SelectWithTags';
 import TextArea from '../inputs/TextArea';
+import Toast from '../notifications/Toast';
 import dateToYYYYMMDD from '~/utils/datetime/dateToYYYYMMDD';
 import timeToHHMM from '~/utils/datetime/timeToHHMM';
-import { questEnvironment, questEquipment, questAccessibility } from '~/config';
 import createQuest from '~/utils/db/createQuest';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import { questEnvironment, questEquipment, questAccessibility } from '~/config';
+import i18n from '~/i18n';
 
 function QuestForm() {
   const { t } = useTranslation();
   const formRef = useRef(null);
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const handleCreateQuest = async (e) => {
     e.preventDefault();
@@ -32,7 +34,7 @@ function QuestForm() {
     const resp = await createQuest(formData);
 
     if (resp.error || !resp.quest) {
-      return;
+      return setError(resp.error);
     }
 
     return navigate(createCompositeUrl(i18n, `/quest/${resp.quest.id}`));
@@ -40,6 +42,13 @@ function QuestForm() {
 
   return (
     <Form ref={formRef} className="form" onSubmit={handleCreateQuest}>
+      {error && (
+        <Toast
+          type="error"
+          message={t('create-new-quest.error')}
+          callback={() => setError('')}
+        />
+      )}
       <TextField
         type="text"
         name="name"

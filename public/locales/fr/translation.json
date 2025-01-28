@@ -75,6 +75,7 @@
       "equipment": "Choisissez autant d'options que nécessaire. Cela indiquera à vos invités s'ils doivent apporter leur propre équipement. Autrement, ils considéreront que vous leur fournirez tout ce dont ils ont besoin pour la quête.",
       "environment": "Choisissez autant d'options que nécessaire. Cela indiquera à vos invités le type d'endroit dans lequel ils doivent s'attendre à se trouver.",
       "accessibility": "Choisissez autant d'options que nécessaire. Cela indiquera à vos invités si le lieu de la quête leur est accessible."
-    }
+    },
+    "error": "Oups ! Il semble y avoir un problème avec la création d’une nouvelle quête. Nous sommes en train de le résoudre. Veuillez réessayer bientôt."
   }
 }
