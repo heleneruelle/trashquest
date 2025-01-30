@@ -44,7 +44,7 @@ const LoginForm = () => {
 
       const idToken = await user.getIdToken();
 
-      const response = await fetch('/login', {
+      const response = await fetch('/api/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
