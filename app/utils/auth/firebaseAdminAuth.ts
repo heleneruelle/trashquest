@@ -1,28 +1,15 @@
 import admin from 'firebase-admin';
-import dotenv from 'dotenv';
+import { applicationDefault } from 'firebase-admin/app';
+import dotenv from "dotenv";
 
 dotenv.config();
 
-const credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+if (!admin.apps.length) {
 
-if (!credentials) {
-  throw new Error(
-    "La variable d'environnement GOOGLE_APPLICATION_CREDENTIALS est manquante."
-  );
+  admin.initializeApp({
+    credential: applicationDefault(),
+  });
 }
-
-let serviceAccount;
-try {
-  serviceAccount = JSON.parse(credentials);
-} catch (error) {
-  throw new Error(
-    'Erreur lors du parsing de la variable GOOGLE_APPLICATION_CREDENTIALS.'
-  );
-}
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
 
 const db = admin.firestore();
 
