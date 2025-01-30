@@ -1,12 +1,12 @@
 import admin from 'firebase-admin';
+import { applicationDefault } from 'firebase-admin/app';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert({
-      projectId: process.env.VITE_FIREBASE_PROJECT_ID,
-      privateKey: process.env.VITE_FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-      clientEmail: process.env.VITE_FIREBASE_CLIENT_EMAIL,
-    }),
+    credential: applicationDefault(),
   });
 }
 
@@ -21,4 +21,4 @@ const verifyIdToken = async (idToken: string) => {
   }
 };
 
-export { db, verifyIdToken };
+export { admin, db, verifyIdToken };
