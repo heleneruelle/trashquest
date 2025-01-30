@@ -1,12 +1,15 @@
 import admin from 'firebase-admin';
-import { applicationDefault } from 'firebase-admin/app';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 if (!admin.apps.length) {
+  const serviceAccount = JSON.parse(
+    process.env.GOOGLE_APPLICATION_CREDENTIALS || '{}'
+  );
+
   admin.initializeApp({
-    credential: applicationDefault(),
+    credential: admin.credential.cert(serviceAccount),
   });
 }
 
