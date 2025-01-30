@@ -35,7 +35,30 @@ const LoginForm = () => {
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      const idToken = await user.getIdToken();
+
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        setError(true);
+        return;
+      }
+
       return navigate(createCompositeUrl(i18n, '/'));
     } catch (err) {
       //setError('Erreur de connexion : ' + err.message);
