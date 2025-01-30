@@ -3,15 +3,26 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-if (!admin.apps.length) {
-  const serviceAccount = JSON.parse(
-    process.env.GOOGLE_APPLICATION_CREDENTIALS || '{}'
-  );
+const credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  });
+if (!credentials) {
+  throw new Error(
+    "La variable d'environnement GOOGLE_APPLICATION_CREDENTIALS est manquante."
+  );
 }
+
+let serviceAccount;
+try {
+  serviceAccount = JSON.parse(credentials);
+} catch (error) {
+  throw new Error(
+    'Erreur lors du parsing de la variable GOOGLE_APPLICATION_CREDENTIALS.'
+  );
+}
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
 const db = admin.firestore();
 
