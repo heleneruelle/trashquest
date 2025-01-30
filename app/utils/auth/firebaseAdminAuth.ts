@@ -10,6 +10,8 @@ if (!admin.apps.length) {
   });
 }
 
+const db = admin.firestore();
+
 const verifyIdToken = async (idToken: string) => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
@@ -19,4 +21,4 @@ const verifyIdToken = async (idToken: string) => {
   }
 };
 
-export { verifyIdToken };
+export { db, verifyIdToken };
