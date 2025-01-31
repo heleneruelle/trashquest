@@ -51,10 +51,10 @@ function QuestForm() {
         body: JSON.stringify(formDataToObject(formData)),
       });
       const resp = await response.json();
-      if (resp.error || !resp.quest) {
+      if (resp.error || !resp.questId) {
         return setError(resp.error);
       } else if (resp.questId) {
-        return navigate(createCompositeUrl(i18n, `/quest/${resp.quest.id}`));
+        return navigate(createCompositeUrl(i18n, `/quest/${resp.questId}`));
       }
     } catch (error) {
       return setError(`Error creating quest: ${error}`);
