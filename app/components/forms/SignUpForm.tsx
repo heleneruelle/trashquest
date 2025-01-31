@@ -8,6 +8,8 @@ import { firebaseErrorCodes } from '../../config';
 import i18n from '~/i18n';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import formDataToObject from '~/utils/formDataToObject';
+import { auth } from '../../firebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const SignUpForm = () => {
   const navigation = useNavigation();
@@ -24,13 +26,46 @@ const SignUpForm = () => {
     const formData = new FormData(formRef.current);
 
     try {
-      await fetch('/api/signup', {
+      const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formDataToObject(formData)),
       });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error('User registration failed');
+      }
+
+      const email = String(formData.get('email'));
+      const password = String(formData.get('password'));
+
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const user = userCredential.user;
+
+      const idToken = await user.getIdToken();
+
+      const tokenValidationResp = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
+
+      const tokenValidationData = await tokenValidationResp.json();
+
+      if (tokenValidationData.error) {
+        throw new Error('Token validation failed');
+      }
 
       return navigate(createCompositeUrl(i18n, '/'));
     } catch (authError) {
