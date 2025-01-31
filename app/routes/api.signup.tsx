@@ -1,5 +1,5 @@
 import { ActionFunction } from '@remix-run/node';
-import { db, admin } from '~/utils/auth/firebaseAdminAuth';
+import { admin } from '~/utils/auth/firebaseAdminAuth';
 
 export let action: ActionFunction = async ({ request }) => {
   try {
