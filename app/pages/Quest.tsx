@@ -3,6 +3,10 @@ import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
 import Field from '~/components/display/Field';
 import Button from '~/components/inputs/Button';
+import FieldWithTag from '~/components/display/FieldWithTag';
+import ButtonLink from '~/components/inputs/ButtonLink';
+import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import i18n from '~/i18n';
 
 interface LoaderData {
   success: boolean;
@@ -12,9 +16,9 @@ interface LoaderData {
       description: string;
       participants: number;
       expectedParticipants: string;
-      equipment: string;
-      environment: string;
-      accessibility: string;
+      equipment: Array<string>;
+      environment: Array<string>;
+      accessibility: Array<string>;
     };
     location: {
       name: string;
@@ -32,7 +36,6 @@ function Quest() {
   if (data?.success && data?.quest) {
     const { quest } = data || {};
     const { properties, location, creator, isCurrentUserCreator } = quest || {};
-
     return (
       <TwoColumnsLayout>
         <div>
@@ -44,15 +47,26 @@ function Quest() {
             fieldName="participants"
             fieldValue={`${properties.participants} / ${properties.expectedParticipants}`}
           />
-          <Field fieldName="equipment" fieldValue={properties.equipment} />
-          <Field fieldName="environment" fieldValue={properties.environment} />
-          <Field
+          <FieldWithTag
+            fieldName="equipment"
+            fieldValues={properties.equipment}
+          />
+          <FieldWithTag
+            fieldName="environment"
+            fieldValues={properties.environment}
+          />
+          <FieldWithTag
             fieldName="accessibility"
-            fieldValue={properties.accessibility}
+            fieldValues={properties.accessibility}
           />
           {!isCurrentUserCreator && (
             <Button label="join this quest" disabled={true} type="button" />
           )}
+          <ButtonLink label="Go Home" target={createCompositeUrl(i18n, '/')} />
+          <ButtonLink
+            label="Create new quest"
+            target={createCompositeUrl(i18n, '/create-new')}
+          />
         </div>
         <ImageLayout />
       </TwoColumnsLayout>
