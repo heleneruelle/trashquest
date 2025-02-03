@@ -4,6 +4,7 @@ node_modules
 /public/build
 /build
 .env
+firebase-credentials.json
 
 # Local Netlify folder
 .netlify

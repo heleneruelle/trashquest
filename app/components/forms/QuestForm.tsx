@@ -13,10 +13,11 @@ import TextArea from '../inputs/TextArea';
 import Toast from '../notifications/Toast';
 import dateToYYYYMMDD from '~/utils/datetime/dateToYYYYMMDD';
 import timeToHHMM from '~/utils/datetime/timeToHHMM';
-import createQuest from '~/utils/db/createQuest';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import formDataToObject from '~/utils/formDataToObject';
 import { questEnvironment, questEquipment, questAccessibility } from '~/config';
 import i18n from '~/i18n';
+import { auth } from '~/firebaseConfig';
 
 function QuestForm() {
   const { t } = useTranslation();
@@ -31,13 +32,31 @@ function QuestForm() {
 
     const formData = new FormData(formRef.current);
 
-    const resp = await createQuest(formData);
+    const idToken = await auth.currentUser?.getIdToken();
 
-    if (resp.error || !resp.quest) {
-      return setError(resp.error);
+    if (!idToken) {
+      setError('Token is missing');
+      return;
     }
 
-    return navigate(createCompositeUrl(i18n, `/quest/${resp.quest.id}`));
+    try {
+      const response = await fetch('/api/create-quest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${idToken}`,
+        },
+        body: JSON.stringify(formDataToObject(formData)),
+      });
+      const resp = await response.json();
+      if (resp.error || !resp.questId) {
+        return setError(resp.error);
+      } else if (resp.questId) {
+        return navigate(createCompositeUrl(i18n, `/quest/${resp.questId}`));
+      }
+    } catch (error) {
+      return setError(`Error creating quest: ${error}`);
+    }
   };
 
   return (

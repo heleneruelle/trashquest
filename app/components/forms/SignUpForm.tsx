@@ -1,8 +1,5 @@
 import { Form, useNavigation, useNavigate } from '@remix-run/react';
 import { useState, useRef } from 'react';
-import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth';
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { auth, db } from '~/firebaseConfig';
 import { useTranslation } from 'react-i18next';
 import TextField from '../inputs/TextField';
 import Button from '../inputs/Button';
@@ -10,6 +7,9 @@ import LocationAutoComplete from '../inputs/LocationAutocomplete';
 import { firebaseErrorCodes } from '../../config';
 import i18n from '~/i18n';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import formDataToObject from '~/utils/formDataToObject';
+import { auth } from '../../firebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const SignUpForm = () => {
   const navigation = useNavigation();
@@ -25,71 +25,49 @@ const SignUpForm = () => {
 
     const formData = new FormData(formRef.current);
 
-    const email = String(formData.get('email'));
-    const password = String(formData.get('password'));
-    const passwordConfirm = String(formData.get('password-confirm'));
-
-    if (password !== passwordConfirm) {
-      setError(firebaseErrorCodes.password);
-      return;
-    }
-
-    const username = String(formData.get('username'));
-    const locationName = String(formData.get('locationName'));
-    const locationId = String(formData.get('locationId'));
-    const locationLatitude = Number(formData.get('locationLatitude'));
-    const locationLongitude = Number(formData.get('locationLongitude'));
-    const country = String(formData.get('country'));
-
-    if (!locationId) {
-      setError(firebaseErrorCodes.location);
-      return;
-    }
-
-    let user;
     try {
-      // Create user in Firebase Authentication
-      const userCredential = await createUserWithEmailAndPassword(
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataToObject(formData)),
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error('User registration failed');
+      }
+
+      const email = String(formData.get('email'));
+      const password = String(formData.get('password'));
+
+      const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
         password
       );
 
-      try {
-        user = userCredential.user;
-        const userDocRef = doc(db, 'users', user.uid);
-        await setDoc(userDocRef, {
-          uid: user.uid,
-          email: user.email,
-          username,
-          country,
-          location: {
-            name: locationName,
-            id: locationId,
-            latitude: locationLatitude,
-            longitude: locationLongitude,
-          },
-          createdAt: serverTimestamp(),
-        });
+      const user = userCredential.user;
 
-        return navigate(createCompositeUrl(i18n, '/'));
-      } catch (firestoreError) {
-        // If Firestore document creation fails, delete the authenticated user
-        console.error('Error adding user to Firestore:', firestoreError);
+      const idToken = await user.getIdToken();
 
-        try {
-          await deleteUser(user);
-        } catch (rollbackError) {
-          console.error(
-            'Failed to rollback user from Firebase Authentication:',
-            rollbackError
-          );
-        }
+      const tokenValidationResp = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
 
-        throw new Error(
-          'Failed to complete user registration. Please try again.'
-        );
+      const tokenValidationData = await tokenValidationResp.json();
+
+      if (tokenValidationData.error) {
+        throw new Error('Token validation failed');
       }
+
+      return navigate(createCompositeUrl(i18n, '/'));
     } catch (authError) {
       console.error('Error during user registration:', authError);
       setError(
@@ -131,7 +109,7 @@ const SignUpForm = () => {
       <TextField
         label={t('create-new-account.input.password-confirm')}
         type="password"
-        name="password-confirm"
+        name="passwordConfirm"
         required={true}
         placeholder={t('create-new-account.input.placeholder.password-confirm')}
         error={error === firebaseErrorCodes.password}
