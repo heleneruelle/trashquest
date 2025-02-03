@@ -7,6 +7,7 @@ import FieldWithTag from '~/components/display/FieldWithTag';
 import ButtonLink from '~/components/inputs/ButtonLink';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
+import { auth } from '~/firebaseConfig';
 
 interface LoaderData {
   success: boolean;
@@ -23,9 +24,9 @@ interface LoaderData {
     location: {
       name: string;
     };
-    isCurrentUserCreator: boolean;
     creator: {
       username: string;
+      uid: string;
     };
   };
 }
@@ -35,7 +36,9 @@ function Quest() {
 
   if (data?.success && data?.quest) {
     const { quest } = data || {};
-    const { properties, location, creator, isCurrentUserCreator } = quest || {};
+    const { properties, location, creator } = quest || {};
+    const isCurrentUserCreator = auth.currentUser?.uid === creator.uid;
+
     return (
       <TwoColumnsLayout>
         <div>
@@ -59,8 +62,11 @@ function Quest() {
             fieldName="accessibility"
             fieldValues={properties.accessibility}
           />
+          {/* TODO handle join quest action */}
           {!isCurrentUserCreator && (
-            <Button label="join this quest" disabled={true} type="button" />
+            <button disabled={true} type="button">
+              {'join this quest'}
+            </button>
           )}
           <ButtonLink label="Go Home" target={createCompositeUrl(i18n, '/')} />
           <ButtonLink

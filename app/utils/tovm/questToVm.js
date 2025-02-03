@@ -8,8 +8,6 @@ function questToVm(quest, creator) {
       accessibility: quest.properties.accessibility.split(','),
     },
     creator,
-    // TODO handle with current user
-    isCurrentUserCreator: true,
   };
   return data;
 }
