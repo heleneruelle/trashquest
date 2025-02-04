@@ -1,6 +1,7 @@
 import type { LinksFunction } from '@remix-run/node';
 import { useNavigate } from '@remix-run/react';
 import { useEffect } from 'react';
+import questsLoader from '~/loaders/quests';
 import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
 import Main from '~/pages/Main';
@@ -15,6 +16,8 @@ export const links: LinksFunction = () => {
     { rel: 'stylesheet', href: '/styles/form.css' },
   ];
 };
+
+export const loader = questsLoader;
 
 export default function Index() {
   const { user, loading } = useAuth();
