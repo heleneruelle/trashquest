@@ -2,12 +2,12 @@ import { useLoaderData } from '@remix-run/react';
 import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
 import Field from '~/components/display/Field';
-import Button from '~/components/inputs/Button';
 import FieldWithTag from '~/components/display/FieldWithTag';
 import ButtonLink from '~/components/inputs/ButtonLink';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
 import { auth } from '~/firebaseConfig';
+import { useTranslation } from 'react-i18next';
 
 interface LoaderData {
   success: boolean;
@@ -33,6 +33,9 @@ interface LoaderData {
 
 function Quest() {
   const data = useLoaderData<LoaderData>();
+ // const { t } = useTranslation();
+
+  //console.log('LALALALAL', data)
 
   if (data?.success && data?.quest) {
     const { quest } = data || {};
@@ -46,6 +49,10 @@ function Quest() {
           <p>{properties.description}</p>
           <Field fieldName="location" fieldValue={location.name} />
           <Field fieldName="organiser" fieldValue={creator.username} />
+   {/*        <Field
+            fieldName="duration"
+            fieldValue={t('duration', {postProcess: 'interval', count: 1})}
+          /> */}
           <Field
             fieldName="participants"
             fieldValue={`${properties.participants} / ${properties.expectedParticipants}`}

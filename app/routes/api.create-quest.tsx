@@ -49,15 +49,19 @@ export let action: ActionFunction = async ({ request }) => {
       },
       properties: {
         description,
-        expectedParticipants,
+        expectedParticipants: parseInt(expectedParticipants),
         environment,
         equipment,
         accessibility,
         name,
         participants: 1,
-        creatorId: decodedToken.uid,
+        startDate,
+        startTime,
+        endDate,
+        endTime,
       },
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      creatorId: decodedToken.uid,
     });
 
     return Response.json({ success: true, questId: questRef.id });

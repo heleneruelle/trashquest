@@ -24,7 +24,7 @@ async function questLoader({ params }: LoaderFunctionArgs) {
 
     const { properties } = data || {};
 
-    const creatorDocRef = db.collection('users').doc(properties?.creatorId);
+    const creatorDocRef = db.collection('users').doc(data?.creatorId);
 
     const creatorData = await creatorDocRef
       .get()
@@ -38,12 +38,15 @@ async function questLoader({ params }: LoaderFunctionArgs) {
       .catch((creatorDocError) => {
         throw new Error(`Error getting user document: ${creatorDocError}`);
       });
-
+    const quest = questToVm(data, creatorData);
+    console.log('POIOIUOIUOIUOIUOUOIUOI')
+  
     return Response.json({
       success: true,
-      quest: questToVm(data, creatorData),
+      quest
     });
   } catch (error) {
+    console.log('ERROR', error)
     return Response.json({ error }, { status: 500 });
   }
 }
