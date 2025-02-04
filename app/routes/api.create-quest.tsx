@@ -56,6 +56,10 @@ export let action: ActionFunction = async ({ request }) => {
         name,
         participants: 1,
         creatorId: decodedToken.uid,
+        startDate,
+        startTime,
+        endDate,
+        endTime,
       },
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });

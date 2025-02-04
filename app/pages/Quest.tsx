@@ -20,6 +20,11 @@ interface LoaderData {
       equipment: Array<string>;
       environment: Array<string>;
       accessibility: Array<string>;
+      duration: {
+        hours?: number;
+        days?: number;
+        minutes?: number;
+      };
     };
     location: {
       name: string;
@@ -46,6 +51,10 @@ function Quest() {
           <p>{properties.description}</p>
           <Field fieldName="location" fieldValue={location.name} />
           <Field fieldName="organiser" fieldValue={creator.username} />
+          <Field
+            fieldName="duration"
+            fieldValue={JSON.stringify(properties.duration)}
+          />
           <Field
             fieldName="participants"
             fieldValue={`${properties.participants} / ${properties.expectedParticipants}`}
