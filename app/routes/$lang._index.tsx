@@ -29,14 +29,14 @@ export default function Index() {
     }
   }, [user, loading, navigate]);
 
-  if (!user && !loading) {
-    return <Loading />;
+  if (user && !loading) {
+    return (
+      <TwoColumnsLayout>
+        <Main />
+        <ImageLayout />
+      </TwoColumnsLayout>
+    );
   }
 
-  return (
-    <TwoColumnsLayout>
-      <Main />
-      <ImageLayout />
-    </TwoColumnsLayout>
-  );
+  return <Loading />;
 }
