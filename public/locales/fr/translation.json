@@ -7,8 +7,8 @@
   "username": "Nom d'utilisateur",
   "location": "Localisation",
   "country": "Pays",
-  "en": "Anglais",
-  "fr": "Français",
+  "en": "EN",
+  "fr": "FR",
   "countries": {
     "fr": "France",
     "be": "Belgique"

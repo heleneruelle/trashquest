@@ -7,13 +7,9 @@ import {
 } from '@remix-run/react';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '~/i18n';
-import LanguageSwitcher from '~/components/LanguageSwitch';
-import LogoutButton from '~/components/LogoutButton';
-import useAuth from './hooks/useAuth';
+import TopBar from './components/display/TopBar';
 
 export default function App() {
-  const { user } = useAuth();
-
   return (
     <html lang="en">
       <head>
@@ -24,11 +20,8 @@ export default function App() {
       </head>
       <body>
         <I18nextProvider i18n={i18n} defaultNS={'translation'}>
-          <div style={{ height: '100%' }}>
-            <div className="top-bar">
-              <LanguageSwitcher />
-              {user && <LogoutButton />}
-            </div>
+          <div className="main-container">
+            <TopBar />
             <div className="content">
               <Outlet />
             </div>
