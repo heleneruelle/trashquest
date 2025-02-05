@@ -7,8 +7,8 @@
   "username": "Username",
   "location": "Location",
   "country": "Country",
-  "en": "English",
-  "fr": "French",
+  "en": "EN",
+  "fr": "FR",
   "countries": {
     "fr": "France",
     "be": "Belgium"
