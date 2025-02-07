@@ -7,6 +7,7 @@ interface SelectWithTagsProps {
   fieldset: string;
   label: string;
   hint?: string;
+  defaultOptions?: Array<string>;
 }
 
 function SelectWithTags({
@@ -15,8 +16,9 @@ function SelectWithTags({
   fieldset,
   label,
   hint,
+  defaultOptions = [],
 }: SelectWithTagsProps) {
-  const [chosenOptions, setChosenOptions] = useState([]);
+  const [chosenOptions, setChosenOptions] = useState(defaultOptions);
 
   const handleAddTag = (e) => {
     setChosenOptions((prev) => {
