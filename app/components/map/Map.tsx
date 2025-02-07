@@ -6,9 +6,9 @@ function MapComp() {
     <Map
       mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}
       initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
-        zoom: 14,
+        longitude: 2.285358886316118,
+        latitude: 46.71832756395037,
+        zoom: 4.772664089144272,
       }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     />
