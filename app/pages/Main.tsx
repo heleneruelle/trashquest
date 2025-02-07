@@ -18,7 +18,6 @@ function Main() {
   return (
     <div className="welcome__container--wip">
       <h1>{t('welcome')}</h1>
-      <p className="welcome__description">{t('description')}</p>
       <ul>
         {success && quests?.length
           ? quests.map((quest) => (
