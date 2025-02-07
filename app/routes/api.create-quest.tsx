@@ -54,7 +54,7 @@ export let action: ActionFunction = async ({ request }) => {
         equipment: equipment.split(','),
         accessibility: accessibility.split(','),
         name,
-        participants: 1,
+        participants: [decodedToken.uid],
         creatorId: decodedToken.uid,
         startDate,
         startTime,
