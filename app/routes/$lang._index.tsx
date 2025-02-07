@@ -6,6 +6,7 @@ import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
 import Main from '~/pages/Main';
 import Loading from '~/pages/Loading';
+import Map from '~/components/map/Map';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import useAuth from '~/hooks/useAuth';
 import i18n from '~/i18n';
@@ -34,7 +35,7 @@ export default function Index() {
     return (
       <TwoColumnsLayout>
         <Main />
-        <ImageLayout />
+        <Map />
       </TwoColumnsLayout>
     );
   }
