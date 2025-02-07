@@ -15,7 +15,7 @@ interface LoaderData {
     properties: {
       name: string;
       description: string;
-      participants: number;
+      participants: Array<string>;
       expectedParticipants: string;
       equipment: Array<string>;
       environment: Array<string>;

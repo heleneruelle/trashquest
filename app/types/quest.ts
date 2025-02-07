@@ -14,7 +14,7 @@ export default interface QuestType {
     equipment: Array<string>;
     accessibility: Array<string>;
     name: string;
-    participants: number;
+    participants: Array<string>;
     creatorId: string;
     startDate: string;
     startTime: string;
