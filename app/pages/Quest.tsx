@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from '@remix-run/react';
+import { useLoaderData, useParams, useFetcher } from '@remix-run/react';
 import { useState } from 'react';
 import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
@@ -49,11 +49,13 @@ function Quest() {
 
   const { id } = useParams();
   const { user } = useAuth();
+  const questFetcher = useFetcher();
 
   const { quest } = data || {};
   const { properties, location, creator } = quest || {};
 
   const isCurrentUserCreator = user?.uid === creator.uid;
+
   const isCurrentUserQuestRegistered = properties.participants.includes(
     user?.uid
   );
@@ -77,6 +79,36 @@ function Quest() {
       });
 
       const data = await response.json();
+      questFetcher.load('/api/quest');
+      if (data.error) {
+        setError(true);
+        return;
+      }
+    } catch (error) {
+      setError(true);
+    }
+  }
+
+  async function handleQuitQuest(e: Event) {
+    e.preventDefault();
+    try {
+      if (!user) {
+        setError(true);
+      }
+      const idToken = await user.getIdToken();
+      const response = await fetch('/api/quit-quest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${idToken}`,
+        },
+        body: JSON.stringify({
+          id,
+        }),
+      });
+
+      const data = await response.json();
+      questFetcher.load('/api/quest');
 
       if (data.error) {
         setError(true);
@@ -136,6 +168,13 @@ function Quest() {
                 clickCallback={handleJoinQuest}
               />
             )}
+          {!isCurrentUserCreator && isCurrentUserQuestRegistered && (
+            <Button
+              type="button"
+              label="Quit this quest"
+              clickCallback={handleQuitQuest}
+            />
+          )}
           <ButtonLink label="Go Home" target={createCompositeUrl(i18n, '/')} />
           <ButtonLink
             label="Create new quest"
