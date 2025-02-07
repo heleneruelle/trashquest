@@ -13,7 +13,7 @@ function questToVm(quest, creator) {
   const duration = getDurationFromDateTimes({ startDateTime, endDateTime });
   const isQuestFull =
     quest.properties.participants.length ===
-    parseInt(quest.properties.expectedParticipants);
+    quest.properties.expectedParticipants;
   const data = {
     ...quest,
     properties: {
