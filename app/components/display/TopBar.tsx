@@ -13,6 +13,7 @@ function TopBar() {
       <div className="top-bar__nav">
         {user && <Link to={createCompositeUrl(i18n, '/')}>Home</Link>}
         <Link to={createCompositeUrl(i18n, '/about')}>About</Link>
+        <Link to={createCompositeUrl(i18n, '/my-quests')}>My Quests</Link>
       </div>
       <div className="top-bar__utils">
         <LanguageSwitcher />
