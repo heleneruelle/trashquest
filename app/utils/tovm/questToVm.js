@@ -15,9 +15,6 @@ function questToVm(quest, creator) {
     ...quest,
     properties: {
       ...quest.properties,
-      equipment: quest.properties.equipment.split(','),
-      environment: quest.properties.environment.split(','),
-      accessibility: quest.properties.accessibility.split(','),
       startDateTime,
       endDateTime,
       duration,
