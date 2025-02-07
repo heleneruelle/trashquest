@@ -9,7 +9,8 @@
     "start": "netlify serve",
     "typecheck": "tsc",
     "lint": "eslint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "n-dev": "netlify dev"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.12.5",
