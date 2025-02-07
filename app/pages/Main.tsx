@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useLoaderData } from '@remix-run/react';
 import ButtonLink from '~/components/inputs/ButtonLink';
 import QuestListItem from '~/components/display/QuestListItem';
+import QuestsFilters from '~/components/forms/QuestsFilters';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
 import QuestType from '~/types/quest';
@@ -18,6 +19,7 @@ function Main() {
   return (
     <div className="welcome__container--wip">
       <h1>{t('welcome')}</h1>
+      <QuestsFilters />
       <ul>
         {success && quests?.length
           ? quests.map((quest) => (
