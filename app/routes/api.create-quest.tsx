@@ -49,7 +49,7 @@ export let action: ActionFunction = async ({ request }) => {
       },
       properties: {
         description,
-        expectedParticipants,
+        expectedParticipants: parseInt(expectedParticipants),
         environment: environment.split(','),
         equipment: equipment.split(','),
         accessibility: accessibility.split(','),
