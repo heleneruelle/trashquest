@@ -34,10 +34,6 @@ body {
   background: url('/assets/trashquest_bg.webp') center/cover no-repeat;
 }
 
-.welcome__description {
-  text-align: center;
-}
-
 .top-bar {
   height: 30px;
   display: flex;
