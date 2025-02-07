@@ -1,5 +1,6 @@
 import { useSearchParams } from '@remix-run/react';
 import SelectWithTags from '../inputs/SelectWithTags';
+import Button from '../inputs/Button';
 import { questEnvironment, questEquipment, questAccessibility } from '~/config';
 
 function QuestsFilters() {
@@ -28,7 +29,7 @@ function QuestsFilters() {
         fieldset="accessibility"
         label={'Accessibility'}
       />
-      <button type="submit">Filtrer</button>
+      <Button type="submit" label="Filter quests" />
     </form>
   );
 }
