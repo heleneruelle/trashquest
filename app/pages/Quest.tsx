@@ -97,6 +97,11 @@ function Quest() {
             callback={() => setError(false)}
           />
         )}
+        {isCurrentUserQuestRegistered && (
+          <div className="quest-registered">
+            <p>Vous êtes inscrit.e pour cette quête</p>
+          </div>
+        )}
         <h1>{properties.name}</h1>
         <p>{properties.description}</p>
         <Field fieldName="location" fieldValue={location.name} />

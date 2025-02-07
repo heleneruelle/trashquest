@@ -7,3 +7,11 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.quest-registered {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--c-green-200);
+  color: white;
+  font-weight: bold;
+}
