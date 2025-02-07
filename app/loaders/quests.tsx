@@ -55,6 +55,10 @@ async function questsLoader({ request }: { request: Request }) {
       queries.push(accessibilityQuery.get());
     }
 
+    if (queries.length === 0) {
+      queries.push(db.collection('quests').get());
+    }
+
     const snapshots = await Promise.all(
       queries.length > 0 ? queries : [Promise.resolve({ docs: [] })]
     );
