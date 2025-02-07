@@ -3,6 +3,7 @@ interface ButtonProps {
   disabled?: boolean;
   label: string;
   style?: 'primary' | 'secondary' | 'tertiary';
+  clickCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 function Button({
@@ -10,12 +11,14 @@ function Button({
   disabled = false,
   label,
   style = 'primary',
+  clickCallback,
 }: ButtonProps) {
   return (
     <button
       type={type}
       disabled={disabled}
       className={`button button-${style}`}
+      onClick={type === 'button' && clickCallback ? clickCallback : undefined}
     >
       {label}
     </button>
