@@ -18,7 +18,7 @@ async function poiSearchLoader({ request }: LoaderFunctionArgs) {
   const mapboxSearchUrl = process.env.MAPBOX_SEARCH_API_URL;
   const mapboxParams = new URLSearchParams({
     q: query,
-    access_token: process.env.MAPBOX_ACCESS_TOKEN || '',
+    access_token: process.env.VITE_MAPBOX_ACCESS_TOKEN || '',
   });
 
   addParamsToUrlSearch(

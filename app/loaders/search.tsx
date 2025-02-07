@@ -17,7 +17,7 @@ async function searchLoader({ request }: LoaderFunctionArgs) {
   const mapboxUrl = process.env.MAPBOX_API_URL;
   const mapboxParams = new URLSearchParams({
     q: query,
-    access_token: process.env.MAPBOX_ACCESS_TOKEN || '',
+    access_token: process.env.VITE_MAPBOX_ACCESS_TOKEN || '',
   });
 
   const additionalParams = { country, language, proximity, types };
