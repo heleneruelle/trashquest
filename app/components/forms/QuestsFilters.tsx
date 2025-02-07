@@ -9,7 +9,7 @@ function QuestsFilters() {
   const accessibility = searchParams.get('accessibility');
 
   return (
-    <form method="get" style={{ padding: '20px', backgroundColor: 'beige' }}>
+    <form method="get" className="quests-filters">
       <SelectWithTags
         options={questEnvironment}
         defaultOptions={environment?.split(',')}
