@@ -1,16 +1,21 @@
-import { redirect } from '@remix-run/node';
-import { getSession, destroySession } from '~/utils/auth/session.server';
-import i18nServer from '~/i18n.server';
-import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import { destroyCookie } from '~/utils/cookies';
 
-let logoutAction = async ({ request }: { request: Request }) => {
-  const session = await getSession(request.headers.get('Cookie'));
+const logoutAction = async () => {
+  try {
+    const cookieHeader = destroyCookie('firebase_token');
 
-  return redirect(createCompositeUrl(i18nServer, '/login'), {
-    headers: {
-      'Set-Cookie': await destroySession(session),
-    },
-  });
+    const headers = new Headers();
+    headers.append(
+      'Cache-Control',
+      'no-store, no-cache, must-revalidate, proxy-revalidate'
+    );
+    headers.append('Set-Cookie', cookieHeader);
+
+    return Response.json({ success: true }, { headers });
+  } catch (error) {
+    console.log('Error during logout:', error);
+    return Response.json({ error: `${error}` }, { status: 500 });
+  }
 };
 
 export default logoutAction;
