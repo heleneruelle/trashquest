@@ -109,6 +109,14 @@
     }
   },
   "my-quests": {
-    "title": "Your quests"
+    "title": "Your quests",
+    "organiser": {
+      "title": "Your quests as an organizer",
+      "none": "You have no organized quest"
+    },
+    "participant": {
+      "title": "Your quests as a participant",
+      "none": "You have no current quest as a participant."
+    }
   }
 }

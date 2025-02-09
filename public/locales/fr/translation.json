@@ -109,6 +109,14 @@
     }
   },
   "my-quests": {
-    "title": "Vos quêtes"
+    "title": "Vos quêtes",
+    "organiser": {
+      "title": "Vos quêtes en tant qu'organisateur",
+      "none": "Vous n’avez pas de quête organisées"
+    },
+    "participant": {
+      "title": "Vos quêtes en tant que participant.e",
+      "none": "Vous n'avez pas de quête en cours en tant que participant.e."
+    }
   }
 }
