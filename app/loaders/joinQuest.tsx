@@ -1,9 +1,10 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { db, verifyIdToken } from '~/utils/auth/firebaseAdminAuth';
+import { getCookie } from '~/utils/cookies';
 
 async function joinQuestLoader({ request }: LoaderFunctionArgs) {
   try {
-    const token = request.headers.get('Authorization')?.replace('Bearer ', '');
+    const token = await getCookie(request, 'firebase_token');
 
     if (!token) {
       return Response.json({ error: 'No token provided' }, { status: 401 });
