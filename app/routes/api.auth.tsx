@@ -14,11 +14,14 @@ export let action: ActionFunction = async ({ request }) => {
 
     const cookieHeader = setCookie('firebase_token', token);
 
-    return Response.json({ user: decodedToken }, {
-      headers: {
-        'Set-Cookie': cookieHeader, 
-      },
-    });
+    return Response.json(
+      { user: decodedToken },
+      {
+        headers: {
+          'Set-Cookie': cookieHeader,
+        },
+      }
+    );
   } catch (error) {
     return Response.json(
       { error: 'Invalid or expired token' },
