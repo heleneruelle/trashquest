@@ -14,6 +14,7 @@
   },
   "date": "Date",
   "time": "Time",
+  "loading": "Loading...",
   "logout": {
     "cta": "Logout"
   },
@@ -57,6 +58,10 @@
   },
   "create-new-quest": {
     "title": "Create a new quest",
+    "cta": {
+      "start": "Begin the Quest !",
+      "new": "Create new quest"
+    },
     "input": {
       "name": "Quest name",
       "start": "Choose quest start date and time",
@@ -76,5 +81,26 @@
       "accessibility": "Choose as many options as necessary. This will indicate to your guests if the quest location is accessible for them."
     },
     "error": "Oops! There seems to be a problem with the creation of a new quest. We're in the process of resolving it. Please try again soon."
+  },
+  "quest": {
+    "location": "Location",
+    "organiser": "Organizer",
+    "duration": "Duration",
+    "participants": "Participants",
+    "environment": "Type of environment",
+    "equipment": "Equipment required",
+    "accessibility": "Accessibility",
+    "filter": {
+      "cta": "Filter quests"
+    },
+    "error": {
+      "title": "Sorry there seem to be a problem, the quest you are looking for no longer exists.",
+      "join": "Sorry, it seems your request to join this quest has failed."
+    },
+    "joined": "Congratulations! You're registered for this quest ⚔ !",
+    "cta": {
+      "join": "Join this quest",
+      "quit": "Quit this quest"
+    }
   }
 }

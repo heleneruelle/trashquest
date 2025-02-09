@@ -14,6 +14,7 @@
   },
   "date": "Date",
   "time": "Heure",
+  "loading": "Chargement...",
   "logout": {
     "cta": "Déconnexion"
   },
@@ -57,6 +58,10 @@
   },
   "create-new-quest": {
     "title": "Créer une nouvelle quête",
+    "cta": {
+      "start": "Commencez la quête !",
+      "new": "Créer une nouvelle quête"
+    },
     "input": {
       "name": "Nom de la quête",
       "start": "Choisissez la date et l'heure de début de la quête",
@@ -76,5 +81,26 @@
       "accessibility": "Choisissez autant d'options que nécessaire. Cela indiquera à vos invités si le lieu de la quête leur est accessible."
     },
     "error": "Oups ! Il semble y avoir un problème avec la création d’une nouvelle quête. Nous sommes en train de le résoudre. Veuillez réessayer bientôt."
+  },
+  "quest": {
+    "location": "Emplacement",
+    "organiser": "Organisateur.rice",
+    "duration": "Durée",
+    "participants": "Participants",
+    "environment": "Type d'environnement",
+    "equipment": "Équipement nécessaire",
+    "accessibility": "Accessibilité",
+    "filter": {
+      "cta": "Filtrer les quêtes"
+    },
+    "error": {
+      "title": "Désolé, il semble y avoir un problème, la quête que vous recherchez n'existe plus.",
+      "join": "Désolé il semble que votre demande de rejoindre cette quête ait échouée."
+    },
+    "joined": "Félicitations ! Vous êtes inscrit.e pour cette quête ⚔ !",
+    "cta": {
+      "join": "Participez à cette quête",
+      "quit": "Quitter cette quête"
+    }
   }
 }
