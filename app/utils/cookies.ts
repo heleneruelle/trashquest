@@ -6,7 +6,7 @@ export function setCookie(name: string, value: string, options = {}) {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
     path: '/',
-    maxAge: 60 * 60 * 24 * 7, // 1 semaine
+    maxAge: 60 * 60 * 24 * 7,
     ...options,
   });
 }
@@ -14,4 +14,14 @@ export function setCookie(name: string, value: string, options = {}) {
 export function getCookie(request: Request, name: string) {
   const cookies = parse(request.headers.get('Cookie') || '');
   return cookies[name];
+}
+
+export function destroyCookie(name: string) {
+  return serialize(name, '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/',
+    maxAge: -1,
+  });
 }
