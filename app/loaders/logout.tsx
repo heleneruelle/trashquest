@@ -1,6 +1,7 @@
+import { ActionFunction } from '@remix-run/node';
 import { destroyCookie } from '~/utils/cookies';
 
-const logoutAction = async () => {
+const logoutAction: ActionFunction = async () => {
   try {
     return new Response('Logout successful', {
       headers: {
