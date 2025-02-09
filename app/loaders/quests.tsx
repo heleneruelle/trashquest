@@ -1,4 +1,5 @@
 import { db } from '~/utils/auth/firebaseAdminAuth';
+import currentUserLoader from './currentUser';
 
 async function questsLoader({ request }: { request: Request }) {
   const url = new URL(request.url);
@@ -78,9 +79,13 @@ async function questsLoader({ request }: { request: Request }) {
       })
     );
 
+    const userLoaderResp = await currentUserLoader({ request });
+    const { user } = await userLoaderResp.json();
+
     return Response.json({
       success: true,
       quests: data,
+      user,
     });
   } catch (error) {
     return Response.json({ error }, { status: 500 });
