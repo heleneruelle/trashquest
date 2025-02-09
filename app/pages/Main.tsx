@@ -6,19 +6,23 @@ import QuestsFilters from '~/components/forms/QuestsFilters';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
 import QuestType from '~/types/quest';
+import UserType from '~/types/user';
 
 interface LoaderData {
   success: boolean;
   quests: Array<QuestType>;
+  user: UserType;
 }
 
 function Main() {
   const { t } = useTranslation();
-  const { success, quests } = useLoaderData<LoaderData>();
+  const { success, quests, user } = useLoaderData<LoaderData>();
+
+  const { username } = user;
 
   return (
     <div className="welcome__container--wip">
-      <h1>{t('welcome')}</h1>
+      <h1>{t('welcome', { name: username })}</h1>
       <QuestsFilters />
       <ul>
         {success && quests?.length

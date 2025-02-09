@@ -1,6 +1,5 @@
 {
-  "welcome": "Bienvenue dans TrashQuest !",
-  "greeting": "Bonjour, {{name}}!",
+  "welcome": "Bonjour, {{name}}! Bienvenue dans TrashQuest !",
   "description": "🏗️ TrashQuest relie les communautés pour nettoyer les espaces publics et protéger la nature. Il s'agit d'un travail en cours, veuillez trouver la description du projet dans notre repository github et contacter heleneruelle@hotmail.com si vous souhaitez nous rejoindre !",
   "email": "Email",
   "password": "Mot de passe",
