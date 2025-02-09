@@ -12,6 +12,11 @@
     "fr": "France",
     "be": "Belgium"
   },
+  "meta": {
+    "my-quests": "My Quests",
+    "about": "About",
+    "home": "Home"
+  },
   "date": "Date",
   "time": "Time",
   "loading": "Loading...",
