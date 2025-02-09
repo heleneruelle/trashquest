@@ -66,15 +66,10 @@ function Quest() {
   async function handleJoinQuest(e: Event) {
     e.preventDefault();
     try {
-      if (!user) {
-        setError(true);
-      }
-      const idToken = await user.getIdToken();
       const response = await fetch('/api/join-quest', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${idToken}`,
         },
         body: JSON.stringify({
           id,
@@ -95,15 +90,10 @@ function Quest() {
   async function handleQuitQuest(e: Event) {
     e.preventDefault();
     try {
-      if (!user) {
-        setError(true);
-      }
-      const idToken = await user.getIdToken();
       const response = await fetch('/api/quit-quest', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${idToken}`,
         },
         body: JSON.stringify({
           id,
