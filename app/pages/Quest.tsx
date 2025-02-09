@@ -1,4 +1,5 @@
 import { useLoaderData, useParams, useFetcher } from '@remix-run/react';
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
 import ImageLayout from '~/components/templates/ImageLayout';
@@ -42,9 +43,11 @@ interface LoaderData {
 function Quest() {
   const data = useLoaderData<LoaderData>();
   const [error, setError] = useState(false);
+  const { t } = useTranslation();
 
   if (!data?.success || !data?.quest) {
-    return <div>NO SUCH QUEST</div>;
+    /* TODO error handling */
+    return <div>{t('quest.error.title')}</div>;
   }
 
   const { id } = useParams();
@@ -125,37 +128,37 @@ function Quest() {
         {error && (
           <Toast
             type="error"
-            message={'Join quest failed'}
+            message={t('quest.error.join')}
             callback={() => setError(false)}
           />
         )}
         {isCurrentUserQuestRegistered && (
           <div className="quest-registered">
-            <p>Vous êtes inscrit.e pour cette quête</p>
+            <p>{t('quest.joined')}</p>
           </div>
         )}
         <h1>{properties.name}</h1>
         <p>{properties.description}</p>
-        <Field fieldName="location" fieldValue={location.name} />
-        <Field fieldName="organiser" fieldValue={creator.username} />
+        <Field fieldName={t('quest.location')} fieldValue={location.name} />
+        <Field fieldName={t('quest.organiser')} fieldValue={creator.username} />
         <Field
-          fieldName="duration"
+          fieldName={t('quest.duration')}
           fieldValue={JSON.stringify(properties.duration)}
         />
         <Field
-          fieldName="participants"
+          fieldName={t('quest.participants')}
           fieldValue={`${properties.participants.length} / ${properties.expectedParticipants}`}
         />
         <FieldWithTag
-          fieldName="equipment"
+          fieldName={t('quest.equipment')}
           fieldValues={properties.equipment}
         />
         <FieldWithTag
-          fieldName="environment"
+          fieldName={t('quest.environment')}
           fieldValues={properties.environment}
         />
         <FieldWithTag
-          fieldName="accessibility"
+          fieldName={t('quest.accessibility')}
           fieldValues={properties.accessibility}
         />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -164,20 +167,20 @@ function Quest() {
             !isCurrentUserQuestRegistered && (
               <Button
                 type="button"
-                label="Join this quest"
+                label={t('quest.cta.join')}
                 clickCallback={handleJoinQuest}
               />
             )}
           {!isCurrentUserCreator && isCurrentUserQuestRegistered && (
             <Button
               type="button"
-              label="Quit this quest"
+              label={t('quest.cta.quit')}
               clickCallback={handleQuitQuest}
             />
           )}
           <ButtonLink label="Go Home" target={createCompositeUrl(i18n, '/')} />
           <ButtonLink
-            label="Create new quest"
+            label={t('create-new-quest.cta.new')}
             target={createCompositeUrl(i18n, '/create-new')}
           />
         </div>

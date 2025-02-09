@@ -141,7 +141,7 @@ function QuestForm() {
         label={t('create-new-quest.input.accessibility')}
         hint={t('create-new-quest.hint.accessibility')}
       />
-      <Button type="submit" label="Begin the Quest !" />
+      <Button type="submit" label={t('create-new-quest.cta.start')} />
     </Form>
   );
 }
