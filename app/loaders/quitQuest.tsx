@@ -1,9 +1,10 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { db, verifyIdToken } from '~/utils/auth/firebaseAdminAuth';
+import { getCookie } from '~/utils/cookies';
 
 async function quitQuestLoader({ request }: LoaderFunctionArgs) {
   try {
-    const token = request.headers.get('Authorization')?.replace('Bearer ', '');
+    const token = await getCookie(request, 'firebase_token');
 
     if (!token) {
       return Response.json({ error: 'No token provided' }, { status: 401 });
@@ -42,6 +43,7 @@ async function quitQuestLoader({ request }: LoaderFunctionArgs) {
 
     return Response.json({ success: true }, { status: 200 });
   } catch (error) {
+    console.log('LALALALLAA', error);
     return Response.json({ error: `${error}` }, { status: 500 });
   }
 }
