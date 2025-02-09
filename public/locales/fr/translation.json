@@ -102,5 +102,8 @@
       "join": "Participez à cette quête",
       "quit": "Quitter cette quête"
     }
+  },
+  "my-quests": {
+    "title": "Vos quêtes"
   }
 }

@@ -102,5 +102,8 @@
       "join": "Join this quest",
       "quit": "Quit this quest"
     }
+  },
+  "my-quests": {
+    "title": "Your quests"
   }
 }
