@@ -18,7 +18,7 @@ function Main() {
   const { t } = useTranslation();
   const { success, quests, user } = useLoaderData<LoaderData>();
 
-  const { username } = user;
+  const { username } = user || {};
 
   return (
     <div className="welcome__container--wip">
@@ -34,7 +34,7 @@ function Main() {
           : null}
       </ul>
       <ButtonLink
-        label="Create new quest"
+        label={t('create-new-quest.cta.new')}
         target={createCompositeUrl(i18n, '/create-new')}
       />
     </div>

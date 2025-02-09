@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import ImageLayout from '~/components/templates/ImageLayout';
 
 function Loading() {
+  const { t } = useTranslation();
+
   return (
     <ImageLayout>
-      <h1>Loading...</h1>
+      <h1>{t('loading')}</h1>
     </ImageLayout>
   );
 }
