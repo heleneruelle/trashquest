@@ -19,12 +19,9 @@ async function myQuestsLoader({ request }: LoaderFunctionArgs) {
       decodedToken.uid
     );
 
-    const queryForParticipant = questsRef.where(
-      'properties.participants',
-      'array-contains',
-      decodedToken.uid
-    );
-    //.where('properties.creatorId', '!=', decodedToken.uid);
+    const queryForParticipant = questsRef
+      .where('properties.participants', 'array-contains', decodedToken.uid)
+      .where('properties.creatorId', '!=', decodedToken.uid);
 
     const [creatorSnapshot, participantSnapshot] = await Promise.all([
       queryForCreator.get(),
