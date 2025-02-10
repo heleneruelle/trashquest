@@ -4,6 +4,8 @@ interface ButtonProps {
   label: string;
   style?: 'primary' | 'secondary' | 'tertiary';
   clickCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  id: string;
+  value: string;
 }
 
 function Button({
@@ -12,9 +14,13 @@ function Button({
   label,
   style = 'primary',
   clickCallback,
+  id,
+  value,
 }: ButtonProps) {
   return (
     <button
+      id={id}
+      value={value}
       type={type}
       disabled={disabled}
       className={`button button-${style}`}
