@@ -12,6 +12,11 @@
     "fr": "France",
     "be": "Belgium"
   },
+  "meta": {
+    "my-quests": "My Quests",
+    "about": "About",
+    "home": "Home"
+  },
   "date": "Date",
   "time": "Time",
   "loading": "Loading...",
@@ -101,6 +106,17 @@
     "cta": {
       "join": "Join this quest",
       "quit": "Quit this quest"
+    }
+  },
+  "my-quests": {
+    "title": "Your quests",
+    "organiser": {
+      "title": "Your quests as an organizer",
+      "none": "You have no organized quest"
+    },
+    "participant": {
+      "title": "Your quests as a participant",
+      "none": "You have no current quest as a participant."
     }
   }
 }

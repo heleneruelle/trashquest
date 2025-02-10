@@ -12,6 +12,11 @@
     "fr": "France",
     "be": "Belgique"
   },
+  "meta": {
+    "my-quests": "Mes Quêtes",
+    "about": "A propos",
+    "home": "Acceuil"
+  },
   "date": "Date",
   "time": "Heure",
   "loading": "Chargement...",
@@ -101,6 +106,17 @@
     "cta": {
       "join": "Participez à cette quête",
       "quit": "Quitter cette quête"
+    }
+  },
+  "my-quests": {
+    "title": "Vos quêtes",
+    "organiser": {
+      "title": "Vos quêtes en tant qu'organisateur",
+      "none": "Vous n’avez pas de quête organisées"
+    },
+    "participant": {
+      "title": "Vos quêtes en tant que participant.e",
+      "none": "Vous n'avez pas de quête en cours en tant que participant.e."
     }
   }
 }
