@@ -20,6 +20,11 @@ function TopBar() {
             {t('meta.my-quests')}
           </Link>
         )}
+        {user && (
+          <Link to={createCompositeUrl(i18n, '/create-new')}>
+            {t('meta.create-new')}
+          </Link>
+        )}
         <Link to={createCompositeUrl(i18n, '/about')}>{t('meta.about')}</Link>
       </div>
       <div className="top-bar__utils">
