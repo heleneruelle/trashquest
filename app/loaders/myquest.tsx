@@ -13,30 +13,39 @@ async function myQuestsLoader({ request }: LoaderFunctionArgs) {
     const decodedToken = await verifyIdToken(token);
 
     const questsRef = db.collection('quests');
-    const query = questsRef.where(
+    const queryForCreator = questsRef.where(
       'properties.creatorId',
       '==',
       decodedToken.uid
     );
 
-    const data = await query
-      .get()
-      .then((snapshot) => {
-        if (snapshot.empty) {
-          throw new Error(`No document found for ${decodedToken.uid}`);
-        }
-        const quests = [];
-        snapshot.forEach((doc) => {
-          quests.push(doc.data());
-        });
+    const queryForParticipant = questsRef.where(
+      'properties.participants',
+      'array-contains',
+      decodedToken.uid
+    );
+    //.where('properties.creatorId', '!=', decodedToken.uid);
 
-        return quests;
-      })
-      .catch((err) => {
-        throw new Error(`Error while getting data from DB: ${err}`);
-      });
+    const [creatorSnapshot, participantSnapshot] = await Promise.all([
+      queryForCreator.get(),
+      queryForParticipant.get(),
+    ]);
 
-    return Response.json({ success: true, quests: data }, { status: 200 });
+    const questsForCreator = [];
+    creatorSnapshot.forEach((doc) => {
+      // console.log('DOC', doc)
+      questsForCreator.push({ id: doc.id, ...doc.data() });
+    });
+
+    const questsAsParticipant = [];
+    participantSnapshot.forEach((doc) => {
+      questsAsParticipant.push(doc.data());
+    });
+
+    return Response.json(
+      { success: true, quests: questsForCreator, questsAsParticipant },
+      { status: 200 }
+    );
   } catch (error) {
     return Response.json({ error: `${error}` }, { status: 500 });
   }
