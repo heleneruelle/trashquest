@@ -15,7 +15,8 @@
   "meta": {
     "my-quests": "Mes Quêtes",
     "about": "A propos",
-    "home": "Acceuil"
+    "home": "Acceuil",
+    "create-new": "Créer une quête"
   },
   "date": "Date",
   "time": "Heure",

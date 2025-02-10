@@ -15,7 +15,8 @@
   "meta": {
     "my-quests": "My Quests",
     "about": "About",
-    "home": "Home"
+    "home": "Home",
+    "create-new": "Create quest"
   },
   "date": "Date",
   "time": "Time",
