@@ -1,6 +1,7 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
 import searchLoader from './search';
 import poiSearchLoader from './poiSearch';
+import poisToVm from '~/utils/tovm/poisToVm';
 
 async function searchWithPoi(loaderArgs: LoaderFunctionArgs) {
   const { request } = loaderArgs;
@@ -21,7 +22,7 @@ async function searchWithPoi(loaderArgs: LoaderFunctionArgs) {
     poiData = await rawPoiData.json();
   }
 
-  return { searchData, poiData };
+  return { searchData, poiData: poisToVm(poiData) };
 }
 
 export default searchWithPoi;
