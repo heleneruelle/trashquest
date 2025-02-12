@@ -41,8 +41,10 @@ export let action: ActionFunction = async ({ request }) => {
       location: {
         name: locationName,
         id: locationId,
-        latitude: locationLatitude,
-        longitude: locationLongitude,
+        coordinates: new admin.firestore.GeoPoint(
+          parseFloat(locationLatitude),
+          parseFloat(locationLongitude)
+        ),
       },
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });

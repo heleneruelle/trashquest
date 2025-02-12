@@ -1,6 +1,9 @@
 import { db, admin } from '~/utils/auth/firebaseAdminAuth';
+import { getCookie } from '~/utils/cookies';
+import { verifyIdToken } from '~/utils/auth/firebaseAdminAuth';
 import currentUserLoader from './currentUser';
 import filterQuest from '~/utils/quests/filterQuest';
+import findClosestQuests from '~/utils/quests/findClosestQuest';
 
 async function questsLoader({ request }: { request: Request }) {
   const url = new URL(request.url);
@@ -23,13 +26,29 @@ async function questsLoader({ request }: { request: Request }) {
       .limit(25)
       .get();
     */
+    const token = await getCookie(request, 'firebase_token');
+    const decodedToken = await verifyIdToken(token);
+    const creatorDocRef = db.collection('users').doc(decodedToken.uid);
+    const creatorData = await creatorDocRef
+      .get()
+      .then((creatorDoc) => {
+        if (creatorDoc.exists) {
+          return creatorDoc.data();
+        } else {
+          throw new Error(`No user document for id : ${decodedToken.uid}`);
+        }
+      })
+      .catch((creatorDocError) => {
+        throw new Error(`Error getting user document: ${creatorDocError}`);
+      });
 
     const now = new Date();
     const currentTimestamp = admin.firestore.Timestamp.fromDate(now);
 
     let query = db
       .collection('quests')
-      .where('properties.startDateTimeTimestamp', '>', currentTimestamp);
+      .where('properties.startDateTimeTimestamp', '>', currentTimestamp)
+      .orderBy('properties.startDateTimeTimestamp');
 
     const querySnapshot = await query.get();
 
@@ -42,17 +61,31 @@ async function questsLoader({ request }: { request: Request }) {
       filterQuest(q, environment, equipment, accessibility)
     );
 
+    const closestQuest = quests?.length
+      ? await findClosestQuests(
+          {
+            lat: creatorData?.location?.coordinates?.latitude,
+            lon: creatorData?.location?.coordinates?.longitude,
+          },
+          quests
+        )
+      : null;
+
     const userLoaderResp = await currentUserLoader({ request });
     const { user } = await userLoaderResp.json();
 
     return Response.json({
       success: true,
-      quests,
+      quests:
+        quests?.length && closestQuest
+          ? quests.filter((q) => q.id !== closestQuest.id)
+          : [],
       rawData,
+      closestQuest,
       user,
     });
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    return Response.json({ error: JSON.stringify(error) }, { status: 500 });
   }
 }
 

@@ -62,8 +62,10 @@ export let action: ActionFunction = async ({ request }) => {
         country,
         name: locationName,
         id: locationId,
-        latitude: locationLatitude,
-        longitude: locationLongitude,
+        coordinates: new admin.firestore.GeoPoint(
+          parseFloat(locationLatitude),
+          parseFloat(locationLongitude)
+        ),
       },
       properties: {
         description,
@@ -86,6 +88,6 @@ export let action: ActionFunction = async ({ request }) => {
 
     return Response.json({ success: true, questId: questRef.id });
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    return Response.json({ error: JSON.stringify(error) }, { status: 500 });
   }
 };
