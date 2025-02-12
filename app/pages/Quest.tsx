@@ -57,7 +57,7 @@ function Quest() {
   const { quest } = data || {};
   const { properties, location, creator } = quest || {};
 
-  const isCurrentUserCreator = user?.uid === creator.uid;
+  const isCurrentUserCreator = user?.uid === creator.id;
 
   const isCurrentUserQuestRegistered = properties.participants.includes(
     user?.uid
