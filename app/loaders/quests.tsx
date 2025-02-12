@@ -33,19 +33,22 @@ async function questsLoader({ request }: { request: Request }) {
 
     const querySnapshot = await query.get();
 
-    const data: { id: string }[] = [];
+    const rawData: { id: string }[] = [];
     querySnapshot.forEach((doc) => {
-      if (filterQuest(doc.data(), environment, equipment, accessibility)) {
-        data.push({ id: doc.id, ...doc.data() });
-      }
+      rawData.push({ id: doc.id, ...doc.data() });
     });
+
+    const quests = rawData.filter((q) =>
+      filterQuest(q, environment, equipment, accessibility)
+    );
 
     const userLoaderResp = await currentUserLoader({ request });
     const { user } = await userLoaderResp.json();
 
     return Response.json({
       success: true,
-      quests: data,
+      quests,
+      rawData,
       user,
     });
   } catch (error) {
