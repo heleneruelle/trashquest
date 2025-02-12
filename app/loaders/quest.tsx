@@ -30,7 +30,7 @@ async function questLoader({ params }: LoaderFunctionArgs) {
       .get()
       .then((creatorDoc) => {
         if (creatorDoc.exists) {
-          return creatorDoc.data();
+          return { id: creatorDoc.id, ...creatorDoc.data() };
         } else {
           throw new Error(`No user document for id : ${properties?.creatorId}`);
         }
