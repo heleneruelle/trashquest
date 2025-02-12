@@ -12,11 +12,15 @@ interface LoaderData {
   success: boolean;
   quests: Array<QuestType>;
   user: UserType;
+  rawData: Array<QuestType>;
 }
 
 function Main() {
   const { t } = useTranslation();
-  const { success, quests, user } = useLoaderData<LoaderData>();
+  const { quests, user, rawData } = useLoaderData<LoaderData>();
+
+  const hasNoQuest = !rawData?.length;
+  const hasNoQuestForFilters = rawData?.length && !quests?.length;
 
   const { username } = user || {};
 
@@ -24,8 +28,10 @@ function Main() {
     <div className="welcome__container--wip">
       <h1>{t('welcome', { name: username })}</h1>
       <QuestsFilters />
+      {hasNoQuest && <p>{t('quests.no-quest')}</p>}
+      {hasNoQuestForFilters && <p>{t('quests.no-quest-filters')}</p>}
       <ul>
-        {success && quests?.length
+        {quests?.length
           ? quests.map((quest) => (
               <li key={quest.id}>
                 <QuestListItem quest={quest} />

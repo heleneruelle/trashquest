@@ -119,5 +119,9 @@
       "title": "Vos quêtes en tant que participant.e",
       "none": "Vous n'avez pas de quête en cours en tant que participant.e."
     }
+  },
+  "quests": {
+    "no-quest": "Il n'y a pas de quête à rejoindre. Créez la vôtre et commencez à rassembler une équipe pour votre aventure !",
+    "no-quest-filters": "Aucune quête ne correspond à vos filtres. Essayez de les adapter pour voir ce qui se passe !"
   }
 }

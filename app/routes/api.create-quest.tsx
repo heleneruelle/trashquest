@@ -1,6 +1,7 @@
 import { ActionFunction } from '@remix-run/node';
 import { db, verifyIdToken, admin } from '~/utils/auth/firebaseAdminAuth';
 import dateTimeStartEndValidation from '~/utils/datetime/dateTimeStartEndValidation';
+import dateTimeToISODatetime from '~/utils/datetime/dateTimeToISODatetime';
 
 export let action: ActionFunction = async ({ request }) => {
   const token = request.headers.get('Authorization')?.replace('Bearer ', '');
@@ -39,6 +40,23 @@ export let action: ActionFunction = async ({ request }) => {
       return { error: 'datetime' };
     }
 
+    const startDateTimeISO = dateTimeToISODatetime({
+      date: startDate,
+      time: startTime,
+    });
+
+    const endDateTimeISO = dateTimeToISODatetime({
+      date: endDate,
+      time: endTime,
+    });
+
+    const startDateTimeTimestamp = admin.firestore.Timestamp.fromDate(
+      new Date(startDateTimeISO)
+    );
+    const endDateTimeTimestamp = admin.firestore.Timestamp.fromDate(
+      new Date(endDateTimeISO)
+    );
+
     const questRef = await db.collection('quests').add({
       location: {
         country,
@@ -50,15 +68,17 @@ export let action: ActionFunction = async ({ request }) => {
       properties: {
         description,
         expectedParticipants: parseInt(expectedParticipants),
-        environment: environment.split(','),
-        equipment: equipment.split(','),
-        accessibility: accessibility.split(','),
+        environment: environment === '' ? [] : environment.split(','),
+        equipment: equipment === '' ? [] : equipment.split(','),
+        accessibility: accessibility === '' ? [] : accessibility.split(','),
         name,
         participants: [decodedToken.uid],
         creatorId: decodedToken.uid,
         startDate,
+        startDateTimeTimestamp,
         startTime,
         endDate,
+        endDateTimeTimestamp,
         endTime,
       },
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
