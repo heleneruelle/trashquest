@@ -68,9 +68,9 @@ export let action: ActionFunction = async ({ request }) => {
       properties: {
         description,
         expectedParticipants: parseInt(expectedParticipants),
-        environment: environment.split(','),
-        equipment: equipment.split(','),
-        accessibility: accessibility.split(','),
+        environment: environment === '' ? [] : environment.split(','),
+        equipment: equipment === '' ? [] : equipment.split(','),
+        accessibility: accessibility === '' ? [] : accessibility.split(','),
         name,
         participants: [decodedToken.uid],
         creatorId: decodedToken.uid,
