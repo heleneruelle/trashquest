@@ -38,6 +38,7 @@
     "error": "Oops! There seems to be a problem with your credentials. We're working on resolving it. Please try again soon."
   },
   "create-new-account": {
+    "title": "Create your Trashquest account",
     "description": "Your mission to clean up the world starts here!",
     "cta": {
       "submitting": "Enregistrement...",

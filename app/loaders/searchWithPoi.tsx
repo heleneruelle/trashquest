@@ -16,13 +16,13 @@ async function searchWithPoi(loaderArgs: LoaderFunctionArgs) {
   const searchData = await rawSearchData.json();
 
   const poi = url.searchParams.get('poi');
-  let poiData = {};
+  let poiData = null;
   if (poi === 'true') {
     const rawPoiData = await poiSearchLoader(loaderArgs);
     poiData = await rawPoiData.json();
   }
 
-  return { searchData, poiData: poisToVm(poiData) };
+  return { searchData, poiData: poiData ? poisToVm(poiData) : poiData };
 }
 
 export default searchWithPoi;
