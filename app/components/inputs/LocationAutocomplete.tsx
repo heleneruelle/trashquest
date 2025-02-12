@@ -75,7 +75,7 @@ function LocationAutoComplete({
   const searchResponse = useMemo(() => {
     const { searchData, poiData } = fetcher?.data || {};
     if (searchData?.features || poiData?.features) {
-      return [...(searchData.features || []), ...(poiData.features || [])];
+      return [...(searchData.features || []), ...(poiData?.features || [])];
     }
     return null;
   }, [fetcher?.data]);

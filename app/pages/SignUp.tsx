@@ -9,7 +9,7 @@ const SignUpPage = () => {
   return (
     <TwoColumnsLayout>
       <div className="signup-form">
-        <h1>{t('welcome')}</h1>
+        <h1>{t('create-new-account.title')}</h1>
         <h3>{t('create-new-account.description')}</h3>
         <SignUpForm />
       </div>

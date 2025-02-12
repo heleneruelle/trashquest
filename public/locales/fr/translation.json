@@ -38,6 +38,7 @@
     "error": "Oups ! Il semble y avoir un problème avec vos informations d'identification. Nous sommes en train de le résoudre. Veuillez réessayer bientôt."
   },
   "create-new-account": {
+    "title": "Créez votre compte Trashquest",
     "description": "Votre mission de nettoyage de la planète commence ici !",
     "cta": {
       "submitting": "Enregistrement...",
