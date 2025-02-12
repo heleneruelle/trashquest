@@ -122,6 +122,8 @@
   },
   "quests": {
     "no-quest": "Il n'y a pas de quête à rejoindre. Créez la vôtre et commencez à rassembler une équipe pour votre aventure !",
-    "no-quest-filters": "Aucune quête ne correspond à vos filtres. Essayez de les adapter pour voir ce qui se passe !"
+    "no-quest-filters": "Aucune quête ne correspond à vos filtres. Essayez de les adapter pour voir ce qui se passe !",
+    "closest": "La quête la plus proche de vous",
+    "available": "Les quêtes disponibles"
   }
 }
