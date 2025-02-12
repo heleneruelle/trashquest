@@ -119,5 +119,9 @@
       "title": "Your quests as a participant",
       "none": "You have no current quest as a participant."
     }
+  },
+  "quests": {
+    "no-quest": "There is no quest for you to join. Create your own and start gathering a team for your adventure !",
+    "no-quest-filters": "There is no quest matching your filters. Please try to adapt them to see what's going on !"
   }
 }
