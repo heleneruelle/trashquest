@@ -48,6 +48,7 @@ async function questsLoader({ request }: { request: Request }) {
     let query = db
       .collection('quests')
       .where('properties.startDateTimeTimestamp', '>', currentTimestamp)
+      .where('properties.creatorId', '!=', decodedToken.uid)
       .orderBy('properties.startDateTimeTimestamp');
 
     const querySnapshot = await query.get();
