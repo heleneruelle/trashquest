@@ -26,21 +26,8 @@ async function questsLoader({ request }: { request: Request }) {
       .limit(25)
       .get();
     */
-    const token = await getCookie(request, 'firebase_token');
-    const decodedToken = await verifyIdToken(token);
-    const creatorDocRef = db.collection('users').doc(decodedToken.uid);
-    const creatorData = await creatorDocRef
-      .get()
-      .then((creatorDoc) => {
-        if (creatorDoc.exists) {
-          return creatorDoc.data();
-        } else {
-          throw new Error(`No user document for id : ${decodedToken.uid}`);
-        }
-      })
-      .catch((creatorDocError) => {
-        throw new Error(`Error getting user document: ${creatorDocError}`);
-      });
+    const userLoaderResp = await currentUserLoader({ request });
+    const { user } = await userLoaderResp.json();
 
     const now = new Date();
     const currentTimestamp = admin.firestore.Timestamp.fromDate(now);
@@ -48,7 +35,7 @@ async function questsLoader({ request }: { request: Request }) {
     let query = db
       .collection('quests')
       .where('properties.startDateTimeTimestamp', '>', currentTimestamp)
-      .where('properties.creatorId', '!=', decodedToken.uid)
+      .where('properties.creatorId', '!=', user.id)
       .orderBy('properties.startDateTimeTimestamp');
 
     const querySnapshot = await query.get();
@@ -65,15 +52,12 @@ async function questsLoader({ request }: { request: Request }) {
     const closestQuest = quests?.length
       ? await findClosestQuests(
           {
-            lat: creatorData?.location?.coordinates?.latitude,
-            lon: creatorData?.location?.coordinates?.longitude,
+            lat: user?.location?.coordinates?._latitude,
+            lon: user?.location?.coordinates?._longitude,
           },
           quests
         )
       : null;
-
-    const userLoaderResp = await currentUserLoader({ request });
-    const { user } = await userLoaderResp.json();
 
     return Response.json({
       success: true,

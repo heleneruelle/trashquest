@@ -3,8 +3,8 @@ import { point, distance } from '@turf/turf';
 async function findClosestQuest({ lat, lon }, quests) {
   try {
     const closestQuest = quests.reduce((closestQuest, quest) => {
-      const questLat = quest.location.coordinates.latitude;
-      const questLon = quest.location.coordinates.longitude;
+      const questLat = quest.location.coordinates._latitude;
+      const questLon = quest.location.coordinates._longitude;
 
       const userPoint = point([lon, lat]);
 
