@@ -13,7 +13,7 @@ async function currentUserLoader({ request }: { request: Request }) {
       .get()
       .then((userDoc) => {
         if (userDoc.exists) {
-          return userDoc.data();
+          return { id: userDoc.id, ...userDoc.data() };
         } else {
           throw new Error(`No user document for id : ${verifiedUser?.uid}`);
         }
