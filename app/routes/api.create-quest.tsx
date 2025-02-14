@@ -1,10 +1,11 @@
 import { ActionFunction } from '@remix-run/node';
 import { db, verifyIdToken, admin } from '~/utils/auth/firebaseAdminAuth';
+import { getCookie } from '~/utils/cookies';
 import dateTimeStartEndValidation from '~/utils/datetime/dateTimeStartEndValidation';
 import dateTimeToISODatetime from '~/utils/datetime/dateTimeToISODatetime';
 
 export let action: ActionFunction = async ({ request }) => {
-  const token = request.headers.get('Authorization')?.replace('Bearer ', '');
+  const token = await getCookie(request, 'firebase_token');
 
   if (!token) {
     return Response.json({ error: 'No token provided' }, { status: 401 });

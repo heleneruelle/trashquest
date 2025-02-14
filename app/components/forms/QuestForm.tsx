@@ -17,7 +17,6 @@ import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import formDataToObject from '~/utils/formDataToObject';
 import { questEnvironment, questEquipment, questAccessibility } from '~/config';
 import i18n from '~/i18n';
-import { auth } from '~/firebaseConfig';
 
 function QuestForm() {
   const { t } = useTranslation();
@@ -32,19 +31,11 @@ function QuestForm() {
 
     const formData = new FormData(formRef.current);
 
-    const idToken = await auth.currentUser?.getIdToken();
-
-    if (!idToken) {
-      setError('Token is missing');
-      return;
-    }
-
     try {
       const response = await fetch('/api/create-quest', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${idToken}`,
         },
         body: JSON.stringify(formDataToObject(formData)),
       });
