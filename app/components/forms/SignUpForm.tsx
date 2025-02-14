@@ -51,7 +51,7 @@ const SignUpForm = () => {
 
       const user = userCredential.user;
 
-      const idToken = await user.getIdToken();
+      const idToken = await user.getIdToken(true);
 
       const tokenValidationResp = await fetch('/api/auth', {
         method: 'POST',
