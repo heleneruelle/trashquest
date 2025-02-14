@@ -8,6 +8,9 @@ import {
 import { I18nextProvider } from 'react-i18next';
 import i18n from '~/i18n';
 import TopBar from './components/display/TopBar';
+import currentUserLoader from './loaders/currentUser';
+
+export const loader = currentUserLoader;
 
 export default function App() {
   return (
