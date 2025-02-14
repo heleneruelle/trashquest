@@ -1,42 +1,48 @@
 import { useMatches } from '@remix-run/react';
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Map, { Marker } from 'react-map-gl/mapbox';
 import Pin from '../display/Pin';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function MapComp() {
-  const [root] = useMatches();
+  const matches = useMatches();
+  const { user } =
+    matches.find((match) => match.id === 'routes/$lang._index')?.data || {};
+
   const { t } = useTranslation();
 
-  const { data } = root;
-  const { longitude, latitude } = useMemo(() => {
+  const [viewState, setViewState] = useState({
+    longitude: 2.285358886316118,
+    latitude: 46.71832756395037,
+    zoom: 10.2,
+  });
+
+  useEffect(() => {
     if (
-      data?.user?.location?.coordinates?._longitude &&
-      data?.user?.location?.coordinates?._latitude
+      user?.location?.coordinates?._longitude &&
+      user?.location?.coordinates?._latitude
     ) {
-      return {
-        longitude: data?.user?.location?.coordinates._longitude,
-        latitude: data?.user?.location?.coordinates._latitude,
-      };
-    } else return {};
-  }, [data]);
+      setViewState((prev) => ({
+        ...prev,
+        longitude: user?.location?.coordinates?._longitude,
+        latitude: user?.location?.coordinates?._latitude,
+      }));
+    }
+  }, [user?.location?.coordinates]);
 
   return (
     <Map
-      mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}
-      initialViewState={{
-        longitude: longitude || 2.285358886316118,
-        latitude: latitude || 46.71832756395037,
-        zoom: 10.2,
-      }}
+      {...viewState}
+      onMove={(evt) => setViewState(evt.viewState)}
       mapStyle="mapbox://styles/mapbox/streets-v9"
+      mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}
     >
-      {data?.user?.location?.coordinates ? (
+      {user?.location?.coordinates ? (
         <Marker
           key={`user-marker`}
-          longitude={data?.user?.location?.coordinates._longitude}
-          latitude={data?.user?.location?.coordinates._latitude}
+          longitude={user?.location?.coordinates._longitude}
+          latitude={user?.location?.coordinates._latitude}
           anchor="bottom"
         >
           <div className="user-marker__tooltip">
