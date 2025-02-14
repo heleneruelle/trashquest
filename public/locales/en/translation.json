@@ -126,5 +126,8 @@
     "no-quest-filters": "There is no quest matching your filters. Please try to adapt them to see what's going on !",
     "closest": "Closest quest to you",
     "available": "Available quests"
+  },
+  "map": {
+    "user-position": "Votre position"
   }
 }

@@ -21,6 +21,7 @@ export const links: LinksFunction = () => {
   return [
     { rel: 'stylesheet', href: '/styles/main.css' },
     { rel: 'stylesheet', href: '/styles/error.css' },
+    { rel: 'stylesheet', href: '/styles/map.css' },
   ];
 };
 

@@ -126,5 +126,8 @@
     "no-quest-filters": "Aucune quête ne correspond à vos filtres. Essayez de les adapter pour voir ce qui se passe !",
     "closest": "La quête la plus proche de vous",
     "available": "Les quêtes disponibles"
+  },
+  "map": {
+    "user-position": "Votre position"
   }
 }

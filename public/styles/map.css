@@ -1,0 +1,24 @@
+.mapboxgl-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-marker__tooltip {
+  padding: 6px;
+  border-radius: 6px;
+  background-color: var(--c-green-200);
+  font-weight: bold;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.user-marker__tooltip p {
+  margin: 0;
+}
+
+.pin {
+  cursor: pointer;
+  fill: var(--c-green-200);
+  stroke: none;
+}
