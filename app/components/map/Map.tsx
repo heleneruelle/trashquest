@@ -28,7 +28,7 @@ function MapComp() {
       initialViewState={{
         longitude: longitude || 2.285358886316118,
         latitude: latitude || 46.71832756395037,
-        zoom: 11,
+        zoom: 10.2,
       }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
