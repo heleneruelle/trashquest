@@ -1,8 +1,6 @@
 import { useLoaderData, useParams, useFetcher } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
-import ImageLayout from '~/components/templates/ImageLayout';
 import Field from '~/components/display/Field';
 import Button from '~/components/inputs/Button';
 import FieldWithTag from '~/components/display/FieldWithTag';
@@ -113,70 +111,67 @@ function Quest() {
   }
 
   return (
-    <TwoColumnsLayout>
-      <div>
-        {error && (
-          <Toast
-            type="error"
-            message={t('quest.error.join')}
-            callback={() => setError(false)}
-          />
-        )}
-        {isCurrentUserQuestRegistered && (
-          <div className="quest-registered">
-            <p>{t('quest.joined')}</p>
-          </div>
-        )}
-        <h1>{properties.name}</h1>
-        <p>{properties.description}</p>
-        <Field fieldName={t('quest.location')} fieldValue={location.name} />
-        <Field fieldName={t('quest.organiser')} fieldValue={creator.username} />
-        <Field
-          fieldName={t('quest.duration')}
-          fieldValue={JSON.stringify(properties.duration)}
+    <div>
+      {error && (
+        <Toast
+          type="error"
+          message={t('quest.error.join')}
+          callback={() => setError(false)}
         />
-        <Field
-          fieldName={t('quest.participants')}
-          fieldValue={`${properties.participants.length} / ${properties.expectedParticipants}`}
-        />
-        <FieldWithTag
-          fieldName={t('quest.equipment')}
-          fieldValues={properties.equipment}
-        />
-        <FieldWithTag
-          fieldName={t('quest.environment')}
-          fieldValues={properties.environment}
-        />
-        <FieldWithTag
-          fieldName={t('quest.accessibility')}
-          fieldValues={properties.accessibility}
-        />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          {!isCurrentUserCreator &&
-            !properties.isQuestFull &&
-            !isCurrentUserQuestRegistered && (
-              <Button
-                type="button"
-                label={t('quest.cta.join')}
-                clickCallback={handleJoinQuest}
-              />
-            )}
-          {!isCurrentUserCreator && isCurrentUserQuestRegistered && (
+      )}
+      {isCurrentUserQuestRegistered && (
+        <div className="quest-registered">
+          <p>{t('quest.joined')}</p>
+        </div>
+      )}
+      <h1>{properties.name}</h1>
+      <p>{properties.description}</p>
+      <Field fieldName={t('quest.location')} fieldValue={location.name} />
+      <Field fieldName={t('quest.organiser')} fieldValue={creator.username} />
+      <Field
+        fieldName={t('quest.duration')}
+        fieldValue={JSON.stringify(properties.duration)}
+      />
+      <Field
+        fieldName={t('quest.participants')}
+        fieldValue={`${properties.participants.length} / ${properties.expectedParticipants}`}
+      />
+      <FieldWithTag
+        fieldName={t('quest.equipment')}
+        fieldValues={properties.equipment}
+      />
+      <FieldWithTag
+        fieldName={t('quest.environment')}
+        fieldValues={properties.environment}
+      />
+      <FieldWithTag
+        fieldName={t('quest.accessibility')}
+        fieldValues={properties.accessibility}
+      />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        {!isCurrentUserCreator &&
+          !properties.isQuestFull &&
+          !isCurrentUserQuestRegistered && (
             <Button
               type="button"
-              label={t('quest.cta.quit')}
-              clickCallback={handleQuitQuest}
+              label={t('quest.cta.join')}
+              clickCallback={handleJoinQuest}
             />
           )}
-          <ButtonLink label="Go Home" target={createCompositeUrl(i18n, '/')} />
-          <ButtonLink
-            label={t('create-new-quest.cta.new')}
-            target={createCompositeUrl(i18n, '/create-new')}
+        {!isCurrentUserCreator && isCurrentUserQuestRegistered && (
+          <Button
+            type="button"
+            label={t('quest.cta.quit')}
+            clickCallback={handleQuitQuest}
           />
-        </div>
+        )}
+        <ButtonLink label="Go Home" target={createCompositeUrl(i18n, '/')} />
+        <ButtonLink
+          label={t('create-new-quest.cta.new')}
+          target={createCompositeUrl(i18n, '/create-new')}
+        />
       </div>
-      <ImageLayout />
-    </TwoColumnsLayout>
+    </div>
   );
 }
 

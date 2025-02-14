@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { LinksFunction } from '@remix-run/node';
-import TwoColumnsLayout from '~/components/templates/TwoColumnsLayout';
-import ImageLayout from '~/components/templates/ImageLayout';
 import QuestForm from '~/components/forms/QuestForm';
 
 export const links: LinksFunction = () => {
@@ -15,12 +13,9 @@ export default function Index() {
   const { t } = useTranslation();
 
   return (
-    <TwoColumnsLayout>
-      <div className="create-new-form">
-        <h1>{t('create-new-quest.title')}</h1>
-        <QuestForm />
-      </div>
-      <ImageLayout />
-    </TwoColumnsLayout>
+    <div className="create-new-form">
+      <h1>{t('create-new-quest.title')}</h1>
+      <QuestForm />
+    </div>
   );
 }
