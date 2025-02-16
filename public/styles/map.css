@@ -22,3 +22,28 @@
   fill: var(--c-green-200);
   stroke: none;
 }
+
+.creator {
+  background-color: red;
+}
+
+.position {
+  background-color: blue;
+}
+
+.pin__creator {
+  fill: red;
+}
+
+.pin__position {
+  fill: blue;
+}
+
+.quest {
+  background-color: var(--c-green-300);
+  color: black;
+}
+
+.pin__quest {
+  fill: var(--c-green-300);
+}

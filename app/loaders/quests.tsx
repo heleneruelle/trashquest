@@ -1,6 +1,4 @@
 import { db, admin } from '~/utils/auth/firebaseAdminAuth';
-import { getCookie } from '~/utils/cookies';
-import { verifyIdToken } from '~/utils/auth/firebaseAdminAuth';
 import currentUserLoader from './currentUser';
 import filterQuest from '~/utils/quests/filterQuest';
 import findClosestQuests from '~/utils/quests/findClosestQuest';
@@ -35,7 +33,6 @@ async function questsLoader({ request }: { request: Request }) {
     let query = db
       .collection('quests')
       .where('properties.startDateTimeTimestamp', '>', currentTimestamp)
-      .where('properties.creatorId', '!=', user.id)
       .orderBy('properties.startDateTimeTimestamp');
 
     const querySnapshot = await query.get();
@@ -45,9 +42,9 @@ async function questsLoader({ request }: { request: Request }) {
       rawData.push({ id: doc.id, ...doc.data() });
     });
 
-    const quests = rawData.filter((q) =>
-      filterQuest(q, environment, equipment, accessibility)
-    );
+    const quests = rawData
+      .filter((q) => filterQuest(q, environment, equipment, accessibility))
+      .filter((q) => q.properties.creatorId !== user.id);
 
     const closestQuest = quests?.length
       ? await findClosestQuests(
@@ -66,6 +63,9 @@ async function questsLoader({ request }: { request: Request }) {
           ? quests.filter((q) => q.id !== closestQuest.id)
           : [],
       rawData,
+      creatorQuests: rawData?.length
+        ? rawData.filter((q) => q.properties.creatorId === user.id)
+        : [],
       closestQuest,
       user,
     });
