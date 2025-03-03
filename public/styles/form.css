@@ -59,6 +59,10 @@
   box-sizing: border-box;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 .button-primary {
   background-color: black;
 }
