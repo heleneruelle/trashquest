@@ -108,6 +108,19 @@
     "cta": {
       "join": "Join this quest",
       "quit": "Quit this quest"
+    },
+    "dateTime": {
+      "start": "This quest starts on {{date}} at {{time, HH:mm}}",
+      "end": "This quest ends on {{date}} at {{time, HH:mm}}"
+    },
+    "summary": {
+      "equipment": "Extra equipment needed",
+      "no-equipment": "No equipment needed",
+      "participants": "{{current}} / {{expected}} participants",
+      "urban": "City quest",
+      "nature": "Wilderness quest",
+      "non-accessible": "Hard-to-Access Quest",
+      "accessible": "Accessible Quest"
     }
   },
   "my-quests": {
