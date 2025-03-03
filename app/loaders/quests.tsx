@@ -2,6 +2,7 @@ import { db, admin } from '~/utils/auth/firebaseAdminAuth';
 import currentUserLoader from './currentUser';
 import filterQuest from '~/utils/quests/filterQuest';
 import findClosestQuests from '~/utils/quests/findClosestQuest';
+import questToVm from '~/utils/tovm/questToVm';
 
 async function questsLoader({ request }: { request: Request }) {
   const url = new URL(request.url);
@@ -42,9 +43,12 @@ async function questsLoader({ request }: { request: Request }) {
       rawData.push({ id: doc.id, ...doc.data() });
     });
 
+    // console.log('rawData', rawData)
+
     const quests = rawData
       .filter((q) => filterQuest(q, environment, equipment, accessibility))
-      .filter((q) => q.properties.creatorId !== user.id);
+      .filter((q) => q.properties.creatorId !== user.id)
+      .map((q) => questToVm(q, user));
 
     const closestQuest = quests?.length
       ? await findClosestQuests(

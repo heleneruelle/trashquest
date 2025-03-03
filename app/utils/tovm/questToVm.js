@@ -14,6 +14,8 @@ function questToVm(quest, creator) {
   const isQuestFull =
     quest.properties.participants.length ===
     quest.properties.expectedParticipants;
+  const isCurrentUserRegisteredForQuest =
+    quest.properties.participants.includes(creator.id);
   const data = {
     ...quest,
     properties: {
@@ -22,6 +24,7 @@ function questToVm(quest, creator) {
       endDateTime,
       duration,
       isQuestFull,
+      isCurrentUserRegisteredForQuest,
     },
     creator,
   };

@@ -18,8 +18,10 @@ export default interface QuestType {
     creatorId: string;
     startDate: string;
     startTime: string;
+    startDateTime: string;
     endDate: string;
     endTime: string;
+    isCurrentUserRegisteredForQuest: boolean;
   };
   createdAt: {
     _nanoseconds: number;

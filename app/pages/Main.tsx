@@ -27,19 +27,19 @@ function Main() {
   const { username } = user || {};
 
   return (
-    <div className="welcome__container--wip">
+    <div className="quests-home-container">
       <h1>{t('welcome', { name: username })}</h1>
       <QuestsFilters />
       {hasNoQuest ? <p>{t('quests.no-quest')}</p> : null}
       {hasNoQuestForFilters ? <p>{t('quests.no-quest-filters')}</p> : null}
       {closestQuest ? (
-        <div style={{ backgroundColor: 'yellowgreen' }}>
+        <div className="quest-list-container">
           <h4>{t('quests.closest')}</h4>
           <QuestListItem quest={closestQuest} />
         </div>
       ) : null}
       {quests?.length ? (
-        <div>
+        <div className="quest-list-container">
           <h4>{t('quests.available')}</h4>
           <ul>
             {quests.map((quest) => (

@@ -108,6 +108,19 @@
     "cta": {
       "join": "Participez à cette quête",
       "quit": "Quitter cette quête"
+    },
+    "dateTime": {
+      "start": "Cette quête démarre le {{date}} à {{time, HH:mm}}",
+      "end": "Cette quête prenf fin le {{date}} à {{time, HH:mm}}"
+    },
+    "summary": {
+      "equipment": "équipement supplémentaire requis",
+      "no-equipment": "aucun équipement nécessaire",
+      "participants": "{{current}} / {{expected}} participants",
+      "urban": "Quête urbaine",
+      "nature": "Quête en pleine nature",
+      "non-accessible": "Quête difficilement accessible",
+      "accessible": "Quête accessible"
     }
   },
   "my-quests": {
