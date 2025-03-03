@@ -12,6 +12,9 @@ if (!isInitialized) {
     fallbackLng: DEFAULT_LANGUAGE,
     supportedLngs: SUPPORTED_LANGUAGES,
     defaultNS: 'translation',
+    interpolation: {
+      escapeValue: false,
+    },
   });
   isInitialized = true;
 }
