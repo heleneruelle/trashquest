@@ -115,3 +115,30 @@ body {
 .column-layout__right {
   flex-grow: 1;
 }
+
+.pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 50px;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pill-tag__positive {
+  background-color: var(--c-green-200);
+  color: white;
+}
+
+.pill-tag svg {
+  height: 16px;
+  width: 16px;
+}
+
+.pill-label {
+  display: inline-block;
+}
