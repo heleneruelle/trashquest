@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { useLoaderData } from '@remix-run/react';
-import ButtonLink from '~/components/inputs/ButtonLink';
+import { useLoaderData, Link } from '@remix-run/react';
+import QuestButton from '~/components/inputs/QuestButton';
 import QuestListItem from '~/components/display/QuestListItem';
 import QuestsFilters from '~/components/forms/QuestsFilters';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
@@ -50,10 +50,9 @@ function Main() {
           </ul>
         </div>
       ) : null}
-      <ButtonLink
-        label={t('create-new-quest.cta.new')}
-        target={createCompositeUrl(i18n, '/create-new')}
-      />
+      <Link to={createCompositeUrl(i18n, '/create-new')}>
+        <QuestButton type="new" />
+      </Link>
     </div>
   );
 }

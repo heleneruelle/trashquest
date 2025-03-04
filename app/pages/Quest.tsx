@@ -1,10 +1,11 @@
-import { useLoaderData, useParams, useFetcher } from '@remix-run/react';
+import { useLoaderData, useParams, useFetcher, Link } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import Field from '~/components/display/Field';
 import Button from '~/components/inputs/Button';
 import FieldWithTag from '~/components/display/FieldWithTag';
 import ButtonLink from '~/components/inputs/ButtonLink';
+import QuestButton from '~/components/inputs/QuestButton';
 import Toast from '~/components/notifications/Toast';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
@@ -148,10 +149,9 @@ function Quest() {
           />
         )}
         <ButtonLink label="Go Home" target={createCompositeUrl(i18n, '/')} />
-        <ButtonLink
-          label={t('create-new-quest.cta.new')}
-          target={createCompositeUrl(i18n, '/create-new')}
-        />
+        <Link to={createCompositeUrl(i18n, '/create-new')}>
+          <QuestButton type="new" />
+        </Link>
       </div>
     </div>
   );

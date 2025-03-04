@@ -76,3 +76,39 @@
   align-items: center;
   gap: 6px;
 }
+
+.quest-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  height: 62px;
+}
+
+.quest-button__icon {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 6px solid white;
+  background-color: var(--c-green-200);
+  color: white;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+}
+
+.quest-button__label {
+  height: 62px;
+  display: flex;
+  align-items: center;
+  background-color: aquamarine;
+  position: absolute;
+  left: 40px;
+  padding: 0px 15px 0px 35px;
+  background: rgba(29, 101, 45, 0.1);
+  color: var(--c-green-200);
+  border-radius: 3px;
+  font-weight: bold;
+}
