@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react';
+import { Link, useFetcher } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import Button from '../inputs/Button';
@@ -7,6 +7,8 @@ import EquipmentPillTag from './EquipmentPillTag';
 import EnvironmentPillTag from './EnvironmentPillTag copy';
 import AccessibilityPillTag from './AccessibilityPillTag';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
+import asyncQuitQuest from '~/utils/quests/asyncQuitQuest';
 import i18n from '~/i18n';
 import QuestType from '~/types/quest';
 
@@ -18,6 +20,7 @@ function QuestListItem({ quest }: QuestListItemType) {
   const { id, properties, location } = quest;
 
   const { t } = useTranslation();
+  const questFetcher = useFetcher();
 
   const date = new Date(properties.startDateTime);
   const formattedDate = new Intl.DateTimeFormat(i18n.language, {
@@ -32,6 +35,17 @@ function QuestListItem({ quest }: QuestListItemType) {
   }).format(date);
 
   const { equipment, environment, accessibility } = properties;
+
+  async function handleQuestCallback(e: Event) {
+    e.preventDefault();
+    const data = properties.isCurrentUserRegisteredForQuest
+      ? await asyncQuitQuest({ id })
+      : await asyncJoinQuest({ id });
+    // TODO : error handling on data
+    if (data.success) {
+      questFetcher.load('/api/quests');
+    }
+  }
 
   return (
     <Link
@@ -67,7 +81,6 @@ function QuestListItem({ quest }: QuestListItemType) {
       </div>
       <Button
         type="button"
-        disabled={true}
         id={properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'}
         value={properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'}
         style={
@@ -78,6 +91,7 @@ function QuestListItem({ quest }: QuestListItemType) {
             properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'
           }`
         )}
+        clickCallback={handleQuestCallback}
       />
     </Link>
   );
