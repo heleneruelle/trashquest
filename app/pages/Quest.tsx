@@ -7,6 +7,8 @@ import FieldWithTag from '~/components/display/FieldWithTag';
 import ButtonLink from '~/components/inputs/ButtonLink';
 import Toast from '~/components/notifications/Toast';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
+import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
+import asyncQuitQuest from '~/utils/quests/asyncQuitQuest';
 import i18n from '~/i18n';
 import useAuth from '~/hooks/useAuth';
 
@@ -64,17 +66,7 @@ function Quest() {
   async function handleJoinQuest(e: Event) {
     e.preventDefault();
     try {
-      const response = await fetch('/api/join-quest', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id,
-        }),
-      });
-
-      const data = await response.json();
+      const data = await asyncJoinQuest({ id });
       questFetcher.load('/api/quest');
       if (data.error) {
         setError(true);
@@ -88,17 +80,7 @@ function Quest() {
   async function handleQuitQuest(e: Event) {
     e.preventDefault();
     try {
-      const response = await fetch('/api/quit-quest', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id,
-        }),
-      });
-
-      const data = await response.json();
+      const data = await asyncQuitQuest({ id });
       questFetcher.load('/api/quest');
 
       if (data.error) {
