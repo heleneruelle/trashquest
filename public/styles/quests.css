@@ -114,6 +114,7 @@
 }
 
 .quest-form__button {
+  cursor: pointer;
   width: 70%;
   padding: 0;
   border: unset;
