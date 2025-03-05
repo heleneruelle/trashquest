@@ -11,6 +11,7 @@ import Counter from '../inputs/Counter';
 import SelectWithTags from '../inputs/SelectWithTags';
 import TextArea from '../inputs/TextArea';
 import Toast from '../notifications/Toast';
+import QuestButton from '../inputs/QuestButton';
 import dateToYYYYMMDD from '~/utils/datetime/dateToYYYYMMDD';
 import timeToHHMM from '~/utils/datetime/timeToHHMM';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
@@ -132,7 +133,9 @@ function QuestForm() {
         label={t('create-new-quest.input.accessibility')}
         hint={t('create-new-quest.hint.accessibility')}
       />
-      <Button type="submit" label={t('create-new-quest.cta.start')} />
+      <button type="submit" className="quest-form__button">
+        <QuestButton type="start" />
+      </button>
     </Form>
   );
 }
