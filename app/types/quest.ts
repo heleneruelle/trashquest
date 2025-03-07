@@ -31,6 +31,11 @@ export default interface QuestType {
         [lang: string]: { date: string; time: string };
       };
     };
+    duration: {
+      days: number;
+      hours: number;
+      minutes: number;
+    };
   };
   creator: UserType;
   createdAt: {
