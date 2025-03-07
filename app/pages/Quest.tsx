@@ -22,6 +22,29 @@ interface LoaderData {
   quest: QuestType;
 }
 
+function getHRDuration(duration) {
+  const { days, hours, minutes } = duration;
+  const parts = [];
+
+  if (days > 0) {
+    parts.push(i18n.t(`days_${days === 1 ? 'one' : 'other'}`, { count: days }));
+  }
+
+  if (hours > 0) {
+    parts.push(
+      i18n.t(`hours_${hours === 1 ? 'one' : 'other'}`, { count: hours })
+    );
+  }
+
+  if (minutes > 0) {
+    parts.push(
+      i18n.t(`minutes_${minutes === 1 ? 'one' : 'other'}`, { count: minutes })
+    );
+  }
+
+  return parts.join(', ');
+}
+
 function Quest() {
   const data = useLoaderData<LoaderData>();
   const [error, setError] = useState(false);
@@ -38,8 +61,12 @@ function Quest() {
   const { quest } = data || {};
   const { properties, creator } = quest || {};
 
-  const { isCurrentUserRegisteredForQuest, isCurrentUserCreator, isQuestFull } =
-    properties;
+  const {
+    isCurrentUserRegisteredForQuest,
+    isCurrentUserCreator,
+    isQuestFull,
+    formattedDateTime,
+  } = properties;
 
   async function handleJoinQuest(e: Event) {
     e.preventDefault();
@@ -87,15 +114,29 @@ function Quest() {
       )}
       <h1>{properties.name}</h1>
       <p>{properties.description}</p>
-      <FieldWithChild fieldName={t('quest.location')}>
+      <FieldWithChild fieldName={t('quest.location')} id="location">
         <QuestLocation quest={quest} />
       </FieldWithChild>
-      <Field fieldName={t('quest.organiser')} fieldValue={creator.username} />
       <Field
-        fieldName={t('quest.duration')}
-        fieldValue={JSON.stringify(properties.duration)}
+        id="organiser"
+        fieldName={t('quest.organiser')}
+        fieldValue={creator.username}
       />
       <Field
+        fieldName={t('quest.start')}
+        fieldValue={t('quest.dateTime.start', {
+          date: formattedDateTime.start[i18n.language].date,
+          time: formattedDateTime.start[i18n.language].time,
+        })}
+        id="start"
+      />
+      <Field
+        fieldName={t('quest.duration')}
+        fieldValue={getHRDuration(properties.duration)}
+        id="duration"
+      />
+      <Field
+        id="participants"
         fieldName={t('quest.participants')}
         fieldValue={`${properties.participants.length} / ${properties.expectedParticipants}`}
       />

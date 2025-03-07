@@ -6,6 +6,15 @@
   "username": "Nom d'utilisateur",
   "location": "Localisation",
   "country": "Pays",
+  "day_zero": "",
+  "days_one": "1 jour",
+  "days_other": "{{count}} jours",
+  "hours_zero": "",
+  "hours_one": "1 heure",
+  "hours_other": "{{count}} heures",
+  "minutes_zero": "",
+  "minutes_one": "1 minute",
+  "minutes_other": "{{count}} minutes",
   "en": "EN",
   "fr": "FR",
   "countries": {
@@ -91,12 +100,13 @@
   },
   "quest": {
     "location": "Emplacement",
-    "organiser": "Organisateur.rice",
+    "organiser": "Maître de la quête",
     "duration": "Durée",
     "participants": "Participants",
     "environment": "Type d'environnement",
     "equipment": "Équipement nécessaire",
     "accessibility": "Accessibilité",
+    "start": "Date de début : ",
     "filter": {
       "cta": "Filtrer les quêtes"
     },
@@ -120,7 +130,8 @@
       "urban": "Quête urbaine",
       "nature": "Quête en pleine nature",
       "non-accessible": "Quête difficilement accessible",
-      "accessible": "Quête accessible"
+      "accessible": "Quête accessible",
+      "unkown-accessibility": "Aucune information sur l'accessibilité n'a été fournie par le créateur de la quête."
     }
   },
   "my-quests": {
