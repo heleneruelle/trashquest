@@ -12,7 +12,9 @@ ul {
   margin: 24px 12px;
 }
 
-.quests-container h1 {
+.quests-container h1,
+.quests-container h4,
+.quests-container p {
   margin: 0;
 }
 
@@ -28,16 +30,13 @@ ul {
   background-color: var(--c-green-200);
   color: white;
   font-weight: bold;
+  border-radius: 3px;
 }
 
 .quest-list-container {
   display: flex;
   flex-direction: column;
   gap: 18px;
-}
-
-.quest-list-container h4 {
-  margin: 0;
 }
 
 .quest-list-item {
@@ -56,14 +55,6 @@ ul {
   width: calc(100% - 24px);
 }
 
-.quest-list-item h4 {
-  margin: 0;
-}
-
-.quest-list-item p {
-  margin: 0;
-}
-
 .quest-list-item__title {
   display: flex;
   align-items: center;
@@ -71,7 +62,7 @@ ul {
   gap: 6px;
 }
 
-.quest-list-item__location {
+.quest-location {
   display: flex;
   align-items: center;
   gap: 6px;
