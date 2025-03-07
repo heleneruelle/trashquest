@@ -35,13 +35,11 @@ function MapComp() {
         latitude: quest.location.coordinates._latitude,
         zoom: 9,
       });
-    } else if (questsAsParticipant?.length || myQuests?.length) {
-      const allQuestsLocation = [...questsAsParticipant, ...myQuests].map(
-        (q) => [
-          q.location.coordinates._longitude,
-          q.location.coordinates._latitude,
-        ]
-      );
+    } else if (otherQuests?.length || userQuests?.length) {
+      const allQuestsLocation = [...otherQuests, ...userQuests].map((q) => [
+        q.location.coordinates._longitude,
+        q.location.coordinates._latitude,
+      ]);
       const bbox = getBboxFromPoints(allQuestsLocation);
       const { bboxCenterLon, bboxCenterLat } = findCenterFromBbox(bbox);
       setViewState({
@@ -56,7 +54,7 @@ function MapComp() {
         zoom: 5,
       }));
     }
-  }, [quest, questsAsParticipant, myQuests, user?.location?.coordinates]);
+  }, [quest, otherQuests, userQuests, user?.location?.coordinates]);
 
   // Fonction pour rendre un Marker
   const renderMarker = (longitude, latitude, label, className) => (
