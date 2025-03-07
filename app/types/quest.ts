@@ -26,6 +26,11 @@ export default interface QuestType {
     isCurrentUserRegisteredForQuest: boolean;
     isCurrentUserCreator: boolean;
     isQuestFull: boolean;
+    formattedDateTime: {
+      start: {
+        [lang: string]: { date: string; time: string };
+      };
+    };
   };
   creator: UserType;
   createdAt: {
