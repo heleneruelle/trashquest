@@ -1,6 +1,6 @@
 import { LinksFunction } from '@remix-run/node';
 import MyQuests from '~/pages/MyQuests';
-import myQuestsLoader from '~/loaders/myQuest';
+import myQuestsLoader from '../loaders/myQuest';
 
 export const links: LinksFunction = () => {
   return [
