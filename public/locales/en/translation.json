@@ -104,7 +104,7 @@
       "title": "Sorry there seem to be a problem, the quest you are looking for no longer exists.",
       "join": "Sorry, it seems your request to join this quest has failed."
     },
-    "joined": "Congratulations! You're registered for this quest ⚔ !",
+    "joined": "Congratulations! You're registered for this quest !",
     "cta": {
       "join": "Join this quest",
       "quit": "Quit this quest"
