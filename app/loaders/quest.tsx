@@ -1,13 +1,17 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { db } from '~/utils/auth/firebaseAdminAuth';
+import currentUserLoader from './currentUser';
 import questToVm from '~/utils/tovm/questToVm';
 
-async function questLoader({ params }: LoaderFunctionArgs) {
+async function questLoader({ request, params }: LoaderFunctionArgs) {
   try {
     const { id } = params;
     if (!id) {
       throw new Error('Id not found in URL');
     }
+    const userLoaderResp = await currentUserLoader({ request });
+    const { user } = await userLoaderResp.json();
+
     const docRef = db.collection('quests').doc(id);
     const data = await docRef
       .get()
@@ -41,7 +45,7 @@ async function questLoader({ params }: LoaderFunctionArgs) {
 
     return Response.json({
       success: true,
-      quest: questToVm(data, creatorData),
+      quest: questToVm(data, user, creatorData),
     });
   } catch (error) {
     return Response.json({ error }, { status: 500 });

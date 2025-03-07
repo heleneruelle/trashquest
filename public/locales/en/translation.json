@@ -6,6 +6,15 @@
   "username": "Username",
   "location": "Location",
   "country": "Country",
+  "day_zero": "",
+  "days_one": "1 day",
+  "days_other": "{{count}} days",
+  "hours_zero": "",
+  "hours_one": "1 hour",
+  "hours_other": "{{count}} hours",
+  "minutes_zero": "",
+  "minutes_one": "1 minute",
+  "minutes_other": "{{count}} minutes",
   "en": "EN",
   "fr": "FR",
   "countries": {
@@ -91,12 +100,13 @@
   },
   "quest": {
     "location": "Location",
-    "organiser": "Organizer",
+    "organiser": "Quest master",
     "duration": "Duration",
     "participants": "Participants",
     "environment": "Type of environment",
     "equipment": "Equipment required",
     "accessibility": "Accessibility",
+    "start": "Start date : ",
     "filter": {
       "cta": "Filter quests"
     },
@@ -104,7 +114,7 @@
       "title": "Sorry there seem to be a problem, the quest you are looking for no longer exists.",
       "join": "Sorry, it seems your request to join this quest has failed."
     },
-    "joined": "Congratulations! You're registered for this quest ⚔ !",
+    "joined": "Congratulations! You're registered for this quest !",
     "cta": {
       "join": "Join this quest",
       "quit": "Quit this quest"
@@ -120,7 +130,9 @@
       "urban": "City quest",
       "nature": "Wilderness quest",
       "non-accessible": "Hard-to-Access Quest",
-      "accessible": "Accessible Quest"
+      "accessible": "Accessible Quest",
+      "unkown-accessibility": "No accessibility information has been provided by the quest creator.",
+      "kids": "Kids friendly"
     }
   },
   "my-quests": {

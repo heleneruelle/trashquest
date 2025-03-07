@@ -1,10 +1,10 @@
-interface DisplayFieldProps {
+interface FieldWithChildProps {
   fieldName: string;
-  fieldValue: string;
+  children: React.ReactNode;
   id: string;
 }
 
-function Field({ id, fieldName, fieldValue }: DisplayFieldProps) {
+function FieldWithChild({ id, fieldName, children }: FieldWithChildProps) {
   return (
     <div
       role="region"
@@ -15,9 +15,9 @@ function Field({ id, fieldName, fieldValue }: DisplayFieldProps) {
       <p>
         <strong>{fieldName}</strong>
       </p>
-      <p>{fieldValue}</p>
+      {children}
     </div>
   );
 }
 
-export default Field;
+export default FieldWithChild;

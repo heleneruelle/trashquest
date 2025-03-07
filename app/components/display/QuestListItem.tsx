@@ -2,10 +2,10 @@ import { Link, useFetcher } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import Button from '../inputs/Button';
-import MapLocationIcon from '../icons/MapLocation';
 import EquipmentPillTag from './EquipmentPillTag';
 import EnvironmentPillTag from './EnvironmentPillTag copy';
 import AccessibilityPillTag from './AccessibilityPillTag';
+import QuestLocation from './quest/QuestLocation';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
 import asyncQuitQuest from '~/utils/quests/asyncQuitQuest';
@@ -18,24 +18,18 @@ interface QuestListItemType {
 }
 
 function QuestListItem({ quest }: QuestListItemType) {
-  const { id, properties, location } = quest;
+  const { id, properties } = quest;
 
   const { t } = useTranslation();
   const questFetcher = useFetcher();
 
-  const date = new Date(properties.startDateTime);
-  const formattedDate = new Intl.DateTimeFormat(i18n.language, {
-    year: 'numeric',
-    month: 'long',
-    day: '2-digit',
-  }).format(date);
-
-  const formattedTime = new Intl.DateTimeFormat(i18n.language, {
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(date);
-
-  const { equipment, environment, accessibility, isCreator } = properties;
+  const {
+    equipment,
+    environment,
+    accessibility,
+    isCurrentUserCreator,
+    formattedDateTime,
+  } = properties;
 
   async function handleQuestCallback(e: Event) {
     e.preventDefault();
@@ -70,14 +64,11 @@ function QuestListItem({ quest }: QuestListItemType) {
             <EnvironmentPillTag environment={environment} />
             <AccessibilityPillTag accessibility={accessibility} />
           </div>
-          <div className="quest-list-item__location">
-            <MapLocationIcon />
-            <p>{location.name}</p>
-          </div>
+          <QuestLocation quest={quest} />
           <strong>
             {t('quest.dateTime.start', {
-              date: formattedDate,
-              time: formattedTime,
+              date: formattedDateTime.start[i18n.language].date,
+              time: formattedDateTime.start[i18n.language].time,
             })}
           </strong>
           <p>
@@ -89,7 +80,7 @@ function QuestListItem({ quest }: QuestListItemType) {
         </div>
         <IoIosArrowDroprightCircle size={24} />
       </div>
-      {isCreator ? (
+      {isCurrentUserCreator ? (
         <Button
           id={quest.id}
           value={quest.id}

@@ -3,10 +3,13 @@ export default interface UserType {
   location: {
     name: string;
     id: string;
-    latitude: string;
-    longitude: string;
+    coordinates: {
+      _latitude: number;
+      _longitude: number;
+    };
   };
   email: string;
   uid: string;
   username: string;
+  id: string;
 }

@@ -1,3 +1,5 @@
+import UserType from './user';
+
 export default interface QuestType {
   id: string;
   location: {
@@ -22,8 +24,20 @@ export default interface QuestType {
     endDate: string;
     endTime: string;
     isCurrentUserRegisteredForQuest: boolean;
-    isCreator: boolean;
+    isCurrentUserCreator: boolean;
+    isQuestFull: boolean;
+    formattedDateTime: {
+      start: {
+        [lang: string]: { date: string; time: string };
+      };
+    };
+    duration: {
+      days: number;
+      hours: number;
+      minutes: number;
+    };
   };
+  creator: UserType;
   createdAt: {
     _nanoseconds: number;
     _seconds: number;
