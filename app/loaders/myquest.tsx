@@ -32,7 +32,7 @@ async function myQuestsLoader({ request }: LoaderFunctionArgs) {
 
     const questsAsParticipant = [];
     participantSnapshot.forEach((doc) => {
-      questsAsParticipant.push(doc.data());
+      questsAsParticipant.push({ id: doc.id, ...doc.data() });
     });
 
     return Response.json(
