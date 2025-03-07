@@ -1,44 +1,25 @@
 import { useLoaderData, useParams, useFetcher, Link } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import QuestType from '~/types/quest';
 import Field from '~/components/display/Field';
+import FieldWithChild from '~/components/display/FieldWithChild';
+import EquipmentPillTag from '~/components/display/EquipmentPillTag';
+import AccessibilityPillTag from '~/components/display/AccessibilityPillTag';
+import EnvironmentPillTag from '~/components/display/EnvironmentPillTag copy';
 import Button from '~/components/inputs/Button';
-import FieldWithTag from '~/components/display/FieldWithTag';
-import ButtonLink from '~/components/inputs/ButtonLink';
 import QuestButton from '~/components/inputs/QuestButton';
 import Toast from '~/components/notifications/Toast';
+import QuestLocation from '~/components/display/quest/QuestLocation';
+import { FaDragon } from 'react-icons/fa';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
 import asyncQuitQuest from '~/utils/quests/asyncQuitQuest';
 import i18n from '~/i18n';
-import useAuth from '~/hooks/useAuth';
 
 interface LoaderData {
   success: boolean;
-  quest: {
-    properties: {
-      name: string;
-      description: string;
-      participants: Array<string>;
-      expectedParticipants: string;
-      equipment: Array<string>;
-      environment: Array<string>;
-      accessibility: Array<string>;
-      duration: {
-        hours?: number;
-        days?: number;
-        minutes?: number;
-      };
-      isQuestFull: boolean;
-    };
-    location: {
-      name: string;
-    };
-    creator: {
-      username: string;
-      uid: string;
-    };
-  };
+  quest: QuestType;
 }
 
 function Quest() {
@@ -52,17 +33,13 @@ function Quest() {
   }
 
   const { id } = useParams();
-  const { user } = useAuth();
   const questFetcher = useFetcher();
 
   const { quest } = data || {};
-  const { properties, location, creator } = quest || {};
+  const { properties, creator } = quest || {};
 
-  const isCurrentUserCreator = user?.uid === creator.id;
-
-  const isCurrentUserQuestRegistered = properties.participants.includes(
-    user?.uid
-  );
+  const { isCurrentUserRegisteredForQuest, isCurrentUserCreator, isQuestFull } =
+    properties;
 
   async function handleJoinQuest(e: Event) {
     e.preventDefault();
@@ -94,7 +71,7 @@ function Quest() {
   }
 
   return (
-    <div>
+    <div className="quests-container">
       {error && (
         <Toast
           type="error"
@@ -102,14 +79,17 @@ function Quest() {
           callback={() => setError(false)}
         />
       )}
-      {isCurrentUserQuestRegistered && (
+      {isCurrentUserRegisteredForQuest && (
         <div className="quest-registered">
           <p>{t('quest.joined')}</p>
+          <FaDragon />
         </div>
       )}
       <h1>{properties.name}</h1>
       <p>{properties.description}</p>
-      <Field fieldName={t('quest.location')} fieldValue={location.name} />
+      <FieldWithChild fieldName={t('quest.location')}>
+        <QuestLocation quest={quest} />
+      </FieldWithChild>
       <Field fieldName={t('quest.organiser')} fieldValue={creator.username} />
       <Field
         fieldName={t('quest.duration')}
@@ -119,40 +99,34 @@ function Quest() {
         fieldName={t('quest.participants')}
         fieldValue={`${properties.participants.length} / ${properties.expectedParticipants}`}
       />
-      <FieldWithTag
-        fieldName={t('quest.equipment')}
-        fieldValues={properties.equipment}
-      />
-      <FieldWithTag
-        fieldName={t('quest.environment')}
-        fieldValues={properties.environment}
-      />
-      <FieldWithTag
-        fieldName={t('quest.accessibility')}
-        fieldValues={properties.accessibility}
-      />
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        {!isCurrentUserCreator &&
-          !properties.isQuestFull &&
-          !isCurrentUserQuestRegistered && (
-            <Button
-              type="button"
-              label={t('quest.cta.join')}
-              clickCallback={handleJoinQuest}
-            />
-          )}
-        {!isCurrentUserCreator && isCurrentUserQuestRegistered && (
+      <FieldWithChild fieldName={t('quest.equipment')} id="equipment">
+        <EquipmentPillTag equipment={properties.equipment} />
+      </FieldWithChild>
+      <FieldWithChild fieldName={t('quest.environment')} id="environment">
+        <EnvironmentPillTag environment={properties.environment} />
+      </FieldWithChild>
+      <FieldWithChild fieldName={t('quest.accessibility')} id="accessibility">
+        <AccessibilityPillTag accessibility={properties.accessibility} />
+      </FieldWithChild>
+      {!isCurrentUserCreator &&
+        !isQuestFull &&
+        !isCurrentUserRegisteredForQuest && (
           <Button
             type="button"
-            label={t('quest.cta.quit')}
-            clickCallback={handleQuitQuest}
+            label={t('quest.cta.join')}
+            clickCallback={handleJoinQuest}
           />
         )}
-        <ButtonLink label="Go Home" target={createCompositeUrl(i18n, '/')} />
-        <Link to={createCompositeUrl(i18n, '/create-new')}>
-          <QuestButton type="new" />
-        </Link>
-      </div>
+      {!isCurrentUserCreator && isCurrentUserRegisteredForQuest && (
+        <Button
+          type="button"
+          label={t('quest.cta.quit')}
+          clickCallback={handleQuitQuest}
+        />
+      )}
+      <Link to={createCompositeUrl(i18n, '/create-new')}>
+        <QuestButton type="new" />
+      </Link>
     </div>
   );
 }
