@@ -1,21 +1,21 @@
 interface DisplayFieldProps {
   fieldName: string;
   fieldValue: string;
+  id: string;
 }
 
-function Field({ fieldName, fieldValue }: DisplayFieldProps) {
+function Field({ id, fieldName, fieldValue }: DisplayFieldProps) {
   return (
     <div
       role="region"
-      aria-labelledby="display-field"
-      style={{ marginBottom: '10px' }}
+      aria-labelledby={`display-field-${id}`}
+      id={id}
+      className="display-field"
     >
-      <div id="display-field">
-        <p>
-          <strong>{fieldName}</strong>
-        </p>
-        <p>{fieldValue}</p>
-      </div>
+      <p>
+        <strong>{fieldName}</strong>
+      </p>
+      <p>{fieldValue}</p>
     </div>
   );
 }
