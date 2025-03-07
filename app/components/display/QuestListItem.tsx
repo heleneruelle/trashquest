@@ -2,10 +2,10 @@ import { Link, useFetcher } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import Button from '../inputs/Button';
-import MapLocationIcon from '../icons/MapLocation';
 import EquipmentPillTag from './EquipmentPillTag';
 import EnvironmentPillTag from './EnvironmentPillTag copy';
 import AccessibilityPillTag from './AccessibilityPillTag';
+import QuestLocation from './quest/QuestLocation';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
 import asyncQuitQuest from '~/utils/quests/asyncQuitQuest';
@@ -35,7 +35,8 @@ function QuestListItem({ quest }: QuestListItemType) {
     minute: '2-digit',
   }).format(date);
 
-  const { equipment, environment, accessibility, isCreator } = properties;
+  const { equipment, environment, accessibility, isCurrentUserCreator } =
+    properties;
 
   async function handleQuestCallback(e: Event) {
     e.preventDefault();
@@ -70,10 +71,7 @@ function QuestListItem({ quest }: QuestListItemType) {
             <EnvironmentPillTag environment={environment} />
             <AccessibilityPillTag accessibility={accessibility} />
           </div>
-          <div className="quest-list-item__location">
-            <MapLocationIcon />
-            <p>{location.name}</p>
-          </div>
+          <QuestLocation quest={quest} />
           <strong>
             {t('quest.dateTime.start', {
               date: formattedDate,
@@ -89,7 +87,7 @@ function QuestListItem({ quest }: QuestListItemType) {
         </div>
         <IoIosArrowDroprightCircle size={24} />
       </div>
-      {isCreator ? (
+      {isCurrentUserCreator ? (
         <Button
           id={quest.id}
           value={quest.id}
