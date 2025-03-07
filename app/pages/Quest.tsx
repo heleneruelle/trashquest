@@ -106,7 +106,7 @@ function Quest() {
           callback={() => setError(false)}
         />
       )}
-      {isCurrentUserRegisteredForQuest && (
+      {isCurrentUserRegisteredForQuest && !isCurrentUserCreator && (
         <div className="quest-registered">
           <p>{t('quest.joined')}</p>
           <FaDragon />
