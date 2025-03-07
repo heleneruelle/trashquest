@@ -146,9 +146,11 @@ function Quest() {
       <FieldWithChild fieldName={t('quest.environment')} id="environment">
         <EnvironmentPillTag environment={properties.environment} />
       </FieldWithChild>
-      <FieldWithChild fieldName={t('quest.accessibility')} id="accessibility">
-        <AccessibilityPillTag accessibility={properties.accessibility} />
-      </FieldWithChild>
+      {properties.accessibility?.length ? (
+        <FieldWithChild fieldName={t('quest.accessibility')} id="accessibility">
+          <AccessibilityPillTag accessibility={properties.accessibility} />
+        </FieldWithChild>
+      ) : null}
       {!isCurrentUserCreator &&
         !isQuestFull &&
         !isCurrentUserRegisteredForQuest && (
