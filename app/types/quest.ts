@@ -22,6 +22,7 @@ export default interface QuestType {
     endDate: string;
     endTime: string;
     isCurrentUserRegisteredForQuest: boolean;
+    isCreator: boolean;
   };
   createdAt: {
     _nanoseconds: number;
