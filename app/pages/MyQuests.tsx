@@ -34,7 +34,7 @@ function MyQuests() {
   }
 
   return (
-    <div>
+    <div className="quests-container">
       <h1>{t('my-quests.title')}</h1>
       <h3>{t('my-quests.organiser.title')}</h3>
       {quests?.length ? (
