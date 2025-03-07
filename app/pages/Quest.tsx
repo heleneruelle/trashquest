@@ -26,17 +26,17 @@ function getHRDuration(duration) {
   const { days, hours, minutes } = duration;
   const parts = [];
 
-  if (days > 0) {
+  if (days) {
     parts.push(i18n.t(`days_${days === 1 ? 'one' : 'other'}`, { count: days }));
   }
 
-  if (hours > 0) {
+  if (hours) {
     parts.push(
       i18n.t(`hours_${hours === 1 ? 'one' : 'other'}`, { count: hours })
     );
   }
 
-  if (minutes > 0) {
+  if (minutes) {
     parts.push(
       i18n.t(`minutes_${minutes === 1 ? 'one' : 'other'}`, { count: minutes })
     );
