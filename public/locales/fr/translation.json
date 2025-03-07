@@ -124,14 +124,15 @@
       "end": "Cette quête prenf fin le {{date}} à {{time, HH:mm}}"
     },
     "summary": {
-      "equipment": "équipement supplémentaire requis",
-      "no-equipment": "aucun équipement nécessaire",
+      "equipment": "Equipement supplémentaire requis",
+      "no-equipment": "Aucun équipement nécessaire",
       "participants": "{{current}} / {{expected}} participants",
       "urban": "Quête urbaine",
       "nature": "Quête en pleine nature",
       "non-accessible": "Quête difficilement accessible",
       "accessible": "Quête accessible",
-      "unkown-accessibility": "Aucune information sur l'accessibilité n'a été fournie par le créateur de la quête."
+      "unkown-accessibility": "Aucune information sur l'accessibilité n'a été fournie par le créateur de la quête.",
+      "kids": "Adaptée aux enfants"
     }
   },
   "my-quests": {

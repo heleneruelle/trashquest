@@ -131,7 +131,8 @@
       "nature": "Wilderness quest",
       "non-accessible": "Hard-to-Access Quest",
       "accessible": "Accessible Quest",
-      "unkown-accessibility": "No accessibility information has been provided by the quest creator."
+      "unkown-accessibility": "No accessibility information has been provided by the quest creator.",
+      "kids": "Kids friendly"
     }
   },
   "my-quests": {

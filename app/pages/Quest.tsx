@@ -138,7 +138,10 @@ function Quest() {
       <Field
         id="participants"
         fieldName={t('quest.participants')}
-        fieldValue={`${properties.participants.length} / ${properties.expectedParticipants}`}
+        fieldValue={t('quest.summary.participants', {
+          current: properties.participants.length,
+          expected: properties.expectedParticipants,
+        })}
       />
       <FieldWithChild fieldName={t('quest.equipment')} id="equipment">
         <EquipmentPillTag equipment={properties.equipment} />
