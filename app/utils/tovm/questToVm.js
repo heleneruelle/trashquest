@@ -1,5 +1,6 @@
 import dateTimeToISODatetime from '../datetime/dateTimeToISODatetime';
 import getDurationFromDateTimes from '../datetime/getDurationFromDateTimes';
+import { SUPPORTED_LANGUAGES } from '../../config';
 
 function questToVm(quest, currentUser, creator) {
   const startDateTime = dateTimeToISODatetime({
@@ -11,7 +12,23 @@ function questToVm(quest, currentUser, creator) {
     time: quest.properties.endTime,
   });
   const duration = getDurationFromDateTimes({ startDateTime, endDateTime });
-  console.log('duration', duration);
+  const date = new Date(startDateTime);
+  const formattedStart = Object.fromEntries(
+    SUPPORTED_LANGUAGES.map((lang) => [
+      lang,
+      {
+        date: new Intl.DateTimeFormat(lang, {
+          year: 'numeric',
+          month: 'long',
+          day: '2-digit',
+        }).format(date),
+        time: new Intl.DateTimeFormat(lang, {
+          hour: '2-digit',
+          minute: '2-digit',
+        }).format(date),
+      },
+    ])
+  );
   const isQuestFull =
     quest.properties.participants.length ===
     quest.properties.expectedParticipants;
@@ -28,6 +45,9 @@ function questToVm(quest, currentUser, creator) {
       isQuestFull,
       isCurrentUserRegisteredForQuest,
       isCurrentUserCreator,
+      formattedDateTime: {
+        start: formattedStart,
+      },
     },
     ...(isCurrentUserCreator ? { creator: currentUser } : { creator }),
   };
