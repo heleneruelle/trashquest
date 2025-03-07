@@ -27,7 +27,7 @@ function Main() {
   const { username } = user || {};
 
   return (
-    <div className="quests-home-container">
+    <div className="quests-container">
       <h1>{t('welcome', { name: username })}</h1>
       <QuestsFilters />
       {hasNoQuest ? <p>{t('quests.no-quest')}</p> : null}

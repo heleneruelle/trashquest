@@ -9,6 +9,7 @@ import AccessibilityPillTag from './AccessibilityPillTag';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
 import asyncQuitQuest from '~/utils/quests/asyncQuitQuest';
+import asyncCancelQuest from '~/utils/quests/asyncCancelQuest';
 import i18n from '~/i18n';
 import QuestType from '~/types/quest';
 
@@ -34,7 +35,7 @@ function QuestListItem({ quest }: QuestListItemType) {
     minute: '2-digit',
   }).format(date);
 
-  const { equipment, environment, accessibility } = properties;
+  const { equipment, environment, accessibility, isCreator } = properties;
 
   async function handleQuestCallback(e: Event) {
     e.preventDefault();
@@ -43,6 +44,15 @@ function QuestListItem({ quest }: QuestListItemType) {
       : await asyncJoinQuest({ id });
     // TODO : error handling on data
     if (data.success) {
+      questFetcher.load('/api/quests');
+    }
+  }
+
+  async function handleCancelQuest(e: Event) {
+    e.preventDefault();
+    const cancelData = await asyncCancelQuest({ id: e.target?.value });
+    // TODO : error handling on data
+    if (cancelData.success) {
       questFetcher.load('/api/quests');
     }
   }
@@ -79,20 +89,32 @@ function QuestListItem({ quest }: QuestListItemType) {
         </div>
         <IoIosArrowDroprightCircle size={24} />
       </div>
-      <Button
-        type="button"
-        id={properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'}
-        value={properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'}
-        style={
-          properties.isCurrentUserRegisteredForQuest ? 'tertiary' : 'secondary'
-        }
-        label={t(
-          `quest.cta.${
-            properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'
-          }`
-        )}
-        clickCallback={handleQuestCallback}
-      />
+      {isCreator ? (
+        <Button
+          id={quest.id}
+          value={quest.id}
+          type="button"
+          clickCallback={handleCancelQuest}
+          label="Cancel quest"
+        />
+      ) : (
+        <Button
+          type="button"
+          id={properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'}
+          value={properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'}
+          style={
+            properties.isCurrentUserRegisteredForQuest
+              ? 'tertiary'
+              : 'secondary'
+          }
+          label={t(
+            `quest.cta.${
+              properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'
+            }`
+          )}
+          clickCallback={handleQuestCallback}
+        />
+      )}
     </Link>
   );
 }

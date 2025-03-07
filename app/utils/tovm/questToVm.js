@@ -1,7 +1,7 @@
 import dateTimeToISODatetime from '../datetime/dateTimeToISODatetime';
 import getDurationFromDateTimes from '../datetime/getDurationFromDateTimes';
 
-function questToVm(quest, creator) {
+function questToVm(quest, currentUser) {
   const startDateTime = dateTimeToISODatetime({
     date: quest.properties.startDate,
     time: quest.properties.startTime,
@@ -15,7 +15,8 @@ function questToVm(quest, creator) {
     quest.properties.participants.length ===
     quest.properties.expectedParticipants;
   const isCurrentUserRegisteredForQuest =
-    quest.properties.participants.includes(creator.id);
+    quest.properties.participants.includes(currentUser.id);
+  const isCreator = quest.properties.creatorId === currentUser.id;
   const data = {
     ...quest,
     properties: {
@@ -25,8 +26,9 @@ function questToVm(quest, creator) {
       duration,
       isQuestFull,
       isCurrentUserRegisteredForQuest,
+      isCreator,
     },
-    creator,
+    ...(isCreator ? { creator: currentUser } : {}),
   };
   return data;
 }

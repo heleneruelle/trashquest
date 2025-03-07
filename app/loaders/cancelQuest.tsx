@@ -3,8 +3,7 @@ import { db } from '~/utils/auth/firebaseAdminAuth';
 
 async function cancelQuestLoader({ request }: LoaderFunctionArgs) {
   try {
-    const formData = new URLSearchParams(await request.text());
-    const id = formData.get('id');
+    const { id } = await request.json();
     if (!id) {
       throw new Error('Id not found in URL');
     }
