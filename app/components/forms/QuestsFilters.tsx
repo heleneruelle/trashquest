@@ -15,19 +15,19 @@ function QuestsFilters() {
     <form method="get" className="quests-filters">
       <div className="quests-filters__container">
         <MultiSelectInput
-          placeholder="Où voulez-vous partir en quête ?"
+          placeholder={t('quest.placeholder.environment')}
           label={t('quest.environment')}
           defaultOptions={environmentOptions}
           id="environment"
         />
         <MultiSelectInput
-          placeholder="Filtrez selon l'équipement nécéssaire à la quête"
+          placeholder={t('quest.placeholder.equipment')}
           label={t('quest.equipment')}
           defaultOptions={equipmentOptions}
           id="equipment"
         />
         <MultiSelectInput
-          placeholder="Filtrez selon vos critères d'accessibilité"
+          placeholder={t('quest.placeholder.accessibility')}
           label={t('quest.accessibility')}
           defaultOptions={accessibilityOptions}
           id="accessibility"
