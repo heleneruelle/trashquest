@@ -6,7 +6,6 @@ import {
   equipmentOptions,
   accessibilityOptions,
 } from '~/config';
-import 'react-select/dist/react-select.css';
 
 function QuestsFilters() {
   const { t } = useTranslation();
