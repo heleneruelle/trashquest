@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import Button from '../inputs/Button';
 import { FaSliders } from 'react-icons/fa6';
 import MultiSelectInput from '../display/MultiSelectInput';
 import {
@@ -7,6 +6,7 @@ import {
   equipmentOptions,
   accessibilityOptions,
 } from '~/config';
+import 'react-select/dist/react-select.css';
 
 function QuestsFilters() {
   const { t } = useTranslation();
