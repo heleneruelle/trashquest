@@ -19,7 +19,21 @@ export const firebaseErrorCodes = {
 
 export const questEnvironment = ['city', 'sea', 'river', 'hike'];
 
+export const environmentOptions = [
+  { value: 'city', label: 'quest.parameters.environment.city' },
+  { value: 'sea', label: 'quest.parameters.environment.sea' },
+  { value: 'river', label: 'quest.parameters.environment.river' },
+  { value: 'hike', label: 'quest.parameters.environment.hike' },
+];
+
 export const questEquipment = ['boot', 'gloves', 'mask', 'bag'];
+
+export const equipmentOptions = [
+  { value: 'boot', label: 'quest.parameters.equipment.boot' },
+  { value: 'gloves', label: 'quest.parameters.equipment.gloves' },
+  { value: 'mask', label: 'quest.parameters.equipment.mask' },
+  { value: 'bag', label: 'quest.parameters.equipment.bag' },
+];
 
 export const questAccessibility = [
   'wheelchair',
@@ -27,4 +41,12 @@ export const questAccessibility = [
   'stairs',
   'slope',
   'road',
+];
+
+export const accessibilityOptions = [
+  { value: 'wheelchair', label: 'quest.parameters.accessibility.wheelchair' },
+  { value: 'kids', label: 'quest.parameters.accessibility.kids' },
+  { value: 'stairs', label: 'quest.parameters.accessibility.stairs' },
+  { value: 'slope', label: 'quest.parameters.accessibility.slope' },
+  { value: 'road', label: 'quest.parameters.accessibility.road' },
 ];
