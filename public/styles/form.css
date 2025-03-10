@@ -227,3 +227,9 @@ fieldset legend {
   background-color: inherit;
   border-radius: 50%;
 }
+
+.multi-select-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
