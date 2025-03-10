@@ -154,6 +154,11 @@
         "slope": "Slope",
         "road": "Road"
       }
+    },
+    "placeholder": {
+      "environment": "Where do you want to go on your quest?",
+      "equipment": "Filter by equipment needed for quest",
+      "accessibility": "Filter by accessibility criteria"
     }
   },
   "my-quests": {

@@ -154,6 +154,11 @@
         "slope": "Pente forte",
         "road": "Route"
       }
+    },
+    "placeholder": {
+      "environment": "Où voulez-vous partir en quête ?",
+      "equipment": "Filtrez selon l'équipement nécéssaire à la quête",
+      "accessibility": "Filtrez selon vos critères d'accessibilité"
     }
   },
   "my-quests": {
