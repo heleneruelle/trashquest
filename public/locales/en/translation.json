@@ -133,6 +133,27 @@
       "accessible": "Accessible Quest",
       "unkown-accessibility": "No accessibility information has been provided by the quest creator.",
       "kids": "Kids friendly"
+    },
+    "parameters": {
+      "environment": {
+        "city": "City",
+        "sea": "Beach and sea shore",
+        "river": "River",
+        "hike": "Hike"
+      },
+      "equipment": {
+        "boot": "Boots",
+        "gloves": "Gloves",
+        "mask": "Masks",
+        "bag": "Bags"
+      },
+      "accessibility": {
+        "wheelchair": "Wheelchair",
+        "kids": "Kids",
+        "stairs": "Stairs",
+        "slope": "Slope",
+        "road": "Road"
+      }
     }
   },
   "my-quests": {
