@@ -20,8 +20,25 @@ ul {
 
 .quests-filters {
   display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.quests-filters__button {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+}
+
+.quests-filters__container {
+  display: flex;
   flex-direction: column;
   gap: 10px;
+  flex-grow: 1;
 }
 
 .quest-registered {
