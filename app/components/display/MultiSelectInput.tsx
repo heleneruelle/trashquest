@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from '@remix-run/react';
-import Select from 'react-select';
+import MultiSelect from './MultiSelect';
 
 type Option = {
   value: string;
@@ -41,15 +41,15 @@ function MultiSelectInput({
     getOptionsFromSearchParams(searchParamForId, defaultOptions)
   );
 
+  //console.log('selectedOptions', selectedOptions);
+
   return (
     <label className="multi-select-input">
       <strong>{label}</strong>
-      <Select
-        defaultValue={getTranslatedLabelsForOptions(selectedOptions, t)}
+      <MultiSelect
         onChange={setSelectedOptions}
         options={getTranslatedLabelsForOptions(defaultOptions, t)}
-        isMulti
-        id={id}
+        value={getTranslatedLabelsForOptions(selectedOptions, t)}
         placeholder={placeholder}
       />
       <input
