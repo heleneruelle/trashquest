@@ -156,9 +156,9 @@
       }
     },
     "placeholder": {
-      "environment": "Où voulez-vous partir en quête ?",
-      "equipment": "Filtrez selon l'équipement nécéssaire à la quête",
-      "accessibility": "Filtrez selon vos critères d'accessibilité"
+      "environment": "Choisir le(s) environnement(s) de la quête",
+      "equipment": "Choisir le(s) équipement(s) de la quête",
+      "accessibility": "Choisir le(s) niveau(x) d'accessibilité de la quête"
     }
   },
   "my-quests": {

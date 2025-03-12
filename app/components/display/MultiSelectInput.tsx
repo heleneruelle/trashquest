@@ -27,11 +27,13 @@ function MultiSelectInput({
   defaultOptions,
   placeholder,
   label,
+  hint,
 }: {
   id: string;
   defaultOptions: Option[];
   placeholder: string;
-  label: string;
+  label?: string;
+  hint?: string;
 }) {
   const [searchParams] = useSearchParams();
   const { t } = useTranslation();
@@ -43,7 +45,8 @@ function MultiSelectInput({
 
   return (
     <label className="multi-select-input">
-      <strong>{label}</strong>
+      {label ? <strong>{label}</strong> : null}
+      {hint && <small className="input-hint">{hint}</small>}
       <MultiSelect
         onChange={setSelectedOptions}
         options={getTranslatedLabelsForOptions(defaultOptions, t)}

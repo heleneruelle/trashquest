@@ -12,6 +12,7 @@
 }
 
 .form {
+  width: 100%;
   padding: 0 20px 20px 20px;
   overflow: scroll;
   align-items: flex-start;
@@ -21,6 +22,7 @@
 .form .text-input,
 .form .select-container,
 .form .autocomplete,
-.form .select-with-tags {
+.form .select-with-tags,
+.form .multi-select-input {
   width: 70%;
 }
