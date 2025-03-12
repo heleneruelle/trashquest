@@ -41,8 +41,6 @@ function MultiSelectInput({
     getOptionsFromSearchParams(searchParamForId, defaultOptions)
   );
 
-  //console.log('selectedOptions', selectedOptions);
-
   return (
     <label className="multi-select-input">
       <strong>{label}</strong>

@@ -75,80 +75,37 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     <div ref={containerRef} className="multi-select-dropdown">
       <div
         onClick={handleContainerClick}
-        style={{
-          border: '1px solid #ccc',
-          borderRadius: '8px',
-          padding: '8px',
-          minHeight: '40px',
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          cursor: 'pointer',
-          backgroundColor: '#f9f9f9',
-          position: 'relative',
-        }}
+        className="multi-select-dropdown__input"
       >
         {value.map((option) => (
           <button
             type="button"
             key={option.value}
-            className="multi-select-tag"
+            className="multi-select-dropdown__tag"
             onClick={(event) => handleTagRemove(option, event)}
-            style={{
-              backgroundColor: '#e0e0e0',
-              borderRadius: '16px',
-              margin: '2px',
-              padding: '4px 8px',
-              display: 'flex',
-              alignItems: 'center',
-            }}
           >
             <span>{option.label}</span>
-            <div
-              style={{
-                marginLeft: '8px',
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              x
-            </div>
+            <div className="multi-select-dropdown__tag-button">x</div>
           </button>
         ))}
 
         {value.length === 0 && !isDropdownOpen && (
-          <span style={{ color: '#aaa' }}>{placeholder}</span>
+          <span className="multi-select-dropdown__placeholder">
+            {placeholder}
+          </span>
         )}
       </div>
       {isDropdownOpen && (
-        <div
-          style={{
-            maxHeight: '200px',
-            overflowY: 'auto',
-            backgroundColor: 'white',
-            border: '1px solid #ccc',
-            borderRadius: '8px',
-            zIndex: 10,
-          }}
-        >
+        <div className="multi-select-dropdown__list-container">
           {options.map((option) => (
             <button
               type="button"
               key={option.value}
+              className={`multi-select-dropdown__list-item ${
+                value.some((selected) => selected.value === option.value) &&
+                'multi-select-dropdown__list-item__selected'
+              }`}
               onClick={(event) => handleOptionToggle(option, event)}
-              style={{
-                padding: '8px',
-                cursor: 'pointer',
-                backgroundColor: value.some(
-                  (selected) => selected.value === option.value
-                )
-                  ? '#d3d3d3'
-                  : 'white',
-                width: '100%',
-                textAlign: 'left',
-                border: 'none',
-              }}
             >
               {option.label}
             </button>

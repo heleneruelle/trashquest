@@ -233,3 +233,58 @@ fieldset legend {
   flex-direction: column;
   gap: 6px;
 }
+
+.multi-select-dropdown__input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 6px;
+  min-height: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.multi-select-dropdown__tag {
+  background-color: #e0e0e0;
+  border-radius: 16px;
+  margin: 2px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+}
+
+.multi-select-dropdown__tag-button {
+  margin-left: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.multi-select-dropdown__placeholder {
+  color: #aaa;
+}
+
+.multi-select-dropdown__list-container {
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.multi-select-dropdown__list-item {
+  padding: 8px;
+  cursor: pointer;
+  background-color: white;
+  width: 100%;
+  text-align: left;
+  border: none;
+}
+
+.multi-select-dropdown__list-item__selected {
+  background-color: #d3d3d3;
+}
