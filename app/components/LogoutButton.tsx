@@ -1,10 +1,12 @@
 import { useNavigate } from '@remix-run/react';
+import { useTranslation } from 'react-i18next';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
 import { auth } from '~/firebaseConfig';
 
 const LogoutButton = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleLogout = async () => {
     try {
@@ -16,7 +18,11 @@ const LogoutButton = () => {
     }
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return (
+    <button type="button" onClick={handleLogout} className="logout">
+      {t('logout.cta')}
+    </button>
+  );
 };
 
 export default LogoutButton;
