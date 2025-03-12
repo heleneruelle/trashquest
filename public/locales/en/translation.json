@@ -156,9 +156,9 @@
       }
     },
     "placeholder": {
-      "environment": "Where do you want to go on your quest?",
-      "equipment": "Filter by equipment needed for quest",
-      "accessibility": "Filter by accessibility criteria"
+      "environment": "Choose quest environment(s)",
+      "equipment": "Choose quest equipment(s)",
+      "accessibility": "Choose quest accessibility level(s)"
     }
   },
   "my-quests": {
