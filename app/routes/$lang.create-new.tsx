@@ -14,7 +14,7 @@ export default function Index() {
   const { t } = useTranslation();
 
   return (
-    <div className="create-new-form">
+    <div className="quests-container create-new-form">
       <h1>{t('create-new-quest.title')}</h1>
       <QuestForm />
     </div>
