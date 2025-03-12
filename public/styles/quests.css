@@ -1,7 +1,19 @@
 ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-content: space-between;
+}
+
+li {
+  width: calc(100% / 2 - 6px);
+  padding: 20px;
+  border: 1px solid var(--c-green-100);
+  box-sizing: border-box;
+  border-radius: 6px;
 }
 
 .quests-container {
@@ -13,7 +25,9 @@ ul {
 }
 
 .quests-container h1,
+.quests-container h3,
 .quests-container h4,
+.quests-container h5,
 .quests-container p {
   margin: 0;
 }
@@ -64,6 +78,7 @@ ul {
   color: black;
   text-decoration: none;
   border-radius: 3px;
+  height: 100%;
 }
 
 .quest-list-item__container {
@@ -71,13 +86,41 @@ ul {
   flex-direction: column;
   gap: 9px;
   width: calc(100% - 24px);
+  flex-grow: 1;
 }
 
-.quest-list-item__title {
+.quest-list-item__properties-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-grow: 1;
+  align-content: flex-start;
+}
+
+.quest-list-item__footer {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 6px;
+}
+
+.quest-list-item__footer .quest-list-item__footer-details {
+  flex-grow: 1;
+}
+
+.quest-list-item__footer-details {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 9px;
+  gap: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
 .quest-location {

@@ -36,6 +36,7 @@ export default interface QuestType {
       hours: number;
       minutes: number;
     };
+    isClosest?: boolean;
   };
   creator: UserType;
   createdAt: {
