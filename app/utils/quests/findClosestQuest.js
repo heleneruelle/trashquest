@@ -20,7 +20,10 @@ async function findClosestQuest({ lat, lon }, quests) {
 
       return closestQuest;
     }, null);
-    return closestQuest;
+    return {
+      ...closestQuest,
+      properties: { ...closestQuest.properties, isClosest: true },
+    };
   } catch (err) {
     throw new Error(`Error while parsing closest quest : ${err}`);
   }
