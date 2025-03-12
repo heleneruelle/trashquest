@@ -133,6 +133,32 @@
       "accessible": "Quête accessible",
       "unkown-accessibility": "Aucune information sur l'accessibilité n'a été fournie par le créateur de la quête.",
       "kids": "Adaptée aux enfants"
+    },
+    "parameters": {
+      "environment": {
+        "city": "Ville",
+        "sea": "Plage et côte",
+        "river": "Rivière",
+        "hike": "Randonnée"
+      },
+      "equipment": {
+        "boot": "Bottes",
+        "gloves": "Gants",
+        "mask": "Masques",
+        "bag": "Sacs"
+      },
+      "accessibility": {
+        "wheelchair": "Chaise roulante",
+        "kids": "Enfants",
+        "stairs": "Escaliers",
+        "slope": "Pente forte",
+        "road": "Route"
+      }
+    },
+    "placeholder": {
+      "environment": "Où voulez-vous partir en quête ?",
+      "equipment": "Filtrez selon l'équipement nécéssaire à la quête",
+      "accessibility": "Filtrez selon vos critères d'accessibilité"
     }
   },
   "my-quests": {

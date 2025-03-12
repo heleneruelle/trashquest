@@ -1,37 +1,44 @@
-import { useSearchParams } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
-import SelectWithTags from '../inputs/SelectWithTags';
-import Button from '../inputs/Button';
-import { questEnvironment, questEquipment, questAccessibility } from '~/config';
+import { FaSliders } from 'react-icons/fa6';
+import MultiSelectInput from '../display/MultiSelectInput';
+import {
+  environmentOptions,
+  equipmentOptions,
+  accessibilityOptions,
+} from '~/config';
 
 function QuestsFilters() {
-  const [searchParams] = useSearchParams();
   const { t } = useTranslation();
-  const environment = searchParams.get('environment');
-  const equipment = searchParams.get('equipment');
-  const accessibility = searchParams.get('accessibility');
 
   return (
     <form method="get" className="quests-filters">
-      <SelectWithTags
-        options={questEnvironment}
-        defaultOptions={environment?.split(',')}
-        fieldset="environment"
-        label={t('quest.environment')}
-      />
-      <SelectWithTags
-        options={questEquipment}
-        defaultOptions={equipment?.split(',')}
-        fieldset="equipment"
-        label={t('quest.equipment')}
-      />
-      <SelectWithTags
-        options={questAccessibility}
-        defaultOptions={accessibility?.split(',')}
-        fieldset="accessibility"
-        label={t('quest.accessibility')}
-      />
-      <Button type="submit" label={t('quest.filter.cta')} />
+      <div className="quests-filters__container">
+        <MultiSelectInput
+          placeholder={t('quest.placeholder.environment')}
+          label={t('quest.environment')}
+          defaultOptions={environmentOptions}
+          id="environment"
+        />
+        <MultiSelectInput
+          placeholder={t('quest.placeholder.equipment')}
+          label={t('quest.equipment')}
+          defaultOptions={equipmentOptions}
+          id="equipment"
+        />
+        <MultiSelectInput
+          placeholder={t('quest.placeholder.accessibility')}
+          label={t('quest.accessibility')}
+          defaultOptions={accessibilityOptions}
+          id="accessibility"
+        />
+      </div>
+      <button
+        type="submit"
+        aria-label={t('quest.filter.cta')}
+        className="quests-filters__button"
+      >
+        <FaSliders size={20} aria-hidden={true} />
+      </button>
     </form>
   );
 }
