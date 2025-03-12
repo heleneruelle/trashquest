@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 interface Option {
   label: string;
@@ -54,23 +54,22 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  /* const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = (event: MouseEvent) => {
     if (
-      containerRef.current && 
-      !containerRef.current.contains(event.target as Node) && 
-      !((event.target as HTMLElement)?.closest('.multi-select-dropdown'))
+      containerRef.current &&
+      !containerRef.current.contains(event.target as Node) &&
+      !(event.target as HTMLElement)?.closest('.multi-select-dropdown')
     ) {
-      console.log('handleClickOutside');
       setIsDropdownOpen(false);
     }
-  };  
+  };
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []); */
+  }, []);
 
   return (
     <div ref={containerRef} className="multi-select-dropdown">
