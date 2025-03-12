@@ -3,6 +3,7 @@ import { useLoaderData, Link } from '@remix-run/react';
 import QuestButton from '~/components/inputs/QuestButton';
 import QuestListItem from '~/components/display/QuestListItem';
 import QuestsFilters from '~/components/forms/QuestsFilters';
+import TagTitle from '~/components/display/TagTitle';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
 import QuestType from '~/types/quest';
@@ -32,16 +33,15 @@ function Main() {
       <QuestsFilters />
       {hasNoQuest ? <p>{t('quests.no-quest')}</p> : null}
       {hasNoQuestForFilters ? <p>{t('quests.no-quest-filters')}</p> : null}
-      {closestQuest ? (
-        <div className="quest-list-container">
-          <h4>{t('quests.closest')}</h4>
-          <QuestListItem quest={closestQuest} />
-        </div>
-      ) : null}
       {quests?.length ? (
         <div className="quest-list-container">
           <h4>{t('quests.available')}</h4>
           <ul>
+            {closestQuest ? (
+              <li key={closestQuest.id}>
+                <QuestListItem quest={closestQuest} />
+              </li>
+            ) : null}
             {quests.map((quest) => (
               <li key={quest.id}>
                 <QuestListItem quest={quest} />
