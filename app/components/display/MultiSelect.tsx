@@ -90,9 +90,9 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         ))}
 
         {value.length === 0 && !isDropdownOpen && (
-          <span className="multi-select-dropdown__placeholder">
+          <small className="multi-select-dropdown__placeholder">
             {placeholder}
-          </span>
+          </small>
         )}
       </div>
       {isDropdownOpen && (
