@@ -6,9 +6,8 @@ import TextField from '../inputs/TextField';
 import LocationAutoComplete from '../inputs/LocationAutocomplete';
 import DatePicker from '../inputs/DatePicker';
 import TimePicker from '../inputs/TimePicker';
-import Button from '../inputs/Button';
 import Counter from '../inputs/Counter';
-import SelectWithTags from '../inputs/SelectWithTags';
+import MultiSelectInput from '../display/MultiSelectInput';
 import TextArea from '../inputs/TextArea';
 import Toast from '../notifications/Toast';
 import QuestButton from '../inputs/QuestButton';
@@ -16,7 +15,11 @@ import dateToYYYYMMDD from '~/utils/datetime/dateToYYYYMMDD';
 import timeToHHMM from '~/utils/datetime/timeToHHMM';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import formDataToObject from '~/utils/formDataToObject';
-import { questEnvironment, questEquipment, questAccessibility } from '~/config';
+import {
+  environmentOptions,
+  accessibilityOptions,
+  equipmentOptions,
+} from '~/config';
 import i18n from '~/i18n';
 
 function QuestForm() {
@@ -115,21 +118,24 @@ function QuestForm() {
         name="expectedParticipants"
         label={t('create-new-quest.input.expected-participants')}
       />
-      <SelectWithTags
-        options={questEnvironment}
-        fieldset="environment"
+      <MultiSelectInput
+        defaultOptions={environmentOptions}
+        placeholder={t('quest.placeholder.environment')}
+        id="environment"
         label={t('create-new-quest.input.environment')}
         hint={t('create-new-quest.hint.environment')}
       />
-      <SelectWithTags
-        options={questEquipment}
-        fieldset="equipment"
+      <MultiSelectInput
+        defaultOptions={equipmentOptions}
+        placeholder={t('quest.placeholder.equipment')}
+        id="equipment"
         label={t('create-new-quest.input.equipment')}
         hint={t('create-new-quest.hint.equipment')}
       />
-      <SelectWithTags
-        options={questAccessibility}
-        fieldset="accessibility"
+      <MultiSelectInput
+        defaultOptions={accessibilityOptions}
+        placeholder={t('quest.placeholder.accessibility')}
+        id="accessibility"
         label={t('create-new-quest.input.accessibility')}
         hint={t('create-new-quest.hint.accessibility')}
       />
