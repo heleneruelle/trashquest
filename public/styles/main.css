@@ -40,9 +40,8 @@ body {
   align-items: center;
   padding: 10px 20px;
   justify-content: space-between;
-  color: white;
-  background-color: var(--c-green-200);
   box-sizing: border-box;
+  background-color: rgba(29, 101, 45, 0.1);
 }
 
 .top-bar a {
@@ -63,12 +62,16 @@ body {
   height: 100%;
 }
 
-.top-bar__utils button {
+.logout {
   height: 100%;
   font-weight: bold;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  background-color: var(--c-green-300);
+  padding: 6px 12px;
+  border-radius: 25px;
+  color: white;
 }
 
 .content {
@@ -131,6 +134,7 @@ body {
   color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: fit-content;
+  height: fit-content;
 }
 
 .pill-tag__positive {
@@ -151,4 +155,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.tag-title {
+  background-color: var(--c-green-100);
+  color: white;
+}
+
+.tag-title__best {
+  background-color: #0073cf;
 }
