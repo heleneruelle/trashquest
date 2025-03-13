@@ -31,7 +31,7 @@ function MyQuests() {
       )}
       <h3>{t('my-quests.participant.title')}</h3>
       {questsAsParticipant?.length ? (
-        <ul>
+        <ul className="quests-ul">
           {questsAsParticipant.map((quest) => (
             <li key={quest.id}>
               <QuestListItem quest={quest} />
