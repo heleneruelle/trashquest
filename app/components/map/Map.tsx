@@ -1,8 +1,10 @@
 import { useMatches } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Map, { Marker } from 'react-map-gl/mapbox';
+import Map, { Marker, Popup } from 'react-map-gl/mapbox';
+import UserPosition from '../display/map/UserPosition';
 import Pin from '../display/Pin';
+import { MdHome } from 'react-icons/md';
 import findCenterFromBbox from '~/utils/map/findCenterFromBbox';
 import getBboxFromPoints from '~/utils/map/getBboxFromPoints';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -56,9 +58,8 @@ function MapComp() {
     }
   }, [quest, otherQuests, userQuests, user?.location?.coordinates]);
 
-  // Fonction pour rendre un Marker
   const renderMarker = (longitude, latitude, label, className) => (
-    <Marker
+    <Popup
       key={`marker-${longitude}-${latitude}`}
       longitude={longitude}
       latitude={latitude}
@@ -67,8 +68,7 @@ function MapComp() {
       <div className={`user-marker__tooltip ${className}`}>
         <p>{label}</p>
       </div>
-      <Pin className={className} />
-    </Marker>
+    </Popup>
   );
 
   return (
@@ -78,14 +78,7 @@ function MapComp() {
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}
     >
-      {userLocation &&
-        renderMarker(
-          userLocation._longitude,
-          userLocation._latitude,
-          t('map.user-position'),
-          'position'
-        )}
-      {quest?.location?.coordinates &&
+      {/*  {quest?.location?.coordinates &&
         renderMarker(
           quest.location.coordinates._longitude,
           quest.location.coordinates._latitude,
@@ -107,6 +100,12 @@ function MapComp() {
           userQuest.properties.name,
           'creator'
         )
+      )} */}
+      {userLocation && (
+        <UserPosition
+          longitude={userLocation._longitude}
+          latitude={userLocation._latitude}
+        />
       )}
     </Map>
   );
