@@ -1,19 +1,19 @@
 import { useMatches } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Map, { Marker, Popup } from 'react-map-gl/mapbox';
+import Map, { NavigationControl, ScaleControl } from 'react-map-gl/mapbox';
 import UserPosition from '../display/map/UserPosition';
-import Pin from '../display/Pin';
-import { MdHome } from 'react-icons/md';
+import QuestMarker from '../display/map/QuestMarker';
 import findCenterFromBbox from '~/utils/map/findCenterFromBbox';
 import getBboxFromPoints from '~/utils/map/getBboxFromPoints';
+import QuestType from '~/types/quest';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function MapComp() {
   const matches = useMatches();
   const { t } = useTranslation();
 
-  const { user, quests, creatorQuests } =
+  const { user, quests, creatorQuests, closestQuest } =
     matches.find((match) => match.id === 'routes/$lang._index')?.data || {};
   const { quest } =
     matches.find((match) => match.id === 'routes/$lang.quest.$id')?.data || {};
@@ -58,7 +58,7 @@ function MapComp() {
     }
   }, [quest, otherQuests, userQuests, user?.location?.coordinates]);
 
-  const renderMarker = (longitude, latitude, label, className) => (
+  /*   const renderPopup = (longitude, latitude, label, className) => (
     <Popup
       key={`marker-${longitude}-${latitude}`}
       longitude={longitude}
@@ -69,7 +69,7 @@ function MapComp() {
         <p>{label}</p>
       </div>
     </Popup>
-  );
+  ); */
 
   return (
     <Map
@@ -78,29 +78,22 @@ function MapComp() {
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}
     >
+      <NavigationControl position="top-left" />
+      <ScaleControl />
       {/*  {quest?.location?.coordinates &&
-        renderMarker(
+        renderPopup(
           quest.location.coordinates._longitude,
           quest.location.coordinates._latitude,
           quest.properties.name,
           'quest'
-        )}
-      {otherQuests?.map((singleQuest) =>
-        renderMarker(
-          singleQuest.location.coordinates._longitude,
-          singleQuest.location.coordinates._latitude,
-          singleQuest.properties.name,
-          'other'
-        )
-      )}
-      {userQuests?.map((userQuest) =>
-        renderMarker(
-          userQuest.location.coordinates._longitude,
-          userQuest.location.coordinates._latitude,
-          userQuest.properties.name,
-          'creator'
-        )
-      )} */}
+        )} */}
+      {otherQuests?.map((singleQuest: QuestType) => (
+        <QuestMarker quest={singleQuest} type="other" />
+      ))}
+      {userQuests?.map((userQuest: QuestType) => (
+        <QuestMarker quest={userQuest} type="creator" />
+      ))}
+      {closestQuest && <QuestMarker quest={closestQuest} />}
       {userLocation && (
         <UserPosition
           longitude={userLocation._longitude}
