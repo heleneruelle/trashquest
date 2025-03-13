@@ -1,4 +1,6 @@
 import React, { useRef, useEffect } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
+import { RxCross2 } from 'react-icons/rx';
 
 interface Option {
   label: string;
@@ -10,6 +12,9 @@ interface MultiSelectProps {
   options: Option[];
   onChange: (selectedOptions: Option[]) => void;
   placeholder?: string;
+  listTitle?: string;
+  id: string;
+  floating?: boolean;
 }
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
@@ -17,6 +22,9 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   options,
   onChange,
   placeholder,
+  listTitle,
+  id,
+  floating,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
@@ -58,7 +66,10 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     if (
       containerRef.current &&
       !containerRef.current.contains(event.target as Node) &&
-      !(event.target as HTMLElement)?.closest('.multi-select-dropdown')
+      !(
+        event.target instanceof HTMLElement &&
+        event.target.id === `multi-select-dropdown-${id}`
+      )
     ) {
       setIsDropdownOpen(false);
     }
@@ -72,44 +83,69 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   }, []);
 
   return (
-    <div ref={containerRef} className="multi-select-dropdown">
+    <div
+      ref={containerRef}
+      className="multi-select-dropdown"
+      id={`multi-select-dropdown-${id}`}
+    >
       <div
         onClick={handleContainerClick}
-        className="multi-select-dropdown__input"
+        className={`multi-select-dropdown__input ${
+          value?.length > 0 && 'multi-select-dropdown__input-hasValue'
+        }`}
       >
-        {value.map((option) => (
-          <button
-            type="button"
-            key={option.value}
-            className="multi-select-dropdown__tag"
-            onClick={(event) => handleTagRemove(option, event)}
-          >
-            <span>{option.label}</span>
-            <div className="multi-select-dropdown__tag-button">x</div>
-          </button>
-        ))}
-
-        {value.length === 0 && !isDropdownOpen && (
+        {value.length === 0 ? (
           <small className="multi-select-dropdown__placeholder">
             {placeholder}
           </small>
+        ) : (
+          <div className="multi-select-dropdown__tag-container">
+            {value.map((option) => (
+              <button
+                type="button"
+                key={option.value}
+                className="multi-select-dropdown__tag"
+                onClick={(event) => handleTagRemove(option, event)}
+              >
+                <span>{option.label}</span>
+                <div className="multi-select-dropdown__tag-button">
+                  <RxCross2 />
+                </div>
+              </button>
+            ))}
+          </div>
         )}
+
+        <IoIosArrowDown
+          className={`${isDropdownOpen && 'multi-select-dropdown__arrow-open'}`}
+        />
       </div>
       {isDropdownOpen && (
-        <div className="multi-select-dropdown__list-container">
-          {options.map((option) => (
-            <button
-              type="button"
-              key={option.value}
-              className={`multi-select-dropdown__list-item ${
-                value.some((selected) => selected.value === option.value) &&
-                'multi-select-dropdown__list-item__selected'
-              }`}
-              onClick={(event) => handleOptionToggle(option, event)}
-            >
-              {option.label}
-            </button>
-          ))}
+        <div
+          className={`multi-select-dropdown__list-container ${
+            floating && 'floating'
+          }`}
+        >
+          {listTitle ? <strong>{listTitle}</strong> : null}
+          <ul className="multi-select-dropdown__list">
+            {options.map((option) => (
+              <li>
+                <button
+                  type="button"
+                  key={option.value}
+                  className="multi-select-dropdown__list-item"
+                  onClick={(event) => handleOptionToggle(option, event)}
+                >
+                  <div className="radio-button__container">
+                    {value.some(
+                      (selected) => selected.value === option.value
+                    ) && <div className="radio-button__selected" />}
+                  </div>
+                  {option.label}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>

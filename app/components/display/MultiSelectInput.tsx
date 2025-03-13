@@ -28,12 +28,16 @@ function MultiSelectInput({
   placeholder,
   label,
   hint,
+  listTitle,
+  floating
 }: {
   id: string;
   defaultOptions: Option[];
   placeholder: string;
   label?: string;
   hint?: string;
+  listTitle?: string;
+  floating?: boolean;
 }) {
   const [searchParams] = useSearchParams();
   const { t } = useTranslation();
@@ -52,6 +56,9 @@ function MultiSelectInput({
         options={getTranslatedLabelsForOptions(defaultOptions, t)}
         value={getTranslatedLabelsForOptions(selectedOptions, t)}
         placeholder={placeholder}
+        listTitle={listTitle}
+        id={id}
+        floating={floating}
       />
       <input
         type="hidden"

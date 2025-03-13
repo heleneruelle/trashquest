@@ -36,7 +36,7 @@ function Main() {
       {quests?.length ? (
         <div className="quest-list-container">
           <h4>{t('quests.available')}</h4>
-          <ul>
+          <ul className="quests-ul">
             {closestQuest ? (
               <li key={closestQuest.id}>
                 <QuestListItem quest={closestQuest} />

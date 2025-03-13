@@ -1,4 +1,4 @@
-ul {
+ul.quests-ul {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -8,10 +8,10 @@ ul {
   justify-content: space-between;
 }
 
-li {
+.quests-ul > li {
   width: calc(100% / 2 - 6px);
   padding: 20px;
-  border: 1px solid var(--c-green-100);
+  box-shadow: 0 2px 10px 0 #c7c7c7;
   box-sizing: border-box;
   border-radius: 6px;
 }
@@ -34,24 +34,30 @@ li {
 
 .quests-filters {
   display: flex;
-  gap: 30px;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  overflow-x: scroll;
 }
 
 .quests-filters__button {
-  height: 50px;
-  width: 50px;
+  border-radius: 100px;
+  padding: 8px 16px;
+  min-height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   border: none;
   cursor: pointer;
+  background-color: #fb6e44;
+  color: white;
+  font-weight: bold;
+  width: fit-content;
+  gap: 6px;
+  box-sizing: content-box;
 }
 
 .quests-filters__container {
   display: flex;
-  flex-direction: column;
   gap: 10px;
   flex-grow: 1;
 }
