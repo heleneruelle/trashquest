@@ -58,7 +58,7 @@
 }
 
 .user-position-marker {
-  background-color: #0a0d77;
+  background-color: black;
   color: white;
   padding: 8px;
   font-weight: bold;
@@ -66,4 +66,23 @@
   flex-direction: row;
   gap: 6px;
   align-items: center;
+}
+
+.quest-position-marker {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-green-200);
+  color: white;
+}
+
+.quest-position-marker__closest {
+  background-color: #0a0d77;
+}
+
+.quest-position-marker__creator {
+  background-color: #fb6e44;
 }
