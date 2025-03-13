@@ -14,20 +14,20 @@ function QuestsFilters() {
     <form method="get" className="quests-filters">
       <div className="quests-filters__container">
         <MultiSelectInput
-          placeholder={t('quest.placeholder.environment')}
-          label={t('quest.environment')}
+          placeholder={t('quest.environment')}
           defaultOptions={environmentOptions}
+          listTitle={t('quest.placeholder.environment')}
           id="environment"
         />
         <MultiSelectInput
-          placeholder={t('quest.placeholder.equipment')}
-          label={t('quest.equipment')}
+          placeholder={t('quest.equipment')}
+          listTitle={t('quest.placeholder.equipment')}
           defaultOptions={equipmentOptions}
           id="equipment"
         />
         <MultiSelectInput
-          placeholder={t('quest.placeholder.accessibility')}
-          label={t('quest.accessibility')}
+          placeholder={t('quest.accessibility')}
+          listTitle={t('quest.placeholder.accessibility')}
           defaultOptions={accessibilityOptions}
           id="accessibility"
         />
@@ -37,7 +37,8 @@ function QuestsFilters() {
         aria-label={t('quest.filter.cta')}
         className="quests-filters__button"
       >
-        <FaSliders size={20} aria-hidden={true} />
+        <FaSliders size={16} aria-hidden={true} />
+        <p>{t('quest.filter.cta')}</p>
       </button>
     </form>
   );
