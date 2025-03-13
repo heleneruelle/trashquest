@@ -1,7 +1,6 @@
 import { Marker } from 'react-map-gl/mapbox';
 import { MdHome } from 'react-icons/md';
-import { FaLocationDot } from 'react-icons/fa6';
-import { TiArrowSortedDown } from 'react-icons/ti';
+import { FaCircle } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
 function UserPosition({
@@ -17,13 +16,13 @@ function UserPosition({
       key="user-position-marker"
       latitude={latitude}
       longitude={longitude}
-      style={{ zIndex: 100 }}
+      style={{ zIndex: 100, gap: '3px' }}
     >
       <div className="user-position-marker">
         <MdHome size={20} />
         {t('map.user-position')}
       </div>
-      <TiArrowSortedDown size={24} color="#0a0d77" />
+      <FaCircle size={10} color="#000000" />
     </Marker>
   );
 }
