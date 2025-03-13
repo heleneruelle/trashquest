@@ -112,7 +112,7 @@ body {
   min-height: 100%;
   display: flex;
   flex-flow: column;
-  max-width: 50%;
+  max-width: 60%;
   background-color: var(--color-grey01);
   box-shadow: var(--box-shadow-right);
   overflow-y: auto;
@@ -163,5 +163,5 @@ body {
 }
 
 .tag-title__best {
-  background-color: #0073cf;
+  background-color: #0a0d77;
 }
