@@ -14,6 +14,7 @@ interface MultiSelectProps {
   placeholder?: string;
   listTitle?: string;
   id: string;
+  floating?: boolean;
 }
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
@@ -23,6 +24,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   placeholder,
   listTitle,
   id,
+  floating,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
@@ -119,7 +121,11 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         />
       </div>
       {isDropdownOpen && (
-        <div className="multi-select-dropdown__list-container">
+        <div
+          className={`multi-select-dropdown__list-container ${
+            floating && 'floating'
+          }`}
+        >
           {listTitle ? <strong>{listTitle}</strong> : null}
           <ul className="multi-select-dropdown__list">
             {options.map((option) => (

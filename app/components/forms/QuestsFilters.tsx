@@ -18,18 +18,21 @@ function QuestsFilters() {
           defaultOptions={environmentOptions}
           listTitle={t('quest.placeholder.environment')}
           id="environment"
+          floating
         />
         <MultiSelectInput
           placeholder={t('quest.equipment')}
           listTitle={t('quest.placeholder.equipment')}
           defaultOptions={equipmentOptions}
           id="equipment"
+          floating
         />
         <MultiSelectInput
           placeholder={t('quest.accessibility')}
           listTitle={t('quest.placeholder.accessibility')}
           defaultOptions={accessibilityOptions}
           id="accessibility"
+          floating
         />
       </div>
       <button
