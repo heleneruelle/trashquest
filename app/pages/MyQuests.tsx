@@ -19,7 +19,7 @@ function MyQuests() {
       <h1>{t('my-quests.title')}</h1>
       <h3>{t('my-quests.organiser.title')}</h3>
       {quests?.length ? (
-        <ul>
+        <ul className="quests-ul">
           {quests.map((quest) => (
             <li key={quest.id}>
               <QuestListItem quest={quest} />
