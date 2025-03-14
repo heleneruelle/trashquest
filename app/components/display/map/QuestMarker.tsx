@@ -24,28 +24,25 @@ function getIconForQuestEnv({
   } else return <PiSword size={20} />;
 }
 
-function QuestMarker({
-  quest,
-  type = 'other',
-}: {
-  quest: QuestType;
-  type?: 'other' | 'creator';
-}) {
+function QuestMarker({ quest }: { quest: QuestType }) {
+  const { properties, location } = quest;
+  const type = properties.isCurrentUserCreator ? 'creator' : 'other';
+
   return (
     <Marker
       key={`quest-position-marker-${quest.id}`}
-      latitude={quest.location.coordinates._latitude}
-      longitude={quest.location.coordinates._longitude}
+      latitude={location.coordinates._latitude}
+      longitude={location.coordinates._longitude}
       style={{ zIndex: 100 }}
     >
       <div
         className={`quest-position-marker quest-position-marker__${type} ${
-          quest.properties.isClosest ? 'quest-position-marker__closest' : ''
+          properties.isClosest ? 'quest-position-marker__closest' : ''
         }`}
       >
         {getIconForQuestEnv({
-          isClosest: quest.properties?.isClosest,
-          environment: quest.properties.environment,
+          isClosest: properties?.isClosest,
+          environment: properties.environment,
         })}
       </div>
     </Marker>
