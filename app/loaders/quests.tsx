@@ -43,12 +43,19 @@ async function questsLoader({ request }: { request: Request }) {
       rawData.push({ id: doc.id, ...doc.data() });
     });
 
-    // console.log('rawData', rawData)
+    const filteredQuests = rawData?.length
+      ? rawData
+          .filter((q) => filterQuest(q, environment, equipment, accessibility))
+          .map((q) => questToVm(q, user))
+      : [];
 
-    const quests = rawData
-      .filter((q) => filterQuest(q, environment, equipment, accessibility))
-      .filter((q) => q.properties.creatorId !== user.id)
-      .map((q) => questToVm(q, user));
+    const quests = filteredQuests.filter(
+      (q) => q.properties.creatorId !== user.id
+    );
+
+    const creatorQuests = filteredQuests.filter(
+      (q) => q.properties.creatorId === user.id
+    );
 
     const closestQuest = quests?.length
       ? await findClosestQuests(
@@ -67,9 +74,7 @@ async function questsLoader({ request }: { request: Request }) {
           ? quests.filter((q) => q.id !== closestQuest.id)
           : [],
       rawData,
-      creatorQuests: rawData?.length
-        ? rawData.filter((q) => q.properties.creatorId === user.id)
-        : [],
+      creatorQuests,
       closestQuest,
       user,
     });

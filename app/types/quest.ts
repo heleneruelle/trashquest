@@ -6,8 +6,10 @@ export default interface QuestType {
     country: string;
     name: string;
     id: string;
-    latitude: string;
-    longitude: string;
+    coordinates: {
+      _latitude: number;
+      _longitude: number;
+    };
   };
   properties: {
     description: string;

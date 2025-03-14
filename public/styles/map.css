@@ -1,42 +1,25 @@
+/* Mapbox classes overwrites */
 .mapboxgl-marker {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.mapboxgl-popup-content {
+  padding: 15px 10px 15px;
+}
+
+/* End Mapbox classes overwrites */
+
 .user-marker__tooltip {
   padding: 6px;
   border-radius: 6px;
-  background-color: var(--c-green-200);
   font-weight: bold;
-  color: white;
   margin-bottom: 6px;
 }
 
 .user-marker__tooltip p {
   margin: 0;
-}
-
-.pin {
-  cursor: pointer;
-  fill: var(--c-green-200);
-  stroke: none;
-}
-
-.creator {
-  background-color: red;
-}
-
-.position {
-  background-color: blue;
-}
-
-.pin__creator {
-  fill: red;
-}
-
-.pin__position {
-  fill: blue;
 }
 
 .quest {
@@ -46,4 +29,38 @@
 
 .pin__quest {
   fill: var(--c-green-300);
+}
+
+.user-position-marker {
+  background-color: black;
+  color: white;
+  padding: 8px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+}
+
+.quest-position-marker {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-green-200);
+  color: white;
+}
+
+.quest-position-marker__closest {
+  background-color: #0a0d77;
+}
+
+.quest-position-marker__creator {
+  background-color: #fb6e44;
+}
+
+.quest-popup-start {
+  padding-top: 8px;
 }

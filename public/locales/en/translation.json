@@ -159,7 +159,8 @@
       "environment": "Choose quest environment(s)",
       "equipment": "Choose quest equipment(s)",
       "accessibility": "Choose quest accessibility level(s)"
-    }
+    },
+    "begin": "Your quest starts here"
   },
   "my-quests": {
     "title": "Your quests",
@@ -179,6 +180,6 @@
     "available": "Available quests"
   },
   "map": {
-    "user-position": "Votre position"
+    "user-position": "Your position"
   }
 }

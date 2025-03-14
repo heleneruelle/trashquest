@@ -1,17 +1,23 @@
 import { useMatches } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Map, { Marker } from 'react-map-gl/mapbox';
-import Pin from '../display/Pin';
+import Map, {
+  NavigationControl,
+  Popup,
+  ScaleControl,
+} from 'react-map-gl/mapbox';
+import UserPosition from '../display/map/UserPosition';
+import QuestMarker from '../display/map/QuestMarker';
 import findCenterFromBbox from '~/utils/map/findCenterFromBbox';
 import getBboxFromPoints from '~/utils/map/getBboxFromPoints';
+import QuestType from '~/types/quest';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function MapComp() {
   const matches = useMatches();
   const { t } = useTranslation();
 
-  const { user, quests, creatorQuests } =
+  const { user, quests, creatorQuests, closestQuest } =
     matches.find((match) => match.id === 'routes/$lang._index')?.data || {};
   const { quest } =
     matches.find((match) => match.id === 'routes/$lang.quest.$id')?.data || {};
@@ -33,7 +39,7 @@ function MapComp() {
       setViewState({
         longitude: quest.location.coordinates._longitude,
         latitude: quest.location.coordinates._latitude,
-        zoom: 9,
+        zoom: 13,
       });
     } else if (otherQuests?.length || userQuests?.length) {
       const allQuestsLocation = [...otherQuests, ...userQuests].map((q) => [
@@ -56,21 +62,6 @@ function MapComp() {
     }
   }, [quest, otherQuests, userQuests, user?.location?.coordinates]);
 
-  // Fonction pour rendre un Marker
-  const renderMarker = (longitude, latitude, label, className) => (
-    <Marker
-      key={`marker-${longitude}-${latitude}`}
-      longitude={longitude}
-      latitude={latitude}
-      anchor="bottom"
-    >
-      <div className={`user-marker__tooltip ${className}`}>
-        <p>{label}</p>
-      </div>
-      <Pin className={className} />
-    </Marker>
-  );
-
   return (
     <Map
       {...viewState}
@@ -78,35 +69,30 @@ function MapComp() {
       mapStyle="mapbox://styles/mapbox/streets-v9"
       mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}
     >
-      {userLocation &&
-        renderMarker(
-          userLocation._longitude,
-          userLocation._latitude,
-          t('map.user-position'),
-          'position'
-        )}
-      {quest?.location?.coordinates &&
-        renderMarker(
-          quest.location.coordinates._longitude,
-          quest.location.coordinates._latitude,
-          quest.properties.name,
-          'quest'
-        )}
-      {otherQuests?.map((singleQuest) =>
-        renderMarker(
-          singleQuest.location.coordinates._longitude,
-          singleQuest.location.coordinates._latitude,
-          singleQuest.properties.name,
-          'other'
-        )
+      <NavigationControl position="top-left" />
+      <ScaleControl />
+      {quest?.location?.coordinates && (
+        <Popup
+          latitude={quest.location.coordinates._latitude}
+          longitude={quest.location.coordinates._longitude}
+        >
+          <div className="quest-popup-start">
+            <strong>{t('quest.begin')}</strong>
+          </div>
+        </Popup>
       )}
-      {userQuests?.map((userQuest) =>
-        renderMarker(
-          userQuest.location.coordinates._longitude,
-          userQuest.location.coordinates._latitude,
-          userQuest.properties.name,
-          'creator'
-        )
+      {otherQuests?.map((singleQuest: QuestType) => (
+        <QuestMarker quest={singleQuest} />
+      ))}
+      {userQuests?.map((userQuest: QuestType) => (
+        <QuestMarker quest={userQuest} />
+      ))}
+      {closestQuest && <QuestMarker quest={closestQuest} />}
+      {userLocation && (
+        <UserPosition
+          longitude={userLocation._longitude}
+          latitude={userLocation._latitude}
+        />
       )}
     </Map>
   );
