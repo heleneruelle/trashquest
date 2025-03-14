@@ -180,6 +180,21 @@
     "available": "Les quêtes disponibles"
   },
   "map": {
-    "user-position": "Votre position"
+    "user-position": "Votre position",
+    "legend": {
+      "color": {
+        "title": "Code couleur",
+        "creator": "Vos quêtes",
+        "closest": "Quête la plus proche",
+        "available": "Quêtes disponibles"
+      },
+      "environment": {
+        "title": "Environnement",
+        "water": "Littoral et rivière",
+        "urban": "Environnement urbain",
+        "hike": "Randonnée",
+        "other": "Autre"
+      }
+    }
   }
 }
