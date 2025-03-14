@@ -180,6 +180,21 @@
     "available": "Available quests"
   },
   "map": {
-    "user-position": "Your position"
+    "user-position": "Your position",
+    "legend": {
+      "color": {
+        "title": "Color code",
+        "creator": "Your quests",
+        "closest": "Closest quest",
+        "available": "Available quests"
+      },
+      "environment": {
+        "title": "Environment",
+        "water": "Coastline and River",
+        "urban": "Urban environment",
+        "hike": "Hike",
+        "other": "Other"
+      }
+    }
   }
 }

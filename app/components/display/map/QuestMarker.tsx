@@ -1,4 +1,4 @@
-import { Marker } from 'react-map-gl/mapbox';
+import { Marker, MarkerEvent } from 'react-map-gl/mapbox';
 import { PiSword } from 'react-icons/pi';
 import { IoStar } from 'react-icons/io5';
 import { TiWaves } from 'react-icons/ti';
@@ -24,16 +24,22 @@ function getIconForQuestEnv({
   } else return <PiSword size={20} />;
 }
 
-function QuestMarker({ quest }: { quest: QuestType }) {
+function QuestMarker({
+  quest,
+  onClick,
+}: {
+  quest: QuestType;
+  onClick: (e: MarkerEvent<MouseEvent>) => void;
+}) {
   const { properties, location } = quest;
   const type = properties.isCurrentUserCreator ? 'creator' : 'other';
 
   return (
     <Marker
-      key={`quest-position-marker-${quest.id}`}
       latitude={location.coordinates._latitude}
       longitude={location.coordinates._longitude}
-      style={{ zIndex: 100, cursor: 'pointer' }}
+      style={{ cursor: 'pointer' }}
+      onClick={onClick}
     >
       <div
         className={`quest-position-marker quest-position-marker__${type} ${

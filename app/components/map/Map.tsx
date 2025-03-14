@@ -7,7 +7,8 @@ import Map, {
   ScaleControl,
 } from 'react-map-gl/mapbox';
 import UserPosition from '../display/map/UserPosition';
-import QuestMarker from '../display/map/QuestMarker';
+import Quest from '~/components/display/map/Quest';
+import Legend from '../display/map/Legend';
 import findCenterFromBbox from '~/utils/map/findCenterFromBbox';
 import getBboxFromPoints from '~/utils/map/getBboxFromPoints';
 import QuestType from '~/types/quest';
@@ -82,18 +83,19 @@ function MapComp() {
         </Popup>
       )}
       {otherQuests?.map((singleQuest: QuestType) => (
-        <QuestMarker quest={singleQuest} />
+        <Quest quest={singleQuest} />
       ))}
       {userQuests?.map((userQuest: QuestType) => (
-        <QuestMarker quest={userQuest} />
+        <Quest quest={userQuest} />
       ))}
-      {closestQuest && <QuestMarker quest={closestQuest} />}
+      {closestQuest && <Quest quest={closestQuest} />}
       {userLocation && (
         <UserPosition
           longitude={userLocation._longitude}
           latitude={userLocation._latitude}
         />
       )}
+      <Legend />
     </Map>
   );
 }

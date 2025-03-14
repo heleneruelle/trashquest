@@ -95,12 +95,16 @@ ul.quests-ul {
   flex-grow: 1;
 }
 
+.quest-list-item__title {
+  flex-grow: 1;
+}
+
 .quest-list-item__properties-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   flex-grow: 1;
-  align-content: flex-start;
+  align-content: flex-end;
 }
 
 .quest-list-item__footer {
