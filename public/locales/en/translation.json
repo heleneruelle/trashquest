@@ -196,5 +196,11 @@
         "other": "Other"
       }
     }
+  },
+  "about": {
+    "me": {
+      "title": "About me",
+      "content": "As a child, I had a strange habit: picking up things off the ground in the street, much to my parents' dismay. While this hobby sometimes led to a few misadventures, it instilled in me a passion for rescuing furniture, clothes, or objects, either to give them a second life or, at times, to throw them away or place them in recycling bins. I’m not disturbed by what is on the ground, and I particularly enjoy walking through public spaces that are not marred by the remnants of our consumption, which inevitably pollute both human and non-human life.\n\nThe idea of creating Trashquest came from this personal experience and from observing the cleanups organized by various associations, especially on beaches that are often covered in plastic washed up by the tide or left behind by swimmers. I wanted to create a platform that helps individuals, institutions, and associations organize cleanups and recruit participants. These quests are also an opportunity to explore both urban and non-urban areas. I truly believe that ecology should be practiced on all scales, and that every environment deserves protection. Trashquest invites everyone to join an adventure, in the style of role-playing games, to eliminate waste pollution.\n\nI hope this tool can inspire others to organize their own cleanups while creating spaces for connection. The growing number of quests could also leave a trace of the pollution avoided and raise awareness among the wider public about the protection of public spaces and our shared responsibility in managing our waste."
+    }
   }
 }

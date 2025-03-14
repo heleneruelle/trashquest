@@ -196,5 +196,11 @@
         "other": "Autre"
       }
     }
+  },
+  "about": {
+    "me": {
+      "title": "A propos de moi",
+      "content": "Petite, j'avais une habitude étrange : ramasser des objets tombés par terre dans la rue, au grand désespoir de mes parents. Bien que ce hobby m'ait parfois causé quelques mésaventures, il m'a laissée avec la passion de récupérer des meubles, des vêtements ou des objets, pour leur offrir une nouvelle vie ou, parfois, pour les jeter à la poubelle ou les déposer dans des espaces de recyclage. Je ne suis pas dérangée par ce qui est au sol, et j'apprécie d'autant plus l'idée de circuler dans un espace public qui ne soit pas envahi par les vestiges de notre consommation, lesquels polluent inévitablement le vivant, qu'il soit humain ou non.\n\nL'idée de créer Trashquest est née de cette expérience personnelle et de l'observation des collectes organisées par diverses associations, notamment sur les plages, souvent recouvertes de plastique apporté par le reflux des mers et des océans, ou laissées par les baigneurs. J'ai voulu concevoir une plateforme permettant aux particuliers, institutions et associations d'organiser des collectes et de recruter des participant.es. Ces quêtes sont aussi une occasion de découvrir des lieux, qu'ils soient urbains ou non-urbains. Car je suis convaincue que l'écologie de nos espaces se pratique à toutes les échelles, et que chaque environnement mérite d'être protégé. Trashquest invite chacun.e à rejoindre une aventure, sur le modèle des jeux de rôle, pour éliminer la pollution des déchets.\n\nJ’espère que cet outil pourra inspirer d'autres à organiser leurs propres collectes tout en créant un espace de rencontre. La multiplication des quêtes pourrait également permettre de laisser une trace de la pollution évitée et sensibiliser le plus grand nombre à la protection de l’espace public et à notre responsabilité commune dans la gestion de nos déchets."
+    }
   }
 }
