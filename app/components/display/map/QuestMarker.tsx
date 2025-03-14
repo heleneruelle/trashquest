@@ -33,7 +33,7 @@ function QuestMarker({ quest }: { quest: QuestType }) {
       key={`quest-position-marker-${quest.id}`}
       latitude={location.coordinates._latitude}
       longitude={location.coordinates._longitude}
-      style={{ zIndex: 100 }}
+      style={{ zIndex: 100, cursor: 'pointer' }}
     >
       <div
         className={`quest-position-marker quest-position-marker__${type} ${
