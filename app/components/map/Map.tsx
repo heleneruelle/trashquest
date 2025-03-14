@@ -8,6 +8,7 @@ import Map, {
 } from 'react-map-gl/mapbox';
 import UserPosition from '../display/map/UserPosition';
 import Quest from '~/components/display/map/Quest';
+import Legend from '../display/map/Legend';
 import findCenterFromBbox from '~/utils/map/findCenterFromBbox';
 import getBboxFromPoints from '~/utils/map/getBboxFromPoints';
 import QuestType from '~/types/quest';
@@ -94,6 +95,7 @@ function MapComp() {
           latitude={userLocation._latitude}
         />
       )}
+      <Legend />
     </Map>
   );
 }
