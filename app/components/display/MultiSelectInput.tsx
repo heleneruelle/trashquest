@@ -29,7 +29,7 @@ function MultiSelectInput({
   label,
   hint,
   listTitle,
-  floating
+  floating,
 }: {
   id: string;
   defaultOptions: Option[];
