@@ -1,3 +1,37 @@
+.about__container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 24px 100px;
+}
+
 .about__description {
   text-align: center;
+}
+
+.about__section-container {
+  display: flex;
+  gap: 20px;
+}
+
+.about__section-content h3,
+.about__section-content p {
+  margin: 0;
+}
+
+.about__section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-shrink: 20;
+  text-align: justify;
+  white-space: pre-line;
+  width: 100%;
+}
+
+.about__img {
+  background: url('/assets/quat-zieux.webp') center/cover no-repeat;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
 }
