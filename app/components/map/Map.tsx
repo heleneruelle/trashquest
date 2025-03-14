@@ -1,7 +1,11 @@
 import { useMatches } from '@remix-run/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Map, { NavigationControl, ScaleControl } from 'react-map-gl/mapbox';
+import Map, {
+  NavigationControl,
+  Popup,
+  ScaleControl,
+} from 'react-map-gl/mapbox';
 import UserPosition from '../display/map/UserPosition';
 import QuestMarker from '../display/map/QuestMarker';
 import findCenterFromBbox from '~/utils/map/findCenterFromBbox';
@@ -35,7 +39,7 @@ function MapComp() {
       setViewState({
         longitude: quest.location.coordinates._longitude,
         latitude: quest.location.coordinates._latitude,
-        zoom: 9,
+        zoom: 13,
       });
     } else if (otherQuests?.length || userQuests?.length) {
       const allQuestsLocation = [...otherQuests, ...userQuests].map((q) => [
@@ -58,19 +62,6 @@ function MapComp() {
     }
   }, [quest, otherQuests, userQuests, user?.location?.coordinates]);
 
-  /*   const renderPopup = (longitude, latitude, label, className) => (
-    <Popup
-      key={`marker-${longitude}-${latitude}`}
-      longitude={longitude}
-      latitude={latitude}
-      anchor="bottom"
-    >
-      <div className={`user-marker__tooltip ${className}`}>
-        <p>{label}</p>
-      </div>
-    </Popup>
-  ); */
-
   return (
     <Map
       {...viewState}
@@ -80,18 +71,21 @@ function MapComp() {
     >
       <NavigationControl position="top-left" />
       <ScaleControl />
-      {/*  {quest?.location?.coordinates &&
-        renderPopup(
-          quest.location.coordinates._longitude,
-          quest.location.coordinates._latitude,
-          quest.properties.name,
-          'quest'
-        )} */}
+      {quest?.location?.coordinates && (
+        <Popup
+          latitude={quest.location.coordinates._latitude}
+          longitude={quest.location.coordinates._longitude}
+        >
+          <div className="quest-popup-start">
+            <strong>{t('quest.begin')}</strong>
+          </div>
+        </Popup>
+      )}
       {otherQuests?.map((singleQuest: QuestType) => (
-        <QuestMarker quest={singleQuest} type="other" />
+        <QuestMarker quest={singleQuest} />
       ))}
       {userQuests?.map((userQuest: QuestType) => (
-        <QuestMarker quest={userQuest} type="creator" />
+        <QuestMarker quest={userQuest} />
       ))}
       {closestQuest && <QuestMarker quest={closestQuest} />}
       {userLocation && (
