@@ -37,7 +37,7 @@
     "title": "Veuillez vous connecter à votre compte",
     "cta": {
       "submitting": "Authentification...",
-      "idle": "Login",
+      "idle": "Se connecter",
       "test": "Essayer sans compte"
     },
     "placeholder": {
