@@ -27,6 +27,13 @@
     "home": "Acceuil",
     "create-new": "Créer une quête"
   },
+  "error": {
+    "generic": {
+      "title": "Une erreur est survenue",
+      "description": "Notre équipe travaille actuellement à résoudre ce problème, et nous vous remercions pour votre patience. Merci de réessayer plus tard.",
+      "message": "Message d'erreur : {{message}}"
+    }
+  },
   "date": "Date",
   "time": "Heure",
   "loading": "Chargement...",
