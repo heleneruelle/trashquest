@@ -3,7 +3,6 @@ import { useLoaderData, Link } from '@remix-run/react';
 import QuestButton from '~/components/inputs/QuestButton';
 import QuestListItem from '~/components/display/QuestListItem';
 import QuestsFilters from '~/components/forms/QuestsFilters';
-import TagTitle from '~/components/display/TagTitle';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
 import QuestType from '~/types/quest';
@@ -29,7 +28,7 @@ function Main() {
 
   return (
     <div className="quests-container">
-      <h1>{t('welcome', { name: username })}</h1>
+      <h1>{t('home.title', { name: username })}</h1>
       <QuestsFilters />
       {hasNoQuest ? <p>{t('quests.no-quest')}</p> : null}
       {hasNoQuestForFilters ? <p>{t('quests.no-quest-filters')}</p> : null}
