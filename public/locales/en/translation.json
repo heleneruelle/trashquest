@@ -131,8 +131,8 @@
   },
   "quest": {
     "location": "Location",
-    "organiser": "Quest master",
-    "duration": "Duration",
+    "organiser": "Quest organized by {{name}}",
+    "duration": "Duration: {{duration}}",
     "participants": "Participants",
     "environment": "Type of environment",
     "equipment": "Equipment required",

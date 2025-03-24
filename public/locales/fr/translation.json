@@ -131,8 +131,8 @@
   },
   "quest": {
     "location": "Emplacement",
-    "organiser": "Maître de la quête",
-    "duration": "Durée",
+    "organiser": "Quête organisée par {{name}}",
+    "duration": "Durée: {{duration}}",
     "participants": "Participants",
     "environment": "Type d'environnement",
     "equipment": "Équipement nécessaire",
