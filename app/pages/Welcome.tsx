@@ -1,15 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import ButtonLink from '~/components/inputs/ButtonLink';
 import Carousel from '~/components/display/Carousel';
+import CarouselItem from '~/components/display/CarouselItem';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
-
-const images = [
-  'https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/6/60/Naxos_Taverna.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/6/60/Naxos_Taverna.jpg',
-];
 
 function Welcome() {
   const { t } = useTranslation();
@@ -29,7 +23,30 @@ function Welcome() {
       </div>
       <h1>{t('welcome.title')}</h1>
       <p>{t('welcome.description')}</p>
-      <Carousel images={images} />
+      <Carousel
+        elements={[
+          <CarouselItem
+            imageUrl="/assets/trashquest-home.webp"
+            title={t('welcome.introduction.home.title')}
+            description={t('welcome.introduction.home.description')}
+          />,
+          <CarouselItem
+            imageUrl="/assets/trashquest-create.webp"
+            title={t('welcome.introduction.create.title')}
+            description={t('welcome.introduction.create.description')}
+          />,
+          <CarouselItem
+            imageUrl="/assets/trashquest-quest.webp"
+            title={t('welcome.introduction.join.title')}
+            description={t('welcome.introduction.join.description')}
+          />,
+          <CarouselItem
+            imageUrl="/assets/trashquest-your-quest.webp"
+            title={t('welcome.introduction.manage.title')}
+            description={t('welcome.introduction.manage.description')}
+          />,
+        ]}
+      />
     </div>
   );
 }
