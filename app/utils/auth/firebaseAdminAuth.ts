@@ -21,6 +21,7 @@ if (!admin.apps.length) {
   try {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
     });
     console.log('Initialiazing succeeded');
   } catch (error) {
@@ -39,4 +40,7 @@ const verifyIdToken = async (idToken: string) => {
   }
 };
 
-export { admin, db, verifyIdToken };
+const storage = admin.storage();
+const bucket = storage.bucket();
+
+export { admin, db, verifyIdToken, bucket };
