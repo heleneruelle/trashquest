@@ -19,7 +19,7 @@ function MapComp() {
   const { t } = useTranslation();
 
   const { user, quests, creatorQuests, closestQuest } =
-    matches.find((match) => match.id === 'routes/$lang._index')?.data || {};
+    matches.find((match) => match.id === 'routes/$lang.home')?.data || {};
   const { quest } =
     matches.find((match) => match.id === 'routes/$lang.quest.$id')?.data || {};
   const { quests: myQuests, questsAsParticipant } =

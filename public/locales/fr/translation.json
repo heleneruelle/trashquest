@@ -23,7 +23,7 @@
   "meta": {
     "my-quests": "Mes Quêtes",
     "about": "A propos",
-    "home": "Acceuil",
+    "home": "Accueil",
     "create-new": "Créer une quête"
   },
   "error": {
@@ -41,7 +41,25 @@
   },
   "welcome": {
     "title": "Rejoignez TrashQuest et agissez pour la planète !",
-    "description": "Organisez ou rejoignez des quêtes de nettoyage pour débarrasser parcs, rues et rivières des déchets. Suivez vos progrès, montez en niveau et faites partie d’un mouvement écologique citoyen. Ensemble, transformons nos espaces publics !"
+    "description": "Organisez ou rejoignez des quêtes de nettoyage pour débarrasser parcs, rues et rivières des déchets. Suivez vos progrès, montez en niveau et faites partie d’un mouvement écologique citoyen. Ensemble, transformons nos espaces publics !",
+    "introduction": {
+      "home": {
+        "title": "Découvrez les quêtes près de chez vous",
+        "description": "Trouvez les événements de nettoyage à venir dans votre quartier, vos parcs ou vos rivières."
+      },
+      "create": {
+        "title": "Créez vos propres quêtes avec des paramètres personnalisés pour définir vos objectifs",
+        "description": "Lancez des événements de nettoyage en fonction de vos critères et de vos objectifs écologiques."
+      },
+      "join": {
+        "title": "Découvrez des quêtes à rejoindre",
+        "description": "Trouvez des événements de nettoyage proches de vous et contribuez à la protection de votre environnement."
+      },
+      "manage": {
+        "title": "Gérez vos quêtes en tant qu'organisateur et participant",
+        "description": "Suivez vos événements, invitez des participants et participez activement à la transformation des espaces publics."
+      }
+    }
   },
   "home": {
     "title": "Bonjour, {{name}}! Bienvenue dans TrashQuest !"
