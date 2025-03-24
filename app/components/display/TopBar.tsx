@@ -12,22 +12,17 @@ function TopBar() {
   const { t } = useTranslation();
   return (
     <div className="top-bar">
-      <div
-        style={{
-          display: 'flex',
-          gap: '6px',
-          height: '100%',
-          alignItems: 'center',
-          fontWeight: 'bold',
-        }}
+      <Link
+        className="top-bar__home"
+        to={createCompositeUrl(i18n, user ? '/home' : '/')}
       >
         <TbCircleLetterTFilled size={30} />
         <span>Trashquest</span>
-      </div>
-      <div style={{ display: 'flex', gap: '12px', height: '100%' }}>
+      </Link>
+      <div className="top-bar__right">
         <div className="top-bar__nav">
           {user && (
-            <Link to={createCompositeUrl(i18n, '/')}>{t('meta.home')}</Link>
+            <Link to={createCompositeUrl(i18n, '/home')}>{t('meta.home')}</Link>
           )}
           {user && (
             <Link to={createCompositeUrl(i18n, '/my-quests')}>

@@ -1,5 +1,4 @@
 {
-  "welcome": "Hello, {{name}}! Welcome to TrashQuest !",
   "description": "🏗️ TrashQuest connects communities to clean up public spaces and protect nature. It is a work in progress, please find the project description in our github repository and contact heleneruelle@hotmail.com if you want to join !",
   "email": "Email",
   "password": "Password",
@@ -40,9 +39,12 @@
   "logout": {
     "cta": "Logout"
   },
-  "home": {
+  "welcome": {
     "title": "Join TrashQuest and take action for the planet!",
     "description": "Create or join cleanup quests to clear parks, streets, and rivers of waste. Track your progress, level up, and be part of a citizen-led environmental movement. Together, let’s transform our public spaces!"
+  },
+  "home": {
+    "title": "Hello, {{name}}! Welcome to TrashQuest !"
   },
   "login": {
     "title": "Please login to your account",

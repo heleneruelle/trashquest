@@ -67,7 +67,7 @@ const SignUpForm = () => {
         throw new Error('Token validation failed');
       }
 
-      return navigate(createCompositeUrl(i18n, '/'));
+      return navigate(createCompositeUrl(i18n, '/home'));
     } catch (authError) {
       console.error('Error during user registration:', authError);
       setError(
