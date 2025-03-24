@@ -41,7 +41,25 @@
   },
   "welcome": {
     "title": "Join TrashQuest and take action for the planet!",
-    "description": "Create or join cleanup quests to clear parks, streets, and rivers of waste. Track your progress, level up, and be part of a citizen-led environmental movement. Together, let’s transform our public spaces!"
+    "description": "Create or join cleanup quests to clear parks, streets, and rivers of waste. Track your progress, level up, and be part of a citizen-led environmental movement. Together, let’s transform our public spaces!",
+    "introduction": {
+      "home": {
+        "title": "Discover quests near you",
+        "description": "Find upcoming cleanup events in your neighborhood, parks, or rivers."
+      },
+      "create": {
+        "title": "Create your own quests with customizable parameters to set your goals",
+        "description": "Launch cleanup events based on your criteria and ecological objectives."
+      },
+      "join": {
+        "title": "Discover quests to join",
+        "description": "Find nearby cleanup events and contribute to protecting your environment."
+      },
+      "manage": {
+        "title": "Manage your quests as both an organizer and a participant",
+        "description": "Track your events, invite participants, and actively help transform public spaces."
+      }
+    }
   },
   "home": {
     "title": "Hello, {{name}}! Welcome to TrashQuest !"
