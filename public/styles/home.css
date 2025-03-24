@@ -1,0 +1,19 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 24px;
+  gap: 40px;
+}
+
+.home-container h1,
+.home-container p {
+  margin: 0 24px;
+}
+
+.auth-section {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 0px 24px;
+}
