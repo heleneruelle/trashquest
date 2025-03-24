@@ -11,10 +11,10 @@ const images = [
   'https://upload.wikimedia.org/wikipedia/commons/6/60/Naxos_Taverna.jpg',
 ];
 
-function Home() {
+function Welcome() {
   const { t } = useTranslation();
   return (
-    <div className="home-container">
+    <div className="welcome-container">
       <div className="auth-section">
         <ButtonLink
           target={createCompositeUrl(i18n, '/login')}
@@ -27,11 +27,11 @@ function Home() {
           style="secondary"
         />
       </div>
-      <h1>{t('home.title')}</h1>
-      <p>{t('home.description')}</p>
+      <h1>{t('welcome.title')}</h1>
+      <p>{t('welcome.description')}</p>
       <Carousel images={images} />
     </div>
   );
 }
 
-export default Home;
+export default Welcome;
