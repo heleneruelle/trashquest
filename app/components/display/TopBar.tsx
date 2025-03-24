@@ -27,7 +27,7 @@ function TopBar() {
       <div style={{ display: 'flex', gap: '12px', height: '100%' }}>
         <div className="top-bar__nav">
           {user && (
-            <Link to={createCompositeUrl(i18n, '/')}>{t('meta.home')}</Link>
+            <Link to={createCompositeUrl(i18n, '/home')}>{t('meta.home')}</Link>
           )}
           {user && (
             <Link to={createCompositeUrl(i18n, '/my-quests')}>

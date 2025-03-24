@@ -21,7 +21,7 @@ const LoginPage = () => {
         {/* TODO : enable for no account (guest) */}
         {false && (
           <ButtonLink
-            target={createCompositeUrl(i18n, '/')}
+            target={createCompositeUrl(i18n, '/home')}
             label={t('login.cta.test')}
             style="tertiary"
           />

@@ -59,7 +59,7 @@ const LoginForm = () => {
         return;
       }
 
-      return navigate(createCompositeUrl(i18n, '/'));
+      return navigate(createCompositeUrl(i18n, '/home'));
     } catch (err) {
       //setError('Erreur de connexion : ' + err.message);
       setError(true);
