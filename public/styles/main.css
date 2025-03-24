@@ -44,9 +44,24 @@ body {
   background-color: rgba(29, 101, 45, 0.1);
 }
 
+.top-bar__home {
+  display: flex;
+  gap: 6px;
+  height: 100%;
+  align-items: center;
+  font-weight: bold;
+}
+
 .top-bar a {
-  all: unset;
+  text-decoration: none;
+  color: inherit;
   cursor: pointer;
+}
+
+.top-bar__right {
+  display: flex;
+  gap: 12px;
+  height: 100%;
 }
 
 .top-bar__nav {
