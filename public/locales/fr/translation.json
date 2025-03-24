@@ -40,6 +40,10 @@
   "logout": {
     "cta": "Déconnexion"
   },
+  "home": {
+    "title": "Rejoignez TrashQuest et agissez pour la planète !",
+    "description": "Organisez ou rejoignez des quêtes de nettoyage pour débarrasser parcs, rues et rivières des déchets. Suivez vos progrès, montez en niveau et faites partie d’un mouvement écologique citoyen. Ensemble, transformons nos espaces publics !"
+  },
   "login": {
     "title": "Veuillez vous connecter à votre compte",
     "cta": {
