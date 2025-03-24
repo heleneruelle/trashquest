@@ -40,6 +40,10 @@
   "logout": {
     "cta": "Logout"
   },
+  "home": {
+    "title": "Join TrashQuest and take action for the planet!",
+    "description": "Create or join cleanup quests to clear parks, streets, and rivers of waste. Track your progress, level up, and be part of a citizen-led environmental movement. Together, let’s transform our public spaces!"
+  },
   "login": {
     "title": "Please login to your account",
     "cta": {

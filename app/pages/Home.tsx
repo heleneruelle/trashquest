@@ -27,13 +27,8 @@ function Home() {
           style="secondary"
         />
       </div>
-      <h1>Rejoignez TrashQuest et agissez pour la planète !</h1>
-      <p>
-        Organisez ou rejoignez des nettoyages — ou "quêtes" — pour débarrasser
-        parcs, rues et rivières des déchets. Suivez vos progrès, montez en
-        niveau et faites partie d’un mouvement écologique citoyen. Ensemble,
-        transformons nos espaces publics !
-      </p>
+      <h1>{t('home.title')}</h1>
+      <p>{t('home.description')}</p>
       <Carousel images={images} />
     </div>
   );
