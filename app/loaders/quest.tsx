@@ -2,6 +2,7 @@ import { LoaderFunctionArgs } from '@remix-run/node';
 import { db } from '~/utils/auth/firebaseAdminAuth';
 import currentUserLoader from './currentUser';
 import questToVm from '~/utils/tovm/questToVm';
+import getFileFromFirebaseStorage from '~/utils/storage/getFileFromFirebaseStorage';
 
 async function questLoader({ request, params }: LoaderFunctionArgs) {
   try {
@@ -43,9 +44,15 @@ async function questLoader({ request, params }: LoaderFunctionArgs) {
         throw new Error(`Error getting user document: ${creatorDocError}`);
       });
 
+    const { signedUrl } = await getFileFromFirebaseStorage(
+      'trashquest_banner.webp',
+      'quest-assets'
+    );
+
     return Response.json({
       success: true,
       quest: questToVm(data, user, creatorData),
+      questAsset: signedUrl,
     });
   } catch (error) {
     return Response.json({ error }, { status: 500 });
