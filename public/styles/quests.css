@@ -32,6 +32,51 @@ ul.quests-ul {
   margin: 0;
 }
 
+.single-quest-container {
+  margin: 0px 0px 24px 0px;
+  gap: 20px;
+}
+
+.single-quest__banner {
+  height: 30%;
+  width: 100%;
+}
+
+.single-quest__header {
+  padding: 0px 24px 0px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.single-quest__title {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.single-quest__ctas {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.single-quest__separator {
+  width: 100%;
+  border: 0.5px solid black;
+}
+
+.single-quest__details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .quests-filters {
   display: flex;
   flex-direction: column;
@@ -182,3 +227,11 @@ ul.quests-ul {
   border: unset;
   background-color: unset;
 }
+
+.single-quest__field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/*     box-shadow: 0 1px 2px var(rgba(0, 0, 0, .2)); */

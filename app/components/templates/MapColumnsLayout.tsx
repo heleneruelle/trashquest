@@ -13,7 +13,7 @@ function MapColumnsLayout() {
 
   const leftColumnWidth = useMemo(() => {
     if (
-      (!user && loading) ||
+      //(!user && loading) ||
       isHome ||
       pathname.includes('login') ||
       pathname.includes('sign-up') ||
