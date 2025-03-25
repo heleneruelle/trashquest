@@ -45,4 +45,5 @@ export default interface QuestType {
     _nanoseconds: number;
     _seconds: number;
   };
+  bannerUrl: string;
 }
