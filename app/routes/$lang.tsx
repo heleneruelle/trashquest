@@ -1,21 +1,10 @@
-import type { MetaFunction, LinksFunction } from '@remix-run/node';
+import type { LinksFunction } from '@remix-run/node';
 import { LoaderFunctionArgs } from '@remix-run/node';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '~/config';
 import i18nServer from '~/i18n.server';
 import { useLoaderData } from '@remix-run/react';
 import i18n from '~/i18n';
 import MapColumnsLayout from '~/components/templates/MapColumnsLayout';
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: 'TrashQuest' },
-    {
-      name: 'description',
-      content:
-        'TrashQuest connects communities to clean up public spaces and protect nature!',
-    },
-  ];
-};
 
 export const links: LinksFunction = () => {
   return [
