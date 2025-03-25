@@ -6,6 +6,7 @@ import Map, {
   Popup,
   ScaleControl,
 } from 'react-map-gl/mapbox';
+import QuestWithWalkingDistance from '../display/map/QuestWithWalkingDistance';
 import UserPosition from '../display/map/UserPosition';
 import Quest from '~/components/display/map/Quest';
 import Legend from '../display/map/Legend';
@@ -40,7 +41,7 @@ function MapComp() {
       setViewState({
         longitude: quest.location.coordinates._longitude,
         latitude: quest.location.coordinates._latitude,
-        zoom: 13,
+        zoom: 15,
       });
     } else if (otherQuests?.length || userQuests?.length) {
       const allQuestsLocation = [...otherQuests, ...userQuests].map((q) => [
@@ -73,14 +74,7 @@ function MapComp() {
       <NavigationControl position="top-left" />
       <ScaleControl />
       {quest?.location?.coordinates && (
-        <Popup
-          latitude={quest.location.coordinates._latitude}
-          longitude={quest.location.coordinates._longitude}
-        >
-          <div className="quest-popup-start">
-            <strong>{t('quest.begin')}</strong>
-          </div>
-        </Popup>
+        <QuestWithWalkingDistance quest={quest} />
       )}
       {otherQuests?.map((singleQuest: QuestType) => (
         <Quest quest={singleQuest} />
@@ -95,7 +89,7 @@ function MapComp() {
           latitude={userLocation._latitude}
         />
       )}
-      <Legend />
+      {!quest && <Legend />}
     </Map>
   );
 }
