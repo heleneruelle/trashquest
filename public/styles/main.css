@@ -12,6 +12,10 @@ body {
   --c-red-opacity-50: rgba(255, 0, 0, 0.5);
 }
 
+button, input {
+  font-family: 'Poppins', sans-serif;
+}
+
 .main-container {
   height: 100vh;
   display: flex;

@@ -32,6 +32,7 @@
 }
 
 .user-position-marker {
+  font-family: 'Poppins', sans-serif;
   background-color: black;
   color: white;
   padding: 8px;
@@ -43,6 +44,7 @@
 }
 
 .quest-position-marker {
+  font-family: 'Poppins', sans-serif;
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -62,16 +64,19 @@
 }
 
 .quest-popup-start {
+  font-family: 'Poppins', sans-serif;
   padding-top: 8px;
 }
 
 .quest-popup {
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   padding: 8px;
 }
 
 .map-legend {
+  font-family: 'Poppins', sans-serif;
   position: absolute;
   right: 0;
   margin: 10px 10px 0 0;
