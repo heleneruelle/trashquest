@@ -5,10 +5,30 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import { LinksFunction, MetaFunction } from '@remix-run/node';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '~/i18n';
 import TopBar from './components/display/TopBar';
 import FatalError from './pages/FatalError';
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'TrashQuest' },
+    {
+      name: 'description',
+      content:
+        'TrashQuest connects communities to clean up public spaces and protect nature!',
+    },
+  ];
+};
+
+export const links: LinksFunction = () => {
+  return [
+    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap' },
+  ];
+};
 
 export function ErrorBoundary() {
   return (

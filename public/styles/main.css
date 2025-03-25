@@ -1,5 +1,6 @@
 html,
 body {
+  font-family: 'Poppins', sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -9,10 +10,6 @@ body {
   --c-green-300: #7c847c;
   --c-red: #ff0000;
   --c-red-opacity-50: rgba(255, 0, 0, 0.5);
-}
-
-* {
-  font-family: system-ui, sans-serif;
 }
 
 .main-container {
