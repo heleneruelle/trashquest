@@ -1,8 +1,19 @@
 import { db, admin } from '~/utils/auth/firebaseAdminAuth';
+import questBannerLoader from './questBanner';
 import currentUserLoader from './currentUser';
 import filterQuest from '~/utils/quests/filterQuest';
 import findClosestQuests from '~/utils/quests/findClosestQuest';
 import questToVm from '~/utils/tovm/questToVm';
+
+const fetchQuestBanner = async (request, questId: string) => {
+  try {
+    const bannerResp = await questBannerLoader({ request });
+    const { questBanner } = await bannerResp.json();
+    return questBanner;
+  } catch {
+    return null; // Si une erreur survient, on met `null` comme fallback
+  }
+};
 
 async function questsLoader({ request }: { request: Request }) {
   const url = new URL(request.url);
@@ -43,10 +54,17 @@ async function questsLoader({ request }: { request: Request }) {
       rawData.push({ id: doc.id, ...doc.data() });
     });
 
+    const banners = await Promise.all(
+      rawData.map((quest) => fetchQuestBanner(request, quest.id))
+    );
+
     const filteredQuests = rawData?.length
       ? rawData
           .filter((q) => filterQuest(q, environment, equipment, accessibility))
-          .map((q) => questToVm(q, user))
+          .map((q, index) => ({
+            ...questToVm(q, user),
+            bannerUrl: banners[index],
+          }))
       : [];
 
     const quests = filteredQuests.filter(
