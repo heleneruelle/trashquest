@@ -1,7 +1,4 @@
-import type {
-  LinksFunction,
-  LoaderFunction,
-} from '@remix-run/node';
+import type { LinksFunction, LoaderFunction } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import { DEFAULT_LANGUAGE } from '~/config';
 import i18nServer from '~/i18n.server';

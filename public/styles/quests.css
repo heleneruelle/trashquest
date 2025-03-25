@@ -81,7 +81,7 @@ ul.quests-ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  overflow-x: scroll;
+  /*  overflow-x: scroll; */
 }
 
 .quests-filters__button {
