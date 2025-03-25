@@ -148,7 +148,9 @@
     "joined": "Congratulations! You're registered for this quest !",
     "cta": {
       "join": "Join this quest",
-      "quit": "Quit this quest"
+      "quit": "Quit this quest",
+      "url-copy": "Copy URL",
+      "url-copied": "URL copied"
     },
     "dateTime": {
       "start": "This quest starts on {{date}} at {{time, HH:mm}}",

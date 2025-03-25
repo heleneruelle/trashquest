@@ -52,6 +52,7 @@ function getHRDuration(duration) {
 function Quest() {
   const data = useLoaderData<LoaderData>();
   const [error, setError] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { t } = useTranslation();
 
   if (!data?.success || !data?.quest) {
@@ -101,6 +102,21 @@ function Quest() {
     }
   }
 
+  const copyToClipboard = () => {
+    if (typeof window === 'undefined' || !navigator.clipboard) {
+      console.error('Clipboard API non disponible');
+      return;
+    }
+
+    navigator.clipboard
+      .writeText(window.location.href)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      })
+      .catch((err) => console.error('Erreur lors de la copie :', err));
+  };
+
   return (
     <div className="quests-container single-quest-container">
       {error && (
@@ -130,7 +146,11 @@ function Quest() {
         </div>
         <QuestLocation quest={quest} />
         <div className="single-quest__ctas">
-          <Button type="button" label="Copy URL" clickCallback={() => {}} />
+          <Button
+            type="button"
+            label={t(`quest.cta.url-${copied ? 'copied' : 'copy'}`)}
+            clickCallback={copyToClipboard}
+          />
           {!isCurrentUserCreator &&
             !isQuestFull &&
             !isCurrentUserRegisteredForQuest && (
@@ -152,9 +172,7 @@ function Quest() {
             target={createCompositeUrl(i18n, '/create-new')}
           />
         </div>
-        <hr
-          className="single-quest__separator"
-        ></hr>
+        <hr className="single-quest__separator"></hr>
         <div className="single-quest__details">
           <p>{properties.description}</p>
           <div className="single-quest__field">
