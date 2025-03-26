@@ -197,13 +197,17 @@
   },
   "my-quests": {
     "title": "Vos quêtes",
-    "organiser": {
-      "title": "Vos quêtes en tant qu'organisateur",
+    "host": {
+      "title": "Les quêtes que vous organisez",
       "none": "Vous n’avez pas de quête organisées"
     },
-    "participant": {
-      "title": "Vos quêtes en tant que participant.e",
-      "none": "Vous n'avez pas de quête en cours en tant que participant.e."
+    "going": {
+      "title": "Les quêtes auxquelles vous participez",
+      "none": "Vous ne participez à aucune quête en ce moment."
+    },
+    "past": {
+      "title": "Vos quêtes passées",
+      "none": "Vous n'avez pas de quête archivée en tant qu'organisateur.rice ou participant.e."
     }
   },
   "quests": {
