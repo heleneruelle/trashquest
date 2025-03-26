@@ -50,3 +50,7 @@ export const accessibilityOptions = [
   { value: 'slope', label: 'quest.parameters.accessibility.slope' },
   { value: 'road', label: 'quest.parameters.accessibility.road' },
 ];
+
+export const PARTICIPANT = 'going';
+export const HOST = 'host';
+export const PAST = 'past';
