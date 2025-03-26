@@ -197,6 +197,11 @@
   },
   "my-quests": {
     "title": "Vos quêtes",
+    "filters": {
+      "going": "Participant.e",
+      "host": "Organisateur.rice",
+      "past": "Passées"
+    },
     "host": {
       "title": "Les quêtes que vous organisez",
       "none": "Vous n’avez pas de quête organisées"

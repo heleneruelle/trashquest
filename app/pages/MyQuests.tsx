@@ -13,8 +13,6 @@ function MyQuests() {
 
   const { type } = useParams();
 
-  console.log('type', HOST);
-
   return (
     <div className="quests-container">
       <h1>{t('my-quests.title')}</h1>
@@ -24,21 +22,21 @@ function MyQuests() {
           className={`my-quests-filters ${type === PARTICIPANT && 'active'}`}
         >
           <FaCircleCheck />
-          Participant.e
+          {t('my-quests.filters.going')}
         </Link>
         <Link
           to={createCompositeUrl(i18n, '/my-quests/host')}
           className={`my-quests-filters ${type === HOST && 'active'}`}
         >
           <IoPerson />
-          Organisateur.rice
+          {t('my-quests.filters.host')}
         </Link>
         <Link
           to={createCompositeUrl(i18n, '/my-quests/past')}
           className={`my-quests-filters ${type === PAST && 'active'}`}
         >
           <RiArrowGoBackLine />
-          Passés
+          {t('my-quests.filters.past')}
         </Link>
       </div>
       <Outlet />

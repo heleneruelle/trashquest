@@ -197,6 +197,11 @@
   },
   "my-quests": {
     "title": "Your quests",
+    "filters": {
+      "going": "Going",
+      "host": "Host",
+      "past": "Past"
+    },
     "host": {
       "title": "Your quests as an organizer",
       "none": "You have no organized quest"
