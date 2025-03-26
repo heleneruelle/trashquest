@@ -130,6 +130,7 @@ input {
   display: flex;
   flex-flow: column;
   max-width: 60%;
+  min-width: 60%;
   background-color: var(--color-grey01);
   box-shadow: var(--box-shadow-right);
   overflow-y: auto;
