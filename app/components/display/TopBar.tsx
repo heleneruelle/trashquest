@@ -25,7 +25,7 @@ function TopBar() {
             <Link to={createCompositeUrl(i18n, '/home')}>{t('meta.home')}</Link>
           )}
           {user && (
-            <Link to={createCompositeUrl(i18n, '/my-quests')}>
+            <Link to={createCompositeUrl(i18n, '/my-quests/going')}>
               {t('meta.my-quests')}
             </Link>
           )}

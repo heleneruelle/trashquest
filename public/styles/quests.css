@@ -234,4 +234,33 @@ ul.quests-ul {
   gap: 6px;
 }
 
+.my-quests-filters__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.my-quests-filters {
+  display: flex;
+  width: fit-content;
+  padding: 12px;
+  gap: 6px;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 3px;
+  background-color: #e3f0fb;
+  color: black;
+}
+
+.my-quests-filters.active {
+  background-color: #0a0d77;
+  color: white;
+}
+
+.my-quests-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 /*     box-shadow: 0 1px 2px var(rgba(0, 0, 0, .2)); */

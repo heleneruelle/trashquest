@@ -23,6 +23,7 @@ export default interface QuestType {
     startDate: string;
     startTime: string;
     startDateTime: string;
+    endDateTime: string;
     endDate: string;
     endTime: string;
     isCurrentUserRegisteredForQuest: boolean;
