@@ -35,6 +35,8 @@ function questToVm(quest, currentUser, creator) {
   const isCurrentUserRegisteredForQuest =
     quest.properties.participants.includes(currentUser.id);
   const isCurrentUserCreator = quest.properties.creatorId === currentUser.id;
+  const isPast = new Date() > new Date(endDateTime);
+
   const data = {
     ...quest,
     properties: {
@@ -48,6 +50,7 @@ function questToVm(quest, currentUser, creator) {
       formattedDateTime: {
         start: formattedStart,
       },
+      isPast,
     },
     ...(isCurrentUserCreator ? { creator: currentUser } : { creator }),
   };
