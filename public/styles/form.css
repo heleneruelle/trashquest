@@ -322,6 +322,7 @@ fieldset legend {
   border: none;
   display: flex;
   gap: 6px;
+  align-items: center;
 }
 
 .radio-button__container {

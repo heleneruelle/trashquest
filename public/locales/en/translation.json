@@ -137,6 +137,7 @@
     "environment": "Type of environment",
     "equipment": "Equipment required",
     "accessibility": "Accessibility",
+    "difficulty": "Difficulty",
     "start": "Start date : ",
     "filter": {
       "cta": "Filter quests"
@@ -167,7 +168,14 @@
       "non-accessible": "Hard-to-Access Quest",
       "accessible": "Accessible Quest",
       "unkown-accessibility": "No accessibility information has been provided by the quest creator.",
-      "kids": "Kids friendly"
+      "kids": "Kids friendly",
+      "access": {
+        "3": "Difficult",
+        "2": "Intermediate",
+        "1": "Easy",
+        "0": "Accessibility unkown",
+        "undefined": "Accessibility unknown"
+      }
     },
     "parameters": {
       "environment": {
@@ -185,15 +193,22 @@
       "accessibility": {
         "wheelchair": "Wheelchair",
         "kids": "Kids",
-        "stairs": "Stairs",
-        "slope": "Slope",
-        "road": "Road"
+        "full_path": "Dedicated Paths",
+        "limited_path": "Limited Access Paths",
+        "elevation": "Elevation",
+        "blocker": "Terrain obstacle"
+      },
+      "difficulty": {
+        "3": "Difficult",
+        "2": "Intermediate",
+        "1": "Easy"
       }
     },
     "placeholder": {
       "environment": "Choose quest environment(s)",
       "equipment": "Choose quest equipment(s)",
-      "accessibility": "Choose quest accessibility level(s)"
+      "accessibility": "Choose quest accessibility level(s)",
+      "difficulty": "Choose quest difficulty level(s)"
     },
     "begin": "Your quest starts here"
   },

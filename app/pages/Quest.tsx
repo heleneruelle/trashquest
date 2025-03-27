@@ -137,11 +137,13 @@ function Quest() {
               time: formattedDateTime.start[i18n.language].time,
             })}
           </strong>
-          <PillTag
-            icon={<RiArrowGoBackLine />}
-            label={t('quest.dateTime.past')}
-            style="negative"
-          />
+          {isPast ? (
+            <PillTag
+              icon={<RiArrowGoBackLine />}
+              label={t('quest.dateTime.past')}
+              style="negative"
+            />
+          ) : null}
         </div>
         <div className="single-quest__title">
           <h1>{properties.name}</h1>
@@ -214,14 +216,9 @@ function Quest() {
           <FieldWithChild fieldName={t('quest.environment')} id="environment">
             <EnvironmentPillTag environment={properties.environment} />
           </FieldWithChild>
-          {properties.accessibility?.length ? (
-            <FieldWithChild
-              fieldName={t('quest.accessibility')}
-              id="accessibility"
-            >
-              <AccessibilityPillTag accessibility={properties.accessibility} />
-            </FieldWithChild>
-          ) : null}
+          <FieldWithChild fieldName={t('quest.difficulty')} id="difficulty">
+            <AccessibilityPillTag accessLevel={properties.accessLevel} />
+          </FieldWithChild>
         </div>
       </div>
     </div>

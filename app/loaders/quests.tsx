@@ -18,8 +18,8 @@ const fetchQuestBanner = async (request, questId: string) => {
 async function questsLoader({ request }: { request: Request }) {
   const url = new URL(request.url);
   const environment = url.searchParams.get('environment');
-  const equipment = url.searchParams.get('equipment');
   const accessibility = url.searchParams.get('accessibility');
+  const difficulty = url.searchParams.get('difficulty');
 
   try {
     /* 
@@ -60,7 +60,7 @@ async function questsLoader({ request }: { request: Request }) {
 
     const filteredQuests = rawData?.length
       ? rawData
-          .filter((q) => filterQuest(q, environment, equipment, accessibility))
+          .filter((q) => filterQuest(q, environment, difficulty, accessibility))
           .map((q, index) => ({
             ...questToVm(q, user),
             bannerUrl: banners[index],

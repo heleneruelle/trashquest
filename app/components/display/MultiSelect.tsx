@@ -129,10 +129,9 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
           {listTitle ? <strong>{listTitle}</strong> : null}
           <ul className="multi-select-dropdown__list">
             {options.map((option) => (
-              <li>
+              <li key={option.value}>
                 <button
                   type="button"
-                  key={option.value}
                   className="multi-select-dropdown__list-item"
                   onClick={(event) => handleOptionToggle(option, event)}
                 >

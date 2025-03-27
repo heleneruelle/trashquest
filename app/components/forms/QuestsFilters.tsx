@@ -3,8 +3,8 @@ import { FaSliders } from 'react-icons/fa6';
 import MultiSelectInput from '../display/MultiSelectInput';
 import {
   environmentOptions,
-  equipmentOptions,
   accessibilityOptions,
+  difficultyOptions,
 } from '~/config';
 
 function QuestsFilters() {
@@ -14,17 +14,17 @@ function QuestsFilters() {
     <form method="get" className="quests-filters">
       <div className="quests-filters__container">
         <MultiSelectInput
+          placeholder={t('quest.difficulty')}
+          listTitle={t('quest.placeholder.difficulty')}
+          defaultOptions={difficultyOptions}
+          id="difficulty"
+          floating
+        />
+        <MultiSelectInput
           placeholder={t('quest.environment')}
           defaultOptions={environmentOptions}
           listTitle={t('quest.placeholder.environment')}
           id="environment"
-          floating
-        />
-        <MultiSelectInput
-          placeholder={t('quest.equipment')}
-          listTitle={t('quest.placeholder.equipment')}
-          defaultOptions={equipmentOptions}
-          id="equipment"
           floating
         />
         <MultiSelectInput

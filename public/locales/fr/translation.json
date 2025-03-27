@@ -137,6 +137,7 @@
     "environment": "Type d'environnement",
     "equipment": "Équipement nécessaire",
     "accessibility": "Accessibilité",
+    "difficulty": "Difficulté",
     "start": "Date de début : ",
     "filter": {
       "cta": "Filtrer les quêtes"
@@ -167,7 +168,14 @@
       "non-accessible": "Quête difficilement accessible",
       "accessible": "Quête accessible",
       "unkown-accessibility": "Aucune information sur l'accessibilité n'a été fournie par le créateur de la quête.",
-      "kids": "Adaptée aux enfants"
+      "kids": "Adaptée aux enfants",
+      "access": {
+        "3": "Difficile",
+        "2": "Intermédiaire",
+        "1": "Facile",
+        "0": "Accessibilité inconnue",
+        "undefined": "Accessibilité inconnue"
+      }
     },
     "parameters": {
       "environment": {
@@ -185,15 +193,22 @@
       "accessibility": {
         "wheelchair": "Chaise roulante",
         "kids": "Enfants",
-        "stairs": "Escaliers",
-        "slope": "Pente forte",
-        "road": "Route"
+        "full_path": "Voie aménagée",
+        "limited_path": "Voie partiellement aménagée",
+        "elevation": "Dénivelé",
+        "blocker": "Obstacle physique"
+      },
+      "difficulty": {
+        "3": "Difficile",
+        "2": "Intermédiaire",
+        "1": "Facile"
       }
     },
     "placeholder": {
       "environment": "Choisir le(s) environnement(s) de la quête",
       "equipment": "Choisir le(s) équipement(s) de la quête",
-      "accessibility": "Choisir le(s) niveau(x) d'accessibilité de la quête"
+      "accessibility": "Choisir le(s) niveau(x) d'accessibilité de la quête",
+      "difficulty": "Choisir le(s) niveau(x) de difficulté de la quête"
     },
     "begin": "Votre quête démarre ici"
   },
