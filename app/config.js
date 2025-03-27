@@ -35,6 +35,12 @@ export const equipmentOptions = [
   { value: 'bag', label: 'quest.parameters.equipment.bag' },
 ];
 
+export const difficultyOptions = [
+  { value: '3', label: 'quest.parameters.difficulty.3' },
+  { value: '2', label: 'quest.parameters.difficulty.2' },
+  { value: '1', label: 'quest.parameters.difficulty.1' },
+];
+
 export const questAccessibility = [
   'wheelchair',
   'kids',
