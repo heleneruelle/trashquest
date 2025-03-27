@@ -197,12 +197,18 @@
         "limited_path": "Voie partiellement aménagée",
         "elevation": "Dénivelé",
         "blocker": "Obstacle physique"
+      },
+      "difficulty": {
+        "3": "Difficile",
+        "2": "Intermédiaire",
+        "1": "Facile"
       }
     },
     "placeholder": {
       "environment": "Choisir le(s) environnement(s) de la quête",
       "equipment": "Choisir le(s) équipement(s) de la quête",
-      "accessibility": "Choisir le(s) niveau(x) d'accessibilité de la quête"
+      "accessibility": "Choisir le(s) niveau(x) d'accessibilité de la quête",
+      "difficulty": "Choisir le(s) niveau(x) de difficulté de la quête"
     },
     "begin": "Votre quête démarre ici"
   },

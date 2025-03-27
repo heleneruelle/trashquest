@@ -197,12 +197,18 @@
         "limited_path": "Limited Access Paths",
         "elevation": "Elevation",
         "blocker": "Terrain obstacle"
+      },
+      "difficulty": {
+        "3": "Difficult",
+        "2": "Intermediate",
+        "1": "Easy"
       }
     },
     "placeholder": {
       "environment": "Choose quest environment(s)",
       "equipment": "Choose quest equipment(s)",
-      "accessibility": "Choose quest accessibility level(s)"
+      "accessibility": "Choose quest accessibility level(s)",
+      "difficulty": "Choose quest difficulty level(s)"
     },
     "begin": "Your quest starts here"
   },
