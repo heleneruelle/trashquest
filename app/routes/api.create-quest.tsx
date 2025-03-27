@@ -3,6 +3,7 @@ import { db, verifyIdToken, admin } from '~/utils/auth/firebaseAdminAuth';
 import { getCookie } from '~/utils/cookies';
 import dateTimeStartEndValidation from '~/utils/datetime/dateTimeStartEndValidation';
 import dateTimeToISODatetime from '~/utils/datetime/dateTimeToISODatetime';
+import getAccessibilityLevel from '~/utils/quests/getAccessibilityLevel';
 
 export let action: ActionFunction = async ({ request }) => {
   const token = await getCookie(request, 'firebase_token');
@@ -83,6 +84,7 @@ export let action: ActionFunction = async ({ request }) => {
         endDate,
         endDateTimeTimestamp,
         endTime,
+        accessLevel: getAccessibilityLevel(accessibility),
       },
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });
