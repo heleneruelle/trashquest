@@ -15,6 +15,7 @@ import { HiMiniUserGroup } from 'react-icons/hi2';
 import { FaDragon } from 'react-icons/fa';
 import { MdTimer } from 'react-icons/md';
 import { IoPerson } from 'react-icons/io5';
+import { RiArrowGoBackLine } from 'react-icons/ri';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
 import asyncQuitQuest from '~/utils/quests/asyncQuitQuest';
@@ -71,6 +72,7 @@ function Quest() {
     isCurrentUserCreator,
     isQuestFull,
     formattedDateTime,
+    isPast,
   } = properties;
 
   async function handleJoinQuest(e: Event) {
@@ -128,12 +130,19 @@ function Quest() {
       )}
       <img className="single-quest__banner" src={questAsset} />
       <div className="single-quest__header">
-        <strong>
-          {t('quest.dateTime.start', {
-            date: formattedDateTime.start[i18n.language].date,
-            time: formattedDateTime.start[i18n.language].time,
-          })}
-        </strong>
+        <div className="single-quest__start">
+          <strong className={`${isPast && 'single-quest__start__past'}`}>
+            {t('quest.dateTime.start', {
+              date: formattedDateTime.start[i18n.language].date,
+              time: formattedDateTime.start[i18n.language].time,
+            })}
+          </strong>
+          <PillTag
+            icon={<RiArrowGoBackLine />}
+            label="quête terminé"
+            style="negative"
+          />
+        </div>
         <div className="single-quest__title">
           <h1>{properties.name}</h1>
           {isCurrentUserRegisteredForQuest && !isCurrentUserCreator && (
@@ -153,20 +162,23 @@ function Quest() {
           />
           {!isCurrentUserCreator &&
             !isQuestFull &&
-            !isCurrentUserRegisteredForQuest && (
+            !isCurrentUserRegisteredForQuest &&
+            !isPast && (
               <Button
                 type="button"
                 label={t('quest.cta.join')}
                 clickCallback={handleJoinQuest}
               />
             )}
-          {!isCurrentUserCreator && isCurrentUserRegisteredForQuest && (
-            <Button
-              type="button"
-              label={t('quest.cta.quit')}
-              clickCallback={handleQuitQuest}
-            />
-          )}
+          {!isCurrentUserCreator &&
+            isCurrentUserRegisteredForQuest &&
+            !isPast && (
+              <Button
+                type="button"
+                label={t('quest.cta.quit')}
+                clickCallback={handleQuitQuest}
+              />
+            )}
           <ButtonLink
             label={t(`create-new-quest.cta.new`)}
             target={createCompositeUrl(i18n, '/create-new')}

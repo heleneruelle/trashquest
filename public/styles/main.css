@@ -160,6 +160,11 @@ input {
   color: white;
 }
 
+.pill-tag__negative {
+  background-color: var(--c-red);
+  color: white;
+}
+
 .pill-tag svg {
   height: 16px;
   width: 16px;
