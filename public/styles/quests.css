@@ -77,6 +77,17 @@ ul.quests-ul {
   gap: 12px;
 }
 
+.single-quest__start {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.single-quest__start__past {
+  color: var(--c-red);
+}
+
 .quests-filters {
   display: flex;
   flex-direction: column;

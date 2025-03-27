@@ -150,11 +150,13 @@
       "join": "Participez à cette quête",
       "quit": "Quitter cette quête",
       "url-copy": "Copier l'URL",
-      "url-copied": "URL copiée"
+      "url-copied": "URL copiée",
+      "details": "Détails"
     },
     "dateTime": {
       "start": "Cette quête démarre le {{date}} à {{time, HH:mm}}",
-      "end": "Cette quête prenf fin le {{date}} à {{time, HH:mm}}"
+      "end": "Cette quête prenf fin le {{date}} à {{time, HH:mm}}",
+      "past": "Quête terminée"
     },
     "summary": {
       "equipment": "Equipement supplémentaire requis",

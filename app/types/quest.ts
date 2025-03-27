@@ -12,6 +12,7 @@ export default interface QuestType {
     };
   };
   properties: {
+    isPast: boolean;
     description: string;
     expectedParticipants: string;
     environment: Array<string>;
