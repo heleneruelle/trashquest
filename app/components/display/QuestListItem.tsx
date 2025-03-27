@@ -28,6 +28,7 @@ function QuestListItem({ quest }: QuestListItemType) {
     equipment,
     environment,
     accessibility,
+    accessLevel,
     isCurrentUserCreator,
     formattedDateTime,
     isClosest,
@@ -68,7 +69,7 @@ function QuestListItem({ quest }: QuestListItemType) {
           {isClosest ? <TagTitle title={t('quests.closest')} isBest /> : null}
           <EquipmentPillTag equipment={equipment} />
           <EnvironmentPillTag environment={environment} />
-          <AccessibilityPillTag accessibility={accessibility} />
+          <AccessibilityPillTag accessLevel={accessLevel} />
         </div>
         <QuestLocation quest={quest} />
         <strong>
