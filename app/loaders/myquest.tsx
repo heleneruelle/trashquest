@@ -20,23 +20,27 @@ function getQueryForType(
       return [
         questsRef
           .where('properties.creatorId', '==', userId)
-          .where('properties.endDateTimeTimestamp', '>', currentTimestamp),
+          .where('properties.endDateTimeTimestamp', '>', currentTimestamp)
+          .orderBy('properties.startDateTimeTimestamp'),
       ];
     case PARTICIPANT:
       return [
         questsRef
           .where('properties.participants', 'array-contains', userId)
           .where('properties.creatorId', '!=', userId)
-          .where('properties.endDateTimeTimestamp', '>', currentTimestamp),
+          .where('properties.endDateTimeTimestamp', '>', currentTimestamp)
+          .orderBy('properties.startDateTimeTimestamp'),
       ];
     case PAST:
       return [
         questsRef
           .where('properties.participants', 'array-contains', userId)
-          .where('properties.endDateTimeTimestamp', '<', currentTimestamp),
+          .where('properties.endDateTimeTimestamp', '<', currentTimestamp)
+          .orderBy('properties.startDateTimeTimestamp'),
         questsRef
           .where('properties.creatorId', '==', userId)
-          .where('properties.endDateTimeTimestamp', '<', currentTimestamp),
+          .where('properties.endDateTimeTimestamp', '<', currentTimestamp)
+          .orderBy('properties.startDateTimeTimestamp'),
       ];
     default:
       return [];
