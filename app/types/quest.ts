@@ -14,6 +14,7 @@ export default interface QuestType {
   properties: {
     isPast: boolean;
     description: string;
+    accessLevel: number;
     expectedParticipants: string;
     environment: Array<string>;
     equipment: Array<string>;
