@@ -56,11 +56,15 @@ async function myQuestsLoader({ request, params }: LoaderFunctionArgs) {
 
     const response = await Promise.all(query.map((q) => q.get()));
 
-    const data = response
-      .flatMap((snapshot) =>
-        snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-      )
-      .map((d) => questToVm(d, user));
+    const data = Array.from(
+      new Map(
+        response
+          .flatMap((snapshot) =>
+            snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+          )
+          .map((d) => [d.id, questToVm(d, user)])
+      ).values()
+    );
 
     return Response.json(
       {
