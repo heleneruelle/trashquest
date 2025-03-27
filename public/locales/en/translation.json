@@ -155,7 +155,8 @@
     },
     "dateTime": {
       "start": "This quest starts on {{date}} at {{time, HH:mm}}",
-      "end": "This quest ends on {{date}} at {{time, HH:mm}}"
+      "end": "This quest ends on {{date}} at {{time, HH:mm}}",
+      "past": "Quest completed"
     },
     "summary": {
       "equipment": "Extra equipment needed",

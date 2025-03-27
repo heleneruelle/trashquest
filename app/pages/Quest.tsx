@@ -139,7 +139,7 @@ function Quest() {
           </strong>
           <PillTag
             icon={<RiArrowGoBackLine />}
-            label="quête terminé"
+            label={t('quest.dateTime.past')}
             style="negative"
           />
         </div>
