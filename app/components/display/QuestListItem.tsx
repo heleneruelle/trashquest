@@ -31,6 +31,7 @@ function QuestListItem({ quest }: QuestListItemType) {
     isCurrentUserCreator,
     formattedDateTime,
     isClosest,
+    isPast,
   } = properties;
 
   async function handleQuestCallback(e: Event) {
@@ -85,34 +86,42 @@ function QuestListItem({ quest }: QuestListItemType) {
       </div>
       <div className="quest-list-item__footer">
         <div className="quest-list-item__footer-details">
-          <span>Details</span>
+          <span>{t('quest.cta.details')}</span>
           <MdOutlineKeyboardArrowRight size={16} />
         </div>
-        {isCurrentUserCreator ? (
-          <Button
-            id={quest.id}
-            value={quest.id}
-            type="button"
-            clickCallback={handleCancelQuest}
-            label="Cancel quest"
-          />
-        ) : (
-          <Button
-            type="button"
-            id={properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'}
-            value={properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'}
-            style={
-              properties.isCurrentUserRegisteredForQuest
-                ? 'tertiary'
-                : 'secondary'
-            }
-            label={t(
-              `quest.cta.${
-                properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'
-              }`
+        {!isPast && (
+          <>
+            {isCurrentUserCreator ? (
+              <Button
+                id={quest.id}
+                value={quest.id}
+                type="button"
+                clickCallback={handleCancelQuest}
+                label="Cancel quest"
+              />
+            ) : (
+              <Button
+                type="button"
+                id={
+                  properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'
+                }
+                value={
+                  properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'
+                }
+                style={
+                  properties.isCurrentUserRegisteredForQuest
+                    ? 'tertiary'
+                    : 'secondary'
+                }
+                label={t(
+                  `quest.cta.${
+                    properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'
+                  }`
+                )}
+                clickCallback={handleQuestCallback}
+              />
             )}
-            clickCallback={handleQuestCallback}
-          />
+          </>
         )}
       </div>
     </Link>
