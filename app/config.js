@@ -54,3 +54,19 @@ export const accessibilityOptions = [
 export const PARTICIPANT = 'going';
 export const HOST = 'host';
 export const PAST = 'past';
+
+export const FULL_PATH = 'full_path';
+export const LIMITED_PATH = 'limited_path';
+export const WHEELCHAIR = 'wheelchair';
+export const KIDS = 'kids';
+export const ELEVATION = 'elevation';
+export const BLOCKER = 'blocker';
+
+export const accessLevels = {
+  hard: 3,
+  intermediate: 2,
+  easy: 1,
+  unknown: 0,
+};
+
+const access = [FULL_PATH, LIMITED_PATH, WHEELCHAIR, KIDS, ELEVATION, BLOCKER];
