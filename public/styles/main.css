@@ -165,6 +165,11 @@ input {
   color: white;
 }
 
+.pill-tag__middle {
+  background-color: #ffc107;
+  color: black;
+}
+
 .pill-tag svg {
   height: 16px;
   width: 16px;
