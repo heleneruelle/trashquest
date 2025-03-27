@@ -1,45 +1,79 @@
 import { LoaderFunctionArgs } from '@remix-run/node';
-import { db } from '~/utils/auth/firebaseAdminAuth';
+import { db, admin } from '~/utils/auth/firebaseAdminAuth';
 import currentUserLoader from './currentUser';
 import questToVm from '~/utils/tovm/questToVm';
+import { HOST, PARTICIPANT, PAST } from '~/config';
 
-async function myQuestsLoader({ request }: LoaderFunctionArgs) {
+function getQueryForType(
+  type: string | undefined,
+  userId: string,
+  questsRef: FirebaseFirestore.CollectionReference<
+    FirebaseFirestore.DocumentData,
+    FirebaseFirestore.DocumentData
+  >
+) {
+  const now = new Date();
+  const currentTimestamp = admin.firestore.Timestamp.fromDate(now);
+
+  switch (type) {
+    case HOST:
+      return [
+        questsRef
+          .where('properties.creatorId', '==', userId)
+          .where('properties.endDateTimeTimestamp', '>', currentTimestamp)
+          .orderBy('properties.startDateTimeTimestamp'),
+      ];
+    case PARTICIPANT:
+      return [
+        questsRef
+          .where('properties.participants', 'array-contains', userId)
+          .where('properties.creatorId', '!=', userId)
+          .where('properties.endDateTimeTimestamp', '>', currentTimestamp)
+          .orderBy('properties.startDateTimeTimestamp'),
+      ];
+    case PAST:
+      return [
+        questsRef
+          .where('properties.participants', 'array-contains', userId)
+          .where('properties.endDateTimeTimestamp', '<', currentTimestamp)
+          .orderBy('properties.startDateTimeTimestamp'),
+        questsRef
+          .where('properties.creatorId', '==', userId)
+          .where('properties.endDateTimeTimestamp', '<', currentTimestamp)
+          .orderBy('properties.startDateTimeTimestamp'),
+      ];
+    default:
+      return [];
+  }
+}
+
+async function myQuestsLoader({ request, params }: LoaderFunctionArgs) {
   try {
+    const { type } = params;
+
     const userLoaderResp = await currentUserLoader({ request });
     const { user } = await userLoaderResp.json();
 
     const questsRef = db.collection('quests');
-    const queryForCreator = questsRef.where(
-      'properties.creatorId',
-      '==',
-      user.id
+
+    const query = getQueryForType(type, user.id, questsRef);
+
+    const response = await Promise.all(query.map((q) => q.get()));
+
+    const data = Array.from(
+      new Map(
+        response
+          .flatMap((snapshot) =>
+            snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+          )
+          .map((d) => [d.id, questToVm(d, user)])
+      ).values()
     );
-
-    const queryForParticipant = questsRef
-      .where('properties.participants', 'array-contains', user.id)
-      .where('properties.creatorId', '!=', user.id);
-
-    const [creatorSnapshot, participantSnapshot] = await Promise.all([
-      queryForCreator.get(),
-      queryForParticipant.get(),
-    ]);
-
-    const questsForCreator = [];
-    creatorSnapshot.forEach((doc) => {
-      // console.log('DOC', doc)
-      questsForCreator.push({ id: doc.id, ...doc.data() });
-    });
-
-    const questsAsParticipant = [];
-    participantSnapshot.forEach((doc) => {
-      questsAsParticipant.push({ id: doc.id, ...doc.data() });
-    });
 
     return Response.json(
       {
         success: true,
-        quests: questsForCreator.map((q) => questToVm(q, user)),
-        questsAsParticipant: questsAsParticipant.map((q) => questToVm(q, user)),
+        data,
       },
       { status: 200 }
     );

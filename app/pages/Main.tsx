@@ -32,7 +32,7 @@ function Main() {
       <QuestsFilters />
       {hasNoQuest ? <p>{t('quests.no-quest')}</p> : null}
       {hasNoQuestForFilters ? <p>{t('quests.no-quest-filters')}</p> : null}
-      {quests?.length ? (
+      {quests?.length || closestQuest ? (
         <div className="quest-list-container">
           <h4>{t('quests.available')}</h4>
           <ul className="quests-ul">
@@ -41,7 +41,7 @@ function Main() {
                 <QuestListItem quest={closestQuest} />
               </li>
             ) : null}
-            {quests.map((quest) => (
+            {quests?.map((quest) => (
               <li key={quest.id}>
                 <QuestListItem quest={quest} />
               </li>
