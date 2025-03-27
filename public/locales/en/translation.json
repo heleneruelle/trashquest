@@ -192,9 +192,10 @@
       "accessibility": {
         "wheelchair": "Wheelchair",
         "kids": "Kids",
-        "stairs": "Stairs",
-        "slope": "Slope",
-        "road": "Road"
+        "full_path": "Dedicated Paths",
+        "limited_path": "Limited Access Paths",
+        "elevation": "Elevation",
+        "blocker": "Terrain obstacle"
       }
     },
     "placeholder": {

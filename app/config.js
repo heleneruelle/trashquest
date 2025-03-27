@@ -43,14 +43,6 @@ export const questAccessibility = [
   'road',
 ];
 
-export const accessibilityOptions = [
-  { value: 'wheelchair', label: 'quest.parameters.accessibility.wheelchair' },
-  { value: 'kids', label: 'quest.parameters.accessibility.kids' },
-  { value: 'stairs', label: 'quest.parameters.accessibility.stairs' },
-  { value: 'slope', label: 'quest.parameters.accessibility.slope' },
-  { value: 'road', label: 'quest.parameters.accessibility.road' },
-];
-
 export const PARTICIPANT = 'going';
 export const HOST = 'host';
 export const PAST = 'past';
@@ -61,6 +53,18 @@ export const WHEELCHAIR = 'wheelchair';
 export const KIDS = 'kids';
 export const ELEVATION = 'elevation';
 export const BLOCKER = 'blocker';
+
+export const accessibilityOptions = [
+  { value: FULL_PATH, label: `quest.parameters.accessibility.${FULL_PATH}` },
+  {
+    value: LIMITED_PATH,
+    label: `quest.parameters.accessibility.${LIMITED_PATH}`,
+  },
+  { value: WHEELCHAIR, label: `quest.parameters.accessibility.${WHEELCHAIR}` },
+  { value: KIDS, label: `quest.parameters.accessibility.${KIDS}` },
+  { value: ELEVATION, label: `quest.parameters.accessibility.${ELEVATION}` },
+  { value: BLOCKER, label: `quest.parameters.accessibility.${BLOCKER}` },
+];
 
 export const accessLevels = {
   hard: 3,

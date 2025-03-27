@@ -192,9 +192,10 @@
       "accessibility": {
         "wheelchair": "Chaise roulante",
         "kids": "Enfants",
-        "stairs": "Escaliers",
-        "slope": "Pente forte",
-        "road": "Route"
+        "full_path": "Voie aménagée",
+        "limited_path": "Voie partiellement aménagée",
+        "elevation": "Dénivelé",
+        "blocker": "Obstacle physique"
       }
     },
     "placeholder": {
