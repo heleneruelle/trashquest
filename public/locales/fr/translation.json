@@ -137,6 +137,7 @@
     "environment": "Type d'environnement",
     "equipment": "Équipement nécessaire",
     "accessibility": "Accessibilité",
+    "difficulty": "Difficulté",
     "start": "Date de début : ",
     "filter": {
       "cta": "Filtrer les quêtes"

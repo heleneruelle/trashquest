@@ -137,6 +137,7 @@
     "environment": "Type of environment",
     "equipment": "Equipment required",
     "accessibility": "Accessibility",
+    "difficulty": "Difficulty",
     "start": "Start date : ",
     "filter": {
       "cta": "Filter quests"
