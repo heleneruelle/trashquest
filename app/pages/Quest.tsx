@@ -214,14 +214,9 @@ function Quest() {
           <FieldWithChild fieldName={t('quest.environment')} id="environment">
             <EnvironmentPillTag environment={properties.environment} />
           </FieldWithChild>
-          {properties.accessibility?.length ? (
-            <FieldWithChild
-              fieldName={t('quest.accessibility')}
-              id="accessibility"
-            >
-              <AccessibilityPillTag accessibility={properties.accessibility} />
+            <FieldWithChild fieldName={t('quest.difficulty')} id="difficulty">
+              <AccessibilityPillTag accessLevel={properties.accessLevel} />
             </FieldWithChild>
-          ) : null}
         </div>
       </div>
     </div>
