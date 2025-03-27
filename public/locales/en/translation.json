@@ -167,7 +167,14 @@
       "non-accessible": "Hard-to-Access Quest",
       "accessible": "Accessible Quest",
       "unkown-accessibility": "No accessibility information has been provided by the quest creator.",
-      "kids": "Kids friendly"
+      "kids": "Kids friendly",
+      "access": {
+        "3": "Difficult",
+        "2": "Intermediate",
+        "1": "Easy",
+        "0": "Accessibility unkown",
+        "undefined": "Accessibility unknown"
+      }
     },
     "parameters": {
       "environment": {
