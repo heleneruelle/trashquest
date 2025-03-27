@@ -150,7 +150,8 @@
       "join": "Join this quest",
       "quit": "Quit this quest",
       "url-copy": "Copy URL",
-      "url-copied": "URL copied"
+      "url-copied": "URL copied",
+      "details": "Details"
     },
     "dateTime": {
       "start": "This quest starts on {{date}} at {{time, HH:mm}}",

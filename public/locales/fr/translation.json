@@ -150,7 +150,8 @@
       "join": "Participez à cette quête",
       "quit": "Quitter cette quête",
       "url-copy": "Copier l'URL",
-      "url-copied": "URL copiée"
+      "url-copied": "URL copiée",
+      "details": "Détails"
     },
     "dateTime": {
       "start": "Cette quête démarre le {{date}} à {{time, HH:mm}}",
