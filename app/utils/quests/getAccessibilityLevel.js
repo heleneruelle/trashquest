@@ -1,11 +1,19 @@
-import { accessLevels } from '../../config';
+import {
+  FULL_PATH,
+  LIMITED_PATH,
+  KIDS,
+  ELEVATION,
+  BLOCKER,
+  WHEELCHAIR,
+  accessLevels,
+} from '../../config';
 
 function getAccessibilityLevel(access) {
-  if (access.elevation || access.blocker) {
+  if (access.includes(FULL_PATH || BLOCKER)) {
     return accessLevels.hard;
-  } else if (access.limited_access || !access.kids || !access.wheelchair) {
+  } else if (access.includes(LIMITED_PATH)) {
     return accessLevels.intermediate;
-  } else if (access.full_path || access.wheelchair || access.kids) {
+  } else if (access.includes(FULL_PATH || WHEELCHAIR || KIDS)) {
     return accessLevels.easy;
   } else {
     return accessLevels.unknown;
