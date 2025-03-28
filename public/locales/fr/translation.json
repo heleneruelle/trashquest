@@ -75,7 +75,12 @@
       "email": "Entrez votre email",
       "password": "Entrez votre mot de passe"
     },
-    "error": "Oups ! Il semble y avoir un problème avec vos informations d'identification. Nous sommes en train de le résoudre. Veuillez réessayer bientôt."
+    "error": "Oups ! Il semble y avoir un problème avec vos informations d'identification. Nous sommes en train de le résoudre. Veuillez réessayer bientôt.",
+    "temp": {
+      "description": "Trashquest étant en cours de développement, si vous avez accédé à ce lien, vous découvrirez une application en phase de développement préliminaire. Si vous ne souhaitez pas créer votre propre compte, vous pouvez utiliser l'un de ces deux comptes de test (mdp : transhquest123):",
+      "userFr": "testuserfr@trashquest.com (utilisateur.rice français.e)",
+      "userBe": "testuserbe@trashquest.com (utilisateur.rice belge)"
+    }
   },
   "create-new-account": {
     "title": "Créez votre compte Trashquest",
