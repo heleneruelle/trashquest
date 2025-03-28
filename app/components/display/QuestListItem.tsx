@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import Button from '../inputs/Button';
 import EquipmentPillTags from './EquipmentPillTags';
-import EnvironmentPillTag from './EnvironmentPillTag copy';
+import EnvironmentPillTags from './EnvironmentPillTags';
 import DifficultyTag from './DifficultyTag';
 import QuestLocation from './quest/QuestLocation';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
@@ -68,7 +68,7 @@ function QuestListItem({ quest }: QuestListItemType) {
         <div className="quest-list-item__properties-list">
           {isClosest ? <TagTitle title={t('quests.closest')} isBest /> : null}
           <EquipmentPillTags equipment={equipment} />
-          <EnvironmentPillTag environment={environment} />
+          <EnvironmentPillTags environment={environment} />
           <DifficultyTag accessLevel={accessLevel} />
         </div>
         <QuestLocation quest={quest} />

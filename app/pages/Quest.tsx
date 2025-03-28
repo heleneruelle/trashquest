@@ -6,7 +6,7 @@ import FieldWithChild from '~/components/display/FieldWithChild';
 import EquipmentPillTags from '~/components/display/EquipmentPillTags';
 import AccessibilityTags from '~/components/display/AccessibilityTags';
 import DifficultyTag from '~/components/display/DifficultyTag';
-import EnvironmentPillTag from '~/components/display/EnvironmentPillTag copy';
+import EnvironmentPillTags from '~/components/display/EnvironmentPillTags';
 import PillTag from '~/components/display/PillTag';
 import Button from '~/components/inputs/Button';
 import Toast from '~/components/notifications/Toast';
@@ -219,7 +219,7 @@ function Quest() {
             <EquipmentPillTags equipment={properties.equipment} isDetailed />
           </FieldWithChild>
           <FieldWithChild fieldName={t('quest.environment')} id="environment">
-            <EnvironmentPillTag environment={properties.environment} />
+            <EnvironmentPillTags environment={properties.environment} />
           </FieldWithChild>
           {accessibility?.length ? (
             <FieldWithChild
