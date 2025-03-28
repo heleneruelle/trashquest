@@ -75,7 +75,12 @@
       "email": "Enter your email",
       "password": "Enter your password"
     },
-    "error": "Oops! There seems to be a problem with your credentials. We're working on resolving it. Please try again soon."
+    "error": "Oops! There seems to be a problem with your credentials. We're working on resolving it. Please try again soon.",
+    "temp": {
+      "description": "Trashquest being a work in progress, if you have landed on this link you will discover an app in its early development stage. If you don't feel comfortable creating your own account, you can use one of those 2 test accounts : ",
+      "userFr": "testuserfr@trashquest.com (french user)",
+      "userBe": "testuserbe@trashquest.com (belgian user)"
+    }
   },
   "create-new-account": {
     "title": "Create your Trashquest account",

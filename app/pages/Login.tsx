@@ -11,7 +11,14 @@ const LoginPage = () => {
   return (
     <ImageLayout>
       <div className="login-form">
-        <h1>{t('login.title')}</h1>
+        <h1 style={{ margin: '22px 0px 0px 0px' }}>{t('login.title')}</h1>
+        <div>
+          <p style={{ margin: '6px 0px' }}>{t('login.temp.description')}</p>
+          <ol style={{ margin: '0px' }}>
+            <li style={{ fontWeight: 'bold' }}>{t('login.temp.userFr')}</li>
+            <li style={{ fontWeight: 'bold' }}>{t('login.temp.userBe')}</li>
+          </ol>
+        </div>
         <LoginForm />
         <ButtonLink
           target={createCompositeUrl(i18n, '/sign-up')}
