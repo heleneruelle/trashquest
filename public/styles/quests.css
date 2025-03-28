@@ -46,7 +46,7 @@ ul.quests-ul {
   padding: 0px 24px 0px 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   flex-grow: 1;
 }
 
@@ -275,3 +275,8 @@ ul.quests-ul {
 }
 
 /*     box-shadow: 0 1px 2px var(rgba(0, 0, 0, .2)); */
+
+.accessibility-tags {
+  display: flex;
+  gap: 12px;
+}

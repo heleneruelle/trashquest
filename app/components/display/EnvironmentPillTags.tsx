@@ -7,7 +7,7 @@ interface EnvironmentPillTagType {
   environment: Array<string>;
 }
 
-function EnvironmentPillTag({ environment }: EnvironmentPillTagType) {
+function EnvironmentPillTags({ environment }: EnvironmentPillTagType) {
   const { t } = useTranslation();
 
   const isUrban = environment.includes('city');
@@ -21,4 +21,4 @@ function EnvironmentPillTag({ environment }: EnvironmentPillTagType) {
   );
 }
 
-export default EnvironmentPillTag;
+export default EnvironmentPillTags;
