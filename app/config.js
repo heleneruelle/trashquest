@@ -26,14 +26,19 @@ export const environmentOptions = [
   { value: 'hike', label: 'quest.parameters.environment.hike' },
 ];
 
-export const questEquipment = ['boot', 'gloves', 'mask', 'bag'];
+export const BOOT = 'boot';
+export const GLOVES = 'gloves';
+export const MASK = 'mask';
+export const BAG = 'bag';
 
 export const equipmentOptions = [
-  { value: 'boot', label: 'quest.parameters.equipment.boot' },
-  { value: 'gloves', label: 'quest.parameters.equipment.gloves' },
-  { value: 'mask', label: 'quest.parameters.equipment.mask' },
-  { value: 'bag', label: 'quest.parameters.equipment.bag' },
+  { value: BOOT, label: `quest.parameters.equipment.${BOOT}` },
+  { value: GLOVES, label: `quest.parameters.equipment.${GLOVES}` },
+  { value: MASK, label: `quest.parameters.equipment.${MASK}` },
+  { value: BAG, label: `quest.parameters.equipment.${BAG}` },
 ];
+
+export const questEquipment = [BOOT, GLOVES, MASK, BAG];
 
 export const difficultyOptions = [
   { value: '3', label: 'quest.parameters.difficulty.3' },
