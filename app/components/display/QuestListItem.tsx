@@ -4,7 +4,7 @@ import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import Button from '../inputs/Button';
 import EquipmentPillTag from './EquipmentPillTag';
 import EnvironmentPillTag from './EnvironmentPillTag copy';
-import AccessibilityPillTag from './AccessibilityPillTag';
+import DifficultyTag from './DifficultyTag';
 import QuestLocation from './quest/QuestLocation';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import asyncJoinQuest from '~/utils/quests/asyncJoinQuest';
@@ -69,7 +69,7 @@ function QuestListItem({ quest }: QuestListItemType) {
           {isClosest ? <TagTitle title={t('quests.closest')} isBest /> : null}
           <EquipmentPillTag equipment={equipment} />
           <EnvironmentPillTag environment={environment} />
-          <AccessibilityPillTag accessLevel={accessLevel} />
+          <DifficultyTag accessLevel={accessLevel} />
         </div>
         <QuestLocation quest={quest} />
         <strong>
