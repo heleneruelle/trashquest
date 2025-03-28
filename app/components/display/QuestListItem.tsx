@@ -2,7 +2,7 @@ import { Link, useFetcher } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import Button from '../inputs/Button';
-import EquipmentPillTag from './EquipmentPillTag';
+import EquipmentPillTags from './EquipmentPillTags';
 import EnvironmentPillTag from './EnvironmentPillTag copy';
 import DifficultyTag from './DifficultyTag';
 import QuestLocation from './quest/QuestLocation';
@@ -67,7 +67,7 @@ function QuestListItem({ quest }: QuestListItemType) {
         </div>
         <div className="quest-list-item__properties-list">
           {isClosest ? <TagTitle title={t('quests.closest')} isBest /> : null}
-          <EquipmentPillTag equipment={equipment} />
+          <EquipmentPillTags equipment={equipment} />
           <EnvironmentPillTag environment={environment} />
           <DifficultyTag accessLevel={accessLevel} />
         </div>

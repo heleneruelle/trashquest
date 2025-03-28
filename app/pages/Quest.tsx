@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import QuestType from '~/types/quest';
 import FieldWithChild from '~/components/display/FieldWithChild';
-import EquipmentPillTag from '~/components/display/EquipmentPillTag';
+import EquipmentPillTags from '~/components/display/EquipmentPillTags';
 import AccessibilityTags from '~/components/display/AccessibilityTags';
 import DifficultyTag from '~/components/display/DifficultyTag';
 import EnvironmentPillTag from '~/components/display/EnvironmentPillTag copy';
@@ -216,7 +216,7 @@ function Quest() {
             </span>
           </div>
           <FieldWithChild fieldName={t('quest.equipment')} id="equipment">
-            <EquipmentPillTag equipment={properties.equipment} />
+            <EquipmentPillTags equipment={properties.equipment} isDetailed />
           </FieldWithChild>
           <FieldWithChild fieldName={t('quest.environment')} id="environment">
             <EnvironmentPillTag environment={properties.environment} />
