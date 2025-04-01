@@ -17,13 +17,23 @@ export const firebaseErrorCodes = {
   location: 'location',
 };
 
-export const questEnvironment = ['city', 'sea', 'river', 'hike'];
+export const CITY = 'city';
+export const SEA = 'sea';
+export const RIVER = 'river';
+export const FOREST = 'forest';
+export const MOUNTAIN = 'mountain';
+export const HIKE = 'hike';
+export const NATURE = 'nature';
+
+export const questEnvironment = [CITY, SEA, RIVER, FOREST, MOUNTAIN, HIKE];
 
 export const environmentOptions = [
-  { value: 'city', label: 'quest.parameters.environment.city' },
-  { value: 'sea', label: 'quest.parameters.environment.sea' },
-  { value: 'river', label: 'quest.parameters.environment.river' },
-  { value: 'hike', label: 'quest.parameters.environment.hike' },
+  { value: CITY, label: `quest.parameters.environment.${CITY}` },
+  { value: SEA, label: `quest.parameters.environment.${SEA}` },
+  { value: RIVER, label: `quest.parameters.environment.${RIVER}` },
+  { value: FOREST, label: `quest.parameters.environment.${FOREST}` },
+  { value: MOUNTAIN, label: `quest.parameters.environment.${MOUNTAIN}` },
+  { value: HIKE, label: `quest.parameters.environment.${HIKE}` },
 ];
 
 export const BOOT = 'boot';
