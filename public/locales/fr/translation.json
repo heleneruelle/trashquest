@@ -187,7 +187,9 @@
         "city": "Ville",
         "sea": "Plage et côte",
         "river": "Rivière",
-        "hike": "Randonnée"
+        "hike": "Chemins de randonnée",
+        "mountain": "Mountain",
+        "forest": "Forest"
       },
       "equipment": {
         "boot": "Bottes",
