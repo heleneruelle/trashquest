@@ -1,23 +1,41 @@
 import { useTranslation } from 'react-i18next';
-import { MdOutlineEmojiNature } from 'react-icons/md';
-import { MdLocationCity } from 'react-icons/md';
 import PillTag from './PillTag';
+import getIconForEnvironment from '~/utils/quests/getIconForEnvironment';
+import { environmentOptions } from '~/config';
 
 interface EnvironmentPillTagType {
   environment: Array<string>;
+  isDetailed: boolean;
 }
 
-function EnvironmentPillTags({ environment }: EnvironmentPillTagType) {
+function EnvironmentPillTags({
+  environment,
+  isDetailed = false,
+}: EnvironmentPillTagType) {
   const { t } = useTranslation();
 
-  const isUrban = environment.includes('city');
+  if (!isDetailed) {
+    const isUrban = environment.includes('city');
+    const SingleEnvIcon = getIconForEnvironment(isUrban ? 'city' : 'nature');
+
+    return (
+      <PillTag
+        label={t(`quest.summary.${isUrban ? 'urban' : 'nature'}`)}
+        icon={<SingleEnvIcon />}
+      />
+    );
+  }
 
   return (
-    <PillTag
-      label={t(`quest.summary.${isUrban ? 'urban' : 'nature'}`)}
-      icon={isUrban ? <MdLocationCity /> : <MdOutlineEmojiNature />}
-      //style={isUrban ? 'positive' : ''}
-    />
+    <ul className="tags-list">
+      {environment.map((env) => {
+        const envOption = environmentOptions.find((e) => e.value === env);
+        if (!envOption) return null;
+
+        const Icon = getIconForEnvironment(env);
+        return <PillTag key={env} label={t(envOption.label)} icon={<Icon />} />;
+      })}
+    </ul>
   );
 }
 
