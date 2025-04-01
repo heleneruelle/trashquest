@@ -219,7 +219,10 @@ function Quest() {
             <EquipmentPillTags equipment={properties.equipment} isDetailed />
           </FieldWithChild>
           <FieldWithChild fieldName={t('quest.environment')} id="environment">
-            <EnvironmentPillTags environment={properties.environment} />
+            <EnvironmentPillTags
+              environment={properties.environment}
+              isDetailed
+            />
           </FieldWithChild>
           {accessibility?.length ? (
             <FieldWithChild
