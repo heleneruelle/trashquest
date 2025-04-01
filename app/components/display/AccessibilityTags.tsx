@@ -11,7 +11,7 @@ function AccessibilityTags({ accessibility }: AccessibilityTagsType) {
   const { t } = useTranslation();
 
   return (
-    <div className="accessibility-tags">
+    <div className="tags-list">
       {accessibility.map((a) => {
         const Icon = getIconForAccessibility(a);
         return (

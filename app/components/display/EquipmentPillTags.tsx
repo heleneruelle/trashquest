@@ -18,7 +18,7 @@ function EquipmentPillTags({
 
   if (!isDetailed) {
     return (
-      <div className="accessibility-tags">
+      <div className="tags-list">
         {equipment.length > 0 ? (
           <PillTag label={t('quest.summary.equipment')} icon={<SwordIcon />} />
         ) : (
@@ -33,7 +33,7 @@ function EquipmentPillTags({
   }
 
   return (
-    <div className="accessibility-tags">
+    <ul className="tags-list">
       {equipment.length > 0 ? (
         equipment.map((item) => {
           const equipmentOption = equipmentOptions.find(
@@ -57,7 +57,7 @@ function EquipmentPillTags({
           style="positive"
         />
       )}
-    </div>
+    </ul>
   );
 }
 
