@@ -17,23 +17,38 @@ export const firebaseErrorCodes = {
   location: 'location',
 };
 
-export const questEnvironment = ['city', 'sea', 'river', 'hike'];
+export const CITY = 'city';
+export const SEA = 'sea';
+export const RIVER = 'river';
+export const FOREST = 'forest';
+export const MOUNTAIN = 'mountain';
+export const HIKE = 'hike';
+export const NATURE = 'nature';
+
+export const questEnvironment = [CITY, SEA, RIVER, FOREST, MOUNTAIN, HIKE];
 
 export const environmentOptions = [
-  { value: 'city', label: 'quest.parameters.environment.city' },
-  { value: 'sea', label: 'quest.parameters.environment.sea' },
-  { value: 'river', label: 'quest.parameters.environment.river' },
-  { value: 'hike', label: 'quest.parameters.environment.hike' },
+  { value: CITY, label: `quest.parameters.environment.${CITY}` },
+  { value: SEA, label: `quest.parameters.environment.${SEA}` },
+  { value: RIVER, label: `quest.parameters.environment.${RIVER}` },
+  { value: FOREST, label: `quest.parameters.environment.${FOREST}` },
+  { value: MOUNTAIN, label: `quest.parameters.environment.${MOUNTAIN}` },
+  { value: HIKE, label: `quest.parameters.environment.${HIKE}` },
 ];
 
-export const questEquipment = ['boot', 'gloves', 'mask', 'bag'];
+export const BOOT = 'boot';
+export const GLOVES = 'gloves';
+export const MASK = 'mask';
+export const BAG = 'bag';
 
 export const equipmentOptions = [
-  { value: 'boot', label: 'quest.parameters.equipment.boot' },
-  { value: 'gloves', label: 'quest.parameters.equipment.gloves' },
-  { value: 'mask', label: 'quest.parameters.equipment.mask' },
-  { value: 'bag', label: 'quest.parameters.equipment.bag' },
+  { value: BOOT, label: `quest.parameters.equipment.${BOOT}` },
+  { value: GLOVES, label: `quest.parameters.equipment.${GLOVES}` },
+  { value: MASK, label: `quest.parameters.equipment.${MASK}` },
+  { value: BAG, label: `quest.parameters.equipment.${BAG}` },
 ];
+
+export const questEquipment = [BOOT, GLOVES, MASK, BAG];
 
 export const difficultyOptions = [
   { value: '3', label: 'quest.parameters.difficulty.3' },

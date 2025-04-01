@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import PillTag from './PillTag';
 import { IoAccessibility } from 'react-icons/io5';
 
-interface AccessibilityPillTagType {
+interface DifficultyTagType {
   accessLevel: number;
 }
 
@@ -19,7 +19,7 @@ function getStyleForAccessLevel(accessLevel: number | undefined) {
   }
 }
 
-function AccessibilityPillTag({ accessLevel }: AccessibilityPillTagType) {
+function DifficultyTag({ accessLevel }: DifficultyTagType) {
   const { t } = useTranslation();
 
   return (
@@ -31,4 +31,4 @@ function AccessibilityPillTag({ accessLevel }: AccessibilityPillTagType) {
   );
 }
 
-export default AccessibilityPillTag;
+export default DifficultyTag;

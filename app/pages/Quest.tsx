@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import QuestType from '~/types/quest';
 import FieldWithChild from '~/components/display/FieldWithChild';
-import EquipmentPillTag from '~/components/display/EquipmentPillTag';
-import AccessibilityPillTag from '~/components/display/AccessibilityPillTag';
-import EnvironmentPillTag from '~/components/display/EnvironmentPillTag copy';
+import EquipmentPillTags from '~/components/display/EquipmentPillTags';
+import AccessibilityTags from '~/components/display/AccessibilityTags';
+import DifficultyTag from '~/components/display/DifficultyTag';
+import EnvironmentPillTags from '~/components/display/EnvironmentPillTags';
 import PillTag from '~/components/display/PillTag';
 import Button from '~/components/inputs/Button';
 import Toast from '~/components/notifications/Toast';
@@ -73,6 +74,7 @@ function Quest() {
     isQuestFull,
     formattedDateTime,
     isPast,
+    accessibility,
   } = properties;
 
   async function handleJoinQuest(e: Event) {
@@ -129,6 +131,15 @@ function Quest() {
         />
       )}
       <img className="single-quest__banner" src={questAsset} />
+      {isCurrentUserRegisteredForQuest && !isCurrentUserCreator && (
+        <div style={{ position: 'absolute', top: '24px', right: '24px' }}>
+          <PillTag
+            icon={<FaDragon />}
+            label={t('quest.joined')}
+            style="positive"
+          />
+        </div>
+      )}
       <div className="single-quest__header">
         <div className="single-quest__start">
           <strong className={`${isPast && 'single-quest__start__past'}`}>
@@ -147,13 +158,7 @@ function Quest() {
         </div>
         <div className="single-quest__title">
           <h1>{properties.name}</h1>
-          {isCurrentUserRegisteredForQuest && !isCurrentUserCreator && (
-            <PillTag
-              icon={<FaDragon />}
-              label={t('quest.joined')}
-              style="positive"
-            />
-          )}
+          <DifficultyTag accessLevel={properties.accessLevel} />
         </div>
         <QuestLocation quest={quest} />
         <div className="single-quest__ctas">
@@ -211,14 +216,22 @@ function Quest() {
             </span>
           </div>
           <FieldWithChild fieldName={t('quest.equipment')} id="equipment">
-            <EquipmentPillTag equipment={properties.equipment} />
+            <EquipmentPillTags equipment={properties.equipment} isDetailed />
           </FieldWithChild>
           <FieldWithChild fieldName={t('quest.environment')} id="environment">
-            <EnvironmentPillTag environment={properties.environment} />
+            <EnvironmentPillTags
+              environment={properties.environment}
+              isDetailed
+            />
           </FieldWithChild>
-          <FieldWithChild fieldName={t('quest.difficulty')} id="difficulty">
-            <AccessibilityPillTag accessLevel={properties.accessLevel} />
-          </FieldWithChild>
+          {accessibility?.length ? (
+            <FieldWithChild
+              fieldName={t('quest.accessibility')}
+              id="accessibility"
+            >
+              <AccessibilityTags accessibility={accessibility} />
+            </FieldWithChild>
+          ) : null}
         </div>
       </div>
     </div>
