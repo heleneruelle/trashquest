@@ -9,7 +9,7 @@ import {
 } from '../../config';
 
 function getAccessibilityLevel(access) {
-  if (access.includes(FULL_PATH || BLOCKER)) {
+  if (access.includes(ELEVATION || BLOCKER)) {
     return accessLevels.hard;
   } else if (access.includes(LIMITED_PATH)) {
     return accessLevels.intermediate;
