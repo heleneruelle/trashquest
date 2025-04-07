@@ -60,6 +60,11 @@ input {
   cursor: pointer;
 }
 
+.top-bar a[aria-current='page'] {
+  color: var(--c-green-200);
+  text-decoration: underline;
+}
+
 .top-bar__right {
   display: flex;
   gap: 12px;

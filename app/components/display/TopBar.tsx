@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react';
+import { Link, NavLink } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../LanguageSwitch';
 import LogoutButton from '../LogoutButton';
@@ -22,19 +22,23 @@ function TopBar() {
       <div className="top-bar__right">
         <div className="top-bar__nav">
           {user && (
-            <Link to={createCompositeUrl(i18n, '/home')}>{t('meta.home')}</Link>
+            <NavLink to={createCompositeUrl(i18n, '/home')}>
+              {t('meta.home')}
+            </NavLink>
           )}
           {user && (
-            <Link to={createCompositeUrl(i18n, '/my-quests/going')}>
+            <NavLink to={createCompositeUrl(i18n, '/my-quests/going')}>
               {t('meta.my-quests')}
-            </Link>
+            </NavLink>
           )}
           {user && (
-            <Link to={createCompositeUrl(i18n, '/create-new')}>
+            <NavLink to={createCompositeUrl(i18n, '/create-new')}>
               {t('meta.create-new')}
-            </Link>
+            </NavLink>
           )}
-          <Link to={createCompositeUrl(i18n, '/about')}>{t('meta.about')}</Link>
+          <NavLink to={createCompositeUrl(i18n, '/about')}>
+            {t('meta.about')}
+          </NavLink>
         </div>
         <div className="top-bar__utils">
           <LanguageSwitcher />
