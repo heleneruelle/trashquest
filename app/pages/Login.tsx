@@ -11,7 +11,7 @@ const LoginPage = () => {
   return (
     <ImageLayout>
       <div className="login-form">
-        <h1 style={{ margin: '22px 0px 0px 0px' }}>{t('login.title')}</h1>
+        <h1>{t('login.title')}</h1>
         <div>
           <p style={{ margin: '6px 0px' }}>{t('login.temp.description')}</p>
           <ol style={{ margin: '0px' }}>
