@@ -14,7 +14,6 @@ import QuestButton from '../inputs/QuestButton';
 import dateToYYYYMMDD from '~/utils/datetime/dateToYYYYMMDD';
 import timeToHHMM from '~/utils/datetime/timeToHHMM';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
-import formDataToObject from '~/utils/formDataToObject';
 import {
   environmentOptions,
   accessibilityOptions,
@@ -38,10 +37,7 @@ function QuestForm() {
     try {
       const response = await fetch('/api/create-quest', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formDataToObject(formData)),
+        body: formData,
       });
       const resp = await response.json();
       if (resp.error || !resp.questId) {
@@ -55,7 +51,13 @@ function QuestForm() {
   };
 
   return (
-    <Form ref={formRef} className="form" onSubmit={handleCreateQuest}>
+    <Form
+      method="post"
+      encType="multipart/form-data"
+      ref={formRef}
+      className="form"
+      onSubmit={handleCreateQuest}
+    >
       {error && (
         <Toast
           type="error"
@@ -73,6 +75,15 @@ function QuestForm() {
         types={['address', 'place']}
         poi={true}
       />
+      <label htmlFor="banner">
+        Choose a banner image png or jpeg
+        <input
+          type="file"
+          id="banner"
+          name="banner"
+          accept="image/png, image/jpeg"
+        />
+      </label>
       <fieldset>
         <legend className="date-time">
           {t('create-new-quest.input.start')}

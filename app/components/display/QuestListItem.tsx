@@ -27,12 +27,12 @@ function QuestListItem({ quest }: QuestListItemType) {
   const {
     equipment,
     environment,
-    accessibility,
     accessLevel,
     isCurrentUserCreator,
     formattedDateTime,
     isClosest,
     isPast,
+    downloadUrl,
   } = properties;
 
   async function handleQuestCallback(e: Event) {
@@ -60,7 +60,7 @@ function QuestListItem({ quest }: QuestListItemType) {
       to={createCompositeUrl(i18n, `/quest/${id}`)}
       className="quest-list-item"
     >
-      <img src={quest.bannerUrl} style={{ height: '100px', width: '100%' }} />
+      <img src={downloadUrl} className="quest-list-item__banner" />
       <div className="quest-list-item__container">
         <div className="quest-list-item__title">
           <h4>{properties.name}</h4>

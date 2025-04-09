@@ -41,6 +41,8 @@ function questToVm(quest, currentUser, creator) {
     ...quest,
     properties: {
       ...quest.properties,
+      downloadUrl:
+        quest.properties.downloadUrl || '/assets/trashquest_banner.webp',
       startDateTime,
       endDateTime,
       duration,
