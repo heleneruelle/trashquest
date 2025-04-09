@@ -12,6 +12,7 @@ export default interface QuestType {
     };
   };
   properties: {
+    downloadUrl: string;
     isPast: boolean;
     description: string;
     accessLevel: number;
