@@ -58,6 +58,12 @@ export let action: ActionFunction = async ({ request }) => {
       new Date(endDateTimeISO)
     );
 
+    const { success, downloadUrl } = await sendFileToFirebaseStorage(
+      banner,
+      uuidv4(),
+      'quest-assets'
+    );
+
     const questRef = await db.collection('quests').add({
       location: {
         country,
@@ -84,6 +90,7 @@ export let action: ActionFunction = async ({ request }) => {
         endDateTimeTimestamp,
         endTime,
         accessLevel: getAccessibilityLevel(accessibility),
+        downloadUrl: success ? downloadUrl : null,
       },
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });
