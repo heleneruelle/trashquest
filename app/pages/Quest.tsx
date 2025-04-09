@@ -65,7 +65,7 @@ function Quest() {
   const { id } = useParams();
   const questFetcher = useFetcher();
 
-  const { quest, questAsset } = data || {};
+  const { quest } = data || {};
   const { properties, creator } = quest || {};
 
   const {
@@ -75,6 +75,7 @@ function Quest() {
     formattedDateTime,
     isPast,
     accessibility,
+    downloadUrl,
   } = properties;
 
   async function handleJoinQuest(e: Event) {
@@ -130,7 +131,7 @@ function Quest() {
           callback={() => setError(false)}
         />
       )}
-      <img className="single-quest__banner" src={questAsset} />
+      <img className="single-quest__banner" src={downloadUrl} />
       {isCurrentUserRegisteredForQuest && !isCurrentUserCreator && (
         <div style={{ position: 'absolute', top: '24px', right: '24px' }}>
           <PillTag
