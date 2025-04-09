@@ -4,6 +4,8 @@ import { getCookie } from '~/utils/cookies';
 import dateTimeStartEndValidation from '~/utils/datetime/dateTimeStartEndValidation';
 import dateTimeToISODatetime from '~/utils/datetime/dateTimeToISODatetime';
 import getAccessibilityLevel from '~/utils/quests/getAccessibilityLevel';
+import sendFileToFirebaseStorage from '~/utils/storage/sendFileToFirebaseStorage';
+import { v4 as uuidv4 } from 'uuid'; // Pour générer un jeton unique
 
 export let action: ActionFunction = async ({ request }) => {
   const token = await getCookie(request, 'firebase_token');
