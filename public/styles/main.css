@@ -135,8 +135,8 @@ textarea {
   min-height: 100%;
   display: flex;
   flex-flow: column;
-  max-width: 60%;
-  min-width: 60%;
+  max-width: 50%;
+  min-width: 50%;
   background-color: var(--color-grey01);
   box-shadow: var(--box-shadow-right);
   overflow-y: auto;
