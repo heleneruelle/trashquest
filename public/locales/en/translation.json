@@ -122,7 +122,8 @@
       "expected-participants": "Expected number of guests",
       "equipment": "Extra equipment needed",
       "environment": "Type of environment",
-      "accessibility": "Accessibility level"
+      "accessibility": "Accessibility level",
+      "banner": "Choose a banner image (png or jpeg)"
     },
     "hint": {
       "name": "Try to provide a short but very descriptive title to help other users undertsand your quest.",
