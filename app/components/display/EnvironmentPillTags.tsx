@@ -5,7 +5,7 @@ import { environmentOptions } from '~/config';
 
 interface EnvironmentPillTagType {
   environment: Array<string>;
-  isDetailed: boolean;
+  isDetailed?: boolean;
 }
 
 function EnvironmentPillTags({
