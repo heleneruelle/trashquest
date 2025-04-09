@@ -38,10 +38,7 @@ function QuestForm() {
     try {
       const response = await fetch('/api/create-quest', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formDataToObject(formData)),
+        body: formData,
       });
       const resp = await response.json();
       if (resp.error || !resp.questId) {
@@ -55,7 +52,13 @@ function QuestForm() {
   };
 
   return (
-    <Form ref={formRef} className="form" onSubmit={handleCreateQuest}>
+    <Form
+      method="post"
+      encType="multipart/form-data"
+      ref={formRef}
+      className="form"
+      onSubmit={handleCreateQuest}
+    >
       {error && (
         <Toast
           type="error"
