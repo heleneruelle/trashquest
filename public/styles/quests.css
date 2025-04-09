@@ -38,6 +38,7 @@ ul.quests-ul {
 }
 
 .single-quest__banner {
+  object-fit: cover;
   height: 30%;
   width: 100%;
 }
@@ -141,6 +142,12 @@ ul.quests-ul {
   text-decoration: none;
   border-radius: 3px;
   height: 100%;
+}
+
+.quest-list-item__banner {
+  object-fit: cover;
+  height: 100px;
+  width: 100%;
 }
 
 .quest-list-item__container {
