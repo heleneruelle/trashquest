@@ -18,7 +18,7 @@ function TextArea({
   hint,
 }: TextAreaProps) {
   return (
-    <label htmlFor={id} className="text-input">
+    <label htmlFor={id} className="labelled-input text-input">
       {label}
       <textarea
         id={id}

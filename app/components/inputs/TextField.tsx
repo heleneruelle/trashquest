@@ -20,7 +20,7 @@ function TextField({
 }: TextFieldProps) {
   return (
     <label
-      className={`text-input ${error && 'text-input_error'}`}
+      className={`labelled-input text-input ${error && 'text-input_error'}`}
       htmlFor={name}
     >
       {label}
