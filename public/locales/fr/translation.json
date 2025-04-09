@@ -122,7 +122,8 @@
       "expected-participants": "Nombre de personnes attendues",
       "equipment": "Équipement nécessaire",
       "environment": "Type d'environnement",
-      "accessibility": "Accessibilité"
+      "accessibility": "Accessibilité",
+      "banner": "Choisissez une image de bannière (png ou jpeg)"
     },
     "hint": {
       "name": "Essayez de fournir un titre court mais très descriptif pour aider les autres utilisateurs à comprendre votre quête.",
