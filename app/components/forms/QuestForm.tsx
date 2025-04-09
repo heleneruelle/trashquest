@@ -75,8 +75,8 @@ function QuestForm() {
         types={['address', 'place']}
         poi={true}
       />
-      <label htmlFor="banner">
-        Choose a banner image png or jpeg
+      <label htmlFor="banner" className="labelled-input">
+        {t('create-new-quest.input.banner')}
         <input
           type="file"
           id="banner"
