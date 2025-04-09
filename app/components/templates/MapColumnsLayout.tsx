@@ -7,13 +7,11 @@ import TwoColumnsLayout from './TwoColumnsLayout';
 
 function MapColumnsLayout() {
   const { pathname } = useLocation();
-  const { user, loading } = useAuth();
 
   const isHome = /^\/(fr|en)\/?$/.test(pathname);
 
   const leftColumnWidth = useMemo(() => {
     if (
-      //(!user && loading) ||
       isHome ||
       pathname.includes('login') ||
       pathname.includes('sign-up') ||
