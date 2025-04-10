@@ -28,7 +28,7 @@ function User() {
       <p>{t(`countries.${country}`)}</p>
       <div>
         {quests?.length ? (
-          <div>
+          <div className="quest-list-container">
             <h4>{`Les quêtes organisées par ${username}`}</h4>
             <ul className="quests-ul">
               {quests.map((quest) => (
