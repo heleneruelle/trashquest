@@ -101,9 +101,14 @@ textarea {
   color: white;
 }
 
+@media (min-width: 800px) {
+  .content {
+    overflow-y: hidden;
+  }
+}
+
 .content {
   flex-grow: 1;
-  overflow-y: hidden;
 }
 
 .language-switch__container {
