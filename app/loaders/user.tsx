@@ -39,15 +39,12 @@ async function userLoader(args: LoaderFunctionArgs) {
         ? quests.map((q) => questToVm(q, currentUser, user))
         : null;
 
-        console.log('questsquests', questsVm);
-
     return Response.json({
       success: true,
       user,
       quests: questsVm,
     });
   } catch (error) {
-    console.log('LALALA', error);
     return Response.json({ error: `${error}` }, { status: 500 });
   }
 }
