@@ -16,6 +16,7 @@ function MapComp() {
 
   const { user, quests, creatorQuests, closestQuest } =
     matches.find((match) => match.id === 'routes/$lang.home')?.data || {};
+
   const { quest } =
     matches.find((match) => match.id === 'routes/$lang.quest.$id')?.data || {};
 
@@ -23,8 +24,22 @@ function MapComp() {
     matches.find((match) => match.id === 'routes/$lang.my-quests.$type')
       ?.data || {};
 
-  const userLocation = user?.location?.coordinates || null;
-  const displayQuests = mergeArrays(creatorQuests, myQuests, quests);
+  const {
+    user: userProfile,
+    quests: questsProfile,
+    isCurrentUserProfile,
+  } = matches.find((match) => match.id === 'routes/$lang.user.$id')?.data || {};
+
+  const userLocation =
+    user?.location?.coordinates ||
+    (isCurrentUserProfile && userProfile?.location?.coordinates) ||
+    null;
+  const displayQuests = mergeArrays(
+    creatorQuests,
+    myQuests,
+    quests,
+    questsProfile
+  );
 
   const [viewState, setViewState] = useState({
     longitude: 2.285358886316118,
