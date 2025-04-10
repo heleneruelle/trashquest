@@ -18,12 +18,12 @@ function User() {
 
   return (
     <div className="quests-container">
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <h1>{username}</h1>
         <img
           src="/assets/default-avatar.webp"
           style={{ height: '75px', width: '75px' }}
         />
-        <h1>{username}</h1>
       </div>
       <p>{t(`countries.${country}`)}</p>
       <div>
