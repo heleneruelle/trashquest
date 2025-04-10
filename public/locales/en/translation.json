@@ -137,7 +137,7 @@
   },
   "quest": {
     "location": "Location",
-    "organiser": "Quest organized by {{name}}",
+    "organiser": "Quest organized by <0>{{name}}</0>",
     "duration": "Duration: {{duration}}",
     "participants": "Participants",
     "environment": "Type of environment",
