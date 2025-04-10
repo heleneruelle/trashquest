@@ -60,6 +60,8 @@ function MapComp() {
     }
   }, [quest, quests, creatorQuests, myQuests, user?.location?.coordinates]);
 
+  const hasAnyQuest = !quest || (!displayQuests && !closestQuest);
+
   return (
     <Map
       {...viewState}
@@ -82,7 +84,7 @@ function MapComp() {
           latitude={userLocation._latitude}
         />
       )}
-      {!quest && <Legend />}
+      {!hasAnyQuest && <Legend />}
     </Map>
   );
 }

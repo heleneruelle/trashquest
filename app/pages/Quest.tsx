@@ -1,5 +1,6 @@
 import { useLoaderData, useParams, useFetcher } from '@remix-run/react';
-import { useTranslation } from 'react-i18next';
+import { Link } from '@remix-run/react';
+import { useTranslation, Trans } from 'react-i18next';
 import { useState } from 'react';
 import QuestType from '~/types/quest';
 import FieldWithChild from '~/components/display/FieldWithChild';
@@ -197,7 +198,13 @@ function Quest() {
           <p>{properties.description}</p>
           <div className="single-quest__field">
             <IoPerson size={24} />
-            <span>{t('quest.organiser', { name: creator.username })}</span>
+            <Trans
+              i18nKey="quest.organiser"
+              values={{ name: creator.username }}
+              components={[
+                <Link to={createCompositeUrl(i18n, `/user/${creator.id}`)} />,
+              ]}
+            />
           </div>
           <div className="single-quest__field">
             <MdTimer size={24} />

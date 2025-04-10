@@ -72,13 +72,13 @@ function QuestListItem({ quest }: QuestListItemType) {
           <DifficultyTag accessLevel={accessLevel} />
         </div>
         <QuestLocation quest={quest} />
-        <strong>
+        <strong className="font-size-12">
           {t('quest.dateTime.start', {
             date: formattedDateTime.start[i18n.language].date,
             time: formattedDateTime.start[i18n.language].time,
           })}
         </strong>
-        <p>
+        <p className="font-size-12">
           {t('quest.summary.participants', {
             current: properties.participants.length,
             expected: properties.expectedParticipants,
