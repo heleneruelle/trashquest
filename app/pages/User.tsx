@@ -8,13 +8,14 @@ interface LoaderData {
   success: boolean;
   user: UserType;
   quests: Array<QuestType>;
+  isCurrentUserProfile: boolean;
 }
 
 function User() {
-  const { user, quests } = useLoaderData<LoaderData>();
+  const { user, quests, isCurrentUserProfile } = useLoaderData<LoaderData>();
   const { t } = useTranslation();
 
-  const { country, username } = user || {};
+  const { country, location, username } = user || {};
 
   return (
     <div className="quests-container">
@@ -25,11 +26,19 @@ function User() {
           style={{ height: '75px', width: '75px' }}
         />
       </div>
+      <p>{location?.name}</p>
       <p>{t(`countries.${country}`)}</p>
       <div>
         {quests?.length ? (
           <div className="quest-list-container">
-            <h4>{`Les quêtes organisées par ${username}`}</h4>
+            <h4>
+              {t(
+                isCurrentUserProfile
+                  ? 'user.my-profile.organised'
+                  : 'user.profile.organised',
+                { username }
+              )}
+            </h4>
             <ul className="quests-ul">
               {quests.map((quest) => (
                 <li key={quest.id}>
@@ -39,7 +48,14 @@ function User() {
             </ul>
           </div>
         ) : (
-          <h4>{`${username} n'organise pas de quête pour le moment`}</h4>
+          <h4>
+            {t(
+              isCurrentUserProfile
+                ? 'user.my-profile.no-quest'
+                : 'user.profile.no-quest',
+              { username }
+            )}
+          </h4>
         )}
       </div>
     </div>
