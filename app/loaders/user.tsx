@@ -31,6 +31,8 @@ async function userLoader(args: LoaderFunctionArgs) {
     const userLoaderResp = await currentUserLoader(args);
     const { user: currentUser } = await userLoaderResp.json();
 
+    const isCurrentUserProfile = currentUser.id === id;
+
     const questsForUserResp = await questsForUser(args);
     const { success, quests } = await questsForUserResp.json();
 
@@ -43,6 +45,7 @@ async function userLoader(args: LoaderFunctionArgs) {
       success: true,
       user,
       quests: questsVm,
+      isCurrentUserProfile,
     });
   } catch (error) {
     return Response.json({ error: `${error}` }, { status: 500 });
