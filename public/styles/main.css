@@ -28,6 +28,10 @@ textarea {
   width: 100%;
 }
 
+.font-size-12 {
+  font-size: 12px;
+}
+
 .image-layout {
   height: 100%;
   display: flex;

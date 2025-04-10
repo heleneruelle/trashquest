@@ -6,7 +6,7 @@ function QuestLocation({ quest }: { quest: QuestType }) {
   return (
     <div className="quest-location">
       <MapLocationIcon />
-      <p>{location.name}</p>
+      <p className="font-size-12">{location.name}</p>
     </div>
   );
 }
