@@ -10,6 +10,7 @@ import i18n from '~/i18n';
 function TopBar() {
   const { user } = useAuth();
   const { t } = useTranslation();
+
   return (
     <div className="top-bar">
       <Link
@@ -34,6 +35,11 @@ function TopBar() {
           {user && (
             <NavLink to={createCompositeUrl(i18n, '/create-new')}>
               {t('meta.create-new')}
+            </NavLink>
+          )}
+          {user && (
+            <NavLink to={createCompositeUrl(i18n, `/user/${user.uid}`)}>
+              {t('meta.my-profile')}
             </NavLink>
           )}
           <NavLink to={createCompositeUrl(i18n, '/about')}>

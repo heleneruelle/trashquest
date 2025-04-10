@@ -24,7 +24,8 @@
     "my-quests": "Mes Quêtes",
     "about": "A propos",
     "home": "Accueil",
-    "create-new": "Créer une quête"
+    "create-new": "Créer une quête",
+    "my-profile": "Mon Profil"
   },
   "error": {
     "generic": {

@@ -24,7 +24,8 @@
     "my-quests": "My Quests",
     "about": "About",
     "home": "Home",
-    "create-new": "Create quest"
+    "create-new": "Create quest",
+    "my-profile": "My Profile"
   },
   "error": {
     "generic": {
