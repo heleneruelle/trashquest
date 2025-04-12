@@ -2,16 +2,21 @@
   justify-content: center;
 }
 
+@media (min-width: 800px) {
+  .login-form {
+    width: 30%;
+    border: 1px solid var(--c-green-100);
+    border-radius: 20px;
+  }
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
   gap: 20px;
   background-color: white;
   padding: 20px;
-  border: 1px solid var(--c-green-100);
-  border-radius: 20px;
 }
 
 .login-form h1 {
