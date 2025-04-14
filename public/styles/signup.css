@@ -8,6 +8,11 @@
 
 .signup-form h1 {
   margin-bottom: 0px;
+  text-align: center;
+}
+
+.signup-form h3 {
+  text-align: center;
 }
 
 .form {
