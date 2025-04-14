@@ -22,7 +22,25 @@ function Counter({ id, name, label }: CounterProps) {
         >
           <MinusIcon />
         </button>
-        <input type="number" id={id} name={name} value={count} readOnly />
+        <input
+          type="number"
+          id={id}
+          name={name}
+          value={count}
+          onChange={(e) => {
+            const value = parseInt(e.target.value, 10);
+            if (!isNaN(value) && value >= 1) {
+              setCount(value);
+            } else if (e.target.value === '') {
+              setCount(NaN);
+            }
+          }}
+          onBlur={() => {
+            if (isNaN(count)) {
+              setCount(1);
+            }
+          }}
+        />
         <button
           type="button"
           className="counter-button"
