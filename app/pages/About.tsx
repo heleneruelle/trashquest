@@ -15,7 +15,6 @@ function About() {
         </div>
       </div>
       <div className="about__section-container">
-        <div style={{ height: '200px', width: '200px' }} />
         <div className="about__section-content">
           <h3>Feature plan</h3>
           <FeaturePlan />
