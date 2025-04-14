@@ -16,11 +16,6 @@ function FeaturePlan() {
         </tr>
         <tr>
           <td>March 2025</td>
-          <td>Profile page (with update on profile data)</td>
-          <td>feature, user</td>
-        </tr>
-        <tr>
-          <td>March 2025</td>
           <td>Highlight quest on Marker hover (and reverse)</td>
           <td>feature, map</td>
         </tr>
