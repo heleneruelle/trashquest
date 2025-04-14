@@ -1,4 +1,5 @@
 import React from 'react';
+import useIsMobile from '~/hooks/useIsMobile';
 
 function TwoColumnsLayout({
   children,
@@ -12,13 +13,17 @@ function TwoColumnsLayout({
     (child) => child
   );
 
+  const isMobile = useIsMobile();
+
+  console.log('useIsMobile', isMobile, leftColumnWidth);
+
   return (
     <div className="two-columns-layout--wrapper">
       <div
         className="column-layout__left"
         style={{
-          minWidth: leftColumnWidth,
-          maxWidth: leftColumnWidth,
+          minWidth: isMobile ? '100%' : leftColumnWidth,
+          maxWidth: isMobile ? '100%' : leftColumnWidth,
         }}
       >
         {leftChild}
