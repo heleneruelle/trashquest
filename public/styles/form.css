@@ -262,6 +262,7 @@ fieldset legend {
 .multi-select-dropdown__tag-container {
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .multi-select-dropdown__tag {
