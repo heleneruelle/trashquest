@@ -99,7 +99,7 @@ textarea {
 
 .top-bar__floating-menu {
   position: absolute;
-  right: 20px;
+  right: 5px;
   top: 55px;
   padding: 18px;
   width: 50%;
@@ -109,7 +109,6 @@ textarea {
   z-index: 2;
   gap: 18px;
   background: #e8f0ec;
-  color: var(--c-green-200);
   border-radius: 3px;
 }
 
