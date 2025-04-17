@@ -15,8 +15,6 @@ function TwoColumnsLayout({
 
   const isMobile = useIsMobile();
 
-  console.log('useIsMobile', isMobile, leftColumnWidth);
-
   return (
     <div className="two-columns-layout--wrapper">
       <div

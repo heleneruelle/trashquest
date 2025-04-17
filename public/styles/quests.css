@@ -1,5 +1,6 @@
 ul.quests-ul {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 6px;
   list-style: none;
@@ -8,8 +9,17 @@ ul.quests-ul {
   justify-content: space-between;
 }
 
+@media (min-width: 800px) {
+  .ul.quests-ul {
+    flex-direction: row;
+  }
+
+  .quests-ul > li {
+    width: calc(100% / 2 - 6px);
+  }
+}
+
 .quests-ul > li {
-  width: calc(100% / 2 - 6px);
   padding: 20px;
   box-shadow: 0 2px 10px 0 #c7c7c7;
   box-sizing: border-box;
