@@ -118,6 +118,7 @@ ul.quests-ul {
   background-color: #fb6e44;
   color: white;
   font-weight: bold;
+  font-size: 12px;
   width: fit-content;
   gap: 6px;
   box-sizing: content-box;
@@ -127,6 +128,7 @@ ul.quests-ul {
   display: flex;
   gap: 10px;
   flex-grow: 1;
+  flex-wrap: wrap;
 }
 
 .quest-registered {

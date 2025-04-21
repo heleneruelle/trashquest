@@ -247,6 +247,7 @@ fieldset legend {
   font-weight: bold;
   gap: 6px;
   justify-content: space-between;
+  font-size: 12px;
 }
 
 .multi-select-dropdown__input-hasValue {
@@ -275,6 +276,7 @@ fieldset legend {
   font-weight: bold;
   border: none;
   white-space: nowrap;
+  font-size: 10px;
 }
 
 .multi-select-dropdown__tag-button {
