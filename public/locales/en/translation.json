@@ -155,11 +155,12 @@
     },
     "joined": "Congratulations! You're registered for this quest !",
     "cta": {
-      "join": "Join this quest",
-      "quit": "Quit this quest",
-      "url-copy": "Copy URL",
+      "join": "Join",
+      "quit": "Quit",
+      "url-copy": "Copy",
       "url-copied": "URL copied",
-      "details": "Details"
+      "details": "Details",
+      "create": "Create new"
     },
     "dateTime": {
       "start": "This quest starts on {{date}} at {{time, HH:mm}}",

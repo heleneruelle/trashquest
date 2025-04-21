@@ -53,6 +53,26 @@ ul.quests-ul {
   width: 100%;
 }
 
+.single-quest__registered {
+  position: absolute;
+  top: 24px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 90%;
+}
+
+.single-quest__registered .pill-tag {
+  gap: 12px;
+}
+
+@media (min-width: 800px) {
+  .single-quest__registered {
+    right: 24px;
+    transform: none;
+    width: fit-content;
+  }
+}
+
 .single-quest__header {
   padding: 0px 24px 0px 24px;
   display: flex;

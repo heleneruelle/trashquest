@@ -155,11 +155,12 @@
     },
     "joined": "Félicitations ! Vous êtes inscrit.e pour cette quête !",
     "cta": {
-      "join": "Participez à cette quête",
-      "quit": "Quitter cette quête",
-      "url-copy": "Copier l'URL",
+      "join": "Participer",
+      "quit": "Quitter",
+      "url-copy": "Copier",
       "url-copied": "URL copiée",
-      "details": "Détails"
+      "details": "Détails",
+      "create": "Créer"
     },
     "dateTime": {
       "start": "Cette quête démarre le {{date}} à {{time, HH:mm}}",
