@@ -1,7 +1,6 @@
 interface ButtonProps {
   type: 'submit' | 'reset' | 'button' | undefined;
   disabled?: boolean;
-  label?: React.ReactNode;
   style?: 'primary' | 'secondary' | 'tertiary';
   clickCallback?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   id: string;
@@ -12,7 +11,6 @@ interface ButtonProps {
 function Button({
   type,
   disabled = false,
-  label,
   style = 'primary',
   clickCallback,
   id,
@@ -28,7 +26,7 @@ function Button({
       className={`button button-${style}`}
       onClick={type === 'button' && clickCallback ? clickCallback : undefined}
     >
-      {label || children}
+      {children}
     </button>
   );
 }
