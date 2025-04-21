@@ -160,7 +160,8 @@
       "url-copy": "Copier",
       "url-copied": "URL copiée",
       "details": "Détails",
-      "create": "Créer"
+      "create": "Créer",
+      "cancel": "Annuler"
     },
     "dateTime": {
       "start": "Cette quête démarre le {{date}} à {{time, HH:mm}}",

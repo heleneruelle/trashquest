@@ -160,7 +160,8 @@
       "url-copy": "Copy",
       "url-copied": "URL copied",
       "details": "Details",
-      "create": "Create new"
+      "create": "Create new",
+      "cancel": "Cancel"
     },
     "dateTime": {
       "start": "This quest starts on {{date}} at {{time, HH:mm}}",

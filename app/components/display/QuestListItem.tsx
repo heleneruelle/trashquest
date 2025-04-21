@@ -98,8 +98,9 @@ function QuestListItem({ quest }: QuestListItemType) {
                 value={quest.id}
                 type="button"
                 clickCallback={handleCancelQuest}
-                label="Cancel quest"
-              />
+              >
+                {t('quest.cta.cancel')}
+              </Button>
             ) : (
               <Button
                 type="button"
@@ -114,13 +115,14 @@ function QuestListItem({ quest }: QuestListItemType) {
                     ? 'tertiary'
                     : 'secondary'
                 }
-                label={t(
+                clickCallback={handleQuestCallback}
+              >
+                {t(
                   `quest.cta.${
                     properties.isCurrentUserRegisteredForQuest ? 'quit' : 'join'
                   }`
                 )}
-                clickCallback={handleQuestCallback}
-              />
+              </Button>
             )}
           </>
         )}

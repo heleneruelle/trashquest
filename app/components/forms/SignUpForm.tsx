@@ -134,13 +134,15 @@ const SignUpForm = () => {
       <Button
         type="submit"
         disabled={navigation.state === 'submitting'}
-        label={t(
+        style="secondary"
+        id="signup-form-submit"
+      >
+        {t(
           navigation.state === 'submitting'
             ? 'create-new-account.cta.submitting'
             : 'create-new-account.cta.idle'
         )}
-        style="secondary"
-      />
+      </Button>
     </Form>
   );
 };

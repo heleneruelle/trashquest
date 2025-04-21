@@ -90,15 +90,13 @@ const LoginForm = () => {
         placeholder={t('login.placeholder.password')}
         error={error}
       />
-      <Button
-        type="submit"
-        disabled={navigation.state === 'submitting'}
-        label={t(
+      <Button type="submit" disabled={navigation.state === 'submitting'}>
+        {t(
           navigation.state === 'submitting'
             ? 'login.cta.submitting'
             : 'login.cta.idle'
         )}
-      />
+      </Button>
     </Form>
   );
 };
