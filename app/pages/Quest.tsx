@@ -9,10 +9,9 @@ import AccessibilityTags from '~/components/display/AccessibilityTags';
 import DifficultyTag from '~/components/display/DifficultyTag';
 import EnvironmentPillTags from '~/components/display/EnvironmentPillTags';
 import PillTag from '~/components/display/PillTag';
-import Button from '~/components/inputs/Button';
 import Toast from '~/components/notifications/Toast';
 import QuestLocation from '~/components/display/quest/QuestLocation';
-import ButtonLink from '~/components/inputs/ButtonLink';
+import SingleQuestCTAs from '~/components/display/quest/SingleQuestCTAs';
 import { HiMiniUserGroup } from 'react-icons/hi2';
 import { FaDragon } from 'react-icons/fa';
 import { MdTimer } from 'react-icons/md';
@@ -55,7 +54,6 @@ function getHRDuration(duration) {
 function Quest() {
   const data = useLoaderData<LoaderData>();
   const [error, setError] = useState(false);
-  const [copied, setCopied] = useState(false);
   const { t } = useTranslation();
 
   if (!data?.success || !data?.quest) {
@@ -72,7 +70,6 @@ function Quest() {
   const {
     isCurrentUserRegisteredForQuest,
     isCurrentUserCreator,
-    isQuestFull,
     formattedDateTime,
     isPast,
     accessibility,
@@ -107,21 +104,6 @@ function Quest() {
       setError(true);
     }
   }
-
-  const copyToClipboard = () => {
-    if (typeof window === 'undefined' || !navigator.clipboard) {
-      console.error('Clipboard API non disponible');
-      return;
-    }
-
-    navigator.clipboard
-      .writeText(window.location.href)
-      .then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      })
-      .catch((err) => console.error('Erreur lors de la copie :', err));
-  };
 
   return (
     <div className="quests-container single-quest-container">
@@ -163,36 +145,11 @@ function Quest() {
           <DifficultyTag accessLevel={properties.accessLevel} />
         </div>
         <QuestLocation quest={quest} />
-        <div className="single-quest__ctas">
-          <Button
-            type="button"
-            label={t(`quest.cta.url-${copied ? 'copied' : 'copy'}`)}
-            clickCallback={copyToClipboard}
-          />
-          {!isCurrentUserCreator &&
-            !isQuestFull &&
-            !isCurrentUserRegisteredForQuest &&
-            !isPast && (
-              <Button
-                type="button"
-                label={t('quest.cta.join')}
-                clickCallback={handleJoinQuest}
-              />
-            )}
-          {!isCurrentUserCreator &&
-            isCurrentUserRegisteredForQuest &&
-            !isPast && (
-              <Button
-                type="button"
-                label={t('quest.cta.quit')}
-                clickCallback={handleQuitQuest}
-              />
-            )}
-          <ButtonLink
-            label={t(`create-new-quest.cta.new`)}
-            target={createCompositeUrl(i18n, '/create-new')}
-          />
-        </div>
+        <SingleQuestCTAs
+          quest={quest}
+          handleJoinQuest={handleJoinQuest}
+          handleQuitQuest={handleQuitQuest}
+        />
         <hr className="single-quest__separator"></hr>
         <div className="single-quest__details">
           <p>{properties.description}</p>
