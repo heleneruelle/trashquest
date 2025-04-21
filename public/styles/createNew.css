@@ -16,10 +16,12 @@
   gap: 20px;
 }
 
-.form .text-input,
-.form .select-container,
-.form .autocomplete,
-.form .select-with-tags,
-.form .multi-select-input {
-  width: 70%;
+@media (min-width: 800px) {
+  .form .text-input,
+  .form .select-container,
+  .form .autocomplete,
+  .form .select-with-tags,
+  .form .multi-select-input {
+    width: 70%;
+  }
 }
