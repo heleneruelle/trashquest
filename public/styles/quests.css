@@ -1,6 +1,11 @@
+@media (max-width: 800px) {
+  ul.quests-ul {
+    flex-direction: column;
+  }
+}
+
 ul.quests-ul {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   gap: 6px;
   list-style: none;
@@ -10,10 +15,6 @@ ul.quests-ul {
 }
 
 @media (min-width: 800px) {
-  .ul.quests-ul {
-    flex-direction: row;
-  }
-
   .quests-ul > li {
     width: calc(100% / 2 - 6px);
   }
