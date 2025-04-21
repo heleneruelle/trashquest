@@ -95,9 +95,9 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         }`}
       >
         {value.length === 0 ? (
-          <small className="multi-select-dropdown__placeholder">
+          <p className="multi-select-dropdown__placeholder">
             {placeholder}
-          </small>
+          </p>
         ) : (
           <div className="multi-select-dropdown__tag-container">
             {value.map((option) => (
