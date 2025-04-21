@@ -22,16 +22,18 @@ const LoginPage = () => {
         <LoginForm />
         <ButtonLink
           target={createCompositeUrl(i18n, '/sign-up')}
-          label={t('create-new-account.cta.create')}
           style="secondary"
-        />
+        >
+          {t('create-new-account.cta.create')}
+        </ButtonLink>
         {/* TODO : enable for no account (guest) */}
         {false && (
           <ButtonLink
             target={createCompositeUrl(i18n, '/home')}
-            label={t('login.cta.test')}
             style="tertiary"
-          />
+          >
+            {t('login.cta.test')}
+          </ButtonLink>
         )}
       </div>
     </ImageLayout>

@@ -10,16 +10,15 @@ function Welcome() {
   return (
     <div className="welcome-container">
       <div className="auth-section">
-        <ButtonLink
-          target={createCompositeUrl(i18n, '/login')}
-          label={t('login.cta.idle')}
-          style="primary"
-        />
+        <ButtonLink target={createCompositeUrl(i18n, '/login')} style="primary">
+          {t('login.cta.idle')}
+        </ButtonLink>
         <ButtonLink
           target={createCompositeUrl(i18n, '/sign-up')}
-          label={t('create-new-account.cta.create')}
           style="secondary"
-        />
+        >
+          {t('create-new-account.cta.create')}
+        </ButtonLink>
       </div>
       <h1>{t('welcome.title')}</h1>
       <p>{t('welcome.description')}</p>
