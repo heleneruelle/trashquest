@@ -116,7 +116,7 @@ function Quest() {
       )}
       <img className="single-quest__banner" src={downloadUrl} />
       {isCurrentUserRegisteredForQuest && !isCurrentUserCreator && (
-        <div style={{ position: 'absolute', top: '24px', right: '24px' }}>
+        <div className="single-quest__registered">
           <PillTag
             icon={<FaDragon />}
             label={t('quest.joined')}
