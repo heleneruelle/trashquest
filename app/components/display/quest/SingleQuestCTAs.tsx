@@ -5,6 +5,8 @@ import ButtonLink from '~/components/inputs/ButtonLink';
 import { FaRegCopy } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
 import { FaCircleCheck } from 'react-icons/fa6';
+import { LuPencil } from 'react-icons/lu';
+
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import i18n from '~/i18n';
 import QuestType from '~/types/quest';
@@ -45,6 +47,12 @@ function SingleQuestCTAs({ handleJoinQuest, handleQuitQuest, quest }: Props) {
 
   return (
     <div className="single-quest__ctas">
+      {isCurrentUserCreator && !isPast && (
+        <ButtonLink target={createCompositeUrl(i18n, '/create-new')}>
+          <LuPencil />
+          {t('quest.cta.update')}
+        </ButtonLink>
+      )}
       <Button type="button" clickCallback={copyToClipboard} id="copy-quest">
         <FaRegCopy />
         {t(`quest.cta.url-${copied ? 'copied' : 'copy'}`)}
