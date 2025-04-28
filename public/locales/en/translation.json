@@ -161,7 +161,8 @@
       "url-copied": "URL copied",
       "details": "Details",
       "create": "Create new",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "update": "Update"
     },
     "dateTime": {
       "start": "This quest starts on {{date}} at {{time, HH:mm}}",
@@ -281,6 +282,9 @@
     "profile": {
       "organised": "Quests organized by {{username}}",
       "no-quest": "{{username}} is not currently organizing any quests."
+    },
+    "cta": {
+      "update": "Update"
     }
   }
 }
