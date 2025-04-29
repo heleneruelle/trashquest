@@ -1,4 +1,4 @@
-import { useLoaderData } from '@remix-run/react';
+import { useLoaderData, useParams } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
 import { LuPencil } from 'react-icons/lu';
 import UserType from '~/types/user';
@@ -18,6 +18,7 @@ interface LoaderData {
 function User() {
   const { user, quests, isCurrentUserProfile } = useLoaderData<LoaderData>();
   const { t } = useTranslation();
+  const { id } = useParams();
 
   const { country, location, username } = user || {};
 
@@ -29,7 +30,7 @@ function User() {
           style={{ height: '75px', width: '75px' }}
         /> */}
         <h1>{username}</h1>
-        <ButtonLink target={createCompositeUrl(i18n, '/sign-up')}>
+        <ButtonLink target={createCompositeUrl(i18n, `/sign-up/${id}`)}>
           <LuPencil />
           {t('user.cta.update')}
         </ButtonLink>

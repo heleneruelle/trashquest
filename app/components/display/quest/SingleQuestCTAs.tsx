@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams } from '@remix-run/react';
 import Button from '~/components/inputs/Button';
 import ButtonLink from '~/components/inputs/ButtonLink';
 import { FaRegCopy } from 'react-icons/fa';
@@ -20,6 +21,7 @@ interface Props {
 function SingleQuestCTAs({ handleJoinQuest, handleQuitQuest, quest }: Props) {
   const [copied, setCopied] = useState(false);
   const { t } = useTranslation();
+  const { id } = useParams();
 
   const { properties } = quest || {};
 
@@ -48,7 +50,7 @@ function SingleQuestCTAs({ handleJoinQuest, handleQuitQuest, quest }: Props) {
   return (
     <div className="single-quest__ctas">
       {isCurrentUserCreator && !isPast && (
-        <ButtonLink target={createCompositeUrl(i18n, '/create-new')}>
+        <ButtonLink target={createCompositeUrl(i18n, `/create-new/${id}`)}>
           <LuPencil />
           {t('quest.cta.update')}
         </ButtonLink>
