@@ -30,7 +30,7 @@ function User() {
           style={{ height: '75px', width: '75px' }}
         /> */}
         <h1>{username}</h1>
-        <ButtonLink target={createCompositeUrl(i18n, `/sign-up/${id}`)}>
+        <ButtonLink target={createCompositeUrl(i18n, `/user/edit/${id}`)}>
           <LuPencil />
           {t('user.cta.update')}
         </ButtonLink>
