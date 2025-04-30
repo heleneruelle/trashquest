@@ -32,6 +32,10 @@
       "title": "Something Went Wrong",
       "description": "Our team is already working on fixing the issue, and we appreciate your patience. Please try again later.",
       "message": "Error Message: {{message}}"
+    },
+    "auth": {
+      "title": "Authentication error",
+      "description": "We are currently experiencing turbulences with our authentication system, please simply log out and back in Trashquest."
     }
   },
   "date": "Date",

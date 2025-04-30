@@ -32,6 +32,10 @@
       "title": "Une erreur est survenue",
       "description": "Notre équipe travaille actuellement à résoudre ce problème, et nous vous remercions pour votre patience. Merci de réessayer plus tard.",
       "message": "Message d'erreur : {{message}}"
+    },
+    "auth": {
+      "title": "Erreur d'authentification",
+      "description": "Nous rencontrons actuellement des turbulences avec notre système d'authentification, veuillez simplement vous déconnecter et vous reconnecter à Trashquest."
     }
   },
   "date": "Date",
