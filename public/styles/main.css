@@ -24,6 +24,17 @@ textarea {
   flex-direction: column;
 }
 
+.error-boundary {
+  height: 100%;
+  color: #b71c1c;
+  background-color: #ffcdd2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .full-width {
   width: 100%;
 }
