@@ -1,5 +1,5 @@
 import { LinksFunction } from '@remix-run/node';
-//import User from '~/pages/User';
+import EditUserProfile from '~/pages/EditUserProfile';
 import userLoader from '~/loaders/user';
 
 export const links: LinksFunction = () => {
@@ -11,8 +11,4 @@ export const links: LinksFunction = () => {
 
 export const loader = userLoader;
 
-function Temp() {
-  return <div>This is a temp page for edit user information</div>;
-}
-
-export default Temp;
+export default EditUserProfile;
