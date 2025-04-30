@@ -9,6 +9,10 @@ export const links: LinksFunction = () => {
   ];
 };
 
+export function ErrorBoundary() {
+  return <div>Sorry it seems there is an error, maybe log out and then in</div>;
+}
+
 export const loader = userLoader;
 
 export default EditUserProfile;
