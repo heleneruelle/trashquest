@@ -15,6 +15,7 @@ function MapColumnsLayout() {
       isHome ||
       pathname.includes('login') ||
       pathname.includes('sign-up') ||
+      pathname.includes('user/edit') ||
       pathname.includes('about')
     ) {
       return '100%';
