@@ -287,6 +287,8 @@
       "update": "Modifier"
     },
     "edit": {
+      "title": "Modifiez les informations de votre profil",
+      "description": "N'oubliez pas de sauvegarder vos changements. Les informations non sauvegardées ne seront pas modifiées.",
       "cta": {
         "submitting": "Enregistrement de vos modifications...",
         "idle": "Enregistrer vos modifications"

@@ -287,6 +287,8 @@
       "update": "Update"
     },
     "edit": {
+      "title": "Update your profile informations",
+      "description": "Remember to save your changes. Any unsaved information will not be changed.",
       "cta": {
         "submitting": "Saving your updates...",
         "idle": "Save your updates"
