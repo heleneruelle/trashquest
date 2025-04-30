@@ -285,6 +285,12 @@
     },
     "cta": {
       "update": "Modifier"
+    },
+    "edit": {
+      "cta": {
+        "submitting": "Enregistrement de vos modifications...",
+        "idle": "Enregistrer vos modifications"
+      }
     }
   }
 }
