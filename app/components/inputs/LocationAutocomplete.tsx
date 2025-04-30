@@ -10,6 +10,18 @@ interface LocationAutoCompleteProps {
   types?: Array<string>;
   countryHint?: string | null;
   poi?: boolean;
+  defaultLocation?: {
+    id: string;
+    properties: {
+      name: string;
+      full_address: string;
+      coordinates: {
+        latitude: number;
+        longitude: number;
+      };
+    };
+  } | null;
+  defaultCountry?: string | undefined;
 }
 
 const defaultLocationState = {
@@ -29,6 +41,8 @@ function LocationAutoComplete({
   types = ['place'],
   countryHint = null,
   poi = false,
+  defaultLocation,
+  defaultCountry,
 }: LocationAutoCompleteProps) {
   const { t } = useTranslation();
   const fetcher = useFetcher();
@@ -36,8 +50,9 @@ function LocationAutoComplete({
   const { lang } = useParams();
   const actionData = useActionData();
   const [query, setQuery] = useState('');
-  const [selectedLocation, setSelectedLocation] =
-    useState(defaultLocationState);
+  const [selectedLocation, setSelectedLocation] = useState(
+    defaultLocation || defaultLocationState
+  );
 
   const value =
     query ||
@@ -89,13 +104,14 @@ function LocationAutoComplete({
         options={countriesToVm(AVAILABLE_COUNTRIES)}
         hint={countryHint}
         changeCallback={handleCountrySelectChange}
+        defaultValue={defaultCountry}
       />
       <label className="autocomplete">
         {t('location')}
         <input
           type="text"
           name="locationName"
-          value={value} // `value` est toujours défini
+          value={value}
           onChange={handleInputChange}
           autoComplete="off"
           required

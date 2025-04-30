@@ -165,7 +165,8 @@
       "url-copied": "URL copied",
       "details": "Details",
       "create": "Create new",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "update": "Update"
     },
     "dateTime": {
       "start": "This quest starts on {{date}} at {{time, HH:mm}}",
@@ -285,6 +286,17 @@
     "profile": {
       "organised": "Quests organized by {{username}}",
       "no-quest": "{{username}} is not currently organizing any quests."
+    },
+    "cta": {
+      "update": "Update"
+    },
+    "edit": {
+      "title": "Update your profile informations",
+      "description": "Remember to save your changes. Any unsaved information will not be changed.",
+      "cta": {
+        "submitting": "Saving your updates...",
+        "idle": "Save your updates"
+      }
     }
   }
 }

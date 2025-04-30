@@ -165,7 +165,8 @@
       "url-copied": "URL copiée",
       "details": "Détails",
       "create": "Créer",
-      "cancel": "Annuler"
+      "cancel": "Annuler",
+      "update": "Modifier"
     },
     "dateTime": {
       "start": "Cette quête démarre le {{date}} à {{time, HH:mm}}",
@@ -285,6 +286,17 @@
     "profile": {
       "organised": "Les quêtes organisées par {{username}}",
       "no-quest": "{{username}} n'organise pas de quête pour le moment."
+    },
+    "cta": {
+      "update": "Modifier"
+    },
+    "edit": {
+      "title": "Modifiez les informations de votre profil",
+      "description": "N'oubliez pas de sauvegarder vos changements. Les informations non sauvegardées ne seront pas modifiées.",
+      "cta": {
+        "submitting": "Enregistrement de vos modifications...",
+        "idle": "Enregistrer vos modifications"
+      }
     }
   }
 }

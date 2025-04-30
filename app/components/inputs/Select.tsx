@@ -12,14 +12,21 @@ interface SelectProps {
   id: string;
   hint: string | null;
   changeCallback?: ChangeEventHandler<HTMLSelectElement> | undefined;
+  defaultValue?: string | undefined;
 }
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ options, name, id, hint, changeCallback }, ref) => {
+  ({ options, name, id, hint, changeCallback, defaultValue }, ref) => {
     return (
       <div className="select-container">
         <label htmlFor={id}>{name}</label>
-        <select name={id} id={id} ref={ref} onChange={changeCallback}>
+        <select
+          name={id}
+          id={id}
+          ref={ref}
+          defaultValue={defaultValue}
+          onChange={changeCallback}
+        >
           {options.map((option) => (
             <option value={option.value} key={option.id}>
               {option.name}

@@ -7,6 +7,7 @@ interface TextFieldProps {
   error?: boolean;
   hint?: string | undefined;
   autoComplete?: 'off' | 'on';
+  defaultValue?: string;
 }
 
 function TextField({
@@ -17,6 +18,7 @@ function TextField({
   placeholder,
   error = false,
   hint,
+  defaultValue,
 }: TextFieldProps) {
   return (
     <label
@@ -30,6 +32,7 @@ function TextField({
         name={name}
         required={required}
         placeholder={placeholder}
+        defaultValue={defaultValue}
       />
       {hint && <small className="input-hint">{hint}</small>}
     </label>
