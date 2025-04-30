@@ -1,6 +1,7 @@
 import { LinksFunction } from '@remix-run/node';
 import EditUserProfile from '~/pages/EditUserProfile';
 import userLoader from '~/loaders/user';
+import Auth from '~/components/error/Auth';
 
 export const links: LinksFunction = () => {
   return [
@@ -10,7 +11,7 @@ export const links: LinksFunction = () => {
 };
 
 export function ErrorBoundary() {
-  return <div>Sorry it seems there is an error, maybe log out and then in</div>;
+  return <Auth />;
 }
 
 export const loader = userLoader;
