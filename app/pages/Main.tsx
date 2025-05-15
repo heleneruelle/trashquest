@@ -49,7 +49,10 @@ function Main() {
           </ul>
         </div>
       ) : null}
-      <Link to={createCompositeUrl(i18n, '/create-new')}>
+      <Link
+        style={{ marginTop: 'auto' }}
+        to={createCompositeUrl(i18n, '/create-new')}
+      >
         <QuestButton type="new" />
       </Link>
     </div>
