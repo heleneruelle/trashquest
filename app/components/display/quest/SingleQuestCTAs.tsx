@@ -50,7 +50,7 @@ function SingleQuestCTAs({ handleJoinQuest, handleQuitQuest, quest }: Props) {
   return (
     <div className="single-quest__ctas">
       {isCurrentUserCreator && !isPast && (
-        <ButtonLink target={createCompositeUrl(i18n, `/create-new/${id}`)}>
+        <ButtonLink target={createCompositeUrl(i18n, `/quest/edit/${id}`)}>
           <LuPencil />
           {t('quest.cta.update')}
         </ButtonLink>
