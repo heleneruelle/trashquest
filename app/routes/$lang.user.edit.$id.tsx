@@ -7,6 +7,7 @@ export const links: LinksFunction = () => {
   return [
     { rel: 'stylesheet', href: '/styles/form.css' },
     { rel: 'stylesheet', href: '/styles/editUserProfile.css' },
+    { rel: 'stylesheet', href: '/styles/error.css' },
   ];
 };
 

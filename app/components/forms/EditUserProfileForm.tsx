@@ -46,16 +46,21 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
       return navigate(createCompositeUrl(i18n, `/user/${userId}`));
     } catch (authError) {
       console.error('Error during user profile update:', authError);
-      setError(
-        authError instanceof Error
-          ? authError.message
-          : 'User profile update failed. Please try again.'
-      );
+      setError(t('user.edit.error'));
     }
   };
 
   return (
     <Form ref={formRef} className="form" onSubmit={handleUpdateProfile}>
+      {error ? (
+        <Toast
+          message={error}
+          callback={() => {
+            setError('');
+          }}
+          type="error"
+        />
+      ) : null}
       <TextField
         label={t('username')}
         type="text"
@@ -85,18 +90,18 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
         <ButtonLink target={createCompositeUrl(i18n, `/user/${userId}`)}>
           {t('quit')}
         </ButtonLink>
-      <Button
-        type="submit"
-        disabled={navigation.state === 'submitting'}
-        style="secondary"
-        id="signup-form-submit"
-      >
-        {t(
-          navigation.state === 'submitting'
-            ? 'user.edit.cta.submitting'
-            : 'user.edit.cta.idle'
-        )}
-      </Button>
+        <Button
+          type="submit"
+          disabled={navigation.state === 'submitting'}
+          style="secondary"
+          id="signup-form-submit"
+        >
+          {t(
+            navigation.state === 'submitting'
+              ? 'user.edit.cta.submitting'
+              : 'user.edit.cta.idle'
+          )}
+        </Button>
       </div>
     </Form>
   );
