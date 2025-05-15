@@ -30,10 +30,12 @@ function User() {
           style={{ height: '75px', width: '75px' }}
         /> */}
         <h1>{username}</h1>
-        <ButtonLink target={createCompositeUrl(i18n, `/user/edit/${id}`)}>
-          <LuPencil />
-          {t('user.cta.update')}
-        </ButtonLink>
+        {isCurrentUserProfile ? (
+          <ButtonLink target={createCompositeUrl(i18n, `/user/edit/${id}`)}>
+            <LuPencil />
+            {t('user.cta.update')}
+          </ButtonLink>
+        ) : null}
       </div>
       <p>{location?.name}</p>
       <p>{t(`countries.${country}`)}</p>
