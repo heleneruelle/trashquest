@@ -15,4 +15,11 @@
   display: flex;
   justify-content: flex-end;
   gap: 12px;
+  flex-direction: column;
+}
+
+@media (min-width: 800px) {
+  .auth-section {
+    flex-direction: row;
+  }
 }
