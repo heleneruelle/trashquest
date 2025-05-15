@@ -189,6 +189,20 @@ textarea {
   flex-grow: 1;
 }
 
+@media (max-width: 800px) {
+  .column-layout__right {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .column-layout__left {
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
 .pill-tag {
   display: inline-flex;
   align-items: center;

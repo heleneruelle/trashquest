@@ -24,7 +24,7 @@ function User() {
 
   return (
     <div className="quests-container">
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="user-header">
         {/*  <img
           src="/assets/default-avatar.webp"
           style={{ height: '75px', width: '75px' }}
