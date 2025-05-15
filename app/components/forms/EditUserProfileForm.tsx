@@ -3,6 +3,8 @@ import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import TextField from '../inputs/TextField';
 import Button from '../inputs/Button';
+import ButtonLink from '../inputs/ButtonLink';
+import Toast from '../notifications/Toast';
 import LocationAutoComplete from '../inputs/LocationAutocomplete';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import formDataToObject from '~/utils/formDataToObject';
@@ -79,6 +81,10 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
         }}
         defaultCountry={country}
       />
+      <div className="edit-user-ctas">
+        <ButtonLink target={createCompositeUrl(i18n, `/user/${userId}`)}>
+          {t('quit')}
+        </ButtonLink>
       <Button
         type="submit"
         disabled={navigation.state === 'submitting'}
@@ -91,6 +97,7 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
             : 'user.edit.cta.idle'
         )}
       </Button>
+      </div>
     </Form>
   );
 };
