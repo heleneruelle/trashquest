@@ -16,6 +16,7 @@
   "minutes_other": "{{count}} minutes",
   "en": "EN",
   "fr": "FR",
+  "quit": "Quit",
   "countries": {
     "fr": "France",
     "be": "Belgium"
@@ -295,8 +296,9 @@
       "description": "Remember to save your changes. Any unsaved information will not be changed.",
       "cta": {
         "submitting": "Saving your updates...",
-        "idle": "Save your updates"
-      }
+        "idle": "Save your updates and quit"
+      },
+      "error": "Oops! Something wrong happenned during the update. Please try again later."
     }
   }
 }

@@ -3,6 +3,8 @@ import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import TextField from '../inputs/TextField';
 import Button from '../inputs/Button';
+import ButtonLink from '../inputs/ButtonLink';
+import Toast from '../notifications/Toast';
 import LocationAutoComplete from '../inputs/LocationAutocomplete';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
 import formDataToObject from '~/utils/formDataToObject';
@@ -27,7 +29,7 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
     const formData = new FormData(formRef.current);
 
     try {
-      const response = await fetch('/api/edit-user-profile', {
+      const response = await fetch(`/api/edit-user-profile/${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,19 +43,24 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
         throw new Error('User profile update failed');
       }
 
-      return navigate(createCompositeUrl(i18n, `/user/${id}`));
+      return navigate(createCompositeUrl(i18n, `/user/${userId}`));
     } catch (authError) {
       console.error('Error during user profile update:', authError);
-      setError(
-        authError instanceof Error
-          ? authError.message
-          : 'User profile update failed. Please try again.'
-      );
+      setError(t('user.edit.error'));
     }
   };
 
   return (
     <Form ref={formRef} className="form" onSubmit={handleUpdateProfile}>
+      {error ? (
+        <Toast
+          message={error}
+          callback={() => {
+            setError('');
+          }}
+          type="error"
+        />
+      ) : null}
       <TextField
         label={t('username')}
         type="text"
@@ -79,18 +86,23 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
         }}
         defaultCountry={country}
       />
-      <Button
-        type="submit"
-        disabled={navigation.state === 'submitting'}
-        style="secondary"
-        id="signup-form-submit"
-      >
-        {t(
-          navigation.state === 'submitting'
-            ? 'user.edit.cta.submitting'
-            : 'user.edit.cta.idle'
-        )}
-      </Button>
+      <div className="edit-user-ctas">
+        <ButtonLink target={createCompositeUrl(i18n, `/user/${userId}`)}>
+          {t('quit')}
+        </ButtonLink>
+        <Button
+          type="submit"
+          disabled={navigation.state === 'submitting'}
+          style="secondary"
+          id="signup-form-submit"
+        >
+          {t(
+            navigation.state === 'submitting'
+              ? 'user.edit.cta.submitting'
+              : 'user.edit.cta.idle'
+          )}
+        </Button>
+      </div>
     </Form>
   );
 };
