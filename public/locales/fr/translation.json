@@ -16,6 +16,7 @@
   "minutes_other": "{{count}} minutes",
   "en": "EN",
   "fr": "FR",
+  "quit": "Quitter",
   "countries": {
     "fr": "France",
     "be": "Belgique"
@@ -295,8 +296,9 @@
       "description": "N'oubliez pas de sauvegarder vos changements. Les informations non sauvegardées ne seront pas modifiées.",
       "cta": {
         "submitting": "Enregistrement de vos modifications...",
-        "idle": "Enregistrer vos modifications"
-      }
+        "idle": "Enregistrer vos modifications et quitter"
+      },
+      "error": "Oups ! Une erreur s'est produite lors de la mise à jour. Veuillez réessayer ultérieurement."
     }
   }
 }
