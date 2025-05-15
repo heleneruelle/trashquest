@@ -27,7 +27,7 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
     const formData = new FormData(formRef.current);
 
     try {
-      const response = await fetch('/api/edit-user-profile', {
+      const response = await fetch(`/api/edit-user-profile/${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
         throw new Error('User profile update failed');
       }
 
-      return navigate(createCompositeUrl(i18n, `/user/${id}`));
+      return navigate(createCompositeUrl(i18n, `/user/${userId}`));
     } catch (authError) {
       console.error('Error during user profile update:', authError);
       setError(
