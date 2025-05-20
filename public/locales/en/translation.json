@@ -227,7 +227,10 @@
       "accessibility": "Choose quest accessibility level(s)",
       "difficulty": "Choose quest difficulty level(s)"
     },
-    "begin": "Your quest starts here"
+    "begin": "Your quest starts here",
+    "edit": {
+      "title": "Edit quest"
+    }
   },
   "my-quests": {
     "title": "Your quests",
