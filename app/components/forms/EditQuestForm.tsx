@@ -1,32 +1,35 @@
-import { Form } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from '@remix-run/react';
+import { useNavigate, useParams, useNavigation, Form } from '@remix-run/react';
 import { useRef, useState } from 'react';
 import TextField from '../inputs/TextField';
 import LocationAutoComplete from '../inputs/LocationAutocomplete';
 import DatePicker from '../inputs/DatePicker';
 import TimePicker from '../inputs/TimePicker';
 import Counter from '../inputs/Counter';
-import MultiSelectInput from '../display/MultiSelectInput';
+//import MultiSelectInput from '../display/MultiSelectInput';
 import TextArea from '../inputs/TextArea';
 import Toast from '../notifications/Toast';
-import QuestButton from '../inputs/QuestButton';
+import Button from '../inputs/Button';
+import ButtonLink from '../inputs/ButtonLink';
 import dateToYYYYMMDD from '~/utils/datetime/dateToYYYYMMDD';
 import timeToHHMM from '~/utils/datetime/timeToHHMM';
 import createCompositeUrl from '~/utils/url/createCompositeUrl';
-import {
+/* import {
   environmentOptions,
   accessibilityOptions,
   equipmentOptions,
-} from '~/config';
+} from '~/config'; */
 import i18n from '~/i18n';
 import QuestType from '~/types/quest';
+import formDataToObject from '~/utils/formDataToObject';
 
 function EditQuestForm({ quest }: { quest: QuestType }) {
+  const navigation = useNavigation();
   const { t } = useTranslation();
   const formRef = useRef(null);
   const navigate = useNavigate();
   const [error, setError] = useState('');
+  const { id } = useParams();
 
   const { properties, location } = quest;
   const {
@@ -36,9 +39,9 @@ function EditQuestForm({ quest }: { quest: QuestType }) {
     description,
     expectedParticipants,
   } = properties;
-  const { id, name: locationName, coordinates, country } = location;
+  const { id: locationId, name: locationName, coordinates, country } = location;
 
-  /* const handleCreateQuest = async (e) => {
+  const handleUpdateQuest = async (e) => {
     e.preventDefault();
 
     if (!formRef.current) return;
@@ -46,20 +49,26 @@ function EditQuestForm({ quest }: { quest: QuestType }) {
     const formData = new FormData(formRef.current);
 
     try {
-      const response = await fetch('/api/create-quest', {
+      const response = await fetch(`/api/edit-quest/${id}`, {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataToObject(formData)),
       });
-      const resp = await response.json();
-      if (resp.error || !resp.questId) {
-        return setError(resp.error);
-      } else if (resp.questId) {
-        return navigate(createCompositeUrl(i18n, `/quest/${resp.questId}`));
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error('Quest update failed');
       }
-    } catch (error) {
-      return setError(`Error creating quest: ${error}`);
+
+      return navigate(createCompositeUrl(i18n, `/quest/${id}`));
+    } catch (authError) {
+      console.error('Error during quest update:', authError);
+      setError(t('quest.edit.error'));
     }
-  }; */
+  };
 
   return (
     <Form
@@ -67,7 +76,8 @@ function EditQuestForm({ quest }: { quest: QuestType }) {
       encType="multipart/form-data"
       ref={formRef}
       className="form"
-      // onSubmit={handleCreateQuest}
+      onSubmit={handleUpdateQuest}
+      style={{ alignItems: 'flex-start' }}
     >
       {error && (
         <Toast
@@ -87,7 +97,7 @@ function EditQuestForm({ quest }: { quest: QuestType }) {
         types={['address', 'place']}
         poi={true}
         defaultLocation={{
-          id: id,
+          id: locationId,
           properties: {
             name: locationName,
             full_address: locationName,
@@ -179,6 +189,23 @@ function EditQuestForm({ quest }: { quest: QuestType }) {
       {/*   <button type="submit" className="quest-form__button">
         <QuestButton type="start" />
       </button> */}
+      <div className="edit-ctas">
+        <ButtonLink target={createCompositeUrl(i18n, `/quest/${id}`)}>
+          {t('quit')}
+        </ButtonLink>
+        <Button
+          type="submit"
+          disabled={navigation.state === 'submitting'}
+          style="secondary"
+          id="signup-form-submit"
+        >
+          {t(
+            navigation.state === 'submitting'
+              ? 'edit.cta.submitting'
+              : 'edit.cta.idle'
+          )}
+        </Button>
+      </div>
     </Form>
   );
 }
