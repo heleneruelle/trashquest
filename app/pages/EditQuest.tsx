@@ -21,9 +21,6 @@ function EditQuest() {
     <div className="quests-container">
       <h1>{t('quest.edit.title')}</h1>
       <EditQuestForm quest={quest} />
-      <ButtonLink target={createCompositeUrl(i18n, `quest/${id}`)}>
-        {t('quit')}
-      </ButtonLink>
     </div>
   );
 }
