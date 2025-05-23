@@ -86,7 +86,7 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
         }}
         defaultCountry={country}
       />
-      <div className="edit-user-ctas">
+      <div className="edit-ctas">
         <ButtonLink target={createCompositeUrl(i18n, `/user/${userId}`)}>
           {t('quit')}
         </ButtonLink>
@@ -98,8 +98,8 @@ const EditUserProfileForm = ({ user }: { user: UserType }) => {
         >
           {t(
             navigation.state === 'submitting'
-              ? 'user.edit.cta.submitting'
-              : 'user.edit.cta.idle'
+              ? 'edit.cta.submitting'
+              : 'edit.cta.idle'
           )}
         </Button>
       </div>

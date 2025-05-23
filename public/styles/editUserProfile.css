@@ -32,16 +32,3 @@
 .form .text-input {
   width: 100%;
 }
-
-.edit-user-ctas {
-  margin-top: auto;
-  width: 100%;
-  display: flex;
-  gap: 12px;
-}
-
-@media (max-width: 800px) {
-  .edit-user-ctas {
-    flex-direction: column;
-  }
-}

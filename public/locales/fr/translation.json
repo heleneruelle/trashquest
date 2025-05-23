@@ -17,6 +17,12 @@
   "en": "EN",
   "fr": "FR",
   "quit": "Quitter",
+  "edit": {
+    "cta": {
+      "submitting": "Enregistrement de vos modifications...",
+      "idle": "Enregistrer vos modifications et quitter"
+    }
+  },
   "countries": {
     "fr": "France",
     "be": "Belgique"
@@ -227,7 +233,10 @@
       "accessibility": "Choisir le(s) niveau(x) d'accessibilité de la quête",
       "difficulty": "Choisir le(s) niveau(x) de difficulté de la quête"
     },
-    "begin": "Votre quête démarre ici"
+    "begin": "Votre quête démarre ici",
+    "edit": {
+      "title": "Modifier la quête"
+    }
   },
   "my-quests": {
     "title": "Vos quêtes",

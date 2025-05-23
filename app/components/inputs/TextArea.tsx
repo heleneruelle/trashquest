@@ -6,6 +6,7 @@ interface TextAreaProps {
   placeholder?: string;
   required?: boolean;
   hint?: string;
+  defaultValue?: string;
 }
 
 function TextArea({
@@ -16,6 +17,7 @@ function TextArea({
   placeholder,
   required = true,
   hint,
+  defaultValue,
 }: TextAreaProps) {
   return (
     <label htmlFor={id} className="labelled-input text-input">
@@ -26,6 +28,7 @@ function TextArea({
         maxLength={maxlength}
         required={required}
         placeholder={placeholder}
+        defaultValue={defaultValue}
       />
       {hint && <small className="input-hint">{hint}</small>}
     </label>

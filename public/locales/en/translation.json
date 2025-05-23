@@ -17,6 +17,12 @@
   "en": "EN",
   "fr": "FR",
   "quit": "Quit",
+  "edit": {
+    "cta": {
+      "submitting": "Saving your updates...",
+      "idle": "Save your updates and quit"
+    }
+  },
   "countries": {
     "fr": "France",
     "be": "Belgium"
@@ -227,7 +233,10 @@
       "accessibility": "Choose quest accessibility level(s)",
       "difficulty": "Choose quest difficulty level(s)"
     },
-    "begin": "Your quest starts here"
+    "begin": "Your quest starts here",
+    "edit": {
+      "title": "Edit quest"
+    }
   },
   "my-quests": {
     "title": "Your quests",

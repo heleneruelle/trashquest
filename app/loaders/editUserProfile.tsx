@@ -28,14 +28,12 @@ async function editProfileLoader({ request, params }: ActionFunctionArgs) {
     await userRef.update({
       username,
       country,
-      location: {
-        name: locationName,
-        id: locationId,
-        coordinates: new admin.firestore.GeoPoint(
-          parseFloat(locationLatitude),
-          parseFloat(locationLongitude)
-        ),
-      },
+      'location.name': locationName,
+      'location.id': locationId,
+      'location.coordinates': new admin.firestore.GeoPoint(
+        parseFloat(locationLatitude),
+        parseFloat(locationLongitude)
+      ),
     });
 
     return { success: true };

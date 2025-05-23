@@ -6,10 +6,11 @@ interface CounterProps {
   id: string;
   name: string;
   label: string;
+  defaultCount?: number;
 }
 
-function Counter({ id, name, label }: CounterProps) {
-  const [count, setCount] = useState(1);
+function Counter({ id, name, label, defaultCount = 1 }: CounterProps) {
+  const [count, setCount] = useState(defaultCount);
   return (
     <div className="counter-container">
       <label htmlFor={id}>{label}</label>
