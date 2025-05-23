@@ -17,6 +17,12 @@
   "en": "EN",
   "fr": "FR",
   "quit": "Quit",
+  "edit": {
+    "cta": {
+      "submitting": "Saving your updates...",
+      "idle": "Save your updates and quit"
+    }
+  },
   "countries": {
     "fr": "France",
     "be": "Belgium"
